@@ -3,7 +3,7 @@
 const NavigationBar = () => {
     return (
         <div>
-            <p>this is navigation bar</p>
+            <p>navigation has not submitted yet </p>
         </div>
     );
 };
