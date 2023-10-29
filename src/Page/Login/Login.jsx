@@ -4,13 +4,19 @@ import SocialLogIn from '../../components/SocialLogin/SocialLogIn';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import "../Register/Register.css"
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
 
 const Login = () => {
+    const {signIn} = useAuth();
     const [type, setType] = useState("password");
     const [IsShow, setIsShow] = useState(false);
     const [error, setError] = useState("");
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/"
+    const { register, formState: { errors }, handleSubmit , reset, formState } = useForm();
 
     // console.log(allCodes);
 
@@ -23,8 +29,33 @@ const Login = () => {
     }
 
     const onSubmit = async (data) => {
-        console.log(data);
+        signIn(data?.email, data?.password)
+        .then(res => {
+            const loggedUser = res.user;
+            navigate(from, { replace: true })
+            Swal.fire({
+                title: 'Success!',
+                text: 'Sign In Successful',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+            reset();
+        })
+        .catch(error => {
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+                confirmButtonText: 'Cool'
+            })
+
+        })
     }
+    React.useEffect(() => {
+        if (formState.isSubmitSuccessful) {
+          reset({ something: "" })
+        }
+      }, [formState, reset])
     return (
         <div>
             <input type="checkbox" id="logIn_modal" className="modal-toggle" />
