@@ -56,7 +56,6 @@ import Competitions from "../Page/Competitions/Competitions";
 import ErrorPage from "../Page/ErrorPage/ErrorPage";
 import DeleverForTakealot from "../Page/DeleverForTakealot/DeleverForTakealot";
 import DriverPrivacyPolicy from "../Page/DriverPrivacyPolicy/DriverPrivacyPolicy";
-import PrivateRoute from "./PrivateRoute";
 
 
 
@@ -93,7 +92,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/my-account",
-        element: <PrivateRoute><MyAccountPage /></PrivateRoute>
+        element: <MyAccountPage />
       },
       {
         path: '/contact-us',
@@ -163,59 +162,59 @@ export const router = createBrowserRouter([
       },
       {
         path:"/wishlist",
-        element: <PrivateRoute><Wishlist /></PrivateRoute>
+        element:<Wishlist />
       },
       {
         path:"/cart",
-        element: <PrivateRoute><Cart /></PrivateRoute>
+        element: <Cart />
       },
       {
         path:"/account",
-        element: <PrivateRoute><Account /></PrivateRoute>,
+        element:<Account />,
         children:[
           {
             path: "orders",
-            element: <PrivateRoute><Orders /></PrivateRoute>
+            element: <Orders />
           },
           {
             path:"returns",
-            element:<PrivateRoute><Returns /></PrivateRoute>
+            element:<Returns />
           },
           {
             path:"credits",
-            element:<PrivateRoute><CreditRefunds /></PrivateRoute>
+            element:<CreditRefunds />
           },
           {
             path:"reviews",
-            element:<PrivateRoute><ProductReview /></PrivateRoute>
+            element:<ProductReview />
           },
           {
             path:"invoices",
-            element:<PrivateRoute><Invoices /></PrivateRoute>
+            element:<Invoices />
           },
           {
             path:"personal-details",
-            element:<PrivateRoute><PersonalInfo /></PrivateRoute>
+            element:<PersonalInfo />
           },
           {
             path:"voucher",
-            element:<PrivateRoute><ApplyVoucher /></PrivateRoute>
+            element:<ApplyVoucher />
           },
           {
             path:"address-book",
-            element:<PrivateRoute><AddressBook /></PrivateRoute>
+            element:<AddressBook />
           },
           {
             path:"newsletter",
-            element:<PrivateRoute><Newsletter /></PrivateRoute>
+            element:<Newsletter />
           },
           {
             path: "reviewshistory",
-            element: <PrivateRoute><ReviewsHistory/></PrivateRoute>
+            element: <ReviewsHistory/>
           },
           {
             path: "refundshistory",
-            element: <PrivateRoute><RefundsHistory/></PrivateRoute>
+            element: <RefundsHistory/>
           }
         ]
       },

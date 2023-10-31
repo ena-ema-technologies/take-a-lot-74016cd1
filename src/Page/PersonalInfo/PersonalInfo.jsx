@@ -2,23 +2,9 @@ import React, { useEffect, useState } from 'react';
 import "./info.css"
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import useProfile from '../../hooks/useProfile';
-import bcrypt from "bcryptjs-react";
-import useAuth from '../../hooks/useAuth';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
-import Swal from 'sweetalert2';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 const PersonalInfo = () => {
-    const {user , updatePass, passReset, updateUserEmail,updateUserName} = useAuth();
-    const [userInfo, refetch] = useProfile();
-    // console.log(userInfo);
-    const [axiosSecure] = useAxiosSecure();
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from?.pathname || "/account/personal-details"
-
-    const { register, formState: { errors }, handleSubmit,formState, reset } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
     const [nameEditField , setNameEditField] =useState(false);
     const [type, setType] = useState("password");
     const [IsShow, setIsShow] = useState(false);
@@ -37,152 +23,12 @@ const PersonalInfo = () => {
     },[])
 
     const onSubmit = async (data) => {
-        
-        // Pass Update
-        if(data?.currentPassword && data?.newPassword){
-            if(data.currentPassword && data.newPassword){
-                const isPasswordValid = await bcrypt.compare(data.currentPassword, userInfo?.password);
-                if(isPasswordValid){
-                    updatePass(data?.newPassword)
-                    .then(async()=>{
-                        const res = await axiosSecure.patch(`/user-password-update/${userInfo?._id}`,{password: data?.newPassword})
-                        console.log(res.data);
-                        if(res.data.modifiedCount > 0){
-                            Swal.fire({
-                                title: 'Success!',
-                                text: 'Password updated!',
-                                icon: 'success',
-                                confirmButtonText: 'Cool'
-                              })
-                              refetch();
-                              setPassEditField(false)
-                              reset();
-                              navigate("")
-                        }
-                    })
-                    // setNameEditField(false)
-                    // setEmailEditField(false)
-                    // setPhoneEditField(false)
-                    // setBusinessEditField(false)
-                 
-                }else{
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Please give your current password correctly!',
-                        icon: 'error',
-                        confirmButtonText: 'Cool'
-                      })
-                }
-               
-            }else{
-               return ()=>{
-                Swal.fire({
-                    title: 'Error!',
-                    text: 'Please give your current password and new password!',
-                    icon: 'error',
-                    confirmButtonText: 'Cool'
-                  })
-               }
-            }
-        }
-// Password Update
-        if(data?.email && data?.password){
-            if(data.email && data.password){
-                const isPasswordValid = await bcrypt.compare(data.password, userInfo?.password);
-                if(isPasswordValid){
-                    updateUserEmail(data?.email)
-                    .then(async()=>{
-                        const res = await axiosSecure.patch(`/user-email-update/${userInfo?._id}`,{email: data?.email})
-                        // console.log(res.data);
-                        if(res.data.modifiedCount > 0){
-                            Swal.fire({
-                                title: 'Success!',
-                                text: 'Email updated!',
-                                icon: 'success',
-                                confirmButtonText: 'Cool'
-                              })
-                              refetch();
-                              setEmailEditField(false)
-                              reset();
-                              navigate("")
-                        }
-                    })
-                    // setNameEditField(false)
-                    // setPhoneEditField(false)
-                    // setBusinessEditField(false)
-                 
-                }else{
-                    Swal.fire({
-                        title: 'Error!',
-                        text: 'Please give your password correctly!',
-                        icon: 'error',
-                        confirmButtonText: 'Cool'
-                      })
-                }
-               
-            }
-        }
-
-        // Name Update
-        if(data?.firstName && data?.lastName){
-            updateUserName(data?.firstName)
-            .then(async()=>{
-                const res = await axiosSecure.patch(`/user-name-update/${userInfo?._id}`,{firstName: data?.firstName, lastName: data?.lastName})
-                // console.log(res.data);
-                if(res.data.modifiedCount > 0){
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Email updated!',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                      })
-                      refetch();
-                      setNameEditField(false)
-                      reset();
-                      navigate("")
-                }
-            })
-            // setBusinessEditField(false)
-        }
-
-        // Mobile Number update
-        if(data?.countryCode && data?.number){
-           
-                const res = await axiosSecure.patch(`/user-phone-number-update/${userInfo?._id}`,{countryCode: data?.countryCode, number: data?.number})
-                // console.log(res.data);
-                if(res.data.modifiedCount > 0){
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Mobile number updated!',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                      })
-                      refetch();
-                      setPhoneEditField(false)
-                      reset();
-                      navigate("")
-                }
-        }
-
-        // Business Details
-        if(data?.businessName && data?.vatNumber){
-            const res = await axiosSecure.patch(`/user-business-details-update/${userInfo?._id}`,{businessName: data?.businessName, vatNumber: data?.vatNumber})
-                if(res.data.modifiedCount > 0){
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'Business details updated!',
-                        icon: 'success',
-                        confirmButtonText: 'Cool'
-                      })
-                      refetch();
-                      setBusinessEditField(false)
-                      reset();
-                      navigate("")
-                }
-        }
-
-
-
+        console.log(data);
+        setNameEditField(false)
+        setEmailEditField(false)
+        setPassEditField(false)
+        setPhoneEditField(false)
+        setBusinessEditField(false)
     }
 
     const closeField = ()=>{
@@ -199,26 +45,6 @@ const PersonalInfo = () => {
     const handleHide = () => {
         setType("password")
     }
-
-    useEffect(() => {
-        if (formState.isSubmitSuccessful) {
-          reset({ something: "" })
-        }
-      }, [formState, reset]);
-
-      const handleResetEmail = ()=>{
-        const email = userInfo?.email;
-        passReset(email)
-        .then(()=>{
-            Swal.fire({
-                title: 'Success!',
-                text: 'Password reset email send!!',
-                icon: 'success',
-                confirmButtonText: 'Cool'
-              })
-        })
-      }
-
     return (
         <section className='w-full'>
 <div className='sect-title w-full'>
@@ -239,7 +65,7 @@ const PersonalInfo = () => {
 <div className="inputGroup">  
 
 
-      <input defaultValue={userInfo?.firstName} type="text" required className='inputField' {...register("firstName", { required: true })}
+      <input defaultValue="Mr." type="text" required className='inputField' {...register("firstName", { required: true })}
 aria-invalid={errors.firstName ? "true" : "false"}/>
       <span className="highlight"></span>
       <span className="bar"></span>
@@ -251,7 +77,7 @@ aria-invalid={errors.firstName ? "true" : "false"}/>
     <div className="inputGroup">  
 
 
-<input defaultValue={userInfo?.lastName} type="text" required className='inputField' {...register("lastName", { required: true })}
+<input defaultValue="x" type="text" required className='inputField' {...register("lastName", { required: true })}
 aria-invalid={errors.lastName ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -270,7 +96,7 @@ aria-invalid={errors.lastName ? "true" : "false"}/>
     :<div className='w-full flex items-center justify-between'>
     <div>
         <p className='text-[#0a0a0a] text-base font-semibold'>Your Name</p>
-        <p className='text-[#4d4d4f] text-sm'>{userInfo?.firstName} {userInfo?.lastName}</p>
+        <p className='text-[#4d4d4f] text-sm'>Mr.X</p>
     </div>
     <div>
     <button className='px-14 py-2 text-xs font-semibold text-[#4d4d4f] border border-[#4d4d4f] edit-btn rounded'>Edit</button>
@@ -295,7 +121,7 @@ aria-invalid={errors.lastName ? "true" : "false"}/>
     <div className="inputGroup">  
 
 
-<input type="email" defaultValue={userInfo?.email} required className='inputField' {...register("email", { required: true })}
+<input type="email" defaultValue="example@gmail.com" required className='inputField' {...register("email", { required: true })}
 aria-invalid={errors.email ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -308,7 +134,7 @@ aria-invalid={errors.email ? "true" : "false"}/>
 <div className="inputGroup">  
 
 
-<input type={type} required className='inputField' {...register("password", { required: true })}
+<input defaultValue="example" type={type} required className='inputField' {...register("password", { required: true })}
 aria-invalid={errors.password ? "true" : "false"}/>
 <div className='absolute right-3 top-3 cursor-pointer' onClick={() => setIsShow(!IsShow)}>
 {
@@ -332,7 +158,7 @@ aria-invalid={errors.password ? "true" : "false"}/>
     :<div className='w-full flex items-center justify-between'>
     <div>
         <p className='text-[#0a0a0a] text-base font-semibold'>Email Address</p>
-        <p className='text-[#4d4d4f] text-sm'>{userInfo?.email}</p>
+        <p className='text-[#4d4d4f] text-sm'>example@gmail.com</p>
     </div>
     <div>
     <button className='px-14 py-2 text-xs font-semibold text-[#4d4d4f] border border-[#4d4d4f] edit-btn rounded'>Edit</button>
@@ -372,7 +198,7 @@ aria-invalid={errors.currentPassword ? "true" : "false"}/>
 </div>
 
 
-<div className='w-full flex justify-end' onClick={handleResetEmail}>
+<div className='w-full flex justify-end'>
 <p className='text-[11px] font-normal text-primary hover:underline'>Forgot Your Password?</p>
 </div>
 
@@ -433,14 +259,14 @@ aria-invalid={errors.newPassword ? "true" : "false"}/>
         <label className='text-xs text-[#999]'>Code</label>
     <select {...register("countryCode", { required: true })} className='py-2 px-2 border-b-2 border-[#c9c7c7] text-sm font-medium text-gray-500 bg-transparent' aria-invalid={errors.countryCode ? "true" : "false"}>
         {
-            allCodes.map(cCode=><option key={cCode?._id}  value={cCode?.dial_code }>{cCode?.code} ({cCode?.dial_code})</option>)
+            allCodes.map(cCode=><option key={cCode?._id} value={cCode?.dial_code }>{cCode?.code} ({cCode?.dial_code})</option>)
         }
       </select>
     </div>
 <div className="inputGroup w-full">  
 
 
-<input type="tel" required defaultValue={userInfo?.phone ? userInfo?.phone : "123456789"} className='inputField' {...register("number", { required: true })}
+<input type="tel" required defaultValue="123456789" className='inputField' {...register("number", { required: true })}
 aria-invalid={errors.number ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -465,7 +291,7 @@ aria-invalid={errors.number ? "true" : "false"}/>
     :<div className='w-full flex items-center justify-between'>
     <div>
         <p className='text-[#0a0a0a] text-base font-semibold'>Mobile Number</p>
-        <p className='text-[#4d4d4f] text-sm'><span>{userInfo?.countryCode}</span> <span>{userInfo?.phone}</span></p>
+        <p className='text-[#4d4d4f] text-sm'>+880 123456789</p>
     </div>
     <div>
     <button className='px-14 py-2 text-xs font-semibold text-[#4d4d4f] border border-[#4d4d4f] edit-btn rounded'>Edit</button>
@@ -476,7 +302,7 @@ aria-invalid={errors.number ? "true" : "false"}/>
 </div>
 
 
-{/* Business */}
+{/* Name */}
 <div className='w-full px-8 py-6 bg-white rounded shadow info-field cursor-pointer' onClick={()=>setBusinessEditField(true)}>
 
 {
@@ -489,7 +315,7 @@ aria-invalid={errors.number ? "true" : "false"}/>
 <div className="inputGroup">  
 
 
-      <input type="text" defaultValue={userInfo?.businessName ? userInfo?.businessName : ""} className='inputField' {...register("businessName", { required: false })}
+      <input type="text" className='inputField' {...register("businessName", { required: false })}
 aria-invalid={errors.businessName ? "true" : "false"}/>
       <span className="highlight"></span>
       <span className="bar"></span>
@@ -502,7 +328,7 @@ aria-invalid={errors.businessName ? "true" : "false"}/>
     <div className="inputGroup">  
 
 
-<input type="text" defaultValue={userInfo?.vatNumber ? userInfo?.vatNumber : ""}   className='inputField' {...register("vatNumber", { required: false })}
+<input type="text"  className='inputField' {...register("vatNumber", { required: false })}
 aria-invalid={errors.vatNumber ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>

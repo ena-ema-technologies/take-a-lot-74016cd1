@@ -4,19 +4,13 @@ import SocialLogIn from '../../components/SocialLogin/SocialLogIn';
 import { useForm } from 'react-hook-form';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import "../Register/Register.css"
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import Swal from 'sweetalert2';
-import useAuth from '../../hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const LoginPage = () => {
-    const {signIn} = useAuth();
     const [type, setType] = useState("password");
     const [IsShow, setIsShow] = useState(false);
     const [error, setError] = useState("");
-    const location = useLocation();
-    const navigate = useNavigate();
-    const from = location.state?.from?.pathname || "/"
-    const { register, formState: { errors }, handleSubmit , reset, formState } = useForm();
+    const { register, formState: { errors }, handleSubmit } = useForm();
 
     // console.log(allCodes);
 
@@ -29,33 +23,8 @@ const LoginPage = () => {
     }
 
     const onSubmit = async (data) => {
-        signIn(data?.email, data?.password)
-        .then(res => {
-            const loggedUser = res.user;
-            navigate(from, { replace: true })
-            Swal.fire({
-                title: 'Success!',
-                text: 'Sign In Successful',
-                icon: 'success',
-                confirmButtonText: 'Ok'
-            })
-            reset();
-        })
-        .catch(error => {
-            Swal.fire({
-                title: 'Error!',
-                text: error.message,
-                icon: 'error',
-                confirmButtonText: 'Cool'
-            })
-
-        })
+        console.log(data);
     }
-    useEffect(() => {
-        if (formState.isSubmitSuccessful) {
-          reset({ something: "" })
-        }
-      }, [formState, reset])
     return (
             <div className="flex items-center justify-center my-14">
                 <div className="text-left bg-white px-9 py-5 rounded shadow">

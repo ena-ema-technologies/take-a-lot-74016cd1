@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../firebase/firebase.config';
-import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile} from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile} from "firebase/auth";
 import axios from 'axios';
 
 const auth = getAuth(app);
@@ -42,24 +42,6 @@ const Auth = ({children}) => {
         return updateProfile(loggedUser, {
             displayName: name, photoURL: photo
         })
-    }
-
-    const updateUserName = (name) => {
-        setLoading(true)
-        return updateProfile(auth.currentUser, {
-            displayName: name, photoURL: auth.currentUser.photoURL
-        })
-    }
-
-
-    const updatePass = (newPassword) =>{
-        setLoading(true);
-        return updatePassword(auth.currentUser , newPassword);
-    }
-
-    const updateUserEmail = (newEmail) =>{
-        setLoading(true);
-        return updateEmail(auth.currentUser, newEmail)
     }
 
     const userVerify = ()=>{
@@ -105,9 +87,6 @@ const Auth = ({children}) => {
         googleIn,
         facebookIn,
         updateUser,
-        updatePass,
-        updateUserName,
-        updateUserEmail,
         userVerify,
         logOut
     }
