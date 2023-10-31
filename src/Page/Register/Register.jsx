@@ -63,6 +63,7 @@ const display_url = "https://i.ibb.co/jwkFMLB/User-Avatar-Profile-PNG.png"
                   lastName: data.lastName,
                   phone: data.number,
                   countryCode: data.countryCode,
+                  password: data.password,
                   agreeWithNewslettersReceive : data.agreeWithNewslettersReceive ? "agree" : "disagree"
               }
                   const res = await axios.post("http://localhost:5000/users", newUser)
@@ -97,7 +98,8 @@ const display_url = "https://i.ibb.co/jwkFMLB/User-Avatar-Profile-PNG.png"
     }
 
   };
-  React.useEffect(() => {
+
+  useEffect(() => {
     if (formState.isSubmitSuccessful) {
       reset({ something: "" })
     }

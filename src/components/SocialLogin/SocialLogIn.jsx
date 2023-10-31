@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import axios from 'axios';
+import useProfile from '../../hooks/useProfile';
 const SocialLogIn = ({ title1, title2 }) => {
     const navigate = useNavigate()
     const location = useLocation()
@@ -12,6 +13,7 @@ const SocialLogIn = ({ title1, title2 }) => {
     const { googleIn } = useAuth();
 
     const handleGoogle = () => {
+        const [userInfo, refetch] = useProfile();
         googleIn()
             .then(async(res) => {
                 const loggedUser = res.user;
@@ -37,6 +39,8 @@ const SocialLogIn = ({ title1, title2 }) => {
                         icon: 'success',
                         confirmButtonText: 'Ok'
                     })
+                    refetch()
+                    
                 }
 
             })
