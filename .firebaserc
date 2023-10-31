@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "take-a-lot-aeefe"
-  }
+    "default": "must-take",
+    "staging": "must-take"
+  },
+  "targets": {},
+  "etags": {}
 }

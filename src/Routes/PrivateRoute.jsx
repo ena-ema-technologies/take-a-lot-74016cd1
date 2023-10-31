@@ -6,9 +6,9 @@ import useAuth from '../hooks/useAuth';
 const PrivateRoute = ({children}) => {
     const {user , loading} = useAuth();
     const location = useLocation()
-    if(loading){
-        return <h1>Loading</h1>
-    }
+    // if(loading){
+    //     return <h1>Loading</h1>
+    // }
     if(!user){
         Swal.fire({
             title: 'Alert!',
