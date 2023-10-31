@@ -4,16 +4,24 @@ import SocialLogIn from "../../components/SocialLogin/SocialLogIn";
 import { useForm } from "react-hook-form";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const Register = () => {
+
+  const {updateUser, signUp, userVerify , user} = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/"
   const [type, setType] = useState("password");
   const [IsShow, setIsShow] = useState(false);
   const [error, setError] = useState("");
   const {
     register,
     formState: { errors },
-    handleSubmit,
+    handleSubmit, reset, formState
   } = useForm();
   const [allCodes, setAllCodes] = useState([]);
 
@@ -34,8 +42,68 @@ const Register = () => {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
+    const password = data.password;
+    if (password.length < 8) {
+      return setError("Password must be eight characters in length")
+    }
+    if (!/(?=.*?[#?!@$%^&*-])/.test(password)) {
+      return setError("At least one special character include in your password")
+    } else {
+      console.log(data);
+
+      signUp(data?.email, data?.password)
+      .then((res) => {
+          const loggedUser = res.user;
+const display_url = "https://i.ibb.co/jwkFMLB/User-Avatar-Profile-PNG.png"
+          updateUser(loggedUser, data?.firstName, display_url)
+              .then(async () => {
+                const newUser = {
+                  email: data.email,
+                  firstName: data.firstName,
+                  lastName: data.lastName,
+                  phone: data.number,
+                  countryCode: data.countryCode,
+                  password: data.password,
+                  agreeWithNewslettersReceive : data.agreeWithNewslettersReceive ? "agree" : "disagree"
+              }
+                  const res = await axios.post("http://localhost:5000/users", newUser)
+                  if (res.data.insertedId) {
+                      userVerify()
+                          .then(() => {
+                              navigate(from, { replace: true })
+                              Swal.fire({
+                                  title: 'Success!',
+                                  text: 'Sign up successful and check your email to verify!',
+                                  icon: 'success',
+                                  confirmButtonText: 'Ok'
+                              })
+                              console.log(user);
+                              reset()
+                              setError("")
+                          })
+                  }
+              })
+
+
+      })
+      .catch(error => {
+          Swal.fire({
+              title: 'Error!',
+              text: error.message,
+              icon: 'error',
+              confirmButtonText: 'Cool'
+          })
+
+      })
+    }
+
   };
+
+  useEffect(() => {
+    if (formState.isSubmitSuccessful) {
+      reset({ something: "" })
+    }
+  }, [formState, reset])
   return (
     <div>
       <input type="checkbox" id="register_modal" className="modal-toggle" />
@@ -144,11 +212,13 @@ const Register = () => {
                     Password is required
                   </p>
                 )}
-                <p className="font-semibold text-red-600">
+                <p className="text-xs font-medium text-red-600 py-1">
                   {error}{" "}
-                  <span className="text-xs font-medium text-gray-500">
-                    At least 8 characters and 1 special character or number
-                  </span>
+                  {
+                    !error && <span className="text-xs font-medium text-gray-500">
+                      At least 8 characters and 1 special character or number
+                    </span>
+                  }
                 </p>
               </div>
 
