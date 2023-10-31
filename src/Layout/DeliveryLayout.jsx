@@ -27,7 +27,7 @@ const DeliveryLayout = () => {
 
             {/* outlet content */}
 
-            <div className='-my-16 w-[98%] mx-auto relative mb-6'>
+            <div className='-my-20 w-[98%] mx-auto relative mb-6'>
                 <div className='flex items-start justify-between gap-8'>
 
                     {/* outlet start here */}
@@ -38,7 +38,7 @@ const DeliveryLayout = () => {
 
 
                     {/* right side bar start */}
-                    <div className='w-[300px] bg-white shadow hidden lg:block text-sm'>
+                    <div className='w-[350px] bg-white shadow hidden lg:block text-sm'>
                         <p className='p-3 text-base font-medium text-[#000]'> Delivery Topics </p>
                         <div className='border-b border-[#dadada]'></div>
 
@@ -75,10 +75,7 @@ const DeliveryLayout = () => {
 
                     {/* right side bar end */}
                 </div>
-
             </div>
-
-
         </section>
     );
 };
