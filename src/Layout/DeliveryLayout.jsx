@@ -4,6 +4,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const DeliveryLayout = () => {
     return (
+
         <section className='lg:px-4'>
 
             <div className='hero h-80 rounded-b-lg relative' style={{ backgroundImage: "url(https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/help-centre/Header-Large@2x.png-868cd5e789ded2bf3855.png)", backgroundRepeat: "no-repeat" }}>
@@ -76,6 +77,13 @@ const DeliveryLayout = () => {
                     {/* right side bar end */}
                 </div>
             </div>
+
+            {/* contact us start*/}
+
+
+
+            {/* contact us end*/}
+
         </section>
     );
 };
