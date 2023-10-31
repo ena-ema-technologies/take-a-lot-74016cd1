@@ -21,7 +21,6 @@ import DataPrivacyHelp from "../Page/HelpCenter/DataPrivacyHelp/DataPrivacyHelp"
 import Orders from "../Page/Orders/Orders";
 import Wishlist from "../Page/Wishlist/Wishlist";
 import Cart from "../Page/Cart/Cart";
-
 import Account from "../Page/Account/Account";
 import Returns from "../Page/Returns/Returns";
 import CreditRefunds from "../Page/CreditRefunds/CreditRefunds";
@@ -58,6 +57,8 @@ import ErrorPage from "../Page/ErrorPage/ErrorPage";
 import DeleverForTakealot from "../Page/DeleverForTakealot/DeleverForTakealot";
 import DriverPrivacyPolicy from "../Page/DriverPrivacyPolicy/DriverPrivacyPolicy";
 import PrivateRoute from "./PrivateRoute";
+import DeliveryLayout from "../Layout/DeliveryLayout";
+import TrackOrder from "../Page/HelpCenter/TrackOrder/TrackOrder";
 
 
 
@@ -66,7 +67,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
-    errorElement:<ErrorPage />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: '/',
@@ -74,7 +75,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/fee-estimator',
-        element: <FeeEstimator/>
+        element: <FeeEstimator />
       },
       {
         path: "/all",
@@ -98,19 +99,19 @@ export const router = createBrowserRouter([
       },
       {
         path: '/contact-us',
-        element: <ContactUs/>
+        element: <ContactUs />
       },
       {
         path: 'competitions',
-        element: <Competitions/>
+        element: <Competitions />
       },
       {
         path: 'takealot-deliver',
-        element: <DeleverForTakealot/>
+        element: <DeleverForTakealot />
       },
       {
         path: 'driver-privacy-policy',
-        element: <DriverPrivacyPolicy/>
+        element: <DriverPrivacyPolicy />
       },
       {
         path: "/help-centre",
@@ -125,175 +126,186 @@ export const router = createBrowserRouter([
             element: <DeliveryHelpHome />
           },
           {
-            path:"returns",
-            element:<ReturnHelp />
+            path: "deliveryDetails",
+            element: <DeliveryLayout></DeliveryLayout>,
+            children: [
+              {
+                path:"track-order",
+                element: <TrackOrder></TrackOrder>
+              }
+            ]
+          },
+
+          {
+            path: "returns",
+            element: <ReturnHelp />
           },
           {
-            path:"orders-cancellations",
-            element:<OrderCancellationHelp />
+            path: "orders-cancellations",
+            element: <OrderCancellationHelp />
           },
           {
-            path:"collection",
-            element:<CollectionHelp />
+            path: "collection",
+            element: <CollectionHelp />
           },
           {
-            path:"refunds",
-            element:<RefundsHelp />
+            path: "refunds",
+            element: <RefundsHelp />
           },
           {
-            path:"payments-promos-gift-vouchers",
-            element:<PaymentsPromosGiftVouchersHelp />
+            path: "payments-promos-gift-vouchers",
+            element: <PaymentsPromosGiftVouchersHelp />
           },
           {
-            path:"product-stock",
-            element:<ProductStockHelp />
+            path: "product-stock",
+            element: <ProductStockHelp />
           },
           {
-            path:"data-privacy",
-            element:<DataPrivacyHelp />
+            path: "data-privacy",
+            element: <DataPrivacyHelp />
           },
         ]
       },
       {
-        path:"/account/register",
-        element:<RegisterPage />
+        path: "/account/register",
+        element: <RegisterPage />
       },
       {
-        path:"/account/login",
-        element:<LoginPage />
+        path: "/account/login",
+        element: <LoginPage />
       },
       {
-        path:"/wishlist",
+        path: "/wishlist",
         element: <PrivateRoute><Wishlist /></PrivateRoute>
       },
       {
-        path:"/cart",
+        path: "/cart",
         element: <PrivateRoute><Cart /></PrivateRoute>
       },
       {
-        path:"/account",
+        path: "/account",
         element: <PrivateRoute><Account /></PrivateRoute>,
-        children:[
+        children: [
           {
             path: "orders",
             element: <PrivateRoute><Orders /></PrivateRoute>
           },
           {
-            path:"returns",
-            element:<PrivateRoute><Returns /></PrivateRoute>
+            path: "returns",
+            element: <PrivateRoute><Returns /></PrivateRoute>
           },
           {
-            path:"credits",
-            element:<PrivateRoute><CreditRefunds /></PrivateRoute>
+            path: "credits",
+            element: <PrivateRoute><CreditRefunds /></PrivateRoute>
           },
           {
-            path:"reviews",
-            element:<PrivateRoute><ProductReview /></PrivateRoute>
+            path: "reviews",
+            element: <PrivateRoute><ProductReview /></PrivateRoute>
           },
           {
-            path:"invoices",
-            element:<PrivateRoute><Invoices /></PrivateRoute>
+            path: "invoices",
+            element: <PrivateRoute><Invoices /></PrivateRoute>
           },
           {
-            path:"personal-details",
-            element:<PrivateRoute><PersonalInfo /></PrivateRoute>
+            path: "personal-details",
+            element: <PrivateRoute><PersonalInfo /></PrivateRoute>
           },
           {
-            path:"voucher",
-            element:<PrivateRoute><ApplyVoucher /></PrivateRoute>
+            path: "voucher",
+            element: <PrivateRoute><ApplyVoucher /></PrivateRoute>
           },
           {
-            path:"address-book",
-            element:<PrivateRoute><AddressBook /></PrivateRoute>
+            path: "address-book",
+            element: <PrivateRoute><AddressBook /></PrivateRoute>
           },
           {
-            path:"newsletter",
-            element:<PrivateRoute><Newsletter /></PrivateRoute>
+            path: "newsletter",
+            element: <PrivateRoute><Newsletter /></PrivateRoute>
           },
           {
             path: "reviewshistory",
-            element: <PrivateRoute><ReviewsHistory/></PrivateRoute>
+            element: <PrivateRoute><ReviewsHistory /></PrivateRoute>
           },
           {
             path: "refundshistory",
-            element: <PrivateRoute><RefundsHistory/></PrivateRoute>
+            element: <PrivateRoute><RefundsHistory /></PrivateRoute>
           }
         ]
       },
       {
-        path:"/takealot-pickup-points",
-        element:<PickupPoints />
+        path: "/takealot-pickup-points",
+        element: <PickupPoints />
       },
       {
-        path:"/return-policy-help/",
-        element:<ReturnPolicyAndHelp />,
-        children:[
+        path: "/return-policy-help/",
+        element: <ReturnPolicyAndHelp />,
+        children: [
           {
-            path:"/return-policy-help/",
-            element:<ReturnPolicy />
+            path: "/return-policy-help/",
+            element: <ReturnPolicy />
           },
           {
-            path:"terms-and-conditions",
-            element:<TermsAndCs/>
+            path: "terms-and-conditions",
+            element: <TermsAndCs />
           },
           {
-            path:"savealot-daily-deals",
-            element:<DailyDeals />
+            path: "savealot-daily-deals",
+            element: <DailyDeals />
           },
           {
-            path:"promotional-codes-tcs",
-            element:<VouchersAndCouponsConditions />
+            path: "promotional-codes-tcs",
+            element: <VouchersAndCouponsConditions />
           },
           {
-            path:"responsible-disclosure-policy",
-            element:<ResponsibleDisclosure />
+            path: "responsible-disclosure-policy",
+            element: <ResponsibleDisclosure />
           },
           {
-            path:"privacy-policy",
-            element:<PrivacyPolicy />
+            path: "privacy-policy",
+            element: <PrivacyPolicy />
           }
 
         ]
       },
       {
-        path:"/about",
-        element:<About />,
-        children:[
+        path: "/about",
+        element: <About />,
+        children: [
           {
-            path:"who-we-are",
-            element:<WhoWeAre />
+            path: "who-we-are",
+            element: <WhoWeAre />
           },
           {
-            path:"our-journey",
-            element:<OurJourney/>
+            path: "our-journey",
+            element: <OurJourney />
           },
           {
-            path:"our-values",
-            element:<OurValue />
+            path: "our-values",
+            element: <OurValue />
           },
           {
-            path:"our-environment",
-            element:<OurEnv />
+            path: "our-environment",
+            element: <OurEnv />
           },
           {
-            path:"careers",
-            element:<OurCareers />
+            path: "careers",
+            element: <OurCareers />
           },
           {
-            path:"extraordinary-minds",
-            element:<Extraordinary />
+            path: "extraordinary-minds",
+            element: <Extraordinary />
           },
           {
-            path:"company-news",
-            element:<CompanyNews />
+            path: "company-news",
+            element: <CompanyNews />
           },
           {
-            path:"our-charity",
-            element:<Charity />
+            path: "our-charity",
+            element: <Charity />
           },
           {
-            path:"delivery-team",
-            element:<DeliveryTeam />
+            path: "delivery-team",
+            element: <DeliveryTeam />
           }
         ]
       }

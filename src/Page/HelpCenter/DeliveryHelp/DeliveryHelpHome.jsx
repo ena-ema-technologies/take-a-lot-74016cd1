@@ -16,6 +16,7 @@ import { IoChevronForwardOutline } from 'react-icons/io5';
 const DeliveryHelpHome = () => {
     return (
         <section className='lg:px-4'>
+
             <div className='hero h-60 rounded-b-lg relative' style={{ backgroundImage: "url(https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/help-centre/Header-Large@2x.png-868cd5e789ded2bf3855.png)", backgroundRepeat: "no-repeat" }}>
 
                 <div className="hidden lg:block text-xs breadcrumbs text-white absolute top-20 left-10">
@@ -67,7 +68,7 @@ const DeliveryHelpHome = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/delivery/track-order" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/deliveryDetails/track-order" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__a74a26dd212b3806eab80d2441241e0d6cc629b9.png" alt="icon" className='w-5' />
@@ -186,181 +187,181 @@ const DeliveryHelpHome = () => {
 
                 <div className='flex items-start justify-between gap-8'>
                     <div className='w-full'>
-<p className='text-xl font-semibold text-[#4d4d4f] mb-5 hidden lg:block'>Delivery Topics</p>
-<div className='w-full bg-white py-8 shadow rounded px-6 flex flex-col gap-1 text-sm text-[#4d4d4f]'>
+                        <p className='text-xl font-semibold text-[#4d4d4f] mb-5 hidden lg:block'>Delivery Topics</p>
+                        <div className='w-full bg-white py-8 shadow rounded px-6 flex flex-col gap-1 text-sm text-[#4d4d4f]'>
 
-<p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Delivery Topics</p>
+                            <p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Delivery Topics</p>
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/track-order">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/track-order">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Track your order</span>
-<span className='hidden lg:block'>We will deliver your order by the Estimated Delivery Date provided in your Payment Confirmation or Order Placed email. You are able to track your order by logging into your account and selecting Track Order.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Track your order</span>
+                                    <span className='hidden lg:block'>We will deliver your order by the Estimated Delivery Date provided in your Payment Confirmation or Order Placed email. You are able to track your order by logging into your account and selecting Track Order.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/reschedule-delivery">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/reschedule-delivery">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Reschedule your delivery</span>
-<span className='hidden lg:block'>Rescheduling your delivery is easy if you follow the steps below to check if your order is eligible and you will not be available to receive the order.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Reschedule your delivery</span>
+                                    <span className='hidden lg:block'>Rescheduling your delivery is easy if you follow the steps below to check if your order is eligible and you will not be available to receive the order.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/change-delivery-address">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/change-delivery-address">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Change your delivery address</span>
-<span className='hidden lg:block'>Changing your delivery address after placing an order is not possible. However, if you are not available to receive your order at your original delivery address, you are able to reschedule your delivery date here should your order be eligible by contacting us.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Change your delivery address</span>
+                                    <span className='hidden lg:block'>Changing your delivery address after placing an order is not possible. However, if you are not available to receive your order at your original delivery address, you are able to reschedule your delivery date here should your order be eligible by contacting us.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/about-delivery-options-time-frames">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/about-delivery-options-time-frames">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>About delivery options & time frames</span>
-<span className='hidden lg:block'>Takealot offers two safe and convenient methods for receiving your order: Collection at a Takealot Pickup Point or delivery anywhere in South Africa. Shipping times depend on where you are, our product selection and your choice of delivery or collection options.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>About delivery options & time frames</span>
+                                    <span className='hidden lg:block'>Takealot offers two safe and convenient methods for receiving your order: Collection at a Takealot Pickup Point or delivery anywhere in South Africa. Shipping times depend on where you are, our product selection and your choice of delivery or collection options.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/next-business-delivery">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/next-business-delivery">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Next business day delivery</span>
-<span className='hidden lg:block'>On select orders, we may be able to change your order from delivery to collect. If you want to request a change from delivery to collect, please contact us.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Next business day delivery</span>
+                                    <span className='hidden lg:block'>On select orders, we may be able to change your order from delivery to collect. If you want to request a change from delivery to collect, please contact us.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/delivery-fees">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/delivery-fees">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>About delivery fees</span>
-<span className='hidden lg:block'>We offer next business day delivery during checkout if all products in the order meet the following criteria ...</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>About delivery fees</span>
+                                    <span className='hidden lg:block'>We offer next business day delivery during checkout if all products in the order meet the following criteria ...</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/change-my-order-from-delivery-to-collect">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/change-my-order-from-delivery-to-collect">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Can I change my order from delivery to collect?</span>
-<span className='hidden lg:block'>On select orders, we may be able to change your order from delivery to collect. If you want to request a change from delivery to collect, please contact us.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Can I change my order from delivery to collect?</span>
+                                    <span className='hidden lg:block'>On select orders, we may be able to change your order from delivery to collect. If you want to request a change from delivery to collect, please contact us.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/split-requests">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/split-requests">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Split delivery requests</span>
-<span className='hidden lg:block'>On selected orders, we may split your delivery or collection, allowing your in-stock items to arrive sooner. If you want to request a split delivery or collection at a Takealot pickup point, please contact us below.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Split delivery requests</span>
+                                    <span className='hidden lg:block'>On selected orders, we may split your delivery or collection, allowing your in-stock items to arrive sooner. If you want to request a split delivery or collection at a Takealot pickup point, please contact us below.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/missing-or-incorrect-order-received">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/missing-or-incorrect-order-received">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Item missing or incorrect in order received</span>
-<span className='hidden lg:block'>If you have a missing or incorrect item in your order, please contact us within 7 days of your order being received.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Item missing or incorrect in order received</span>
+                                    <span className='hidden lg:block'>If you have a missing or incorrect item in your order, please contact us within 7 days of your order being received.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/international-shipping-delivery">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/international-shipping-delivery">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>International shipping & delivery</span>
-<span className='hidden lg:block'>We do not ship outside of South African borders at this time. However, we will ship UNISA prescribed textbooks internationally. Please contact us for more information.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>International shipping & delivery</span>
+                                    <span className='hidden lg:block'>We do not ship outside of South African borders at this time. However, we will ship UNISA prescribed textbooks internationally. Please contact us for more information.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
+                            </Link>
 
-</div> 
+                        </div>
 
 
-<div className='w-full bg-white shadow rounded p-4 my-10'>
-<div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
-<div>
-<img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32'/>
-</div>
+                        <div className='w-full bg-white shadow rounded p-4 my-10'>
+                            <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
+                                <div>
+                                    <img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32' />
+                                </div>
 
-<div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
-<div className='flex-1'>
-    <p className='text-lg font-semibold'>Didn't find what you need?</p>
-</div>
+                                <div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
+                                    <div className='flex-1'>
+                                        <p className='text-lg font-semibold'>Didn't find what you need?</p>
+                                    </div>
 
-<div className='mr-5'>
-    <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
-</div>
-</div>
+                                    <div className='mr-5'>
+                                        <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
+                                    </div>
+                                </div>
 
-</div>
-</div>
+                            </div>
+                        </div>
 
 
 
 
-</div>
+                    </div>
 
                     <div className='w-1/3 bg-white shadow hidden lg:block text-sm'>
                         <p className='p-3 text-base font-medium text-[#000]'>All Help Topics</p>
