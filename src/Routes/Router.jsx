@@ -175,17 +175,20 @@ export const router = createBrowserRouter([
         element: <LoginPage />
       },
       {
-        path: "/wishlist",
-        element: <PrivateRoute><Wishlist /></PrivateRoute>
-      },
-      {
-        path: "/cart",
-        element: <PrivateRoute><Cart /></PrivateRoute>
-      },
-      {
         path: "/account",
         element: <PrivateRoute><Account /></PrivateRoute>,
         children: [
+        path:"/wishlist",
+        element: <PrivateRoute><Wishlist /></PrivateRoute>
+      },
+      {
+        path:"/cart",
+        element: <PrivateRoute><Cart /></PrivateRoute>
+      },
+      {
+        path:"/account",
+        element: <PrivateRoute><Account /></PrivateRoute>,
+        children:[
           {
             path: "orders",
             element: <PrivateRoute><Orders /></PrivateRoute>
@@ -229,7 +232,7 @@ export const router = createBrowserRouter([
           {
             path: "refundshistory",
             element: <PrivateRoute><RefundsHistory /></PrivateRoute>
-          }
+          },
         ]
       },
       {
