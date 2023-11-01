@@ -1,29 +1,50 @@
 import React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import useProfile from '../../hooks/useProfile';
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 
 const AddressBook = () => {
+    const [axiosSecure] = useAxiosSecure();
+    const [userInfo, refetch] = useProfile();
     const { register, formState: { errors }, handleSubmit } = useForm();
     const [labelShow3, setLabelShow3] = useState(false);
     const [addressBanner , setAddressBanner] = useState(true)
     const onSubmit = async (data) => {
-        console.log(data);
+
+
+        const newData ={
+            complexOrBuilding: data?.Complex_Building,
+            mobile_Number: data?.Mobile_Number,
+            postal_Code: data?.Postal_Code,
+            province: data?.Province,
+recipient_Name: data?.Recipient_Name,
+street_Address: data?.Street_Address,
+suburb: data?.Suburb,
+address_type: data?.address_type_business ? data?.address_type_business : data?.address_type_residential,
+city_town: data?.city_town
+        }
+            const res = await axiosSecure.patch(`/user-address-book/${userInfo?._id}`, newData)
+                if(res.data.modifiedCount > 0){
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Address book updated!',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                      })
+                      refetch();
+                }
+
+
+        // console.log(newData);
     }
     return (
 <section>
 <div className="text-lg font-semibold text-[#4d4d4f] mb-5">Address Book</div>
 
 {
-    addressBanner ? 
-    <div className='my-6 bg-white rounded shadow px-10 pb-10 pt-20 relative hero text-sm flex flex-col gap-5'>
-<div className='px-2 py-2 rounded-full bg-white shadow'>
-<img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/add-address.svg-3a8a08e8214d9a9e5cb3.svg" alt="Banner" className='rounded-full'/>
-</div>
-<p className='text-[#000]'>You don't have any addresses saved.</p>
-
-<button className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' onClick={()=>setAddressBanner(false)}>Add New Address</button>
-    </div>
-    :
+    !addressBanner && userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code  ? 
     <div className='my-6 bg-white rounded shadow px-6 pt-6 pb-20 relative'>
 <p className='text-[#000] text-base font-semibold mb-4'>Add New Address</p>
 
@@ -33,14 +54,16 @@ const AddressBook = () => {
 <div className='w-full items-center gap-5 flex flex-col lg:flex-row'>
 
 <label className='w-full px-6 flex items-center bg-gray-100 py-4 shadow'>
-<input type="radio" name="radio-2" {...register("address_type_residential")} className="radio radio-primary" />
+<input type="radio" name="radio-2" defaultChecked={userInfo?.address_type === "residential" ? true : false} {...register("address_type_residential")} value="residential" className="radio radio-primary" />
 <span className='text-sm'>Residential</span>
 </label>
 
 <label className='w-full px-6 flex items-center bg-gray-100 py-4 shadow'>
-<input type="radio" {...register("address_type_business")}  value="Business" name="radio-2" className="radio radio-primary" />
+<input type="radio" name="radio-2" defaultChecked={userInfo?.address_type === "business" ? true : false} {...register("address_type_business")} value="business" className="radio radio-primary" />
 <span className='text-sm'>Business</span>
 </label>
+
+
 
 
 </div>
@@ -48,7 +71,7 @@ const AddressBook = () => {
 <div className="inputGroup">  
 
 
-      <input type="text" required className='inputField' {...register("Recipient_Name", { required: true })}
+      <input type="text" required className='inputField' defaultValue={userInfo?.recipient_Name ? userInfo?.recipient_Name : ""} {...register("Recipient_Name", { required: true })}
 aria-invalid={errors.Recipient_Name ? "true" : "false"}/>
       <span className="highlight"></span>
       <span className="bar"></span>
@@ -60,7 +83,7 @@ aria-invalid={errors.Recipient_Name ? "true" : "false"}/>
     <div className="inputGroup">  
 
 
-<input type="text" required className='inputField' {...register("Mobile_Number", { required: true })}
+<input type="text" required className='inputField' defaultValue={userInfo?.mobile_Number ? userInfo?.mobile_Number : ""} {...register("Mobile_Number", { required: true })}
 aria-invalid={errors.Mobile_Number ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -73,7 +96,7 @@ aria-invalid={errors.Mobile_Number ? "true" : "false"}/>
 <div className="inputGroup">  
 
 
-<input type="text" required className='inputField' {...register("Street_Address", { required: true })}
+<input type="text" required className='inputField' defaultValue={userInfo?.street_Address ? userInfo?.street_Address : ""} {...register("Street_Address", { required: true })}
 aria-invalid={errors.Street_Address ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -88,7 +111,7 @@ aria-invalid={errors.Street_Address ? "true" : "false"}/>
 <div className="inputGroup">  
 
 
-<input type="text" required className='inputField' {...register("Complex_Building", { required: true })}
+<input type="text" required className='inputField' defaultValue={userInfo?.complexOrBuilding ? userInfo?.complexOrBuilding : ""} {...register("Complex_Building", { required: true })}
 aria-invalid={errors.Complex_Building ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -103,7 +126,7 @@ aria-invalid={errors.Complex_Building ? "true" : "false"}/>
 <div className="inputGroup">  
 
 
-<input type="text" required className='inputField' {...register("Suburb", { required: true })}
+<input type="text" required className='inputField' defaultValue={userInfo?.suburb ? userInfo?.suburb : ""} {...register("Suburb", { required: true })}
 aria-invalid={errors.Suburb ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -117,7 +140,7 @@ aria-invalid={errors.Suburb ? "true" : "false"}/>
 <div className="inputGroup">  
 
 
-<input type="text" required className='inputField' {...register("city_town", { required: true })}
+<input type="text" required className='inputField' defaultValue={userInfo?.city_town ? userInfo?.city_town : ""} {...register("city_town", { required: true })}
 aria-invalid={errors.city_town ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -135,7 +158,7 @@ aria-invalid={errors.city_town ? "true" : "false"}/>
 <div className="inputGroup">  
 
 
-<input type="text" required className='inputField' {...register("Postal_Code", { required: true })}
+<input type="text" required className='inputField' defaultValue={userInfo?.postal_Code ? userInfo?.postal_Code : ""} {...register("Postal_Code", { required: true })}
 aria-invalid={errors.Postal_Code ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -152,7 +175,7 @@ aria-invalid={errors.Postal_Code ? "true" : "false"}/>
     </label>
 }
 <select {...register("Province", { required: true })} className='inputField text-xs' onClick={()=>setLabelShow3(true)}>
-<option defaultValue=""></option>
+<option defaultValue={userInfo?.province ? userInfo?.province : ""}>{userInfo?.province ? userInfo?.province : ""}</option>
 <option value="Eastern Cape">Eastern Cape</option>
 <option value="Free State">Free State</option>
 <option value="Gauteng">Gauteng</option>
@@ -190,6 +213,17 @@ aria-invalid={errors.Postal_Code ? "true" : "false"}/>
 
 
 </div>
+    :
+    <div className='my-6 bg-white rounded shadow px-10 pb-10 pt-20 relative hero text-sm flex flex-col gap-5'>
+<div className='px-2 py-2 rounded-full bg-white shadow'>
+<img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/add-address.svg-3a8a08e8214d9a9e5cb3.svg" alt="Banner" className='rounded-full'/>
+</div>
+<p className='text-[#000]'>{userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code ? "One address active. You can update your address" :"You don't have any addresses saved."}</p>
+
+{userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code ?<button className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' onClick={()=>setAddressBanner(false)}>Update Address</button>:<button className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' onClick={()=>setAddressBanner(false)}>Add New Address</button>}
+    </div>
+    
+
 }
 
 </section>
