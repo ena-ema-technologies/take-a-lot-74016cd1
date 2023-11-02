@@ -60,6 +60,7 @@ import PrivateRoute from "./PrivateRoute";
 import DeliveryLayout from "../Layout/DeliveryLayout";
 import TrackOrder from "../Page/HelpCenter/TrackOrder/TrackOrder";
 import RescheduleDelivery from "../Page/HelpCenter/RescheduleDelivery/RescheduleDelivery";
+import SplitDelivery from "../Page/HelpCenter/SplitDelivery/SplitDelivery";
 
 
 
@@ -137,6 +138,10 @@ export const router = createBrowserRouter([
               {
                 path: "reschedule-delivery",
                 element: <RescheduleDelivery></RescheduleDelivery>
+              },
+              {
+                path:"split-requests",
+                element: <SplitDelivery></SplitDelivery>
               }
             ]
           },

@@ -1,11 +1,15 @@
 import React from 'react';
 import { IoChevronForwardOutline } from 'react-icons/io5';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const DeliveryLayout = () => {
-   
+
+    const location = useLocation();
+    const rescheduleLocation = location.pathname.includes("/reschedule-delivery");
+    const splitReqLocation = location.pathname.includes("split-requests");
+
     return (
-       <section className='lg:px-4'>
+        <section className='lg:px-4'>
 
             <div className='hero h-80 rounded-b-lg relative' style={{ backgroundImage: "url(https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/help-centre/Header-Large@2x.png-868cd5e789ded2bf3855.png)", backgroundRepeat: "no-repeat" }}>
 
@@ -13,13 +17,13 @@ const DeliveryLayout = () => {
                     <ul>
                         <li><Link to="/help-centre">Help Centre</Link></li>
                         <li><Link to="/help-centre/delivery">Delivery</Link></li>
-                        <li className='font-semibold'>Track your order</li>
+                        <li className='font-semibold'> {rescheduleLocation ? "Reschedule Location" : splitReqLocation ? "Split delivery requests" : "Track your Order"}</li>
                     </ul>
                 </div>
 
                 <div className='text-white absolute top-40 left-10'>
 
-                    <p className='text-xl lg:text-3xl font-bold text-white'>Track Your Order</p>
+                    <p className='text-xl lg:text-3xl font-bold text-white'>{rescheduleLocation? "Reschedule your delivery" : splitReqLocation ? "Split delivery requests" : "Track your order"}</p>
 
                 </div>
             </div>
