@@ -64,6 +64,7 @@ import SplitDelivery from "../Page/HelpCenter/SplitDelivery/SplitDelivery";
 import NextBusiness from "../Page/HelpCenter/NextBusiness/NextBusiness";
 import ChangeAddress from "../Page/HelpCenter/ChangeAddress/ChangeAddress";
 import InternationalShipping from "../Page/HelpCenter/InternationalShipping/InternationalShipping";
+import DeliveryTimeFrames from "../Page/DeliveryTimeFrames/DeliveryTimeFrames";
 
 
 
@@ -157,6 +158,10 @@ export const router = createBrowserRouter([
               {
                 path: 'international-shipping-delivery',
                 element: <InternationalShipping></InternationalShipping>
+              },
+              {
+                path: "about-delivery-options-time-frames",
+                element: <DeliveryTimeFrames></DeliveryTimeFrames>
               }
             ]
           },
