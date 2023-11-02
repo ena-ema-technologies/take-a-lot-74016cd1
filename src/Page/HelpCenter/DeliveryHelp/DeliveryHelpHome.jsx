@@ -85,7 +85,7 @@ const DeliveryHelpHome = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/delivery/reschedule-delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/deliveryDetails/reschedule-delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__a74a26dd212b3806eab80d2441241e0d6cc629b9.png" alt="icon" className='w-5' />
@@ -103,7 +103,7 @@ const DeliveryHelpHome = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/delivery/split-requests" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/deliveryDetails/split-requests" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__a74a26dd212b3806eab80d2441241e0d6cc629b9.png" alt="icon" className='w-5' />
@@ -121,7 +121,7 @@ const DeliveryHelpHome = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/delivery/next-business-delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/deliveryDetails/next-business-delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__a74a26dd212b3806eab80d2441241e0d6cc629b9.png" alt="icon" className='w-5' />
@@ -149,28 +149,28 @@ const DeliveryHelpHome = () => {
 
 
                             <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                                <Link to="/help-centre/delivery/track-order" className='w-full text-xs inline-flex items-center justify-between'>
+                                <Link to="/help-centre/deliveryDetails/track-order" className='w-full text-xs inline-flex items-center justify-between'>
                                     <span>Track your order</span> <span><HiChevronRight className='h-5 w-5' /></span>
                                 </Link>
                             </li>
 
 
                             <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                                <Link to="/help-centre/delivery/reschedule-delivery" className='w-full text-xs inline-flex items-center justify-between'>
+                                <Link to="/help-centre/deliveryDetails/reschedule-delivery" className='w-full text-xs inline-flex items-center justify-between'>
                                     <span>Reschedule your delivery</span> <span><HiChevronRight className='h-5 w-5' /></span>
                                 </Link>
                             </li>
 
 
                             <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                                <Link to="/help-centre/delivery/split-requests" className='w-full text-xs inline-flex items-center justify-between'>
+                                <Link to="/help-centre/deliveryDetails/split-requests" className='w-full text-xs inline-flex items-center justify-between'>
                                     <span> Split delivery requests</span> <span><HiChevronRight className='h-5 w-5' /></span>
                                 </Link>
                             </li>
 
 
                             <li className='py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                                <Link to="/help-centre/delivery/next-business-delivery" className='w-full text-xs inline-flex items-center justify-between'>
+                                <Link to="/help-centre/deliveryDetails/next-business-delivery" className='w-full text-xs inline-flex items-center justify-between'>
                                     <span>Next business day delivery</span> <span><HiChevronRight className='h-5 w-5' /></span>
                                 </Link>
                             </li>
@@ -192,7 +192,7 @@ const DeliveryHelpHome = () => {
 
                             <p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Delivery Topics</p>
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/track-order">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/track-order">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Track your order</span>
@@ -207,7 +207,7 @@ const DeliveryHelpHome = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/reschedule-delivery">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/reschedule-delivery">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Reschedule your delivery</span>
@@ -221,7 +221,7 @@ const DeliveryHelpHome = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/change-delivery-address">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/change-delivery-address">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Change your delivery address</span>
@@ -236,7 +236,7 @@ const DeliveryHelpHome = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/about-delivery-options-time-frames">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/about-delivery-options-time-frames">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>About delivery options & time frames</span>
@@ -251,7 +251,7 @@ const DeliveryHelpHome = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/next-business-delivery">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/next-business-delivery">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Next business day delivery</span>
@@ -265,7 +265,7 @@ const DeliveryHelpHome = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/delivery-fees">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/delivery-fees">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>About delivery fees</span>
@@ -280,7 +280,7 @@ const DeliveryHelpHome = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/change-my-order-from-delivery-to-collect">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/can-i-change-my-order-from-delivery-to-collect">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Can I change my order from delivery to collect?</span>
@@ -295,7 +295,7 @@ const DeliveryHelpHome = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/split-requests">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/split-requests">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Split delivery requests</span>
@@ -309,7 +309,7 @@ const DeliveryHelpHome = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/missing-or-incorrect-order-received">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/item-missing-or-incorrect-in-order-received">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Item missing or incorrect in order received</span>
@@ -324,7 +324,7 @@ const DeliveryHelpHome = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/delivery/international-shipping-delivery">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/international-shipping-delivery">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>International shipping & delivery</span>
@@ -338,7 +338,7 @@ const DeliveryHelpHome = () => {
 
                         </div>
 
-
+{/* contact  */}
                         <div className='w-full bg-white shadow rounded p-4 my-10'>
                             <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
                                 <div>

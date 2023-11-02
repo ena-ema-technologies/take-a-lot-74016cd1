@@ -59,6 +59,15 @@ import DriverPrivacyPolicy from "../Page/DriverPrivacyPolicy/DriverPrivacyPolicy
 import PrivateRoute from "./PrivateRoute";
 import DeliveryLayout from "../Layout/DeliveryLayout";
 import TrackOrder from "../Page/HelpCenter/TrackOrder/TrackOrder";
+import RescheduleDelivery from "../Page/HelpCenter/RescheduleDelivery/RescheduleDelivery";
+import SplitDelivery from "../Page/HelpCenter/SplitDelivery/SplitDelivery";
+import NextBusiness from "../Page/HelpCenter/NextBusiness/NextBusiness";
+import ChangeAddress from "../Page/HelpCenter/ChangeAddress/ChangeAddress";
+import InternationalShipping from "../Page/HelpCenter/InternationalShipping/InternationalShipping";
+import DeliveryFees from "../Page/HelpCenter/DeliveryFees/DeliveryFees";
+import DeliveryTimeFrames from "../Page/HelpCenter/DeliveryTimeFrames/DeliveryTimeFrames";
+import ChangeOrderToDelivery from "../Page/HelpCenter/ChangeOrderToDelivery/ChangeOrderToDelivery";
+import ItemMissing from "../Page/HelpCenter/ItemMissing/ItemMissing";
 
 
 
@@ -132,7 +141,43 @@ export const router = createBrowserRouter([
               {
                 path:"track-order",
                 element: <TrackOrder></TrackOrder>
-              }
+              },
+              {
+                path: "reschedule-delivery",
+                element: <RescheduleDelivery></RescheduleDelivery>
+              },
+              {
+                path:"split-requests",
+                element: <SplitDelivery></SplitDelivery>
+              },
+              {
+                path: "next-business-delivery",
+                element: <NextBusiness></NextBusiness>
+              },
+              {
+                path: 'change-delivery-address',
+                element: <ChangeAddress></ChangeAddress>
+              },
+              {
+                path: 'international-shipping-delivery',
+                element: <InternationalShipping></InternationalShipping>
+              },
+              {
+                path: "about-delivery-options-time-frames",
+                element: <DeliveryTimeFrames></DeliveryTimeFrames>
+              },
+              {
+                path: "delivery-fees",
+                element: <DeliveryFees></DeliveryFees>
+              },
+              {
+                path: "can-i-change-my-order-from-delivery-to-collect",
+                element: <ChangeOrderToDelivery></ChangeOrderToDelivery>
+              },
+              {
+                path: "item-missing-or-incorrect-in-order-received",
+                element: <ItemMissing></ItemMissing>
+              },
             ]
           },
 
