@@ -12,6 +12,8 @@ const DeliveryLayout = () => {
     const nextBusiness = location.pathname.includes("next-business-delivery");
     const deliveryFees = location.pathname.includes("delivery-fees");
     const internationalShipping = location.pathname.includes("international-shipping-delivery");
+    const canIChange = location.pathname.includes("can-i-change-my-order-from-delivery-to-collect");
+    const itemMissing = location.pathname.includes("item-missing-or-incorrect-in-order-received");
 
     return (
         <section className='lg:px-4'>
@@ -22,13 +24,13 @@ const DeliveryLayout = () => {
                     <ul>
                         <li><Link to="/help-centre">Help Centre</Link></li>
                         <li><Link to="/help-centre/delivery">Delivery</Link></li>
-                        <li className='font-semibold'> {rescheduleLocation ? "Reschedule Location" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : "Track your Order"}</li>
+                        <li className='font-semibold'> {rescheduleLocation ? "Reschedule Location" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"}</li>
                     </ul>
                 </div>
 
                 <div className='text-white absolute top-40 left-10'>
 
-                    <p className='text-xl lg:text-3xl font-bold text-white'>{rescheduleLocation ? "Reschedule your delivery" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : "Track your Order"}</p>
+                    <p className='text-xl lg:text-3xl font-bold text-white'>{rescheduleLocation ? "Reschedule your delivery" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"}</p>
 
                 </div>
             </div>
@@ -72,12 +74,12 @@ const DeliveryLayout = () => {
                             <NavLink to="/help-centre/deliveryDetails/delivery-fees" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  About delivery fees  </NavLink>
 
 
-                            <NavLink to="/help-centre/product-stock" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I change my order from my order to delivery ? </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/can-i-change-my-order-from-delivery-to-collect" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I change my order from my order to delivery ? </NavLink>
 
 
                             <NavLink to="/help-centre/deliveryDetails/split-requests" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Split delivery request </NavLink>
 
-                            <NavLink to="/help-centre/data-privacy" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Item missing or incorrect order missing </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/item-missing-or-incorrect-in-order-received" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Item missing or incorrect order missing </NavLink>
 
                             <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> International shipping & delivery </NavLink>
                         </div>

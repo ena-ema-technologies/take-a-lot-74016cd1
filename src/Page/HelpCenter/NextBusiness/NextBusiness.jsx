@@ -36,6 +36,7 @@ const NextBusiness = () => {
                 </ul>
             </div>
 
+{/* contact part */}
             <div className='w-full bg-white shadow rounded p-4 my-10'>
                 <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
                     <div>
@@ -55,7 +56,7 @@ const NextBusiness = () => {
                 </div>
             </div>
 
-
+{/* accordion part */}
             <h1 className='my-14 font-bold text-2xl'> Related Topics </h1>
 
             {/* accordion part */}

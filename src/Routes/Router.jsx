@@ -66,6 +66,8 @@ import ChangeAddress from "../Page/HelpCenter/ChangeAddress/ChangeAddress";
 import InternationalShipping from "../Page/HelpCenter/InternationalShipping/InternationalShipping";
 import DeliveryFees from "../Page/HelpCenter/DeliveryFees/DeliveryFees";
 import DeliveryTimeFrames from "../Page/HelpCenter/DeliveryTimeFrames/DeliveryTimeFrames";
+import ChangeOrderToDelivery from "../Page/HelpCenter/ChangeOrderToDelivery/ChangeOrderToDelivery";
+import ItemMissing from "../Page/HelpCenter/ItemMissing/ItemMissing";
 
 
 
@@ -167,7 +169,15 @@ export const router = createBrowserRouter([
               {
                 path: "delivery-fees",
                 element: <DeliveryFees></DeliveryFees>
-              }
+              },
+              {
+                path: "can-i-change-my-order-from-delivery-to-collect",
+                element: <ChangeOrderToDelivery></ChangeOrderToDelivery>
+              },
+              {
+                path: "item-missing-or-incorrect-in-order-received",
+                element: <ItemMissing></ItemMissing>
+              },
             ]
           },
 

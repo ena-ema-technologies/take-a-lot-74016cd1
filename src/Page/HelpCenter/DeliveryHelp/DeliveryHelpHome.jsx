@@ -280,7 +280,7 @@ const DeliveryHelpHome = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/change-my-order-from-delivery-to-collect">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/can-i-change-my-order-from-delivery-to-collect">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Can I change my order from delivery to collect?</span>
@@ -309,7 +309,7 @@ const DeliveryHelpHome = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/missing-or-incorrect-order-received">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/deliveryDetails/item-missing-or-incorrect-in-order-received">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Item missing or incorrect in order received</span>
