@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const TrackOrder = () => {
+
+
     return (
         <div>
 
@@ -52,6 +54,30 @@ const TrackOrder = () => {
 
             {/* accordion part  */}
 
+            <h1 className='my-14 font-bold text-2xl'> Related Topics </h1>
+
+            <div className="join join-vertical w-full bg-white">
+                <div className="collapse collapse-arrow join-item border py-3">
+                    <input type="radio" name="my-accordion-4" />
+                    <Link className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
+                        About delivery fees
+                    </Link>
+                </div>
+
+                <div className="collapse collapse-arrow join-item border py-3">
+                    <input type="radio" name="my-accordion-4" />
+                    <Link className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
+                        Split delivery requests
+                    </Link>
+                </div>
+
+                <div className="collapse collapse-arrow join-item border py-3">
+                    <input type="radio" name="my-accordion-4" />
+                    <Link className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
+                        Reschedule your delivery
+                    </Link>
+                </div>
+            </div>
 
         </div>
     );
