@@ -6,7 +6,7 @@ const ChangeAddress = () => {
         <section>
             <div className='bg-white p-8 text-sm'>
                 <p className='pb-6'>
-                    Changing your delivery address after placing an order is not possible. If you are not available to receive your order at your original delivery address, you are able to reschedule your delivery date here should your order be eligible, otherwise select the Contact Us button below.
+                    Changing your delivery address after placing an order is not possible. If you are not available <br /> to receive your order at your original delivery address, you are able to reschedule~ your delivery date here should your order be eligible, otherwise select the Contact Us button below.
                 </p>
 
                 <p className='py-9'>
@@ -51,13 +51,13 @@ const ChangeAddress = () => {
                 <div className="collapse collapse-arrow join-item border py-3">
                     <input type="radio" name="my-accordion-4" />
                     <Link className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
-                       Reschedule your delivery
+                        Reschedule your delivery
                     </Link>
                 </div>
                 <div className="collapse collapse-arrow join-item border py-3">
                     <input type="radio" name="my-accordion-4" />
                     <Link className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
-                       How do I cancel my order ? 
+                        How do I cancel my order ?
                     </Link>
                 </div>
             </div>

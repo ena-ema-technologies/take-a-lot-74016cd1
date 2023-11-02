@@ -63,6 +63,7 @@ import RescheduleDelivery from "../Page/HelpCenter/RescheduleDelivery/Reschedule
 import SplitDelivery from "../Page/HelpCenter/SplitDelivery/SplitDelivery";
 import NextBusiness from "../Page/HelpCenter/NextBusiness/NextBusiness";
 import ChangeAddress from "../Page/HelpCenter/ChangeAddress/ChangeAddress";
+import InternationalShipping from "../Page/HelpCenter/InternationalShipping/InternationalShipping";
 
 
 
@@ -152,6 +153,10 @@ export const router = createBrowserRouter([
               {
                 path: 'change-delivery-address',
                 element: <ChangeAddress></ChangeAddress>
+              },
+              {
+                path: 'international-shipping-delivery',
+                element: <InternationalShipping></InternationalShipping>
               }
             ]
           },
