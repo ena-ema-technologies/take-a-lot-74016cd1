@@ -59,6 +59,7 @@ import DriverPrivacyPolicy from "../Page/DriverPrivacyPolicy/DriverPrivacyPolicy
 import PrivateRoute from "./PrivateRoute";
 import DeliveryLayout from "../Layout/DeliveryLayout";
 import TrackOrder from "../Page/HelpCenter/TrackOrder/TrackOrder";
+import RescheduleDelivery from "../Page/HelpCenter/RescheduleDelivery/RescheduleDelivery";
 
 
 
@@ -132,6 +133,10 @@ export const router = createBrowserRouter([
               {
                 path:"track-order",
                 element: <TrackOrder></TrackOrder>
+              },
+              {
+                path: "reschedule-delivery",
+                element: <RescheduleDelivery></RescheduleDelivery>
               }
             ]
           },

@@ -12,7 +12,7 @@ const TrackOrder = () => {
 
                 <p className='py-6'> To track your order: </p>
 
-                <ol type='1'>
+                <ol className='list-decimal'>
                     <li className="hidden lg:block breadcrumbs py-3">
                         <ul>
                             <li>Go to My Account</li>
