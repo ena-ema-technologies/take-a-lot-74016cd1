@@ -64,7 +64,10 @@ const NextBusiness = () => {
             <div className="join join-vertical w-full bg-white">
                 <div className="collapse collapse-arrow join-item border py-3">
                     <input type="radio" name="my-accordion-4" />
-                    <Link className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
+                    
+                    <Link 
+                    to="/help-centre/deliveryDetails/about-delivery-options-time-frames"
+                    className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
                         About delivery options & time frames
                     </Link>
                 </div>
