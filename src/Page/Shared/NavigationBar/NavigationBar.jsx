@@ -10,8 +10,10 @@ import Register from "../../Register/Register";
 import Login from "../../Login/Login";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useCart from "../../../hooks/useCart";
 
 const NavigationBar = () => {
+    const [carts, refetch] = useCart();
     const navigate = useNavigate();
     const {logOut,user} = useAuth()
     const {
@@ -2183,7 +2185,7 @@ const NavigationBar = () => {
 
                                 </Link>
                                 <Link to="/cart" className="inline-flex items-center gap-4 px-3 py-1 bg-success rounded-2xl font-semibold text-white cursor-pointer hover">
-                                    <HiShoppingCart className="w-5 h-5" /> <span>0</span>
+                                    <HiShoppingCart className="w-5 h-5" /> <span>{carts?.length ? carts?.length : 0}</span>
                                 </Link>
                             </div>
 

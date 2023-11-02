@@ -139,7 +139,7 @@ export const router = createBrowserRouter([
             element: <DeliveryLayout></DeliveryLayout>,
             children: [
               {
-                path:"track-order",
+                path: "track-order",
                 element: <TrackOrder></TrackOrder>
               },
               {
@@ -147,7 +147,7 @@ export const router = createBrowserRouter([
                 element: <RescheduleDelivery></RescheduleDelivery>
               },
               {
-                path:"split-requests",
+                path: "split-requests",
                 element: <SplitDelivery></SplitDelivery>
               },
               {
@@ -219,21 +219,12 @@ export const router = createBrowserRouter([
         path: "/account/login",
         element: <LoginPage />
       },
+
       {
         path: "/account",
         element: <PrivateRoute><Account /></PrivateRoute>,
         children: [
-        path:"/wishlist",
-        element: <PrivateRoute><Wishlist /></PrivateRoute>
-      },
-      {
-        path:"/cart",
-        element: <PrivateRoute><Cart /></PrivateRoute>
-      },
-      {
-        path:"/account",
-        element: <PrivateRoute><Account /></PrivateRoute>,
-        children:[
+          
           {
             path: "orders",
             element: <PrivateRoute><Orders /></PrivateRoute>
@@ -279,6 +270,14 @@ export const router = createBrowserRouter([
             element: <PrivateRoute><RefundsHistory /></PrivateRoute>
           },
         ]
+      },
+      {
+        path: "wishlist",
+        element: <PrivateRoute><Wishlist /></PrivateRoute>
+      },
+      {
+        path: "/cart",
+        element: <PrivateRoute><Cart /></PrivateRoute>
       },
       {
         path: "/takealot-pickup-points",

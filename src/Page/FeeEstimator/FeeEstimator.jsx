@@ -270,7 +270,7 @@ const FeeEstimator = () => {
           </h1>
         </div>
       </div>
-      <div className="hero-content flex-col lg:flex-row mt-3">
+      <div className="flex flex-col lg:flex-row items-start justify-center mt-3">
         <div className="bg-white px-3 py-3 hover:shadow-xl w-[35%] m-2 rounded">
           <h1 className="text-2xl font-semibold mb-3">Estimate Takealot Fees</h1>
           <p className="text-xs pb-[200px]">
