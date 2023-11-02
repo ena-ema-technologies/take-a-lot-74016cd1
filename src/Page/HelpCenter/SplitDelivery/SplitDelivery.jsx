@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SplitDelivery = () => {
     return (
-        <section>
+        <section className='w-[82%]'>
 
             <div className='bg-white p-8 text-sm'>
                 <p className='py-3'> On every product page, you can see if an item is 'in stock' at a Takealot warehouse or if it needs to be shipped from a supplier.

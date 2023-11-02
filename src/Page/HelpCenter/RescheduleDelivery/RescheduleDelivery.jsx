@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const RescheduleDelivery = () => {
     return (
-        <section>
+        <section className='w-[82%]'>
            
             <div className='bg-white p-8 text-sm'>
                 <p className='pb-6'>Please note that rescheduling your delivery is only possible if: </p>

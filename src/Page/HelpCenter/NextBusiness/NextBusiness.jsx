@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const NextBusiness = () => {
     return (
-        <section>
+        <section className='w-[82%]'>
 
             <div className='bg-white p-8 text-sm'>
                 <p className='py-5'> If your order is eligible for next business day delivery, it will be displayed as a delivery option during checkout. <b> A ‘Next Day’ badge seen on the product details page does not guarantee next day delivery.</b>

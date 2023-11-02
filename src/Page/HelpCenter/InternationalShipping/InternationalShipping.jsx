@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const InternationalShipping = () => {
+    
     return (
-        <section>
+        
+        <section className='w-[82%]'>
            
             <div className='bg-white p-8 text-sm'>
                 <p className='pb-6'>We do not ship outside of South African borders at this time. However, we will ship UNISA prescribed textbooks internationally.</p>

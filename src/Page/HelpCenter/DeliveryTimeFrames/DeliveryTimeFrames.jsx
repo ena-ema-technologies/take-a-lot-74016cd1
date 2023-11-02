@@ -93,48 +93,48 @@ const DeliveryTimeFrames = () => {
                     </table>
                 </div>
 
+            </div>
+            {/* contact */}
 
-                {/* contact */}
+            <div className='w-full bg-white shadow rounded p-4 my-14'>
+                <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
+                    <div>
+                        <img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32' />
+                    </div>
 
-                <div className='w-full bg-white shadow rounded p-4 my-14'>
-                    <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
-                        <div>
-                            <img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32' />
+                    <div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
+                        <div className='flex-1'>
+                            <p className='text-lg font-semibold'>Didn't find what you need?</p>
                         </div>
 
-                        <div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
-                            <div className='flex-1'>
-                                <p className='text-lg font-semibold'>Didn't find what you need?</p>
-                            </div>
-
-                            <div className='mr-5'>
-                                <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
-                            </div>
+                        <div className='mr-5'>
+                            <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
                         </div>
-
                     </div>
-                </div>
 
-
-                <h1 className='my-10 font-bold text-2xl'> Related Topics </h1>
-
-                {/* accordion part */}
-
-                <div className="join join-vertical w-full bg-white">
-                    <div className="collapse collapse-arrow join-item border py-3">
-                        <input type="radio" name="my-accordion-4" />
-                        <Link className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
-                        About collection options & time frames
-                        </Link>
-                    </div>
-                    <div className="collapse collapse-arrow join-item border py-3">
-                        <input type="radio" name="my-accordion-4" />
-                        <Link className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
-                            About delivery fees
-                        </Link>
-                    </div>
                 </div>
             </div>
+
+
+            <h1 className='my-10 font-bold text-2xl'> Related Topics </h1>
+
+            {/* accordion part */}
+
+            <div className="join join-vertical w-full bg-white">
+                <div className="collapse collapse-arrow join-item border py-3">
+                    <input type="radio" name="my-accordion-4" />
+                    <Link className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
+                        About collection options & time frames
+                    </Link>
+                </div>
+                <div className="collapse collapse-arrow join-item border py-3">
+                    <input type="radio" name="my-accordion-4" />
+                    <Link className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
+                        About delivery fees
+                    </Link>
+                </div>
+            </div>
+
         </section>
     );
 };

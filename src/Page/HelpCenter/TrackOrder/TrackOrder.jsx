@@ -59,21 +59,29 @@ const TrackOrder = () => {
             <div className="join join-vertical w-full bg-white">
                 <div className="collapse collapse-arrow join-item border py-3">
                     <input type="radio" name="my-accordion-4" />
-                    <Link className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
+                    
+                    <Link 
+                    to="/help-centre/deliveryDetails/delivery-fees" className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
                         About delivery fees
                     </Link>
                 </div>
 
                 <div className="collapse collapse-arrow join-item border py-3">
                     <input type="radio" name="my-accordion-4" />
-                    <Link className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
+                    
+                    <Link
+                    to="/help-centre/deliveryDetails/split-requests" 
+                    className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
                         Split delivery requests
                     </Link>
                 </div>
 
                 <div className="collapse collapse-arrow join-item border py-3">
                     <input type="radio" name="my-accordion-4" />
-                    <Link className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
+                    
+                    <Link 
+                    to="/help-centre/deliveryDetails/reschedule-delivery"
+                    className="collapse-title text-xl font-medium hover:underline hover:text-blue-500">
                         Reschedule your delivery
                     </Link>
                 </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ChangeAddress = () => {
     return (
-        <section>
+        <section className='w-[82%]'>
             <div className='bg-white p-8 text-sm'>
                 <p className='pb-6'>
                     Changing your delivery address after placing an order is not possible. If you are not available <br /> to receive your order at your original delivery address, you are able to reschedule~ your delivery date here should your order be  eligible, otherwise select the Contact Us button below.
