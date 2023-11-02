@@ -121,7 +121,7 @@ const DeliveryHelpHome = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/delivery/next-business-delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/deliveryDetails/next-business-delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__a74a26dd212b3806eab80d2441241e0d6cc629b9.png" alt="icon" className='w-5' />

@@ -61,6 +61,7 @@ import DeliveryLayout from "../Layout/DeliveryLayout";
 import TrackOrder from "../Page/HelpCenter/TrackOrder/TrackOrder";
 import RescheduleDelivery from "../Page/HelpCenter/RescheduleDelivery/RescheduleDelivery";
 import SplitDelivery from "../Page/HelpCenter/SplitDelivery/SplitDelivery";
+import NextBusiness from "../Page/HelpCenter/NextBusiness/NextBusiness";
 
 
 
@@ -142,6 +143,10 @@ export const router = createBrowserRouter([
               {
                 path:"split-requests",
                 element: <SplitDelivery></SplitDelivery>
+              },
+              {
+                path: "next-business-delivery",
+                element: <NextBusiness></NextBusiness>
               }
             ]
           },
