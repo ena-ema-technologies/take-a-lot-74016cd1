@@ -1,7 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SubContact from '../../../components/SubContact/SubContact';
+import Accrodio from '../../../components/Accordion/Accrodio';
 
 const ChangeAddress = () => {
+
+    const accordion = [
+        {
+            path: "/help-centre/deliveryDetails/reschedule-delivery",
+            title: "Reschedule your delivery"
+        },
+        {
+            path: "",
+            title: "How do I cancel my order ?"
+        },
+    ]
+
     return (
         <section className='w-[82%]'>
             <div className='bg-white p-8 text-sm'>
@@ -22,54 +36,18 @@ const ChangeAddress = () => {
             </div>
 
             {/* contact */}
-
-            <div className='w-full bg-white shadow rounded p-4 my-10'>
-                <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
-                    <div>
-                        <img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32' />
-                    </div>
-
-                    <div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
-                        <div className='flex-1'>
-                            <p className='text-lg font-semibold'>Didn't find what you need?</p>
-                        </div>
-
-                        <div className='mr-5'>
-                            <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
+            <SubContact></SubContact>
 
             <h1 className='my-14 font-bold text-2xl'> Related Topics </h1>
 
             {/* accordion part */}
-
-            <div className="join join-vertical w-full bg-white">
-                <div className="collapse collapse-arrow join-item border py-3">
-                    <input type="radio" name="my-accordion-4" />
-                    
-                    <Link 
-                    to="/help-centre/deliveryDetails/reschedule-delivery"
-                    className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
-                        Reschedule your delivery
-                    </Link>
-                </div>
-                
-                <div className="collapse collapse-arrow join-item border py-3">
-                    <input type="radio" name="my-accordion-4" />
-                    
-                    <Link 
-                    to=""
-                    className="collapse-title text-lg font-medium hover:underline hover:text-blue-500">
-                        How do I cancel my order ?
-                    </Link>
-                </div>
-            </div>
-
-
+            {
+                accordion.map((acc, index) => <Accrodio
+                    key={index}
+                    path={acc.path}
+                    title={acc.title}
+                ></Accrodio>)
+            }
         </section>
     );
 };

@@ -33,7 +33,7 @@ const ReturnHelp = () => {
                         <div className='px-3 py-3 bg-gray-200 rounded-lg'>
                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__affabfdc620808dbe89a48147eb8edfb71bc8486.png" alt="Icon" className='w-4 lg:w-6' />
                         </div>
-                        <p className='text-xl lg:text-3xl font-bold text-white'>Returns</p>
+                        <p className='text-xl lg:text-3xl font-bold text-white'>Returns </p>
                     </div>
 
                     <div className='flex  items-center gap-2'>
@@ -68,7 +68,7 @@ const ReturnHelp = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/returns/can-i-return-my-product" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/returnDetails/can-i-return-my-product" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__affabfdc620808dbe89a48147eb8edfb71bc8486.png" alt="icon" className='w-5' />
@@ -85,7 +85,7 @@ const ReturnHelp = () => {
 
                             
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/returns/track-my-return-status" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/returnDetails/track-my-return-status" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__affabfdc620808dbe89a48147eb8edfb71bc8486.png" alt="icon" className='w-5' />
@@ -207,7 +207,7 @@ const ReturnHelp = () => {
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/reschedule-collection">
+<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/reschedule-collection">
 
 <div className='w-full flex flex-col gap-2'>
 <span className='text-base w-fit font-semibold topic-head'>Reschedule my return collection</span>

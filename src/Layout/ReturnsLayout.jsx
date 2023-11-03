@@ -1,11 +1,11 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const ReturnsLayout = () => {
-   
+
     const location = useLocation();
-    const rescheduleLocation = location.pathname.includes("/reschedule-delivery");
-    const splitReqLocation = location.pathname.includes("split-requests");
+    const rescheduleLocation = location.pathname.includes("can-i-return-my-product");
+    const rescheduledCollection = location.pathname.includes("reschedule-collection");
     const changeAddress = location.pathname.includes("change-delivery-address")
     const deliveryOptions = location.pathname.includes("about-delivery-options-time-frames")
     const nextBusiness = location.pathname.includes("next-business-delivery");
@@ -24,13 +24,21 @@ const ReturnsLayout = () => {
                     <ul>
                         <li><Link to="/help-centre">Help Centre</Link></li>
                         <li><Link to="/help-centre/delivery">Delivery</Link></li>
-                        <li className='font-semibold'> {rescheduleLocation ? "Reschedule Location" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"}</li>
+                        <li className='font-semibold'>
+                            {
+                                rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"
+
+                            }</li>
                     </ul>
                 </div>
 
                 <div className='text-white absolute top-40 left-10'>
 
-                    <p className='text-xl lg:text-3xl font-bold text-white'>{rescheduleLocation ? "Reschedule your delivery" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"}</p>
+                    <p className='text-xl lg:text-3xl font-bold text-white'>
+                        {
+                            rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"
+
+                        }</p>
 
                 </div>
             </div>
@@ -55,33 +63,36 @@ const ReturnsLayout = () => {
                         <div className='border-b border-[#dadada]'></div>
 
                         <div className='my-3 flex flex-col gap-2'>
-                            <NavLink to="/help-centre/deliveryDetails/track-order" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary")}> Track your order </NavLink>
+                            <NavLink to="/help-centre/returnDetails/can-i-return-my-product" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary")}> Can I return my product ? </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/reschedule-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Reschedule your delivery </NavLink>
+                            <NavLink to="/help-centre/returnDetails/reschedule-collection" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Reschedule my return collection </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/change-delivery-address" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Change your delivery Address </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/change-delivery-address" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Track my return status </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/about-delivery-options-time-frames" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> About delivery options & time frames
+                            <NavLink to="/help-centre/deliveryDetails/about-delivery-options-time-frames" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How doI return my product ?
                             </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/next-business-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Next business day delivery </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/next-business-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about return method & fees </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/delivery-fees" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  About delivery fees  </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/delivery-fees" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  Cancel my return  </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/can-i-change-my-order-from-delivery-to-collect" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I change my order from my order to delivery ? </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/can-i-change-my-order-from-delivery-to-collect" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I exchange or replace a product ? </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/split-requests" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Split delivery request </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/split-requests" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I change my collection address once I have logged a return? </NavLink>
 
-                            <NavLink to="/help-centre/deliveryDetails/item-missing-or-incorrect-in-order-received" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Item missing or incorrect order missing </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/item-missing-or-incorrect-in-order-received" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Returning a product without accessories or its partner product </NavLink>
 
-                            <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> International shipping & delivery </NavLink>
+                            <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
+                            </NavLink>
+
+
                         </div>
                     </div>
 

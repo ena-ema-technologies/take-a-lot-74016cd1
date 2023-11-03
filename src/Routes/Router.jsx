@@ -68,6 +68,9 @@ import DeliveryFees from "../Page/HelpCenter/DeliveryFees/DeliveryFees";
 import DeliveryTimeFrames from "../Page/HelpCenter/DeliveryTimeFrames/DeliveryTimeFrames";
 import ChangeOrderToDelivery from "../Page/HelpCenter/ChangeOrderToDelivery/ChangeOrderToDelivery";
 import ItemMissing from "../Page/HelpCenter/ItemMissing/ItemMissing";
+import ReturnsLayout from "../Layout/ReturnsLayout";
+import ReturnProducts from "../Page/HelpCenter/ReturnProducts/ReturnProducts";
+import RescheduleCollection from "../Page/HelpCenter/RescheduleCollection/RescheduleCollection";
 
 
 
@@ -184,6 +187,20 @@ export const router = createBrowserRouter([
           {
             path: "returns",
             element: <ReturnHelp />
+          },
+          {
+            path: "returnDetails",
+            element: <ReturnsLayout></ReturnsLayout>,
+            children:[
+              {
+                path: "can-i-return-my-product",
+                element: <ReturnProducts></ReturnProducts>
+              },
+              {
+                path: "reschedule-collection",
+                element: <RescheduleCollection></RescheduleCollection>
+              },
+            ]
           },
           {
             path: "orders-cancellations",
