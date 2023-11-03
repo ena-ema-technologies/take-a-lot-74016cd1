@@ -78,12 +78,12 @@ const ReturnHelp = () => {
                                     </div>
 
                                     <div className='my-5 font-bold text-lg text-[#4d4d4f]'>
-                                    Can I return my product?
+                                        Can I return my product?
                                     </div>
                                 </Link>
                             </SwiperSlide>
 
-                            
+
                             <SwiperSlide className='w-[300px]'>
                                 <Link to="/help-centre/returnDetails/track-my-return-status" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
@@ -95,12 +95,12 @@ const ReturnHelp = () => {
                                     </div>
 
                                     <div className='my-5 font-bold text-lg text-[#4d4d4f]'>
-                                    Track my return status
+                                        Track my return status
                                     </div>
                                 </Link>
                             </SwiperSlide>
 
-                            
+
                             <SwiperSlide className='w-[300px]'>
                                 <Link to="/help-centre/returns/find-returns-policy" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
@@ -112,12 +112,12 @@ const ReturnHelp = () => {
                                     </div>
 
                                     <div className='my-5 font-bold text-lg text-[#4d4d4f]'>
-                                    Where can I find your returns policy?
+                                        Where can I find your returns policy?
                                     </div>
                                 </Link>
                             </SwiperSlide>
 
-                            
+
                             <SwiperSlide className='w-[300px]'>
                                 <Link to="/help-centre/returns/how-do-return-my-product" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
@@ -129,7 +129,7 @@ const ReturnHelp = () => {
                                     </div>
 
                                     <div className='my-5 font-bold text-lg text-[#4d4d4f]'>
-                                    How do I return my product?
+                                        How do I return my product?
                                     </div>
                                 </Link>
                             </SwiperSlide>
@@ -150,7 +150,7 @@ const ReturnHelp = () => {
 
 
                             <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                                <Link to="/help-centre/returns/can-i-return-my-product" className='w-full text-xs inline-flex items-center justify-between'>
+                                <Link to="/help-centre/returnDetails/can-i-return-my-product" className='w-full text-xs inline-flex items-center justify-between'>
                                     <span> Can I return my product?</span> <span><HiChevronRight className='h-5 w-5' /></span>
                                 </Link>
                             </li>
@@ -186,224 +186,224 @@ const ReturnHelp = () => {
             <div className='my-9 w-full'>
 
                 <div className='flex items-start justify-between gap-8'>
-                <div className='w-full'>
-<p className='text-xl font-semibold text-[#4d4d4f] mb-5 hidden lg:block'>Returns Topics</p>
-<div className='w-full bg-white py-8 shadow rounded px-6 flex flex-col gap-1 text-sm text-[#4d4d4f]'>
+                    <div className='w-full'>
+                        <p className='text-xl font-semibold text-[#4d4d4f] mb-5 hidden lg:block'>Returns Topics</p>
+                        <div className='w-full bg-white py-8 shadow rounded px-6 flex flex-col gap-1 text-sm text-[#4d4d4f]'>
 
-<p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Returns Topics</p>
+                            <p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Returns Topics</p>
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/can-i-return-my-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/can-i-return-my-product">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Can I return my product?</span>
-<span className='hidden lg:block'>Check whether your return is eligible on your Returns page or find out more about unwanted products, product packaging for returns or non returnable products.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Can I return my product?</span>
+                                    <span className='hidden lg:block'>Check whether your return is eligible on your Returns page or find out more about unwanted products, product packaging for returns or non returnable products.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/reschedule-collection">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/reschedule-collection">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Reschedule my return collection</span>
-<span className='hidden lg:block'>Go to your Returns Page and follow the easy steps below to reschedule your return.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Reschedule my return collection</span>
+                                    <span className='hidden lg:block'>Go to your Returns Page and follow the easy steps below to reschedule your return.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/track-my-return-status">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/track-my-return-status">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Track my return status</span>
-<span className='hidden lg:block'>We send you status updates via email or you can Track your Return Status on the Returns page by going to My account and Selecting Returns.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Track my return status</span>
+                                    <span className='hidden lg:block'>We send you status updates via email or you can Track your Return Status on the Returns page by going to My account and Selecting Returns.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-return-my-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-return-my-product">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>How do I return my product?</span>
-<span className='hidden lg:block'>Go to your Returns Page and follow the easy steps below to log a return request.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>How do I return my product?</span>
+                                    <span className='hidden lg:block'>Go to your Returns Page and follow the easy steps below to log a return request.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/all-about-return-methods-fees">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/all-about-return-methods-fees">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>All about return methods & fees</span>
-<span className='hidden lg:block'>Takealot offers hassle-free returns and does not charge any return administration fees. We will collect the item from you free of charge, or you may drop off the item at a Takealot Pickup Point after logging a return.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>All about return methods & fees</span>
+                                    <span className='hidden lg:block'>Takealot offers hassle-free returns and does not charge any return administration fees. We will collect the item from you free of charge, or you may drop off the item at a Takealot Pickup Point after logging a return.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/cancel-return">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/cancel-return">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Cancel my return</span>
-<span className='hidden lg:block'>Takealot offers hassle-free returns and does not charge any return administration fees. We will collect the item from you free of charge, or you may drop off the item at a Takealot Pickup Point after logging a return.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Cancel my return</span>
+                                    <span className='hidden lg:block'>Takealot offers hassle-free returns and does not charge any return administration fees. We will collect the item from you free of charge, or you may drop off the item at a Takealot Pickup Point after logging a return.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/can-i-exchange-or-replace-a-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/can-i-exchange-or-replace-a-product">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Can I exchange or replace a product?</span>
-<span className='hidden lg:block'>We offer exchanges for size and colour variations within 30 days of delivery or collection. If the product you selected is damaged or defective you may request to replace the product within the product warranty as listed on the product page.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Can I exchange or replace a product?</span>
+                                    <span className='hidden lg:block'>We offer exchanges for size and colour variations within 30 days of delivery or collection. If the product you selected is damaged or defective you may request to replace the product within the product warranty as listed on the product page.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/can-i-change-my-collection-address-once-i-have-logged-a-return">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/can-i-change-my-collection-address-once-i-have-logged-a-return">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Can I change my collection address once I have logged a return?</span>
-<span className='hidden lg:block'>When your return has been logged changing your collection address is not possible.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Can I change my collection address once I have logged a return?</span>
+                                    <span className='hidden lg:block'>When your return has been logged changing your collection address is not possible.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/returning-a-product-without-accessories-or-its-partner-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/returning-a-product-without-accessories-or-its-partner-product">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Returning a product without accessories or its partner product</span>
-<span className='hidden lg:block'>The complete product, including all its accessories has to be returned as we may need to replace the entire product.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Returning a product without accessories or its partner product</span>
+                                    <span className='hidden lg:block'>The complete product, including all its accessories has to be returned as we may need to replace the entire product.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-i-return-a-manufacturer-warranty-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-i-return-a-manufacturer-warranty-product">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>How do I return a manufacturer warranty product?</span>
-<span className='hidden lg:block'>A Manufacturer Warranty product is an item whereby the relevant supplier or manufacturer chooses to manage defective products after 7 days. Returns for any other reason will be facilitated by Takealot within 30 days.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>How do I return a manufacturer warranty product?</span>
+                                    <span className='hidden lg:block'>A Manufacturer Warranty product is an item whereby the relevant supplier or manufacturer chooses to manage defective products after 7 days. Returns for any other reason will be facilitated by Takealot within 30 days.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/the-product-i-received-is-not-what-i-ordered">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/the-product-i-received-is-not-what-i-ordered">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>The product I received is not what I ordered</span>
-<span className='hidden lg:block'>If we accidentally delivered the wrong product to you, or if the product is not as described on the website , you have 30 days to log a return request by following the steps below by choosing your preferred outcome.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>The product I received is not what I ordered</span>
+                                    <span className='hidden lg:block'>If we accidentally delivered the wrong product to you, or if the product is not as described on the website , you have 30 days to log a return request by following the steps below by choosing your preferred outcome.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-soon-will-i-get-a-refund-or-credit-on-my-return">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-soon-will-i-get-a-refund-or-credit-on-my-return">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>How soon will I get a refund or credit on my return?</span>
-<span className='hidden lg:block'>A refund will be processed after your item has been received and evaluated, the processing time is based on your original order's payment method.</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>How soon will I get a refund or credit on my return?</span>
+                                    <span className='hidden lg:block'>A refund will be processed after your item has been received and evaluated, the processing time is based on your original order's payment method.</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
-<div className='my-4 border-b'></div> 
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-return-my-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-return-my-product">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Where can I find your returns policy?</span>
-<span className='hidden lg:block'>Our Returns Policy can be found here ...</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Where can I find your returns policy?</span>
+                                    <span className='hidden lg:block'>Our Returns Policy can be found here ...</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-</Link>
+                            </Link>
 
-</div> 
+                        </div>
 
 
-<div className='w-full bg-white shadow rounded p-4 my-10'>
-<div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
-<div>
-<img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32'/>
-</div>
+                        <div className='w-full bg-white shadow rounded p-4 my-10'>
+                            <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
+                                <div>
+                                    <img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32' />
+                                </div>
 
-<div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
-<div className='flex-1'>
-    <p className='text-lg font-semibold'>Didn't find what you need?</p>
-</div>
+                                <div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
+                                    <div className='flex-1'>
+                                        <p className='text-lg font-semibold'>Didn't find what you need?</p>
+                                    </div>
 
-<div className='mr-5'>
-    <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
-</div>
-</div>
+                                    <div className='mr-5'>
+                                        <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
+                                    </div>
+                                </div>
 
-</div>
-</div>
+                            </div>
+                        </div>
 
 
 
 
-</div>
+                    </div>
 
                     <div className='w-1/3 bg-white shadow hidden lg:block text-sm'>
                         <p className='p-3 text-base font-medium text-[#000]'>All Help Topics</p>

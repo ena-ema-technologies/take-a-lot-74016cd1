@@ -1,7 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const ReturnsLayout = () => {
+
+    const [viewExpandState, setViewExpandState] = useState(false);
 
     const location = useLocation();
     const rescheduleLocation = location.pathname.includes("can-i-return-my-product");
@@ -38,7 +41,7 @@ const ReturnsLayout = () => {
                         {
                             rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"
 
-                        }</p>
+                        } </p>
 
                 </div>
             </div>
@@ -91,6 +94,28 @@ const ReturnsLayout = () => {
 
                             <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
                             </NavLink>
+
+                            {/* extra nav */}
+
+                            {
+                                viewExpandState ?
+                                    <> <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
+                                    </NavLink>
+                                        <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
+                                        </NavLink>
+                                        <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
+                                        </NavLink>
+
+                                    </>
+                                    : ""
+                            }
+
+                            <hr />
+                            <div className='pl-4 text-primary hover:cursor-pointer hover:underline'
+                                onClick={() => setViewExpandState(!viewExpandState)}
+                            >
+                                {viewExpandState ? "View Less" : "View More"}
+                            </div>
 
 
                         </div>
