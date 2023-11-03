@@ -44,8 +44,16 @@ city_town: data?.city_town
 <div className="text-lg font-semibold text-[#4d4d4f] mb-5">Address Book</div>
 
 {
-    !addressBanner && userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code  ? 
-    <div className='my-6 bg-white rounded shadow px-6 pt-6 pb-20 relative'>
+    addressBanner  ? 
+    <div className='my-6 bg-white rounded shadow px-10 pb-10 pt-20 relative hero text-sm flex flex-col gap-5'>
+    <div className='px-2 py-2 rounded-full bg-white shadow'>
+    <img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/add-address.svg-3a8a08e8214d9a9e5cb3.svg" alt="Banner" className='rounded-full'/>
+    </div>
+    <p className='text-[#000]'>{userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code ? "One address active. You can update your address" : "You don't have any addresses saved."}</p>
+    
+    {userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code ? <button className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' onClick={()=>setAddressBanner(false)}>Update Address</button> : <button className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' onClick={()=>setAddressBanner(false)}>Add New Address</button>}
+        </div>
+    : <div className='my-6 bg-white rounded shadow px-6 pt-6 pb-20 relative'>
 <p className='text-[#000] text-base font-semibold mb-4'>Add New Address</p>
 
 <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-10 w-full'>
@@ -213,15 +221,8 @@ aria-invalid={errors.Postal_Code ? "true" : "false"}/>
 
 
 </div>
-    :
-    <div className='my-6 bg-white rounded shadow px-10 pb-10 pt-20 relative hero text-sm flex flex-col gap-5'>
-<div className='px-2 py-2 rounded-full bg-white shadow'>
-<img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/add-address.svg-3a8a08e8214d9a9e5cb3.svg" alt="Banner" className='rounded-full'/>
-</div>
-<p className='text-[#000]'>{userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code ? "One address active. You can update your address" :"You don't have any addresses saved."}</p>
-
-{userInfo?.complexOrBuilding && userInfo?.mobile_Number && userInfo?.postal_Code ?<button className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' onClick={()=>setAddressBanner(false)}>Update Address</button>:<button className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' onClick={()=>setAddressBanner(false)}>Add New Address</button>}
-    </div>
+    
+   
     
 
 }

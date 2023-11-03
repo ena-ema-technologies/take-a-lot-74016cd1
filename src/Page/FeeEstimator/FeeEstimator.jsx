@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import logo from '../../assets/icons/d5fa3e615adcdf6c849cf24fd6b9ab900ed20767.png'
-
+import { FaInfo } from "react-icons/fa";
 
 
 const FeeEstimator = () => {
@@ -15,6 +15,7 @@ const FeeEstimator = () => {
   const [SuccessFee, setSuccessFees] = useState(0)
   const [susccessFeesPercent, setSuccessFeesPercent] = useState(null)
   const [price,setPrice]=useState(0)
+  const [costOfProduct,setcostOfProduct]=useState(0)
   console.log(SuccessFee)
   useEffect(() => {
     fetch("estamator.json")
@@ -42,8 +43,8 @@ const FeeEstimator = () => {
     console.log(data);
     setPrice(data.Price)
     // Reset the form
-    reset();
-
+    
+    setcostOfProduct(data.Cost_of_Product)
     const Dimension1 = data.Dimension1;
     const Dimension2 = data.Dimension2;
     const Dimension3 = data.Dimension3;
@@ -221,6 +222,7 @@ const FeeEstimator = () => {
       const succesFee = price * susccessFeesPercent / 100
       setSuccessFees(succesFee)
     }
+    
 
   };
 
@@ -252,6 +254,9 @@ const FeeEstimator = () => {
   // console.log(categories)
 
 
+  const totalFees =fulfilmentFees+SuccessFee;
+  
+
   return (
     <div className="">
 
@@ -265,7 +270,7 @@ const FeeEstimator = () => {
           </h1>
         </div>
       </div>
-      <div className="hero-content flex-col lg:flex-row mt-3">
+      <div className="flex flex-col lg:flex-row items-start justify-center mt-3">
         <div className="bg-white px-3 py-3 hover:shadow-xl w-[35%] m-2 rounded">
           <h1 className="text-2xl font-semibold mb-3">Estimate Takealot Fees</h1>
           <p className="text-xs pb-[200px]">
@@ -474,6 +479,7 @@ const FeeEstimator = () => {
 
               <div className="ms-[90px]">
                 <select
+                placeholder="Please select"
                   onClick={divitionHandler}
                   {...register("Division")}
                   name="Division"
@@ -522,6 +528,7 @@ const FeeEstimator = () => {
 
               <div className="ms-[70px]">
                 <select
+                placeholder="Please select"
                   {...register("Department")}
                   name="Department"
                   onClick={CategoryHandler}
@@ -574,6 +581,7 @@ const FeeEstimator = () => {
 
               <div className="ms-[85px]">
                 <select
+                placeholder="Please select"
                   {...register("Category")}
                   name="Category"
                   className="text-xs w-80 border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
@@ -742,43 +750,113 @@ const FeeEstimator = () => {
           </form>
          
             {
-              SuccessFee>0|| SuccessFee<0? <div className="bg-white mt-10 pt-2 rounded-lg mx-10 px-2"><table className="w-full border-none">
+              SuccessFee>0|| SuccessFee<0? <div className="bg-white hover:shadow-2xl mt-10 pt-2 w-[600px] rounded-lg mx-10 px-2"><table className="w-full text-sm border-none shadow-slate-300  rounded-lg">
               <tr>
                 <th></th>
                 <th>Leadtime</th>
                 <th>In-Stock</th>
               </tr>
               <tr className="border-x-2">
-                <td className="border-none"><input type="checkbox"  />Inclued VAT</td>
-                <td  className="border-none"></td>
-                <td  className="border-none"></td>
+                <td className="border-none border-separate border-e-2"><input type="checkbox" checked className="p-1 ms-2 bg-slate-300"  />Inclued VAT</td>
+                <td  className=" border-b-0"></td>
+                <td  className=" border-b-0"></td>
               </tr>
               <tr className="border-x-2 ">
-                <td className="border-none font-semibold ps-2 mt-2">Revenue</td>
-                <td className="border-none"></td>
-                <td className="border-none"></td>
+                <td className="border-none font-semibold ps-2 mt-2 pt-3">Revenue</td>
+                <td className="border-b-0 border-t-0"></td>
+                <td className="border-b-0 border-t-0"></td>
               </tr>
               <tr className="border-x-2">
-                <td className="border-none ps-2 mt-2">Selling Price</td>
-                <td className="border-none text-center">R {price} </td>
-                <td className="border-none text-center">R {price} </td>
+                <td className="border-none ps-2 mt-2 flex items-center">Selling Price<FaInfo className="rounded-full bg-black text-white p-[1px]"/> </td>
+                <td className="border-b-0 border-t-0 text-center">R {price} </td>
+                <td className="border-b-0 border-t-0 text-center">R {price} </td>
               </tr>
               <tr className="border-x-2">
-                <td className="border-none ps-2 mt-2 font-semibold">Takealot Fees</td>
-                <td className="border-none"></td>
-                <td className="border-none"></td>
+                <td className="border-none ps-2 pt-4 mt-2 font-semibold">Takealot Fees</td>
+                <td className="border-b-0 border-t-0"></td>
+                <td className="border-b-0 border-t-0"></td>
               </tr>
               <tr className="border-x-2">
-                <td className="border-none ps-2 mt-2">Success Fees</td>
-                <td className="border-none text-center"> R {SuccessFee} </td>
-                <td className="border-none text-center">  R {SuccessFee}</td>
+                <td className="border-none ps-2 mt-2 flex items-center gap-2">Success Fees <FaInfo className="rounded-full bg-black text-white p-[1px]"/></td>
+                <td className="border-b-0 border-t-0 text-center"> R {SuccessFee} </td>
+                <td className="border-b-0 border-t-0 text-center">  R {SuccessFee}</td>
               </tr>
               <tr className="border-x-2">
-                <td className="border-none ps-2 mt-2">Fulfilment Fees</td>
-                <td className="border-none text-center">R {fulfilmentFees}</td>
-                <td className="border-none text-center"> R  {fulfilmentFees}</td>
+                <td className="border-none ps-2 mt-2 flex items-center gap-2">Fulfilment Fees <FaInfo className="rounded-full bg-black text-white p-[1px]"/></td>
+                <td className="border-b-0 border-t-0 text-center">R {fulfilmentFees}</td>
+                <td className="border-b-0 border-t-0 text-center"> R  {fulfilmentFees}</td>
               </tr>
-            </table></div>:<></>
+              <tr className="border-x-2">
+                <td className="border-none ps-2 pt-5 mt-5 font-semibold">Net Sales</td>
+                <td className="border-b-0 border-t-0 text-center pt-5 mt-5 font-semibold">R {price-totalFees}</td>
+                <td className="border-b-0 border-t-0 text-center pt-5 mt-5 font-semibold"> R  {price-totalFees}</td>
+              </tr>
+              <tr className="border-x-2 ">
+                <td className="border-none ps-2 pt-5 mt-5 flex items-center gap-2">Cost Of Product <FaInfo className="rounded-full bg-black text-white p-[1px]"/></td>
+                <td className="border-b-0 border-t-0  pt-2  items-center text-center   mt-5 ">
+                <div className="flex w-full pt-1">
+                <div className="border px-1">R</div>
+                <input className="border rounded w-36 text-right px-2" type="text" defaultValue={costOfProduct} disabled />
+                </div>
+                </td>
+                <td className="border-b-0 border-t-0 items-center  text-center pt-2 mt-5 ">
+               <div className="flex w-full text-right pt-1">
+               <div className="border px-1">R</div>
+                <input className="border rounded w-36 text-right px-2 " type="text" defaultValue={costOfProduct} disabled/>
+               </div>
+                   </td>
+              </tr>
+              <tr className="border-x-2 ">
+                <td className="border-none ps-2 pt-5 flex items-center gap-2">Cost to Ship to Takealot DC <FaInfo className="rounded-full bg-black text-white p-[1px]"/></td>
+                <td className="border-b-0 border-t-0  pt-2  items-center text-center   mt-5 ">
+                <div className="flex w-full pt-1">
+                <div className="border px-1">R</div>
+                <input className="border rounded w-36 text-right px-2" type="text" defaultValue={0.00} disabled />
+                </div>
+                </td>
+                <td className="border-b-0 border-t-0 items-center  text-center pt-2 mt-5 ">
+               <div className="flex w-full text-right pt-1">
+               <div className="border px-1">R</div>
+                <input className="border rounded w-36 text-right px-2 " type="text" defaultValue={0.00} disabled/>
+               </div>
+                   </td>
+              </tr>
+              <tr className="border-x-2 ">
+                <td className="border-none ps-2 pt-5 flex items-center gap-2 ">Other Costs <FaInfo className="rounded-full bg-black text-white p-[1px]"/></td>
+                <td className="border-b-0 border-t-0  pt-2  items-center text-center   mt-5 ">
+                <div className="flex w-full pt-1">
+                <div className="border px-1">R</div>
+                <input className="border rounded w-36 text-right px-2" type="text" defaultValue={0.00} disabled />
+                </div>
+                </td>
+                <td className="border-b-0 border-t-0 items-center  text-center pt-2 mt-5 ">
+               <div className="flex w-full text-right pt-1">
+               <div className="border px-1">R</div>
+                <input className="border rounded w-36 text-right px-2 " type="text" defaultValue={0.00} disabled/>
+               </div>
+                   </td>
+              </tr>
+              <tr className="border-x-2">
+                <td className="border-none ps-2 pt-5 mt-5 font-semibold">Net Profitability</td>
+                <td className="border-b-0 border-t-0 text-center pt-5 mt-5 font-semibold"></td>
+                <td className="border-b-0 border-t-0 text-center pt-5 mt-5 font-semibold"> </td>
+              </tr>
+              <tr className="border-x-2">
+                <td className="border-none ps-2  mt-5 ">Net Profit</td>
+                <td className="border-b-0 border-t-0 text-center ">R-{totalFees}</td>
+                <td className="border-b-0 border-t-0 text-center "> R-{totalFees}</td>
+              </tr>
+              <tr className="border-x-2">
+                <td className="border-none ps-2  mt-5 ">Net Margin</td>
+                <td className="border-b-0 border-t-0 text-center ">{price-totalFees/100}%</td>
+                <td className="border-b-0 border-t-0 text-center ">{price-totalFees/100}%</td>
+              </tr>
+             
+            </table>
+            <hr />
+            <i className="text-sm">These are estimates only and exclude subscription fees, avoidable fees, and other costs your business might incur. See the Sell on Takealot page for fees.</i>
+           
+            </div>:<></>
             }
 
           
