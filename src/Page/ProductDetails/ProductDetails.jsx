@@ -24,8 +24,18 @@ import { BsDot } from 'react-icons/bs';
 // import tag image 
 import saleTag from "../../assets/tag-icon/sale.webp"
 import nextDayTag from "../../assets/tag-icon/nextDay.webp"
+import useProfile from '../../hooks/useProfile';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
+import useCart from '../../hooks/useCart';
+import useAuth from '../../hooks/useAuth';
 
 const ProductDetails = () => {
+  const {user} = useAuth();
+  const [carts, update] = useCart();
+  console.log(carts.length);
+  const [axiosSecure] = useAxiosSecure();
+  const [userInfo] = useProfile();
   const [offerOpen, setOfferOpen] = useState(true);
   const [offerOpen2, setOfferOpen2] = useState(true);
   const [selectedRating, setRating] = useState([]);
@@ -64,7 +74,95 @@ else{
   const price= selectedProducts?.Product_Price;
      const totalPrice = price*quantity
      const discountPrice =totalPrice*discount/100
-     const priceAfterDiscount=totalPrice- discountPrice
+     const priceAfterDiscount=totalPrice- discountPrice;
+
+     const handleCart = async() =>{
+      if(!user){
+        Swal.fire({
+          title: 'Error!',
+          text: 'You have to login first!',
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+      }else{
+        const data = {
+          totalPrice: priceAfterDiscount,
+          quantity: quantity,
+          barcode : selectedProducts?.Barcode,
+          brandName: selectedProducts?.Brand_Name,
+          productName: selectedProducts?.Product_Name,
+          basedPrice: selectedProducts?.Product_Price,
+          productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
+          productId: selectedProducts?._id,
+          buyerInformation : {
+            firstName: userInfo?.firstName,
+            lastName: userInfo?.lastName,
+            mobileNumber: userInfo?.mobile_Number ? userInfo?.mobile_Number : "",
+            phone: userInfo?.phone ? userInfo?.phone : "",
+            postalCode: userInfo?.postal_Code ? userInfo?.postal_Code : "",
+            countryCode: userInfo?.countryCode,
+            email: userInfo?.email,
+            province: userInfo?.province ? userInfo?.province : "",
+            streetAddress: userInfo?.street_Address ? userInfo?.street_Address : "",
+          }
+  
+        }
+        const response = await axiosSecure.post("add-product-cart", data);
+        if(response.data.insertedId){
+          Swal.fire({
+            title: 'Success!',
+            text: 'Product add to cart!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+          update();
+        }
+      }
+     }
+
+     const handleWishList = async()=>{
+      if(!user){
+        Swal.fire({
+          title: 'Error!',
+          text: 'You have to login first!',
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+      }else{
+        const data = {
+          totalPrice: priceAfterDiscount,
+          quantity: quantity,
+          barcode : selectedProducts?.Barcode,
+          brandName: selectedProducts?.Brand_Name,
+          productName: selectedProducts?.Product_Name,
+          basedPrice: selectedProducts?.Product_Price,
+          productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
+          productId: selectedProducts?._id,
+          buyerInformation : {
+            firstName: userInfo?.firstName,
+            lastName: userInfo?.lastName,
+            mobileNumber: userInfo?.mobile_Number ? userInfo?.mobile_Number : "",
+            phone: userInfo?.phone ? userInfo?.phone : "",
+            postalCode: userInfo?.postal_Code ? userInfo?.postal_Code : "",
+            countryCode: userInfo?.countryCode,
+            email: userInfo?.email,
+            province: userInfo?.province ? userInfo?.province : "",
+            streetAddress: userInfo?.street_Address ? userInfo?.street_Address : "",
+          }
+  
+        }
+        const response = await axiosSecure.post("add-product-wishList", data);
+        if(response.data.insertedId){
+          Swal.fire({
+            title: 'Success!',
+            text: 'Product add to wishlist!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+          console.log(data);
+        }
+      }
+     }
   return (
     <section className='px-5'>
 
@@ -101,7 +199,7 @@ else{
               <div className='absolute top-10'>
                 <img className='w-12 rounded-sm ms-2 mt-2' src={saleTag} alt="" />
                 <img className='w-12 rounded-sm ms-2 mt-2' src={nextDayTag} alt="" />
-                <div className='w-12 h-12 py-2 space-x-0 space-y-0 text-sm font-bold flex items-center justify-center bg-blue-700 text-white text-center rounded ms-2 mt-2'>
+                <div className='w-12 h-12 py-2 space-x-0 space-y-0 text-xs font-medium flex items-center justify-center bg-[#0b79bf] text-white text-center rounded ms-2 mt-2'>
                   33% <br /> OFF
 
                 </div>
@@ -138,9 +236,9 @@ else{
                 </ul>
               </div>
               {/*todo: table need to dynamic */}
-              <div className='w-full'>
+              <div className='w-full text-sm mt-2'>
                 <h1 className='font-bold '>Quantity Based Discount</h1>
-                <table className='bg-slate-300'>
+                <table className='bg-slate-100 mt-4'>
                   <tr className='text-center'>
                     <th className='px-2 border-white'>Quantity</th>
                     <th className='px-2 border-white'>Discount %</th>
@@ -918,12 +1016,12 @@ else{
 
         <div className='w-full flex flex-col gap-4'>
           <div className='bg-white p-5 shadow'>
-            <p className='pt-2 pb-4 text-3xl flex gap-5 items-center font-extrabold'>R {
+            <p className='pt-2 pb-4 text-2xl flex gap-5 items-center font-extrabold'>R {
               quantity>1?priceAfterDiscount:price
-            } <span className='text-xs text-red-600'>Discount-{discount?discount:"..."} %</span></p>
+            } <span className='text-[11px] text-red-600'>Discount-{discount?discount:"..."} %</span></p>
             <div className='flex flex-col items-center justify-center gap-2'>
               <div className='flex'>
-                <select onClick={handleQuantity} id='quantity' name='quantity' className='border-green-600 border rounded-s px-2'>
+                <select onClick={handleQuantity} id='quantity' name='quantity' className='border-green-600 border-t border-b border-s outline-none rounded-s px-2'>
                   {Array.from(Array(30), (e, i) => {
                     return <option key={i} value={i+1}>{i+1}</option>
                   })}
@@ -932,10 +1030,10 @@ else{
                   <option value='3'>3</option>
                   <option value='4'>4</option> */}
                 </select>
-                <button className="inline-flex items-center justify-center text-green-700 border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 border px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5' /> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+                <button onClick={handleCart} className="inline-flex items-center justify-center text-green-700 border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 border-t border-b border-e px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5'/> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
               </div>
 
-              <button className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>
+              <button onClick={handleWishList} className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>
             </div>
           </div>
 

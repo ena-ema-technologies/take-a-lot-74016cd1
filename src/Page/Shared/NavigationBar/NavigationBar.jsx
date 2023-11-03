@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,useNavigate } from "react-router-dom";
 import { IoIosHeart, IoMdArrowBack, IoMdArrowForward, IoMdClose } from "react-icons/io";
 import { HiShoppingCart, HiChevronRight, HiOutlineClock,HiUser } from "react-icons/hi2";
 import { IoMdSearch } from "react-icons/io";
@@ -8,8 +8,14 @@ import { useForm } from "react-hook-form";
 import Banner from "../../Home/Banner/Banner";
 import Register from "../../Register/Register";
 import Login from "../../Login/Login";
+import useAuth from "../../../hooks/useAuth";
+import Swal from "sweetalert2";
+import useCart from "../../../hooks/useCart";
 
 const NavigationBar = () => {
+    const [carts, refetch] = useCart();
+    const navigate = useNavigate();
+    const {logOut,user} = useAuth()
     const {
         register,
         handleSubmit,
@@ -48,6 +54,20 @@ const NavigationBar = () => {
           }
         
       };
+
+      const handleOut = () =>{
+        logOut()
+        .then(()=>{
+           
+                              Swal.fire({
+                                  title: 'Success!',
+                                  text: 'Logout successful!',
+                                  icon: 'success',
+                                  confirmButtonText: 'Ok'
+                              })
+                              navigate("/")
+        })
+      }
 
     return (
         <header className={`z-50 nav-top  bg-white relative ${location.pathname === "/" && "lg:h-[720px]"}`}>
@@ -118,10 +138,17 @@ const NavigationBar = () => {
 
         </ul>
 
-        <ul className="w-full px-0 my-4 absolute bottom-0 flex items-center justify-around">
-        <label htmlFor="logIn_modal" className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer border border-primary bg-primary rounded-3xl text-white font-semibold"><HiUser className="h-5 w-5"/> Login</label>
-<label htmlFor="register_modal" className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer text-primary font-semibold">Register</label>
-        </ul>
+{
+    user ?  
+    <ul className="w-full px-0 my-4 absolute bottom-0 flex items-center justify-around">
+    <label className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer border border-primary bg-primary rounded-3xl text-white font-semibold"><HiUser className="h-5 w-5"/> <span>{user?.displayName}</span></label>
+    <label className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer text-primary font-semibold" onClick={handleOut} >Logout</label>
+    </ul> :
+            <ul className="w-full px-0 my-4 absolute bottom-0 flex items-center justify-around">
+            <label htmlFor="logIn_modal" className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer border border-primary bg-primary rounded-3xl text-white font-semibold"><HiUser className="h-5 w-5"/> Login</label>
+    <label htmlFor="register_modal" className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer text-primary font-semibold">Register</label>
+            </ul>
+}
 
     </ul>
 
@@ -2094,11 +2121,20 @@ const NavigationBar = () => {
                     <div className="w-full text-right">
                         <div className="inline-flex items-center justify-center">
                             {/* <Link to="/login" className="smallLink">Login</Link> */}
-                            <label htmlFor="logIn_modal" className="smallLink cursor-pointer">Login</label>
+                            {
+                                user ? <label className="smallLink"><span>Hi</span> <span>{user?.displayName}</span> <span className="cursor-pointer"  onClick={handleOut}><small>(that's not me)</small></span></label>  : <label htmlFor="logIn_modal" className="smallLink cursor-pointer">Login</label>
+                            }
+                            
                             <div className="divider divider-horizontal"></div>
                             {/* <Link to="/register" className="smallLink">Register</Link> */}
                             {/* <button className="smallLink">Register</button> */}
-                            <label htmlFor="register_modal" className="smallLink cursor-pointer">Register</label>
+                            {
+                                user ?  <label className="smallLink cursor-pointer" onClick={handleOut} >Logout</label> : <label htmlFor="register_modal" className="smallLink cursor-pointer">Register</label>
+                            }
+                            
+
+                           
+
                             
                             <div className="divider divider-horizontal"></div>
                             <Link to="/account/orders" className="smallLink">Orders</Link>
@@ -2149,7 +2185,7 @@ const NavigationBar = () => {
 
                                 </Link>
                                 <Link to="/cart" className="inline-flex items-center gap-4 px-3 py-1 bg-success rounded-2xl font-semibold text-white cursor-pointer hover">
-                                    <HiShoppingCart className="w-5 h-5" /> <span>0</span>
+                                    <HiShoppingCart className="w-5 h-5" /> <span>{carts?.length ? carts?.length : 0}</span>
                                 </Link>
                             </div>
 
