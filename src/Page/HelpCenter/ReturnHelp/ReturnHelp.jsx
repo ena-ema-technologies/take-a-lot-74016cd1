@@ -102,7 +102,7 @@ const ReturnHelp = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/returns/find-returns-policy" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/returnDetails/find-return-policy" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__affabfdc620808dbe89a48147eb8edfb71bc8486.png" alt="icon" className='w-5' />
@@ -119,7 +119,7 @@ const ReturnHelp = () => {
 
 
                             <SwiperSlide className='w-[300px]'>
-                                <Link to="/help-centre/returns/how-do-return-my-product" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                                <Link to="/help-centre/returnDetails/return-my-product" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                     <div className='w-full flex items-center gap-2'>
                                         <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                             <img src="https://media.takealot.com/help-cms/original_images/____CMS__affabfdc620808dbe89a48147eb8edfb71bc8486.png" alt="icon" className='w-5' />
@@ -162,13 +162,13 @@ const ReturnHelp = () => {
                             </li>
 
                             <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                                <Link to="/help-centre/returns/find-returns-policy" className='w-full text-xs inline-flex items-center justify-between'>
+                                <Link to="/help-centre/returnDetails/find-returns-policy" className='w-full text-xs inline-flex items-center justify-between'>
                                     <span> Where can I find your returns policy?</span> <span><HiChevronRight className='h-5 w-5' /></span>
                                 </Link>
                             </li>
 
                             <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                                <Link to="/help-centre/returns/how-do-return-my-product" className='w-full text-xs inline-flex items-center justify-between'>
+                                <Link to="/help-centre/returnDetails/return-my-product" className='w-full text-xs inline-flex items-center justify-between'>
                                     <span>  How do I return my product?</span> <span><HiChevronRight className='h-5 w-5' /></span>
                                 </Link>
                             </li>
@@ -221,7 +221,7 @@ const ReturnHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/track-my-return-status">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/track-my-return-status">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Track my return status</span>
@@ -236,7 +236,7 @@ const ReturnHelp = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-return-my-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/return-my-product">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>How do I return my product?</span>
@@ -251,7 +251,7 @@ const ReturnHelp = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/all-about-return-methods-fees">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/return-method-fees">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about return methods & fees</span>
@@ -265,7 +265,7 @@ const ReturnHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/cancel-return">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/cancel-my-return">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Cancel my return</span>
@@ -280,7 +280,7 @@ const ReturnHelp = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/can-i-exchange-or-replace-a-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/exchange-or-replace-product">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Can I exchange or replace a product?</span>
@@ -295,7 +295,7 @@ const ReturnHelp = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/can-i-change-my-collection-address-once-i-have-logged-a-return">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/can-i-change-my-collection-address-once-i-have-logged-a-return">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Can I change my collection address once I have logged a return?</span>
@@ -309,7 +309,7 @@ const ReturnHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/returning-a-product-without-accessories-or-its-partner-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/returning-a-product-without-accessories-or-its-partner-product">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Returning a product without accessories or its partner product</span>
@@ -324,7 +324,7 @@ const ReturnHelp = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-i-return-a-manufacturer-warranty-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/how-do-i-return-a-manufacturer-warranty-product">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>How do I return a manufacturer warranty product?</span>
@@ -338,7 +338,7 @@ const ReturnHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/the-product-i-received-is-not-what-i-ordered">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/the-product-i-received-is-not-what-i-ordered">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>The product I received is not what I ordered</span>
@@ -352,7 +352,7 @@ const ReturnHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-soon-will-i-get-a-refund-or-credit-on-my-return">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/how-soon-will-i-get-a-refund-or-credit-on-my-return">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>How soon will I get a refund or credit on my return?</span>
@@ -366,7 +366,7 @@ const ReturnHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returns/how-do-return-my-product">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/returnDetails/find-return-policy">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Where can I find your returns policy?</span>
