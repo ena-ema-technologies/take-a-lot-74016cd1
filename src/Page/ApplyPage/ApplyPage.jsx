@@ -1,23 +1,85 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import "../Register/Register.css"
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 const ApplyPage = () => {
+    const [axiosSecure] = useAxiosSecure();
     const [categoryList, setCategory] = useState([]);
     const [labelShow1, setLabelShow1] = useState(false);
     const [vatNo, setVatNo] = useState(false);
     const [labelShow2, setLabelShow2] = useState(false);
     const [labelShow3, setLabelShow3] = useState(false);
     const [labelShow4, setLabelShow4] = useState(false);
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const onSubmit = async (data) => {
-        console.log(data);
-    }
+    const [revenue, setRevenue] = useState("");
+    // const [stockSource, setStockSource] = useState("");
+    const [carryStock, setCarryStock] = useState("");
+    const { register, formState: { errors }, handleSubmit,formState, reset } = useForm();
 
     useEffect(()=>{
         fetch("https://take-a-lot-server-two.vercel.app/all-category")
         .then(res=>res.json())
         .then(data=>setCategory(data))
     },[])
+
+    const onSubmit = async (data) => {
+
+
+        const newSellerData = {
+            sellerFirstName: data?.firstName,
+            sellerLastName: data?.lastName,
+            sellerEmail: data?.email,
+            sellerPhoneNumber: data?.phone ? data?.phone : "",
+            sellerMobileNumber: data?.mobile ? data?.mobile : "",
+            hearAboutTakealot : data?.hearAboutTakealot ? data?.hearAboutTakealot : "",
+            companyName: data?.companyName,
+            ownerFirstName: data?.ownerFirstName,
+            ownerLastName: data?.ownerLastName,
+            ownerEmail: data?.ownerEmail,
+            category: data?.category,
+            companyWebsite: data?.website,
+            sellerOrCompanySocialMedia: data?.media ? data?.media : "",
+            urlWebsiteLinkProducts: data?.URLWebsiteLink,
+            isSouthBased: data?.southAfricaYes ? "Yse" : "No",
+            isVATRegistered: data?.vatRegisterYes ? "Yes" : "No",
+            VATNumber: data?.VATNumber ? data?.VATNumber : "",
+            monthlyRevenue: revenue,
+            businessRegNumberOrIndividualId: data?.businessResIndividualId,
+            uniqueProducts: data?.numberOFProd,
+            allYourBrands: data?.allYourBrands,
+            sourceOfStock: data?.sourceYourStock,
+            carryStock : data?.carryStockYes ? data?.carryStockYes : "No",
+            havePhysicalStore: data?.haveStore ? data?.haveStore : data?.haveStoreNo,
+            supplyRetailOutlets: data?.supplyRetail ? data?.supplyRetail : data?.supplyRetailNo,
+            sell_hand_crafted_items: data?.sell_hand_crafted_items ? "Yes" : "No",
+            haveRegisteredAccount: data?.registeredAccountYes ? data?.registeredAccountYes : data?.registeredAccountNo ? data?.registeredAccountNo : data?.registeredAccountOther,
+            comments: data?.comments,
+            date: new Date(),
+            status: "Pending"
+        }
+        const response = await axiosSecure.post("/new-seller-request", newSellerData);
+        if(response.data.insertedId){
+            Swal.fire({
+                title: 'Success!',
+                text: 'Your account is pending for admin approval! Please wait we will review your account request soon.',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            })
+            reset();
+            setLabelShow1(false);
+            setLabelShow2(false);
+            setLabelShow3(false);
+            setLabelShow4(false);
+            setRevenue("");
+            setVatNo(false);
+            setCarryStock(false)
+        }
+    }
+    useEffect(() => {
+        if (formState.isSubmitSuccessful) {
+          reset({ something: "" })
+        }
+      }, [formState, reset])
     return (
         <section className='my-14 flex items-center justify-center min-h-[calc(100px - 100vh)]'>
 <div className='form-container'>
@@ -262,27 +324,27 @@ aria-invalid={errors.southAfricaNo ? "true" : "false"} />
 
 <fieldset className='flex flex-col gap-2 mt-2'>
 <div className="flex items-center gap-2 w-full bg-gray-100 px-3 py-3 rounded" >
-<input type="radio" value="Less than R20k" {...register("revenue1", { required: true })}/>
+<input type="radio" value="Less than R20k" {...register("revenue1", { required: revenue === "" ? true : false })} onClick={()=>setRevenue("Less than R20k")}/>
 <label><small>Less than R20k</small></label>
 </div>
 
 <div className="flex items-center gap-2 w-full bg-gray-100 px-3 py-3 rounded">
-<input type="radio" value="R20k - R50k" {...register("revenue2", { required: true })}/>
+<input type="radio" value="R20k - R50k" {...register("revenue2", { required: revenue === "" ? true : false })} onClick={()=>setRevenue("R20k - R50k")}/>
 <label><small>R20k - R50k</small></label>
 </div>
 
 <div className="flex items-center gap-2 w-full bg-gray-100 px-3 py-3 rounded">
-<input type="radio" value="R50k - R100k" {...register("revenue6", { required: true })}/>
+<input type="radio" value="R50k - R100k" {...register("revenue6", { required: revenue === "" ? true : false })} onClick={()=>setRevenue("R50k - R100k")}/>
 <label><small>R50k - R100k</small></label>
 </div>
 
 <div className="flex items-center gap-2 w-full bg-gray-100 px-3 py-3 rounded">
-<input type="radio" value="R100 - R500k" {...register("revenue4", { required: true })}/>
+<input type="radio" value="R100 - R500k" {...register("revenue4", { required: revenue === "" ? true : false })} onClick={()=>setRevenue("R100 - R500k")}/>
 <label><small>R100 - R500k</small></label>
 </div>
 
 <div className="flex items-center gap-2 w-full bg-gray-100 px-3 py-3 rounded">
-<input type="radio" value="More than R500k" {...register("revenue5", { required: true })}/>
+<input type="radio" value="More than R500k" {...register("revenue5", { required: revenue === "" ? true : false })} onClick={()=>setRevenue("More than R500k")}/>
 <label><small>More than R500k</small></label>
 </div>
 </fieldset>
@@ -291,7 +353,7 @@ aria-invalid={errors.southAfricaNo ? "true" : "false"} />
 </div>
 
 <div className="inputGroup">  
-<input type="url" required className='inputField' {...register("businessResIndividualId")}
+<input type="text" required className='inputField' {...register("businessResIndividualId")}
 aria-invalid={errors.businessResIndividualId ? "true" : "false"}/>
 <span className="highlight"></span>
 <span className="bar"></span>
@@ -373,18 +435,17 @@ aria-invalid={errors.allYourBrands ? "true" : "false"}/>
 
     </label>
 }
-<select {...register(" sourceYourStock", { required: true })} className='inputField text-xs' onClick={()=>setLabelShow3(true)}>
+<select {...register("sourceYourStock")} className='inputField text-xs' onClick={()=>setLabelShow3(true)}>
 <option defaultValue=""></option>
 <option value="Manufactured Locally">Manufactured Locally</option>
 <option value="Imported">Imported</option>
-<option value="Imported">Sourced from local suppliers</option>
-<option value="Imported">A mixture of import and local manufacturers</option>
+<option value="Sourced from local suppliers">Sourced from local suppliers</option>
+<option value="A mixture of import and local manufacturers">A mixture of import and local manufacturers</option>
 
 </select>
 
 
-{/* <input type="email" required className='inputField' {...register("email", { required: true })}
-aria-invalid={errors.email ? "true" : "false"}/> */}
+
 {
     labelShow3&& <label className='inputLabel'>Where do you source your stock?
     </label>
@@ -403,11 +464,11 @@ aria-invalid={errors.email ? "true" : "false"}/> */}
 
 <fieldset className='flex flex-col gap-2 mt-2'>
 <div className="flex items-center gap-2 w-full bg-gray-100 px-3 py-3 rounded" >
-<input type="radio" value="Yes" {...register("carryStockYes", { required: true })}/>
+<input type="radio" value="Yes" {...register("carryStockYes", { required: carryStock === "" ? true : false })} onClick={()=>setCarryStock("Yes")}/>
 <label><small>Yes</small></label>
 </div>
 <div className="flex items-center gap-2 w-full bg-gray-100 px-3 py-3 rounded">
-<input type="radio" value="No" {...register("carryStockNo", { required: true })}/>
+<input type="radio" value="No" {...register("carryStockNo", { required: carryStock === "" ? true : false })} onClick={()=>setCarryStock("No")}/>
 <label><small>No</small></label>
 </div>
 </fieldset>
@@ -456,7 +517,7 @@ aria-invalid={errors.email ? "true" : "false"}/> */}
     !labelShow4&& <label className='inputLabel'>Do you sell handmade or hand-crafted items?
     </label>
 }
-<select {...register(" sourceYourStock", { required: true })} className='inputField text-xs' onClick={()=>setLabelShow4(true)}>
+<select {...register("sell_hand_crafted_items", { required: true })} className='inputField text-xs' onClick={()=>setLabelShow4(true)}>
 <option defaultValue=""></option>
 <option value="Yes">Yes</option>
 <option value="No">No</option>
@@ -464,8 +525,7 @@ aria-invalid={errors.email ? "true" : "false"}/> */}
 </select>
 
 
-{/* <input type="email" required className='inputField' {...register("email", { required: true })}
-aria-invalid={errors.email ? "true" : "false"}/> */}
+
 {
     labelShow4&& <label className='inputLabel'>Do you sell handmade or hand-crafted items?
     </label>

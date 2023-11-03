@@ -10,8 +10,13 @@ import Register from "../../Register/Register";
 import Login from "../../Login/Login";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
+import useCart from "../../../hooks/useCart";
+import useSeller from "../../../hooks/useSeller";
 
 const NavigationBar = () => {
+    const [sellerInfo] =useSeller();
+console.log(sellerInfo)
+    const [carts, refetch] = useCart();
     const navigate = useNavigate();
     const {logOut,user} = useAuth()
     const {
@@ -22,7 +27,7 @@ const NavigationBar = () => {
     } = useForm()
 
     const location = useLocation()
-   
+   console.log(carts)
 
     const onSubmit = (data) => console.log(data);
     const [shopPhoneMenu, setShopPhoneMenu] = useState(false);
@@ -2163,6 +2168,12 @@ const NavigationBar = () => {
                                 >
 
                                     <Link to="/my-account" className="smallLink">My Account</Link>
+                                    {
+                                        sellerInfo?.status === "approved" && <Link to="/seller-account-overview" className="smallLink">Account Overview</Link>
+                                    }
+                                    {
+                                        sellerInfo?.status === "approved" && <Link to="/seller-dashboard/dashboard-home" className="smallLink">Seller Dashboard</Link>
+                                    }
                                     <Link to="/account/orders" className="smallLink">Track Order</Link>
                                     <Link to="/account/returns" className="smallLink">Returns</Link>
                                     <Link to="/account/credits" className="smallLink">Credits & Refunds</Link>
@@ -2183,7 +2194,7 @@ const NavigationBar = () => {
 
                                 </Link>
                                 <Link to="/cart" className="inline-flex items-center gap-4 px-3 py-1 bg-success rounded-2xl font-semibold text-white cursor-pointer hover">
-                                    <HiShoppingCart className="w-5 h-5" /> <span>0</span>
+                                    <HiShoppingCart className="w-5 h-5" /> <span>{carts?.length ? carts?.length : 0}</span>
                                 </Link>
                             </div>
 
