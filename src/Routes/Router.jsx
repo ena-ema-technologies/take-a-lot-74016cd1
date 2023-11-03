@@ -68,6 +68,20 @@ import DeliveryFees from "../Page/HelpCenter/DeliveryFees/DeliveryFees";
 import DeliveryTimeFrames from "../Page/HelpCenter/DeliveryTimeFrames/DeliveryTimeFrames";
 import ChangeOrderToDelivery from "../Page/HelpCenter/ChangeOrderToDelivery/ChangeOrderToDelivery";
 import ItemMissing from "../Page/HelpCenter/ItemMissing/ItemMissing";
+import ReturnsLayout from "../Layout/ReturnsLayout";
+import ReturnProducts from "../Page/HelpCenter/ReturnProducts/ReturnProducts";
+import RescheduleCollection from "../Page/HelpCenter/RescheduleCollection/RescheduleCollection";
+import TrackReturnStatus from "../Page/HelpCenter/TrackReturnStatus/TrackReturnStatus";
+import ReturnProduct from "../Page/ReturnProduct/ReturnProduct";
+import ReturnMethodFees from "../Page/HelpCenter/ReturnMethodFees/ReturnMethodFees";
+import ReturnCancel from "../Page/HelpCenter/ReturnCancel/ReturnCancel";
+import ReplaceProduct from "../Page/HelpCenter/ReplaceProduct/ReplaceProduct";
+import ChangeReturnAddress from "../Page/HelpCenter/ChangeReturnAddress/ChangeReturnAddress";
+import ReturningProductAccessories from "../Page/HelpCenter/ReturningProductAccessories/ReturningProductAccessories";
+import WarrantyProduct from "../Page/HelpCenter/WarrantyProduct/WarrantyProduct";
+import WrongProduct from "../Page/HelpCenter/WrongProduct/WrongProduct";
+import ReturnRefund from "../Page/HelpCenter/ReturnRefund/ReturnRefund";
+import FindReturnPolicy from "../Page/HelpCenter/FindReturnPolicy/FindReturnPolicy";
 import AccountOverview from "../Page/SellerAccount/AccountOverview";
 import SellerRouter from "./SellerRouter";
 import Dashboard from "../Page/SellerAccount/SellerDashboard/Dashboard";
@@ -188,6 +202,68 @@ export const router = createBrowserRouter([
           {
             path: "returns",
             element: <ReturnHelp />
+          },
+          {
+            path: "returnDetails",
+            element: <ReturnsLayout></ReturnsLayout>,
+            children:[
+              {
+                path: "can-i-return-my-product",
+                element: <ReturnProducts></ReturnProducts>
+              },
+              {
+                path: "reschedule-collection",
+                element: <RescheduleCollection></RescheduleCollection>
+              },
+              {
+                path: "track-my-return-status",
+                element: <TrackReturnStatus></TrackReturnStatus>
+              },
+              {
+                path: "return-my-product",
+                element: <ReturnProduct></ReturnProduct>
+              },
+              {
+                path: "return-method-fees",
+                element: <ReturnMethodFees></ReturnMethodFees>
+              },
+              {
+                path: "cancel-my-return",
+                element: <ReturnCancel></ReturnCancel>
+              },
+              {
+                path: "can-i-change-my-collection-address-once-i-have-logged-a-return",
+                element: <ChangeReturnAddress></ChangeReturnAddress>
+              },
+              {
+                path: "exchange-or-replace-product",
+                element: <ReplaceProduct></ReplaceProduct>
+              },
+              {
+                path: "returning-a-product-without-accessories-or-its-partner-product",
+                element: <ReturningProductAccessories></ReturningProductAccessories>
+              },
+              {
+                path: "how-do-i-return-a-manufacturer-warranty-product",
+                element: <WarrantyProduct></WarrantyProduct>
+              },
+              {
+                path: "the-product-i-received-is-not-what-i-ordered",
+                element: <WrongProduct></WrongProduct>
+              },
+              {
+                path: "how-soon-will-i-get-a-refund-or-credit-on-my-return",
+                element: <ReturnRefund></ReturnRefund>
+              },
+              {
+                path: "the-product-i-received-is-not-what-i-ordered",
+                element: <WrongProduct></WrongProduct>
+              },
+              {
+                path: "find-return-policy",
+                element: <FindReturnPolicy></FindReturnPolicy>
+              },
+            ]
           },
           {
             path: "orders-cancellations",
