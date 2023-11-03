@@ -82,6 +82,12 @@ import WarrantyProduct from "../Page/HelpCenter/WarrantyProduct/WarrantyProduct"
 import WrongProduct from "../Page/HelpCenter/WrongProduct/WrongProduct";
 import ReturnRefund from "../Page/HelpCenter/ReturnRefund/ReturnRefund";
 import FindReturnPolicy from "../Page/HelpCenter/FindReturnPolicy/FindReturnPolicy";
+import OrderCancelLayout from "../Layout/OrderCancelLayout";
+import CancelOrder from "../Page/HelpCenter/OrderDetails/CancelOrder/CancelOrder";
+import ChangesOrder from "../Page/HelpCenter/OrderDetails/ChangesOrder/ChangesOrder";
+import WhyCancelOrder from "../Page/HelpCenter/OrderDetails/WhyCancelOrder/WhyCancelOrder";
+import RequestInvoice from "../Page/HelpCenter/OrderDetails/RequestInvoice/RequestInvoice";
+import PlacingOrder from "../Page/HelpCenter/OrderDetails/PlacingOrder/PlacingOrder";
 
 
 
@@ -264,6 +270,32 @@ export const router = createBrowserRouter([
           {
             path: "orders-cancellations",
             element: <OrderCancellationHelp />
+          },
+          {
+            path: "orderCancelDetails",
+            element: <OrderCancelLayout></OrderCancelLayout>,
+            children:[
+              {
+                path: "how-do-i-cancel-an-order",
+                element: <CancelOrder></CancelOrder>
+              },
+              {
+                path: "can-i-make-changes-to-my-order-after-it-has-been-placed",
+                element: <ChangesOrder></ChangesOrder>
+              },
+              {
+                path: "why-have-you-cancelled-my-order",
+                element: <WhyCancelOrder></WhyCancelOrder>
+              },
+              {
+                path: "request-invoice",
+                element: <RequestInvoice></RequestInvoice>
+              },
+              {
+                path: "placing-order",
+                element: <PlacingOrder></PlacingOrder>
+              },
+            ]
           },
           {
             path: "collection",
