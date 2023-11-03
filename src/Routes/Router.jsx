@@ -68,6 +68,10 @@ import DeliveryFees from "../Page/HelpCenter/DeliveryFees/DeliveryFees";
 import DeliveryTimeFrames from "../Page/HelpCenter/DeliveryTimeFrames/DeliveryTimeFrames";
 import ChangeOrderToDelivery from "../Page/HelpCenter/ChangeOrderToDelivery/ChangeOrderToDelivery";
 import ItemMissing from "../Page/HelpCenter/ItemMissing/ItemMissing";
+import AccountOverview from "../Page/SellerAccount/AccountOverview";
+import SellerRouter from "./SellerRouter";
+import Dashboard from "../Page/SellerAccount/SellerDashboard/Dashboard";
+import DashboardHome from "../Page/SellerAccount/SellerDashboard/DashboardHome";
 
 
 
@@ -354,6 +358,20 @@ export const router = createBrowserRouter([
             path: "delivery-team",
             element: <DeliveryTeam />
           }
+        ]
+      },
+      {
+        path:"/seller-account-overview",
+        element:<SellerRouter><AccountOverview /></SellerRouter>
+      },
+      {
+        path:"/seller-dashboard",
+        element:<SellerRouter><Dashboard /></SellerRouter>,
+        children:[
+          {
+            path:"dashboard-home",
+            element:<SellerRouter><DashboardHome/></SellerRouter>
+          },
         ]
       }
     ]
