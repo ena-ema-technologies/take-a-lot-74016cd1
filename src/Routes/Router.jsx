@@ -78,6 +78,10 @@ import ReturnCancel from "../Page/HelpCenter/ReturnCancel/ReturnCancel";
 import ReplaceProduct from "../Page/HelpCenter/ReplaceProduct/ReplaceProduct";
 import ChangeReturnAddress from "../Page/HelpCenter/ChangeReturnAddress/ChangeReturnAddress";
 import ReturningProductAccessories from "../Page/HelpCenter/ReturningProductAccessories/ReturningProductAccessories";
+import WarrantyProduct from "../Page/HelpCenter/WarrantyProduct/WarrantyProduct";
+import WrongProduct from "../Page/HelpCenter/WrongProduct/WrongProduct";
+import ReturnRefund from "../Page/HelpCenter/ReturnRefund/ReturnRefund";
+import FindReturnPolicy from "../Page/HelpCenter/FindReturnPolicy/FindReturnPolicy";
 
 
 
@@ -234,6 +238,26 @@ export const router = createBrowserRouter([
               {
                 path: "returning-a-product-without-accessories-or-its-partner-product",
                 element: <ReturningProductAccessories></ReturningProductAccessories>
+              },
+              {
+                path: "how-do-i-return-a-manufacturer-warranty-product",
+                element: <WarrantyProduct></WarrantyProduct>
+              },
+              {
+                path: "the-product-i-received-is-not-what-i-ordered",
+                element: <WrongProduct></WrongProduct>
+              },
+              {
+                path: "how-soon-will-i-get-a-refund-or-credit-on-my-return",
+                element: <ReturnRefund></ReturnRefund>
+              },
+              {
+                path: "the-product-i-received-is-not-what-i-ordered",
+                element: <WrongProduct></WrongProduct>
+              },
+              {
+                path: "find-return-policy",
+                element: <FindReturnPolicy></FindReturnPolicy>
               },
             ]
           },

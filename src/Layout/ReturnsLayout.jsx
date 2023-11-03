@@ -17,7 +17,10 @@ const ReturnsLayout = () => {
     const replaceProduct = location.pathname.includes("exchange-or-replace-product");
     const changeReturnAddress = location.pathname.includes("can-i-change-my-collection-address-once-i-have-logged-a-return");
     const returnAccessories = location.pathname.includes("returning-a-product-without");
-    
+    const warrantyManufacture = location.pathname.includes("how-do-i-return-a-manufacturer");
+    const wrongProduct = location.pathname.includes("the-product-i-received");
+    const returnRefund = location.pathname.includes("how-soon-will-i-get-a-refund");
+
 
     return (
         <section className='lg:px-4'>
@@ -30,7 +33,7 @@ const ReturnsLayout = () => {
                         <li><Link to="/help-centre/delivery">Delivery</Link></li>
                         <li className='font-semibold'>
                             {
-                                rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : returnProduct ? "Return my product" : returnMethod ? "Return method & fees" : returnCancel ? "Return my cancel" : replaceProduct ? "Can I exchange or replace my product" : changeReturnAddress ? "Can I change my collection address once I have logged a return ?" : returnAccessories ? "Returning a product without accessories or its partner product" : "Track your Order"
+                                rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : returnProduct ? "Return my product" : returnMethod ? "Return method & fees" : returnCancel ? "Return my cancel" : replaceProduct ? "Can I exchange or replace my product" : changeReturnAddress ? "Can I change my collection address once I have logged a return ?" : returnAccessories ? "Returning a product without accessories or its partner product" : warrantyManufacture ? "How do I return a manufacturer warranty product?" : wrongProduct ? "The product I received is not what I ordered" : returnRefund ? "How soon will I get a refund or credit on my return?" : "Track your Order"
 
                             } </li>
                     </ul>
@@ -40,7 +43,7 @@ const ReturnsLayout = () => {
 
                     <p className='text-xl lg:text-3xl font-bold text-white'>
                         {
-                            rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : returnProduct ? "Return my product" : returnMethod ? "Return method & fees" : returnCancel ? "Return my cancel"  : replaceProduct ? "Can I exchange or replace my product" : changeReturnAddress ? "Can I change my collection address once I have logged a return ?" : returnAccessories ? "Returning a product without accessories or its partner product" : "Track your Order"
+                            rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : returnProduct ? "Return my product" : returnMethod ? "Return method & fees" : returnCancel ? "Return my cancel" : replaceProduct ? "Can I exchange or replace my product" : changeReturnAddress ? "Can I change my collection address once I have logged a return ?" : returnAccessories ? "Returning a product without accessories or its partner product" : warrantyManufacture ? "How do I return a manufacturer warranty product?" : wrongProduct ? "The product I received is not what I ordered" : returnRefund ? "How soon will I get a refund or credit on my return?" : "Track your Order"
 
                         } </p>
 
@@ -93,20 +96,22 @@ const ReturnsLayout = () => {
 
                             <NavLink to="/help-centre/returnDetails/returning-a-product-without-accessories-or-its-partner-product" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Returning a product without accessories or its partner product </NavLink>
 
-                            <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
+                            <NavLink to="/help-centre/returnDetails/how-do-i-return-a-manufacturer-warranty-product" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
                             </NavLink>
 
                             {/* extra nav */}
 
                             {
                                 viewExpandState ?
-                                    <> <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
-                                    </NavLink>
-                                        <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
-                                        </NavLink>
-                                        <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
+                                    <>
+                                        <NavLink to="/help-centre/returnDetails/the-product-i-received-is-not-what-i-ordered" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> The product I received is not what I ordered
                                         </NavLink>
 
+                                        <NavLink to="/help-centre/returnDetails/how-soon-will-i-get-a-refund-or-credit-on-my-return" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How soon will I get a refund or credit on my return?
+                                        </NavLink>
+
+                                        <NavLink to="/help-centre/returnDetails/find-return-policy" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Where can I find your returns policy?
+                                        </NavLink>
                                     </>
                                     : ""
                             }
