@@ -27,7 +27,7 @@ console.log(sellerInfo)
     } = useForm()
 
     const location = useLocation()
-   
+   console.log(carts)
 
     const onSubmit = (data) => console.log(data);
     const [shopPhoneMenu, setShopPhoneMenu] = useState(false);
