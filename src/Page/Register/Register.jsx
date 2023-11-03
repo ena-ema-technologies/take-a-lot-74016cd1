@@ -8,9 +8,10 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import axios from "axios";
+import useProfile from "../../hooks/useProfile";
 
 const Register = () => {
-
+  const [userInfo, refetch] = useProfile();
   const {updateUser, signUp, userVerify , user} = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
@@ -78,6 +79,7 @@ const display_url = "https://i.ibb.co/jwkFMLB/User-Avatar-Profile-PNG.png"
                                   confirmButtonText: 'Ok'
                               })
                               console.log(user);
+                              refetch();
                               reset()
                               setError("")
                           })

@@ -82,6 +82,10 @@ import WarrantyProduct from "../Page/HelpCenter/WarrantyProduct/WarrantyProduct"
 import WrongProduct from "../Page/HelpCenter/WrongProduct/WrongProduct";
 import ReturnRefund from "../Page/HelpCenter/ReturnRefund/ReturnRefund";
 import FindReturnPolicy from "../Page/HelpCenter/FindReturnPolicy/FindReturnPolicy";
+import AccountOverview from "../Page/SellerAccount/AccountOverview";
+import SellerRouter from "./SellerRouter";
+import Dashboard from "../Page/SellerAccount/SellerDashboard/Dashboard";
+import DashboardHome from "../Page/SellerAccount/SellerDashboard/DashboardHome";
 
 
 
@@ -153,7 +157,7 @@ export const router = createBrowserRouter([
             element: <DeliveryLayout></DeliveryLayout>,
             children: [
               {
-                path:"track-order",
+                path: "track-order",
                 element: <TrackOrder></TrackOrder>
               },
               {
@@ -161,7 +165,7 @@ export const router = createBrowserRouter([
                 element: <RescheduleDelivery></RescheduleDelivery>
               },
               {
-                path:"split-requests",
+                path: "split-requests",
                 element: <SplitDelivery></SplitDelivery>
               },
               {
@@ -295,18 +299,12 @@ export const router = createBrowserRouter([
         path: "/account/login",
         element: <LoginPage />
       },
-      {
-        path: "/wishlist",
-        element: <PrivateRoute><Wishlist /></PrivateRoute>
-      },
-      {
-        path: "/cart",
-        element: <PrivateRoute><Cart /></PrivateRoute>
-      },
+
       {
         path: "/account",
         element: <PrivateRoute><Account /></PrivateRoute>,
         children: [
+          
           {
             path: "orders",
             element: <PrivateRoute><Orders /></PrivateRoute>
@@ -350,8 +348,16 @@ export const router = createBrowserRouter([
           {
             path: "refundshistory",
             element: <PrivateRoute><RefundsHistory /></PrivateRoute>
-          }
+          },
         ]
+      },
+      {
+        path: "wishlist",
+        element: <PrivateRoute><Wishlist /></PrivateRoute>
+      },
+      {
+        path: "/cart",
+        element: <PrivateRoute><Cart /></PrivateRoute>
       },
       {
         path: "/takealot-pickup-points",
@@ -428,6 +434,20 @@ export const router = createBrowserRouter([
             path: "delivery-team",
             element: <DeliveryTeam />
           }
+        ]
+      },
+      {
+        path:"/seller-account-overview",
+        element:<SellerRouter><AccountOverview /></SellerRouter>
+      },
+      {
+        path:"/seller-dashboard",
+        element:<SellerRouter><Dashboard /></SellerRouter>,
+        children:[
+          {
+            path:"dashboard-home",
+            element:<SellerRouter><DashboardHome/></SellerRouter>
+          },
         ]
       }
     ]
