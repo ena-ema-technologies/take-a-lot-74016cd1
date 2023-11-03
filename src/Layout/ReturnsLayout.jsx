@@ -11,14 +11,13 @@ const ReturnsLayout = () => {
     const rescheduleLocation = location.pathname.includes("can-i-return-my-product");
     const rescheduledCollection = location.pathname.includes("reschedule-collection");
     const trackReturnStatus = location.pathname.includes("track-my-return-status")
-   
-    const deliveryOptions = location.pathname.includes("about-delivery-options-time-frames")
-    const nextBusiness = location.pathname.includes("next-business-delivery");
-    const deliveryFees = location.pathname.includes("delivery-fees");
-    const internationalShipping = location.pathname.includes("international-shipping-delivery");
-    const canIChange = location.pathname.includes("can-i-change-my-order-from-delivery-to-collect");
-    const itemMissing = location.pathname.includes("item-missing-or-incorrect-in-order-received");
-
+    const returnProduct = location.pathname.includes("return-my-product")
+    const returnMethod = location.pathname.includes("return-method-fees");
+    const returnCancel = location.pathname.includes("cancel-my-return");
+    const replaceProduct = location.pathname.includes("exchange-or-replace-product");
+    const changeReturnAddress = location.pathname.includes("can-i-change-my-collection-address-once-i-have-logged-a-return");
+    const returnAccessories = location.pathname.includes("returning-a-product-without");
+    
 
     return (
         <section className='lg:px-4'>
@@ -31,9 +30,9 @@ const ReturnsLayout = () => {
                         <li><Link to="/help-centre/delivery">Delivery</Link></li>
                         <li className='font-semibold'>
                             {
-                                rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"
+                                rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : returnProduct ? "Return my product" : returnMethod ? "Return method & fees" : returnCancel ? "Return my cancel" : replaceProduct ? "Can I exchange or replace my product" : changeReturnAddress ? "Can I change my collection address once I have logged a return ?" : returnAccessories ? "Returning a product without accessories or its partner product" : "Track your Order"
 
-                            }</li>
+                            } </li>
                     </ul>
                 </div>
 
@@ -41,7 +40,7 @@ const ReturnsLayout = () => {
 
                     <p className='text-xl lg:text-3xl font-bold text-white'>
                         {
-                            rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"
+                            rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : returnProduct ? "Return my product" : returnMethod ? "Return method & fees" : returnCancel ? "Return my cancel"  : replaceProduct ? "Can I exchange or replace my product" : changeReturnAddress ? "Can I change my collection address once I have logged a return ?" : returnAccessories ? "Returning a product without accessories or its partner product" : "Track your Order"
 
                         } </p>
 
@@ -77,22 +76,22 @@ const ReturnsLayout = () => {
                             <NavLink to="/help-centre/returnDetails/track-my-return-status" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Track my return status </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/about-delivery-options-time-frames" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How doI return my product ?
+                            <NavLink to="/help-centre/returnDetails/return-my-product" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return my product ?
                             </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/next-business-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about return method & fees </NavLink>
+                            <NavLink to="/help-centre/returnDetails/return-method-fees" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about return method & fees </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/delivery-fees" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  Cancel my return  </NavLink>
+                            <NavLink to="/help-centre/returnDetails/cancel-my-return" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  Cancel my return  </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/can-i-change-my-order-from-delivery-to-collect" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I exchange or replace a product ? </NavLink>
+                            <NavLink to="/help-centre/returnDetails/exchange-or-replace-product" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I exchange or replace a product ? </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/split-requests" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I change my collection address once I have logged a return? </NavLink>
+                            <NavLink to="/help-centre/returnDetails/can-i-change-my-collection-address-once-i-have-logged-a-return" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I change my collection address once I have logged a return? </NavLink>
 
-                            <NavLink to="/help-centre/deliveryDetails/item-missing-or-incorrect-in-order-received" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Returning a product without accessories or its partner product </NavLink>
+                            <NavLink to="/help-centre/returnDetails/returning-a-product-without-accessories-or-its-partner-product" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Returning a product without accessories or its partner product </NavLink>
 
                             <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I return a manufacturer warranty product?
                             </NavLink>

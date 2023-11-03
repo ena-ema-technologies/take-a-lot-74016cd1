@@ -72,6 +72,12 @@ import ReturnsLayout from "../Layout/ReturnsLayout";
 import ReturnProducts from "../Page/HelpCenter/ReturnProducts/ReturnProducts";
 import RescheduleCollection from "../Page/HelpCenter/RescheduleCollection/RescheduleCollection";
 import TrackReturnStatus from "../Page/HelpCenter/TrackReturnStatus/TrackReturnStatus";
+import ReturnProduct from "../Page/ReturnProduct/ReturnProduct";
+import ReturnMethodFees from "../Page/HelpCenter/ReturnMethodFees/ReturnMethodFees";
+import ReturnCancel from "../Page/HelpCenter/ReturnCancel/ReturnCancel";
+import ReplaceProduct from "../Page/HelpCenter/ReplaceProduct/ReplaceProduct";
+import ChangeReturnAddress from "../Page/HelpCenter/ChangeReturnAddress/ChangeReturnAddress";
+import ReturningProductAccessories from "../Page/HelpCenter/ReturningProductAccessories/ReturningProductAccessories";
 
 
 
@@ -204,6 +210,30 @@ export const router = createBrowserRouter([
               {
                 path: "track-my-return-status",
                 element: <TrackReturnStatus></TrackReturnStatus>
+              },
+              {
+                path: "return-my-product",
+                element: <ReturnProduct></ReturnProduct>
+              },
+              {
+                path: "return-method-fees",
+                element: <ReturnMethodFees></ReturnMethodFees>
+              },
+              {
+                path: "cancel-my-return",
+                element: <ReturnCancel></ReturnCancel>
+              },
+              {
+                path: "can-i-change-my-collection-address-once-i-have-logged-a-return",
+                element: <ChangeReturnAddress></ChangeReturnAddress>
+              },
+              {
+                path: "exchange-or-replace-product",
+                element: <ReplaceProduct></ReplaceProduct>
+              },
+              {
+                path: "returning-a-product-without-accessories-or-its-partner-product",
+                element: <ReturningProductAccessories></ReturningProductAccessories>
               },
             ]
           },
