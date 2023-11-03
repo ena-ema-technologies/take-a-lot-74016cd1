@@ -71,6 +71,7 @@ import ItemMissing from "../Page/HelpCenter/ItemMissing/ItemMissing";
 import ReturnsLayout from "../Layout/ReturnsLayout";
 import ReturnProducts from "../Page/HelpCenter/ReturnProducts/ReturnProducts";
 import RescheduleCollection from "../Page/HelpCenter/RescheduleCollection/RescheduleCollection";
+import TrackReturnStatus from "../Page/HelpCenter/TrackReturnStatus/TrackReturnStatus";
 
 
 
@@ -199,6 +200,10 @@ export const router = createBrowserRouter([
               {
                 path: "reschedule-collection",
                 element: <RescheduleCollection></RescheduleCollection>
+              },
+              {
+                path: "track-my-return-status",
+                element: <TrackReturnStatus></TrackReturnStatus>
               },
             ]
           },
