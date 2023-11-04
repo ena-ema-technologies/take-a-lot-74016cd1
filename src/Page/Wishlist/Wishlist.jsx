@@ -18,10 +18,20 @@ import 'swiper/css/navigation';
 import { Pagination, Navigation } from 'swiper/modules';
 import { IoIosArrowDown } from 'react-icons/io';
 import useWishlist from '../../hooks/useWishlist';
+import useCart from '../../hooks/useCart';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
+import useProfile from '../../hooks/useProfile';
 
 const Wishlist = () => {
     const [allProducts , setAllProducts] = useState([]);
+    const {user} = useAuth();
+    const [carts, update] = useCart();
+    const [axiosSecure] = useAxiosSecure();
     const [lists, refetch]=useWishlist();
+    const [userInfo] = useProfile();
+    
     console.log(lists)
 
     useEffect(()=>{
@@ -29,6 +39,52 @@ const Wishlist = () => {
         .then(res=>res.json())
         .then(data=>setAllProducts(data))
     },[]);
+
+
+    const handleCart = async(id) =>{
+      if(!user){
+        Swal.fire({
+          title: 'Error!',
+          text: 'You have to login first!',
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+      }else{
+        const selectedProducts = allProducts.find(prod => prod?._id === id);
+        const data = {
+          totalPrice: selectedProducts?.Product_Price,
+          quantity: 1,
+          barcode : selectedProducts?.Barcode,
+          brandName: selectedProducts?.Brand_Name,
+          productName: selectedProducts?.Product_Name,
+          basedPrice: selectedProducts?.Product_Price,
+          productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
+          productId: selectedProducts?._id,
+          buyerInformation : {
+            firstName: userInfo?.firstName,
+            lastName: userInfo?.lastName,
+            mobileNumber: userInfo?.mobile_Number ? userInfo?.mobile_Number : "",
+            phone: userInfo?.phone ? userInfo?.phone : "",
+            postalCode: userInfo?.postal_Code ? userInfo?.postal_Code : "",
+            countryCode: userInfo?.countryCode,
+            email: userInfo?.email,
+            province: userInfo?.province ? userInfo?.province : "",
+            streetAddress: userInfo?.street_Address ? userInfo?.street_Address : "",
+          }
+  
+        }
+        const response = await axiosSecure.post("add-product-cart", data);
+        if(response.data.insertedId){
+          Swal.fire({
+            title: 'Success!',
+            text: 'Product add to cart!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+          update();
+        }
+      }
+     }
 
     return (
         <section className='max-w-7xl mx-auto lg:px-5'>
@@ -107,7 +163,7 @@ const Wishlist = () => {
     <div className='md:mr-8 mt-5'>
       <h1 className='text-2xl text-end font-bold'>R {list.totalPrice
 }</h1>
-      <button  className=" bg-[#1C8644]  text-white flex px-7 mb-2 mt-5 py-2 gap-1 font-medium w-full"> <HiOutlinePlusSmall className='w-5 h-5'/><HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+      <button onClick={()=>handleCart(list.productId)}  className=" bg-[#1C8644]  text-white flex px-7 mb-2 mt-5 py-2 gap-1 font-medium w-full"> <HiOutlinePlusSmall className='w-5 h-5'/><HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
       <div className='flex items-center gap-2'>
       <select name="" id="" className='border bg-[#EAEAEA] px-4 py-2'>
         <option value="">Move</option>
