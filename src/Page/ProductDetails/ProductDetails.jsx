@@ -86,6 +86,7 @@ else{
         })
       }else{
         const data = {
+          productImage: selectedProducts?.Image_URL,
           totalPrice: priceAfterDiscount,
           quantity: quantity,
           barcode : selectedProducts?.Barcode,
@@ -130,6 +131,7 @@ else{
         })
       }else{
         const data = {
+          productImage: selectedProducts?.Image_URL,
           totalPrice: priceAfterDiscount,
           quantity: quantity,
           barcode : selectedProducts?.Barcode,
@@ -1020,8 +1022,8 @@ else{
               price*quantity
             } <span className='text-[11px] text-red-600'>Discount-{discount?discount:"..."} %</span></p>
             <div className='flex flex-col items-center justify-center gap-2'>
-              <div className='flex'>
-                <select onClick={handleQuantity} id='quantity' name='quantity' className='border-green-600 border-t border-b border-s outline-none rounded-s px-2'>
+              <div className='flex border text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500'>
+                <select onClick={handleQuantity} id='quantity' name='quantity' className='text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 outline-none px-2'>
                   {Array.from(Array(30), (e, i) => {
                     return <option key={i} value={i+1}>{i+1}</option>
                   })}
@@ -1030,7 +1032,7 @@ else{
                   <option value='3'>3</option>
                   <option value='4'>4</option> */}
                 </select>
-                <button onClick={handleCart} className="inline-flex items-center justify-center text-green-700 border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 border-t border-b border-e px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5'/> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+                <button onClick={handleCart} className="inline-flex items-center justify-center px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5'/> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
               </div>
 
               <button onClick={handleWishList} className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>

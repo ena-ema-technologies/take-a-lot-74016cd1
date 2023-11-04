@@ -11,8 +11,11 @@ import Login from "../../Login/Login";
 import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
+import useSeller from "../../../hooks/useSeller";
 
 const NavigationBar = () => {
+    const [sellerInfo] =useSeller();
+console.log(sellerInfo)
     const [carts, refetch] = useCart();
     const navigate = useNavigate();
     const {logOut,user} = useAuth()
@@ -2165,6 +2168,12 @@ const NavigationBar = () => {
                                 >
 
                                     <Link to="/my-account" className="smallLink">My Account</Link>
+                                    {
+                                        sellerInfo?.status === "approved" && <Link to="/seller-account-overview" className="smallLink">Account Overview</Link>
+                                    }
+                                    {
+                                        sellerInfo?.status === "approved" && <Link to="/seller-dashboard/dashboard-home" className="smallLink">Seller Dashboard</Link>
+                                    }
                                     <Link to="/account/orders" className="smallLink">Track Order</Link>
                                     <Link to="/account/returns" className="smallLink">Returns</Link>
                                     <Link to="/account/credits" className="smallLink">Credits & Refunds</Link>
