@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaArrowLeft } from 'react-icons/fa';
-import { HiArrowLeft, HiOutlinePlusSmall, HiStar, HiXMark } from 'react-icons/hi2';
+import { FaArrowLeft, FaTrash } from 'react-icons/fa';
+import { HiArrowLeft, HiOutlinePlusSmall, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
 import { Link, NavLink } from 'react-router-dom';
 import { IoShareSocialOutline } from "react-icons/io5";
 import { useState } from 'react';
@@ -17,9 +17,12 @@ import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 import { IoIosArrowDown } from 'react-icons/io';
+import useWishlist from '../../hooks/useWishlist';
 
 const Wishlist = () => {
     const [allProducts , setAllProducts] = useState([]);
+    const [lists, refetch]=useWishlist();
+    console.log(lists)
 
     useEffect(()=>{
         fetch(`https://take-a-lot-server-two.vercel.app/all-products`)
@@ -74,17 +77,50 @@ const Wishlist = () => {
 </div>
 
 
-<div className='mt-4 rounded shadow bg-white py-2 h-80 flex items-center flex-col justify-center gap-3'>
-<div className='shadow px-2 py-2 rounded-full'>
-<img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/wishlist/wishlist-empty.svg-38f93f7194b84a6a1f59.svg" alt="Icon" className='rounded-full'/>
-</div>
+{
+  !lists?<div className='mt-4 rounded shadow bg-white py-2 h-80 flex items-center flex-col justify-center gap-3'>
 
-<h1 className='text-[#000] text-lg font-semibold'>This list is empty!</h1>
-<p className='text-base font-light text-[#4d4d4f]'>Go on, start planning what gifts you'd like!</p>
+  <div className='shadow px-2 py-2 rounded-full'>
+  <img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/wishlist/wishlist-empty.svg-38f93f7194b84a6a1f59.svg" alt="Icon" className='rounded-full'/>
+  </div>
+  
+  <h1 className='text-[#000] text-lg font-semibold'>This list is empty!</h1>
+  <p className='text-base font-light text-[#4d4d4f]'>Go on, start planning what gifts you'd like!</p>
+  
+  <Link to="/all" className='py-2 px-5 border border-primary text-white font-semibold text-sm bg-primary rounded'>Continue Shopping</Link>
+  
+  
+  </div>:<>
+  {
+    lists.map(list=><div className='mt-4 rounded shadow bg-white py-2 md:h-60 h-auto flex md:flex-row flex-col items-center justify-between  gap-3'>
+    
+    <div className='flex'>
+    <div>
+    <img className='w-36' src="https://media.takealot.com/covers_images/9eb0de31070040a9942bbbde404a92b4/s-zoom.file" alt="" />
+    </div>
+    <div>
+      <h1 className='mt-5 ms-5 text-[#7C7C7D]'>{list?.productName}</h1>
+      <Link className='mt-5 ms-5 text-xs text-blue-700'>{list.brandName}</Link><br />
+      <button className='mt-5 ms-5 text-[#7C7C7D]'>In stock</button>
+    </div>
+    </div>
+    <div className='md:mr-8 mt-5'>
+      <h1 className='text-2xl text-end font-bold'>R {list.totalPrice
+}</h1>
+      <button  className=" bg-[#1C8644]  text-white flex px-7 mb-2 mt-5 py-2 gap-1 font-medium w-full"> <HiOutlinePlusSmall className='w-5 h-5'/><HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+      <div className='flex items-center gap-2'>
+      <select name="" id="" className='border bg-[#EAEAEA] px-4 py-2'>
+        <option value="">Move</option>
+        <option value="">Create a list </option>
+      </select>
+      <button className='p-2 text-2xl bg-[#EAEAEA]'><FaTrash/></button>
+      </div>
+    </div>
+  </div>)
+  }
+  </>
+}
 
-<Link to="/all" className='py-2 px-5 border border-primary text-white font-semibold text-sm bg-primary rounded'>Continue Shopping</Link>
-
-</div>
 
 <div className='my-5'>
 <img src="https://tpc.googlesyndication.com/simgad/9334445511005059859?" alt="Banner" className='h-12 lg:h-20'/>

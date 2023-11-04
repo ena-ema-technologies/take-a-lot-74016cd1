@@ -58,7 +58,7 @@ const Cart = () => {
                <h1 className='text-xl font-bold text-right'>R {carts.totalPrice}</h1>
                <div className='flex justify-end items-center'>
                   <label htmlFor="1">Qty:</label>
-               <select disabled defaultValue={carts.quantity} name="quantity" id="" className='p-2 border-b-4 mt-2 '>
+               <select  defaultValue={carts.quantity} name="quantity" id="" className='p-2 border-b-4 mt-2 '>
                 <option value={carts.quantity}>{carts.quantity}</option>
                 {Array.from(Array(30), (e, i) => {
                     return <option key={i} value={i+1}>{i+1}</option>

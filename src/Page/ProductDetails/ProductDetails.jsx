@@ -1017,7 +1017,7 @@ else{
         <div className='w-full flex flex-col gap-4'>
           <div className='bg-white p-5 shadow'>
             <p className='pt-2 pb-4 text-2xl flex gap-5 items-center font-extrabold'>R {
-              quantity>1?priceAfterDiscount:price
+              price*quantity
             } <span className='text-[11px] text-red-600'>Discount-{discount?discount:"..."} %</span></p>
             <div className='flex flex-col items-center justify-center gap-2'>
               <div className='flex'>
@@ -1034,6 +1034,8 @@ else{
               </div>
 
               <button onClick={handleWishList} className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>
+
+              <button className='px-3 py-2 bg-[#64a638] text-white text-sm rounded shadow-transparent mt-4'>Your Acumination Discounts R {priceAfterDiscount}</button>
             </div>
           </div>
 
@@ -1043,7 +1045,10 @@ else{
             <div className='flex flex-col items-center gap-2 text-left'>
               <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'><img src="https://static.takealot.com/images/payment/ebucks-logo-@3x.svg" alt="Ebucks logo" /> <span>eB1,690</span></button>
               <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'><img src="https://static.takealot.com/images/payment/discovery-miles-logo.svg" alt="Discovery Miles Logo" /> <span>1,690</span></button>
+              
             </div>
+            <h3 className='text-sm mt-4 text-[#4d4d4f] font-bold'>Buy Now,Pay Later</h3>
+            <h3 className='text-sm text-[#4d4d4f] mt-4'>Pay 4 <span className=' font-bold'>interest-free</span> instalments of <span className=' font-bold'>R 137</span> using Playflex .<Link className='text-blue-600'>Learn More</Link></h3>
           </div>
 
           <p className='font-semibold text-[#4d4d4f]'>Other Offers</p>
