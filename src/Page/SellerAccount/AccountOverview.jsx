@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { FaBuilding, FaDownload, FaTasks } from 'react-icons/fa';
+import { FaBuilding, FaCheck, FaDownload, FaInfo, FaTasks } from 'react-icons/fa';
 import { HiMiniBell, HiMiniCog, HiMiniCog8Tooth, HiOutlineClipboardDocumentList } from 'react-icons/hi2';
 import { IoIosCard, IoIosSend, IoMdBusiness } from 'react-icons/io';
 import { IoPeopleCircleOutline, IoPersonCircleOutline } from 'react-icons/io5';
@@ -52,8 +52,27 @@ const AccountOverview = () => {
 <div className='w-full lg:w-[91%] mx-auto min-h-screen bg-white'>
 
 {
-    tabName === "overview" ? 
-    <div>Overview</div> : 
+    tabName === "overview" ?
+    // todo:need todo this part dynamic 
+    <div className='mx-5'>
+        <div className='flex gap-2 items-center'>
+        <img className='w-28' src="https://logos.textgiraffe.com/logos/logo-name/Muskan-designstyle-smoothie-m.png" alt="" />
+        <h2 className='text-[#575758] '>Muskan Retaile Outlet</h2>
+        </div>
+        <div className='w-[440px] bg-[#b6e1fb] p-2  rounded-lg flex gap-2 items-center'>
+            
+            <FaInfo className='text-white  bg-[#1d8ad2] rounded-full text-xl'/>
+            <p className='text-sm'>This Account Will Be Charged a Monthly Subscription Fee.</p>
+        </div>
+        <h1 className='text-blue-500 mt-4'>Registration Information</h1>
+        <h2 className='font-bold flex gap-7 items-center mt-2'>Saller Id: <span className='font-normal text-[#4d4d4f]'>634756347</span></h2>
+        <h2 className='font-bold flex gap-7 items-center mt-2'>Registered: <span className='font-normal text-[#4d4d4f]'>01 aug 2022</span></h2>
+        <h2 className='font-bold flex gap-7 items-center mt-2'>Status: <span className='font-bold text-xs flex items-center gap-1 px-2 bg-green-600 text-white rounded'><FaCheck className='bg-white rounded-full text-green-600 font-mono'/> Account Active</span></h2>
+        <div className='flex gap-2 items-center'>
+        <button className='p-2 bg-blue-600 text-white rounded text-base mt-7'>Change Logo</button>
+        <button className='p-2 bg-red-600 text-white rounded text-base mt-7'>Stop Selling On TakeALot</button>
+        </div>
+    </div> : 
     ""
 }
 
