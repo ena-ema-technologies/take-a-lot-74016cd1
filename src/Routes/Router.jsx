@@ -94,6 +94,11 @@ import RequestInvoice from "../Page/HelpCenter/OrderDetails/RequestInvoice/Reque
 import PlacingOrder from "../Page/HelpCenter/OrderDetails/PlacingOrder/PlacingOrder";
 import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
 import CheckReview from "../Page/CheckoutReview/CheckReview";
+import CollectionLayout from "../Layout/CollectionLayout";
+import AboutCollectionTimeFrames from "../Page/HelpCenter/CollectionDetails/AboutCollectionTimeFrames/AboutCollectionTimeFrames";
+import AboutCollectionFees from "../Page/HelpCenter/CollectionDetails/AboutCollectionFees/AboutCollectionFees";
+import TrackMyCollection from "../Page/HelpCenter/CollectionDetails/TrackMyCollection/TrackMyCollection";
+import ChangingDeliveryMethod from "../Page/HelpCenter/CollectionDetails/ChangingDeliveryMethod/ChangingDeliveryMethod";
 
 
 
@@ -215,7 +220,7 @@ export const router = createBrowserRouter([
           {
             path: "returnDetails",
             element: <ReturnsLayout></ReturnsLayout>,
-            children:[
+            children: [
               {
                 path: "can-i-return-my-product",
                 element: <ReturnProducts></ReturnProducts>
@@ -281,7 +286,7 @@ export const router = createBrowserRouter([
           {
             path: "orderCancelDetails",
             element: <OrderCancelLayout></OrderCancelLayout>,
-            children:[
+            children: [
               {
                 path: "how-do-i-cancel-an-order",
                 element: <CancelOrder></CancelOrder>
@@ -307,6 +312,28 @@ export const router = createBrowserRouter([
           {
             path: "collection",
             element: <CollectionHelp />
+          },
+          {
+            path: "collectionDetails",
+            element: <CollectionLayout></CollectionLayout>,
+            children: [
+              {
+                path: "about-collection-options-time-frames",
+                element: <AboutCollectionTimeFrames></AboutCollectionTimeFrames>
+              },
+              {
+                path: "about-collection-fees",
+                element: <AboutCollectionFees></AboutCollectionFees>
+              },
+              {
+                path: "change-delivery-method",
+                element: <ChangingDeliveryMethod></ChangingDeliveryMethod>
+              },
+              {
+                path: "track-my-collection-order",
+                element: <TrackMyCollection></TrackMyCollection>
+              },
+            ]
           },
           {
             path: "refunds",
@@ -339,7 +366,7 @@ export const router = createBrowserRouter([
         path: "/account",
         element: <PrivateRoute><Account /></PrivateRoute>,
         children: [
-          
+
           {
             path: "orders",
             element: <PrivateRoute><Orders /></PrivateRoute>
@@ -472,29 +499,29 @@ export const router = createBrowserRouter([
         ]
       },
       {
-        path:"/seller-account-overview",
-        element:<SellerRouter><AccountOverview /></SellerRouter>
+        path: "/seller-account-overview",
+        element: <SellerRouter><AccountOverview /></SellerRouter>
       },
       {
-        path:"/seller-dashboard",
-        element:<SellerRouter><Dashboard /></SellerRouter>,
-        children:[
+        path: "/seller-dashboard",
+        element: <SellerRouter><Dashboard /></SellerRouter>,
+        children: [
           {
-            path:"dashboard-home",
-            element:<SellerRouter><DashboardHome/></SellerRouter>
+            path: "dashboard-home",
+            element: <SellerRouter><DashboardHome /></SellerRouter>
           },
         ]
       }
     ]
   },
   {
-    path:"/buy",
-    errorElement:<ErrorPage />,
-    element:<PrivateRoute><CheckoutOutlet /></PrivateRoute>,
-    children:[
+    path: "/buy",
+    errorElement: <ErrorPage />,
+    element: <PrivateRoute><CheckoutOutlet /></PrivateRoute>,
+    children: [
       {
-        path:"review",
-        element:<PrivateRoute><CheckReview /></PrivateRoute>
+        path: "review",
+        element: <PrivateRoute><CheckReview /></PrivateRoute>
       }
     ]
   }
