@@ -78,7 +78,7 @@ const Newsletter = () => {
       refetch();
     }
 
-    console.log(letterData);
+    // console.log(letterData);
 }
     return (
 <section>
