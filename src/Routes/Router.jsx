@@ -92,6 +92,9 @@ import ChangesOrder from "../Page/HelpCenter/OrderDetails/ChangesOrder/ChangesOr
 import WhyCancelOrder from "../Page/HelpCenter/OrderDetails/WhyCancelOrder/WhyCancelOrder";
 import RequestInvoice from "../Page/HelpCenter/OrderDetails/RequestInvoice/RequestInvoice";
 import PlacingOrder from "../Page/HelpCenter/OrderDetails/PlacingOrder/PlacingOrder";
+import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
+import CheckReview from "../Page/CheckoutReview/CheckReview";
+
 
 
 
@@ -484,4 +487,15 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path:"/buy",
+    errorElement:<ErrorPage />,
+    element:<PrivateRoute><CheckoutOutlet /></PrivateRoute>,
+    children:[
+      {
+        path:"review",
+        element:<PrivateRoute><CheckReview /></PrivateRoute>
+      }
+    ]
+  }
 ]);
