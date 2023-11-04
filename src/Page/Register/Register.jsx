@@ -67,7 +67,7 @@ const display_url = "https://i.ibb.co/jwkFMLB/User-Avatar-Profile-PNG.png"
                   password: data.password,
                   agreeWithNewslettersReceive : data.agreeWithNewslettersReceive ? "agree" : "disagree"
               }
-                  const res = await axios.post("http://localhost:5000/users", newUser)
+                  const res = await axios.post("https://take-a-lot-server-two.vercel.app/users", newUser)
                   if (res.data.insertedId) {
                       userVerify()
                           .then(() => {
