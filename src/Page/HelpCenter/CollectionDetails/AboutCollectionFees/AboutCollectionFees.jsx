@@ -1,4 +1,5 @@
 import React from 'react';
+import SubContact from '../../../../components/SubContact/SubContact';
 
 const AboutCollectionFees = () => {
     return (

@@ -10,6 +10,7 @@ const WhyCollectionNotAvailable = () => {
 
                 </p>
             </div>
+
             {/* Contact Part */}
             <SubContact></SubContact>
         </section>

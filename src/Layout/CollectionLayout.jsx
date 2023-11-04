@@ -1,14 +1,16 @@
 import React from 'react';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const CollectionLayout = () => {
 
     const location = useLocation();
-    const rescheduleLocation = location.pathname.includes("/reschedule-delivery");
-    const splitReqLocation = location.pathname.includes("split-requests");
-    const changeAddress = location.pathname.includes("change-delivery-address")
-    const deliveryOptions = location.pathname.includes("about-delivery-options-time-frames")
-    const nextBusiness = location.pathname.includes("next-business-delivery");
-    const deliveryFees = location.pathname.includes("delivery-fees");
+    const AboutCollectionTime = location.pathname.includes("about-collection-options-time-frames");
+    const aboutCollectionFees = location.pathname.includes("about-collection-fees");
+    const changeDeliveryMethod = location.pathname.includes("change-delivery-method")
+    const collectionAvailable = location.pathname.includes("why-collection-not-available")
+    const trackCollection = location.pathname.includes("track-my-collection-order");
+    const collectingOrder = location.pathname.includes("collecting-order");
+
     const internationalShipping = location.pathname.includes("international-shipping-delivery");
     const canIChange = location.pathname.includes("can-i-change-my-order-from-delivery-to-collect");
     const itemMissing = location.pathname.includes("item-missing-or-incorrect-in-order-received");
@@ -24,13 +26,20 @@ const CollectionLayout = () => {
                     <ul>
                         <li><Link to="/help-centre">Help Centre</Link></li>
                         <li><Link to="/help-centre/collection"> Collection </Link></li>
-                        <li className='font-semibold'> {rescheduleLocation ? "Reschedule Location" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"}</li>
+                        <li className='font-semibold'>
+                            {
+                                AboutCollectionTime ? "About collection options & time frames" : aboutCollectionFees ? "About collection fees" : changeDeliveryMethod ? "Changing my delivery method or selected Takealot pickup point" : collectionAvailable ? "Why is collection not available for my order ?" : trackCollection ? "Track my collection order" : collectingOrder ? "Collecting your order" : ""
+
+                            }</li>
                     </ul>
                 </div>
 
                 <div className='text-white absolute top-40 left-10'>
 
-                    <p className='text-xl lg:text-3xl font-bold text-white'>{rescheduleLocation ? "Reschedule your delivery" : splitReqLocation ? "Split delivery requests" : changeAddress ? "Change your address" : deliveryOptions ? "Delivery options & time frames" : nextBusiness ? "Next business delivery" : deliveryFees ? "Delivery fees" : internationalShipping ? "International shipping" : canIChange ? "Can I change my order from delivery to collect?" : itemMissing ? "Item missing or incorrect in order received" : "Track your Order"}</p>
+                    <p className='text-xl lg:text-3xl font-bold text-white'>{
+                        AboutCollectionTime ? "About collection options & time frames" : aboutCollectionFees ? "About collection fees" : changeDeliveryMethod ? "Changing my delivery method or selected Takealot pickup point" : collectionAvailable ? "Why is collection not available for my order ?" : trackCollection ? "Track my collection order" : collectingOrder ? "Collecting your order" : ""
+
+                    }</p>
 
                 </div>
             </div>
@@ -55,33 +64,23 @@ const CollectionLayout = () => {
                         <div className='border-b border-[#dadada]'></div>
 
                         <div className='my-3 flex flex-col gap-2'>
-                            <NavLink to="/help-centre/deliveryDetails/track-order" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary")}> Track your order </NavLink>
+                            <NavLink to="/help-centre/collectionDetails/about-collection-options-time-frames" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary")}> About collection options & time frames </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/reschedule-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Reschedule your delivery </NavLink>
+                            <NavLink to="/help-centre/collectionDetails/about-collection-fees" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> About collection fees </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/change-delivery-address" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Change your delivery Address </NavLink>
+                            <NavLink to="/help-centre/collectionDetails/change-delivery-method" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Changing my delivery method or selected Takealot pickup point </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/about-delivery-options-time-frames" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> About delivery options & time frames
+                            <NavLink to="/help-centre/collectionDetails/why-collection-not-available" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Why is collection not available for my order
                             </NavLink>
 
 
-                            <NavLink to="/help-centre/deliveryDetails/next-business-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Next business day delivery </NavLink>
+                            <NavLink to="/help-centre/collectionDetails/track-my-collection-order" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Track my collection order </NavLink>
 
+                            <NavLink to="/help-centre/collectionDetails/collecting-order" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Collecting your order </NavLink>
 
-                            <NavLink to="/help-centre/deliveryDetails/delivery-fees" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  About delivery fees  </NavLink>
-
-
-                            <NavLink to="/help-centre/deliveryDetails/can-i-change-my-order-from-delivery-to-collect" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I change my order from my order to delivery ? </NavLink>
-
-
-                            <NavLink to="/help-centre/deliveryDetails/split-requests" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Split delivery request </NavLink>
-
-                            <NavLink to="/help-centre/deliveryDetails/item-missing-or-incorrect-in-order-received" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Item missing or incorrect order missing </NavLink>
-
-                            <NavLink to="/help-centre/deliveryDetails/international-shipping-delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> International shipping & delivery </NavLink>
                         </div>
                     </div>
 

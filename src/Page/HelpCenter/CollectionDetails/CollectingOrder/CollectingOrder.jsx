@@ -1,5 +1,6 @@
 import React from 'react';
 import SubContact from '../../../../components/SubContact/SubContact';
+import { Link } from 'react-router-dom';
 
 const CollectingOrder = () => {
     return (

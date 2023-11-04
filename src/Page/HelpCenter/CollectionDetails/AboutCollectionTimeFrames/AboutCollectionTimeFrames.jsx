@@ -1,4 +1,6 @@
 import React from 'react';
+import SubContact from '../../../../components/SubContact/SubContact';
+import Accrodio from '../../../../components/Accordion/Accrodio';
 
 const AboutCollectionTimeFrames = () => {
 

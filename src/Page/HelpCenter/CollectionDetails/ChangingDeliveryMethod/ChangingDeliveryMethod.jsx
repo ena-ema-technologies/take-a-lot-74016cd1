@@ -29,6 +29,8 @@ const ChangingDeliveryMethod = () => {
             <SubContact></SubContact>
 
             {/* accordion part */}
+            <h1 className='my-10 font-bold text-2xl'> Related Topics </h1>
+            
             {
                 accordion.map((acc, index) => <Accrodio
                     key={index}

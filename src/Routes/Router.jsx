@@ -99,6 +99,7 @@ import AboutCollectionTimeFrames from "../Page/HelpCenter/CollectionDetails/Abou
 import AboutCollectionFees from "../Page/HelpCenter/CollectionDetails/AboutCollectionFees/AboutCollectionFees";
 import TrackMyCollection from "../Page/HelpCenter/CollectionDetails/TrackMyCollection/TrackMyCollection";
 import ChangingDeliveryMethod from "../Page/HelpCenter/CollectionDetails/ChangingDeliveryMethod/ChangingDeliveryMethod";
+import CollectingOrder from "../Page/HelpCenter/CollectionDetails/CollectingOrder/CollectingOrder";
 
 
 
@@ -332,6 +333,14 @@ export const router = createBrowserRouter([
               {
                 path: "track-my-collection-order",
                 element: <TrackMyCollection></TrackMyCollection>
+              },
+              {
+                path: "collecting-order",
+                element: <CollectingOrder></CollectingOrder>
+              },
+              {
+                path: "why-collection-not-available",
+                element: <CollectingOrder></CollectingOrder>
               },
             ]
           },
