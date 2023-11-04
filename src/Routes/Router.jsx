@@ -86,8 +86,15 @@ import AccountOverview from "../Page/SellerAccount/AccountOverview";
 import SellerRouter from "./SellerRouter";
 import Dashboard from "../Page/SellerAccount/SellerDashboard/Dashboard";
 import DashboardHome from "../Page/SellerAccount/SellerDashboard/DashboardHome";
+import OrderCancelLayout from "../Layout/OrderCancelLayout";
+import CancelOrder from "../Page/HelpCenter/OrderDetails/CancelOrder/CancelOrder";
+import ChangesOrder from "../Page/HelpCenter/OrderDetails/ChangesOrder/ChangesOrder";
+import WhyCancelOrder from "../Page/HelpCenter/OrderDetails/WhyCancelOrder/WhyCancelOrder";
+import RequestInvoice from "../Page/HelpCenter/OrderDetails/RequestInvoice/RequestInvoice";
+import PlacingOrder from "../Page/HelpCenter/OrderDetails/PlacingOrder/PlacingOrder";
 import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
 import CheckReview from "../Page/CheckoutReview/CheckReview";
+
 
 
 
@@ -270,6 +277,32 @@ export const router = createBrowserRouter([
           {
             path: "orders-cancellations",
             element: <OrderCancellationHelp />
+          },
+          {
+            path: "orderCancelDetails",
+            element: <OrderCancelLayout></OrderCancelLayout>,
+            children:[
+              {
+                path: "how-do-i-cancel-an-order",
+                element: <CancelOrder></CancelOrder>
+              },
+              {
+                path: "can-i-make-changes-to-my-order-after-it-has-been-placed",
+                element: <ChangesOrder></ChangesOrder>
+              },
+              {
+                path: "why-have-you-cancelled-my-order",
+                element: <WhyCancelOrder></WhyCancelOrder>
+              },
+              {
+                path: "request-invoice",
+                element: <RequestInvoice></RequestInvoice>
+              },
+              {
+                path: "placing-order",
+                element: <PlacingOrder></PlacingOrder>
+              },
+            ]
           },
           {
             path: "collection",
