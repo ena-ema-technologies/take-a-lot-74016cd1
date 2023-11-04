@@ -117,3 +117,11 @@ body{
 .categorySubNav{
     @apply hover:bg-primary inline-flex items-center justify-between cursor-pointer hover:text-white font-normal text-[12px] py-1 px-2
 }
+
+.dash-active {
+  @apply w-full bg-white font-bold text-primary py-3 px-3 rounded-tl-lg rounded-bl-lg
+}
+
+.dash-default {
+  @apply font-semibold py-3 px-3 text-white
+}

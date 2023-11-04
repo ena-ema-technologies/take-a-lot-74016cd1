@@ -54,6 +54,7 @@ const ApplyPage = () => {
             sell_hand_crafted_items: data?.sell_hand_crafted_items ? "Yes" : "No",
             haveRegisteredAccount: data?.registeredAccountYes ? data?.registeredAccountYes : data?.registeredAccountNo ? data?.registeredAccountNo : data?.registeredAccountOther,
             comments: data?.comments,
+            date: new Date(),
             status: "Pending"
         }
         const response = await axiosSecure.post("/new-seller-request", newSellerData);
