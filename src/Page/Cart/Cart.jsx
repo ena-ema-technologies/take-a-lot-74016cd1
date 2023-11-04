@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
-import { FaTrash,FaHeart } from "react-icons/fa";
+import { FaTrash,FaHeart, FaLock, FaCreditCard, FaTruck } from "react-icons/fa";
 const Cart = () => {
     const [carts, refetch] = useCart();
     console.log(carts)
+
+    const totalPrice =carts.map(cart=>cart.totalPrice);
+    console.log(totalPrice)
+    const total=totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    console.log(total)
     return (
        <section className='lg:px-5'>
         
@@ -53,11 +58,12 @@ const Cart = () => {
                <h1 className='text-xl font-bold text-right'>R {carts.totalPrice}</h1>
                <div className='flex justify-end items-center'>
                   <label htmlFor="1">Qty:</label>
-               <select defaultValue={carts.quantity} name="quantity" id="" className='p-2 border-b-4 mt-2 '>
+               <select disabled defaultValue={carts.quantity} name="quantity" id="" className='p-2 border-b-4 mt-2 '>
                 <option value={carts.quantity}>{carts.quantity}</option>
-                <option value="1">2</option>
-                <option value="1">3</option>
-                <option value="1">4</option>
+                {Array.from(Array(30), (e, i) => {
+                    return <option key={i} value={i+1}>{i+1}</option>
+                  })}
+                
                </select>
                </div>
              
@@ -72,10 +78,30 @@ const Cart = () => {
         }
  </div>
          {/* cart summary */}
-        <div className='p-3'>
-
-        <h1 className='font-bold text-slate-500'>Cart Summary</h1>
+        <div className=''>
+        <div className='mx-4 bg-[#F1F7FB] shadow-lg  flex items-center gap-2'>
+            <div className=''>
+                <FaTruck className='text-7xl py-2 rounded-r-full pr-5 bg-[#7FC7F5] text-white'/>
+            </div>
+            <h2 className='text-xs text-[#67686A] '>You've earned <span className='font-semibold'>FREE DELIVERY</span> or <span className='font-semibold'>FREE COLLECTION</span>.</h2>
         </div>
+
+
+       <div className=' bg-white mx-4 rounded h-40 shadow-lg  p-4 mt-5'>
+       <h1 className='font-bold text-slate-500'>Cart Summary</h1>
+        <div className='flex justify-between items-center mt-5'>
+        <h1 className='font-semibold'>TOTAL: <span className='text-sm text-[#68686A]'>({carts.length} items)</span></h1>
+        <h1 className='text-2xl font-bold text-green-700'>R {total}</h1>
+        </div>
+        <button className='w-full px-3 py-2 bg-green-700 hover:bg-green-900 text-white mt-2 text-sm'>Proceed to Checkout</button>
+       </div>
+       <div className=' bg-white mx-4 rounded h-28 shadow-lg mt-5 p-4'>
+            <h1 className='flex items-center gap-2 text-sm mt-2 text-[#707072]'><FaLock/> Secure checkout</h1>
+            <h1 className='flex items-center gap-2 text-sm mt-1 text-[#707072]'><FaCreditCard/> Many ways to pay</h1>
+            <h1 className='flex items-center gap-2 text-sm mt-1 text-[#707072]'><FaTruck/> Fast, reliable delivery</h1>
+        </div>
+        </div>
+       
 
     </div>
 
