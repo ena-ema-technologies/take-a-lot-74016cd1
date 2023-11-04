@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
-const CheckoutReview = () => {
+const CheckoutOutlet = () => {
     return (
         <section className='w-full flex flex-col items-center justify-center'>
 <nav className='bg-white py-6 px-2 lg:px-14 w-full'>
@@ -23,4 +23,4 @@ const CheckoutReview = () => {
     );
 };
 
-export default CheckoutReview;
+export default CheckoutOutlet;

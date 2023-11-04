@@ -86,7 +86,8 @@ import AccountOverview from "../Page/SellerAccount/AccountOverview";
 import SellerRouter from "./SellerRouter";
 import Dashboard from "../Page/SellerAccount/SellerDashboard/Dashboard";
 import DashboardHome from "../Page/SellerAccount/SellerDashboard/DashboardHome";
-import CheckoutReview from "../Page/CheckoutReview/CheckoutReview";
+import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
+import CheckReview from "../Page/CheckoutReview/CheckReview";
 
 
 
@@ -456,6 +457,12 @@ export const router = createBrowserRouter([
   {
     path:"/buy",
     errorElement:<ErrorPage />,
-    element:<CheckoutReview />
+    element:<PrivateRoute><CheckoutOutlet /></PrivateRoute>,
+    children:[
+      {
+        path:"review",
+        element:<PrivateRoute><CheckReview /></PrivateRoute>
+      }
+    ]
   }
 ]);
