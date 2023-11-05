@@ -24,10 +24,53 @@ const DeliveryAddress = () => {
        <div className='md:flex md:justify-between mt-5'>
 
 
-      <div className='w-full flex flex-col gap-4 md:mx-10 '>
+      <div className='w-full bg-white md:mx-10 p-5  '>
      {/* todo:Make a form */}
-      
-      
+      <h1 className='font-bold'>Add New Address</h1>
+      <div className='flex w-full gap-2 mt-8'>
+        <div className='flex w-full gap-2 p-4 rounded bg-[#F4F4F4]'>
+            <input type="radio" />
+            <p>Residential</p>
+        </div>
+        <div className='flex w-full gap-2 p-4 rounded bg-[#F4F4F4]'>
+            <input type="radio" />
+            <p>Residential</p>
+        </div>
+      </div>
+      <div>
+        <input className='w-full mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' type="text" placeholder='Recipient Name' />
+      </div>
+      <div>
+        <input className='w-full mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' type="text" placeholder='Recipient Mobile Number' />
+      </div>
+      <div>
+        <input className='w-full mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' type="text" placeholder='Street Address' />
+      </div>
+      <div>
+        <input className='w-full mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' type="text" placeholder='Complex / Building (Optional)' />
+      </div>
+      <div>
+        <input className='w-full mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' type="text" placeholder='Suburb' />
+      </div>
+      <div>
+        <input className='w-full mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' type="text" placeholder='City / Town' />
+      </div>
+      <div>
+       <select className='w-[30%] mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' name="" id="">
+        <option value="">Province</option>
+        <option value="">Province</option>
+        <option value="">Province</option>
+        <option value="">Province</option>
+        <option value="">Province</option>
+       </select>
+      </div>
+      <div>
+        <input className=' mt-7 pt-3 px-2 border-b-2 hover:bg-[#F4F4F4]' type="number" placeholder='Postal code' />
+      </div>
+      <div className='flex justify-end gap-3'>
+        <button className='px-10 py-2 border-black border hover:bg-[#4D4D4F] hover:text-white'>Cancel</button>
+        <button className='px-10 py-2 bg-[#0967A2] text-white'>Save Address</button>
+      </div>
       </div>
 
         
