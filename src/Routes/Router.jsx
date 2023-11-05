@@ -129,6 +129,25 @@ import MasterPass from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/Maste
 import DiscoveryMiles from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/DiscoveryMiles/DiscoveryMiles";
 import eBucks from '../Page/HelpCenter/PaymentPromosGiftVoucherDetails/eBucks/eBucks';
 import PaymentPromosLayout from "../Layout/PaymentPromosLayout";
+import DataPrivacyLayout from "../Layout/DataPrivacyLayout";
+import RegisterAccount from "../Page/HelpCenter/DataPrivacyDetails/RegisterAccount/RegisterAccount";
+import ChangePassword from "../Page/HelpCenter/DataPrivacyDetails/ChangePassword/ChangePassword";
+import UpdateProfile from "../Page/HelpCenter/DataPrivacyDetails/UpdateProfile/UpdateProfile";
+import UnsubscribeEmail from "../Page/HelpCenter/DataPrivacyDetails/UnsubscribeEmail/UnsubscribeEmail";
+import PersonalInformation from "../Page/HelpCenter/DataPrivacyDetails/PersonalInformation/PersonalInformation";
+import DeleteAccount from "../Page/HelpCenter/DataPrivacyDetails/DeleteAccount/DeleteAccount";
+import TrackPerosnalInfo from "../Page/HelpCenter/DataPrivacyDetails/TrackPerosnalInfo/TrackPerosnalInfo";
+import POPIACompilence from "../Page/HelpCenter/DataPrivacyDetails/POPIACompilence/POPIACompilence";
+import VerifyIdentity from "../Page/HelpCenter/DataPrivacyDetails/VerifyIdentity/VerifyIdentity";
+import AboutPersonalInfo from "../Page/HelpCenter/DataPrivacyDetails/AboutPersonalInfo/AboutPersonalInfo";
+import DifferencePOPWithPAI from "../Page/HelpCenter/DataPrivacyDetails/DifferencePOPWithPAI/DifferencePOPWithPAI";
+import SecurityCompropise from "../Page/HelpCenter/DataPrivacyDetails/SecurityCompropise/SecurityCompropise";
+import AuthorisePerson from "../Page/HelpCenter/DataPrivacyDetails/AuthorisePerson/AuthorisePerson";
+import AccessFamilyMember from "../Page/HelpCenter/DataPrivacyDetails/AccessFamilyMember/AccessFamilyMember";
+import AboutCookies from "../Page/HelpCenter/DataPrivacyDetails/AboutCookies/AboutCookies";
+import AllowChildren from "../Page/HelpCenter/DataPrivacyDetails/AllowChildren/AllowChildren";
+import VerifyEmail from "../Page/HelpCenter/DataPrivacyDetails/VerifyEmail/VerifyEmail";
+import VerifyPhone from "../Page/HelpCenter/DataPrivacyDetails/VerifyPhone/VerifyPhone";
 
 
 
@@ -509,6 +528,84 @@ export const router = createBrowserRouter([
           {
             path: "data-privacy",
             element: <DataPrivacyHelp />
+          },
+          {
+            path: "data-privacy-details",
+            element: <DataPrivacyLayout></DataPrivacyLayout>,
+            children: [
+              {
+                path: "resetting-password",
+                element: <ChangePassword></ChangePassword>,
+              },
+              {
+                path: "unsubscribe-email-newsletters",
+                element: <UnsubscribeEmail></UnsubscribeEmail>,
+              },
+              {
+                path: "about-personal-information",
+                element: <AboutPersonalInfo></AboutPersonalInfo>,
+              },
+              {
+                path: "register-to-takealot",
+                element: <RegisterAccount></RegisterAccount>,
+              },
+              {
+                path: "profile-update-information",
+                element: <UpdateProfile></UpdateProfile>,
+              },
+              {
+                path: "managing-personal-information",
+                element: <PersonalInformation></PersonalInformation>,
+              },
+              {
+                path: "delete-account",
+                element: <DeleteAccount></DeleteAccount>,
+              },
+              {
+                path: "track-status-deletion-request",
+                element: <TrackPerosnalInfo></TrackPerosnalInfo>,
+              },
+              {
+                path: "about-POPIA-compliance",
+                element: <POPIACompilence></POPIACompilence>,
+              },
+              {
+                path: "takealot-verify-identity",
+                element: <VerifyIdentity></VerifyIdentity>,
+              },
+              {
+                path: "difference-between-POPIA-PAIA",
+                element: <DifferencePOPWithPAI></DifferencePOPWithPAI>,
+              },
+              {
+                path: "security-compromise-involving-personal-information",
+                element: <SecurityCompropise></SecurityCompropise>,
+              },
+              {
+                path: "authorise-another-person-access-account",
+                element: <AuthorisePerson></AuthorisePerson>,
+              },
+              {
+                path: "access-deceased-family-members-account",
+                element: <AccessFamilyMember></AccessFamilyMember>,
+              },
+              {
+                path: "about-cookies-Takealot",
+                element: <AboutCookies></AboutCookies>,
+              },
+              {
+                path: "children-allowed-to-use-account",
+                element: <AllowChildren></AllowChildren>,
+              },
+              {
+                path: "verify-email-address",
+                element: <VerifyEmail></VerifyEmail>,
+              },
+              {
+                path: "verify-mobile-number",
+                element: <VerifyPhone></VerifyPhone>,
+              },
+            ]
           },
         ]
       },
