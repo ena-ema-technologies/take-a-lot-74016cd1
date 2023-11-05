@@ -103,6 +103,17 @@ import CollectingOrder from "../Page/HelpCenter/CollectionDetails/CollectingOrde
 import RefundLayout from "../Layout/RefundLayout";
 import GetRefund from "../Page/HelpCenter/RefundDetails/GetRefund/GetRefund";
 import RefundTime from "../Page/HelpCenter/RefundDetails/RefundTime/RefundTime";
+import ProductStockLayout from "../Layout/ProductStockLayout";
+import HelpFindProduct from "../Page/HelpCenter/PrductStockDetails/HelpFindProduct/HelpFindProduct";
+import HelpBuyProducts from "../Page/HelpCenter/PrductStockDetails/HelpBuyProducts/HelpBuyProducts";
+import MoreInformation from "../Page/HelpCenter/PrductStockDetails/MoreInformation/MoreInformation";
+import ItemStock from "../Page/HelpCenter/PrductStockDetails/ItemStock/ItemStock";
+import PreOrder from "../Page/HelpCenter/PrductStockDetails/PreOrder/PreOrder";
+import UnboxedDetails from "../Page/HelpCenter/PrductStockDetails/UnboxedDetails/UnboxedDetails";
+import BundleDetails from "../Page/HelpCenter/PrductStockDetails/BundleDetails/BundleDetails";
+import OnlineClass from "../Page/HelpCenter/PrductStockDetails/OnlineClass/OnlineClass";
+import FlatPackFurniture from "../Page/HelpCenter/PrductStockDetails/FlatPackFurniture/FlatPackFurniture";
+import BlueRayDVD from "../Page/HelpCenter/PrductStockDetails/BlueRayDVD/BlueRayDVD";
 
 
 
@@ -372,6 +383,52 @@ export const router = createBrowserRouter([
           {
             path: "product-stock",
             element: <ProductStockHelp />
+          },
+          {
+            path: "product-stock-details",
+            element: <ProductStockLayout></ProductStockLayout>,
+            children: [
+              {
+                path: "can-you-help-me-find-a-product",
+                element: <HelpFindProduct></HelpFindProduct>
+              },
+              {
+                path: "how-do-i-buy-products-from-sellers-other-than-takealot-on-the-website",
+                element: <HelpBuyProducts></HelpBuyProducts>
+              },
+              {
+                path: "can-you-give-me-more-information-on-a-product",
+                element: <MoreInformation></MoreInformation>
+              },
+              {
+                path: "when-will-the-item-i-want-be-in-stock",
+                element: <ItemStock></ItemStock>
+              },
+              {
+                path: "all-about-pre-orders",
+                element: <PreOrder></PreOrder>
+              },
+              {
+                path: "all-about-unboxed-deals",
+                element: <UnboxedDetails></UnboxedDetails>
+              },
+              {
+                path: "all-about-bundle-deals",
+                element: <BundleDetails></BundleDetails>
+              },
+              {
+                path: "all-about-online-courses",
+                element: <OnlineClass></OnlineClass>
+              },
+              {
+                path: "all-about-flatpack-furniture",
+                element: <FlatPackFurniture></FlatPackFurniture>
+              },
+              {
+                path: "how-will-i-know-if-my-blu-ray-dvd-will-work",
+                element: <BlueRayDVD></BlueRayDVD>
+              },
+            ]
           },
           {
             path: "data-privacy",
