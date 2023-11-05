@@ -36,7 +36,7 @@ const CheckReview = () => {
 <p className='text-[#0a0a0a] font-bold text-lg'>Collect</p>
 </div>
 <div className='text-sm font-medium text-primary cursor-pointer'>
-    <p>Change</p>
+    <Link to="/buy/delivery/method">Change</Link>
 </div>
 </div>
 

@@ -94,6 +94,7 @@ import RequestInvoice from "../Page/HelpCenter/OrderDetails/RequestInvoice/Reque
 import PlacingOrder from "../Page/HelpCenter/OrderDetails/PlacingOrder/PlacingOrder";
 import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
 import CheckReview from "../Page/CheckoutReview/CheckReview";
+import DeliveryMethod from "../Page/CheckoutReview/DeliveryMethod";
 
 
 
@@ -495,6 +496,10 @@ export const router = createBrowserRouter([
       {
         path:"review",
         element:<PrivateRoute><CheckReview /></PrivateRoute>
+      },
+      {
+        path:"/buy/delivery/method",
+        element:<PrivateRoute><DeliveryMethod/></PrivateRoute>
       }
     ]
   }
