@@ -34,13 +34,14 @@ const DataPrivacyLayout = () => {
                 <div className="hidden lg:block text-xs breadcrumbs text-white absolute top-20 left-10">
                     <ul>
                         <li><Link to="/help-centre">Help Centre</Link></li>
-                        <li><Link to="help-centre/data-privacy">Data & Privacy
+                        <li><Link to="/help-centre/data-privacy">Data & Privacy
                         </Link>
                         </li>
                         <li className='font-semibold'>
                             {
-                                availablePayment ? "Available payment options" : priceItem ? "Why does the price of my item change when I try and check out ?" : recievedConfirmation ? "Why haven’t I received my payment confirmation email?" : couponCode ? "All about coupon codes & discounts" : giftVoucher ? "All about gift vouchers" : payFlex ? "All about PayFlex" : card ? "All about Credit / Debit Card Payments" : cod ? "All about Cash on Delivery ( COD )" : eftOzow ? "All about Instant EFT with Ozow" : eftWithPayFast ? "All about Instant EFT with PayFast" : mobiCred ? "All about MobiCred" : eBucks ? "All about eBucks" : masterPass ? "All about MasterPass" : discoveryMiles ? "All about discovery miles" : ""
-                            } </li>
+                                registerAccount ? "How to register on takealot.com" : resettingPassword ? "Changing or resetting your password" : profileUpdate ? "My email address has changed. How do I update this on my profile?" : unSubscriber ? "How do I unsubscribe from your email newsletters?" : managingPersonal ? "Managing or requesting personal information" : deleteAccount ? "Deleting my account or personal information" : trackStatus ? "Can I track the status of my personal information or account deletion request?" : aboutPOPIA ? "All about POPIA and Compliance" : verifyAccount ? "Why does Takealot ask to verify my identity when I make contact?" : personalInfo ? "All about personal information" : difference ? "Difference between POPIA and PAIA" : security ? "What happens if there is a security compromise involving my personal information" : authorise ? "Can I authorise another person to access my takealot.com account?" : accessFamilyMember ? "Can I get access to a deceased family member’s takealot.com account?" : cookies ? "All about cookies on Takealot" : allowChildren ? "Are children allowed to use takealot.com?" : verifyEmail ? "How to verify your email address" : "How to verify your mobile number"
+                            }
+                        </li>
                     </ul>
                 </div>
 
@@ -49,8 +50,8 @@ const DataPrivacyLayout = () => {
                     <p className='text-xl lg:text-3xl font-bold text-white'>
 
                         {
-                            availablePayment ? "Available payment options" : priceItem ? "Why does the price of my item change when I try and check out ?" : recievedConfirmation ? "Why haven’t I received my payment confirmation email ?" : couponCode ? "All about coupon codes & discounts" : giftVoucher ? "All about gift vouchers" : payFlex ? "All about PayFlex" : card ? "All about Credit / Debit Card Payments" : cod ? "All about Cash on Delivery ( COD )" : eftOzow ? "All about Instant EFT with Ozow" : eftWithPayFast ? "All about Instant EFT with PayFast" : mobiCred ? "All about MobiCred" : eBucks ? "All about eBucks" : masterPass ? "All about MasterPass" : discoveryMiles ? "All about discovery miles" : ""
-                        } </p>
+                            registerAccount ? "How to register on takealot.com" : resettingPassword ? "Changing or resetting your password" : profileUpdate ? "My email address has changed. How do I update this on my profile?" : unSubscriber ? "How do I unsubscribe from your email newsletters?" : managingPersonal ? "Managing or requesting personal information" : deleteAccount ? "Deleting my account or personal information" : trackStatus ? "Can I track the status of my personal information or account deletion request?" : aboutPOPIA ? "All about POPIA and Compliance" : verifyAccount ? "Why does Takealot ask to verify my identity when I make contact?" : personalInfo ? "All about personal information" : difference ? "Difference between POPIA and PAIA" : security ? "What happens if there is a security compromise involving my personal information" : authorise ? "Can I authorise another person to access my takealot.com account?" : accessFamilyMember ? "Can I get access to a deceased family member’s takealot.com account?" : cookies ? "All about cookies on Takealot" : allowChildren ? "Are children allowed to use takealot.com?" : verifyEmail ? "How to verify your email address" : "How to verify your mobile number"
+                        }  </p>
 
                 </div>
             </div>
@@ -77,57 +78,64 @@ const DataPrivacyLayout = () => {
                         <div className='my-3 flex flex-col gap-2'>
                             <NavLink to="/help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary")}> How to register on takealot.com </NavLink>
 
+                            <NavLink to="/help-centre/data-privacy-details/resetting-password" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary")}> Changing or resetting your password </NavLink>
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Why does the price of my item change when I try and check out ? </NavLink>
+
+                            <NavLink to="/help-centre/data-privacy-details/profile-update-information" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> My email address has changed. How do I update this on my profile? </NavLink>
 
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Why haven’t I received my payment confirmation email ?
+                            <NavLink to="/help-centre/data-privacy-details/unsubscribe-email-newsletters" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How do I unsubscribe from your email newsletters?
                             </NavLink>
 
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about coupon codes & discounts
+                            <NavLink to="/help-centre/data-privacy-details/managing-personal-information" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Managing or requesting personal information
                             </NavLink>
 
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about gift vouchers </NavLink>
+                            <NavLink to="/help-centre/data-privacy-details/delete-account" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Deleting my account or personal information </NavLink>
 
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  All about PayFlex </NavLink>
+                            <NavLink to="/help-centre/data-privacy-details/track-status-deletion-request" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>  Can I track the status of my personal information or account deletion request? </NavLink>
 
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Credit / Debit Card Payments </NavLink>
+                            <NavLink to="/help-centre/data-privacy-details/about-POPIA-compliance" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about POPIA and Compliance </NavLink>
 
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Cash on Delivery ( COD ) </NavLink>
+                            <NavLink to="/help-centre/data-privacy-details/takealot-verify-identity" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Why does Takealot ask to verify my identity when I make contact? </NavLink>
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Instant EFT with Ozow </NavLink>
+                            <NavLink to="/help-centre/data-privacy-details/about-personal-information" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about personal information </NavLink>
 
-                            <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Instant EFT with PayFast
-                            </NavLink>
 
                             {/* extra nav */}
 
                             {
                                 viewExpandState ?
                                     <>
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Mobicred
+                                        <NavLink to="/help-centre/data-privacy-details/difference-between-POPIA-PAIA" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Difference between POPIA and PAIA
                                         </NavLink>
 
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about eBucks
+                                        <NavLink to="/help-centre/data-privacy-details/security-compromise-involving-personal-information" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> What happens if there is a security compromise involving my personal information
                                         </NavLink>
 
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Masterpass
+                                        <NavLink to="/help-centre/data-privacy-details/authorise-another-person-access-account" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I authorise another person to access my takealot.com account?
                                         </NavLink>
 
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Discovery Miles
+
+                                        <NavLink to="/help-centre/data-privacy-details/access-deceased-family-members-account" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Can I get access to a deceased family member’s takealot.com account?
                                         </NavLink>
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Discovery Miles
+
+
+                                        <NavLink to="/help-centre/data-privacy-details/about-cookies-Takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about cookies on Takealot
                                         </NavLink>
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Discovery Miles
+
+
+                                        <NavLink to="/help-centre/data-privacy-details/children-allowed-to-use-account" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> Are children allowed to use takealot.com?
+
                                         </NavLink>
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Discovery Miles
+                                        <NavLink to="/help-centre/data-privacy-details/verify-email-address" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How to verify your email address
                                         </NavLink>
-                                        <NavLink to="help-centre/data-privacy-details/register-to-takealot" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> All about Discovery Miles
+
+                                        <NavLink to="/help-centre/data-privacy-details/verify-mobile-number" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}> How to verify your mobile number
                                         </NavLink>
 
                                     </>
