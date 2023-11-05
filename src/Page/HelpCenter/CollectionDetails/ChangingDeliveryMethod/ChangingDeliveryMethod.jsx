@@ -6,7 +6,7 @@ const ChangingDeliveryMethod = () => {
     
     const accordion = [
         {
-            path: "",
+            path: "/help-centre/collectionDetails/track-my-collection-order",
             title: "Track my collection order"
         }
     ]

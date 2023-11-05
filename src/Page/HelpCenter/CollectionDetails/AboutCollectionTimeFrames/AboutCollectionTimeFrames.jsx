@@ -6,8 +6,8 @@ const AboutCollectionTimeFrames = () => {
 
     const accordion = [
         {
-            path: "/help-centre/collectionDetails/about-collection-options-time-frames",
-            title: "About collection options & time frames",
+            path: "/help-centre/deliveryDetails/about-delivery-options-time-frames",
+            title : "About delivery options & time frames"
         },
         {
             path: "/help-centre/deliveryDetails/delivery-fees",

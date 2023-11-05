@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 const TrackMyCollection = () => {
     const accordion = [
         {
-            path: "",
+            path: "/help-centre/collectionDetails/collecting-order",
             title: "Collecting your order"
         },
         {
-            path: "",
+            path: "/help-centre/collectionDetails/change-delivery-method",
             title: "Changing my delivery method or selected Takealot pickup point"
         },
     ]
