@@ -11,7 +11,7 @@ const GetRefund = () => {
 
                 </p>
 
-                <p className='py-4'>You can request a refund by going to  <span className="hidden lg:block breadcrumbs py-3">
+                <p className='py-4'>You can request a refund by going to  <span className="hidden lg:block breadcrumbs">
                     <ul>
                         <li>Go to My Account</li>
                         <li><Link className='text-blue-500'> Credit & Refund </Link></li>
