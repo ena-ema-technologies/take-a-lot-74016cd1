@@ -95,6 +95,7 @@ import PlacingOrder from "../Page/HelpCenter/OrderDetails/PlacingOrder/PlacingOr
 import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
 import CheckReview from "../Page/CheckoutReview/CheckReview";
 import DeliveryMethod from "../Page/CheckoutReview/DeliveryMethod";
+import PickupPoint from "../Page/CheckoutReview/PickupPoint";
 
 
 
@@ -500,6 +501,10 @@ export const router = createBrowserRouter([
       {
         path:"/buy/delivery/method",
         element:<PrivateRoute><DeliveryMethod/></PrivateRoute>
+      },
+      {
+        path:"/buy/collect/pickup-points",
+        element:<PrivateRoute><PickupPoint/></PrivateRoute>
       }
     ]
   }

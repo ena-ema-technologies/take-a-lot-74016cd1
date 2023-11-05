@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import deliveryIcon from "../../assets/icons/icon-delivery.svg"
 import collectIcon from "../../assets/icons/icon-collect.svg"
 import useCart from '../../hooks/useCart';
+import { FaArrowRight } from 'react-icons/fa';
 const DeliveryMethod = () => {
     const [carts, refetch] = useCart();
 
@@ -14,16 +15,16 @@ const DeliveryMethod = () => {
     console.log(total)
     return (
         <section className=''>
-            <div className='w-full flex items-center justify-between'>
+            <div className='w-full flex items-center mx-2 justify-between'>
 
                 <p className='font-medium text-xl text-[#4d4d4f]'>Delivery</p>
 
                 <p className='inline-flex items-center gap-1'><HiShoppingCart className='text-[#ababaf]' /> <Link to="/cart" className='text-xs font-normal text-primary'>Back to Cart</Link></p>
 
             </div>
-           <div className='flex justify-between mt-5'>
-          <div className='w-full flex flex-col gap-4 mx-10 '>
-          <div className='w-full bg-white px-6 py-4 flex items-center justify-between shadow rounded'>
+           <div className='md:flex md:justify-between mt-5'>
+          <div className='w-full flex flex-col gap-4 md:mx-10 '>
+          <div className='w-full bg-white md:px-6 py-4 flex items-center justify-between shadow rounded'>
               <div className='flex gap-4 items-center'>
               <div className=' space-y-1 bg-[#25CD66]  py-3 pr-1 rounded-full'>
                    <img src={deliveryIcon} alt="" className='' />
@@ -34,10 +35,11 @@ const DeliveryMethod = () => {
                 </div>
               </div>
                 <div className='text-sm font-medium text-primary cursor-pointer'>
-                    <Link to="" className='px-10 py-3 border border-blue-500'>Delivery My Order</Link>
+                    <Link to="" className='px-10 py-3 border hover:bg-[#0B79CD] hover:text-white border-blue-500 md:block hidden'>Delivery My Order</Link>
+                    <Link to="" className='block md:hidden'><FaArrowRight/></Link>
                 </div>
             </div>
-          <div className='w-full bg-white px-6 py-4 flex items-center justify-between shadow rounded'>
+          <div className='w-full bg-white md:px-6 py-4 flex items-center justify-between shadow rounded'>
               <div className='flex gap-4 items-center'>
               <div className=' space-y-1 bg-[#25CD66]  py-3 pr-1 rounded-full'>
                    <img src={collectIcon} alt="" className='' />
@@ -48,7 +50,8 @@ const DeliveryMethod = () => {
                 </div>
               </div>
                 <div className='text-sm font-medium text-primary cursor-pointer'>
-                    <Link to="" className='px-10 py-3 border border-blue-500'>Collect My Order</Link>
+                    <Link to="" className='px-10 py-3 border hover:bg-[#0B79CD] hover:text-white border-blue-500 md:block hidden'>Collect My Order</Link>
+                    <Link to="" className='block md:hidden'><FaArrowRight/></Link>
                 </div>
             </div>
           <p></p>
@@ -58,7 +61,7 @@ const DeliveryMethod = () => {
 
 
 
-            <div className='w-[40%] flex flex-col gap-5'>
+            <div className='md:w-[40%] w-full flex flex-col gap-5'>
 
 <div className='bg-white px-4 py-6 rounded shadow'>
 

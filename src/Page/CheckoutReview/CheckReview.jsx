@@ -65,7 +65,7 @@ const CheckReview = () => {
 </div>
 
 <div className='text-sm font-medium text-primary cursor-pointer'>
-<Link to="/buy/delivery/method">Change</Link>
+<Link to="/buy/collect/pickup-points">Change</Link>
 </div>
 </div>
 
@@ -267,7 +267,7 @@ aria-invalid={errors.bucksMethod ? "true" : "false"}/>
 
 </div>
 
-<div className='w-[40%] flex flex-col gap-5'>
+<div className='md:w-[40%] w-full flex flex-col gap-5'>
 
 <div className='bg-white px-4 py-6 rounded shadow'>
 
