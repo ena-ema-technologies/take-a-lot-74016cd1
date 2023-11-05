@@ -183,7 +183,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
 
                             <p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Payments, Promos & Gift Vouchers Topics</p>
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/available-payment-options">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/available-payment-options">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Available payment options</span>
@@ -196,7 +196,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
 
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/price-item-change-checkout">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/price-item-change-checkout">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Why does the price of my item change when I try and check out?</span>
@@ -208,7 +208,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/havent-received-confirmation">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/havent-received-confirmation">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>Why haven’t I received my payment confirmation email?</span>
@@ -220,7 +220,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-coupon-codes-discounts">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-coupon-codes-discounts">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about coupon codes & discounts</span>
@@ -232,7 +232,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-gift-vouchers">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-gift-vouchers">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Gift Vouchers</span>
@@ -244,7 +244,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-payflex">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-payflex">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Payflex</span>
@@ -256,7 +256,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-credit-debit-card">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-credit-debit-card">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Credit / Debit Card Payments</span>
@@ -268,7 +268,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-cash-on-delivery">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-cash-on-delivery">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Cash on Delivery ( COD )</span>
@@ -280,7 +280,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-instant-eFT-ozow">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-instant-eFT-ozow">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Instant EFT with Ozow</span>
@@ -292,7 +292,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-instant-EFT-payFast">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-instant-EFT-payFast">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Instant EFT with PayFast</span>
@@ -304,7 +304,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-mobicred">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-mobicred">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Mobicred</span>
@@ -316,7 +316,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-eBucks">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-eBucks">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about eBucks</span>
@@ -328,7 +328,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/all-about-masterpass">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/all-about-masterpass">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Masterpass</span>
@@ -340,7 +340,7 @@ const PaymentsPromosGiftVouchersHelp = () => {
                             <div className='my-4 border-b'></div>
 
 
-                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers/a-ll-about-discovery-miles">
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/payments-promos-gift-vouchers-details/a-ll-about-discovery-miles">
 
                                 <div className='w-full flex flex-col gap-2'>
                                     <span className='text-base w-fit font-semibold topic-head'>All about Discovery Miles</span>

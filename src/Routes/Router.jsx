@@ -114,7 +114,21 @@ import BundleDetails from "../Page/HelpCenter/PrductStockDetails/BundleDetails/B
 import OnlineClass from "../Page/HelpCenter/PrductStockDetails/OnlineClass/OnlineClass";
 import FlatPackFurniture from "../Page/HelpCenter/PrductStockDetails/FlatPackFurniture/FlatPackFurniture";
 import BlueRayDVD from "../Page/HelpCenter/PrductStockDetails/BlueRayDVD/BlueRayDVD";
-
+import AvailablePaymentOptions from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/AvailablePaymentOptions/AvailablePaymentOptions";
+import ItemPriceChange from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/ItemPriceChange/ItemPriceChange";
+import PaymentConfirmation from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/PaymentConfirmation/PaymentConfirmation";
+import CouponDiscount from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/CouponDiscount/CouponDiscount";
+import GiftVOuchers from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/GiftVouchers/GiftVOuchers";
+import PayFlex from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/PayFlex/PayFlex";
+import CardPayment from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/CardPayment/CardPayment";
+import COD from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/COD/COD";
+import EFTWithOzow from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/EFTWithOzow/EFTWithOzow";
+import EFTWithPayFast from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/EFTWithPayFast/EFTWithPayFast";
+import Mobicred from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/Mobicred/Mobicred";
+import MasterPass from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/MasterPass/MasterPass";
+import DiscoveryMiles from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/DiscoveryMiles/DiscoveryMiles";
+import eBucks from '../Page/HelpCenter/PaymentPromosGiftVoucherDetails/eBucks/eBucks';
+import PaymentPromosLayout from "../Layout/PaymentPromosLayout";
 
 
 
@@ -379,6 +393,68 @@ export const router = createBrowserRouter([
           {
             path: "payments-promos-gift-vouchers",
             element: <PaymentsPromosGiftVouchersHelp />
+          },
+          {
+            path: "payments-promos-gift-vouchers-details",
+            element: <PaymentPromosLayout></PaymentPromosLayout>,
+            children: [
+              {
+                path: "available-payment-options",
+                element: <AvailablePaymentOptions></AvailablePaymentOptions>
+              },
+              {
+                path: "price-item-change-checkout",
+                element: <ItemPriceChange></ItemPriceChange>
+              },
+              {
+                path: "havent-received-confirmation",
+                element: <PaymentConfirmation></PaymentConfirmation>
+              },
+              {
+                path: "all-about-coupon-codes-discounts",
+                element: <CouponDiscount></CouponDiscount>
+              },
+              {
+                path: "all-about-gift-vouchers",
+                element: <GiftVOuchers></GiftVOuchers>
+              },
+              {
+                path: "all-about-payflex",
+                element: <PayFlex></PayFlex>
+              },
+              {
+                path: "all-about-credit-debit-card",
+                element: <CardPayment></CardPayment>
+              },
+              {
+                path: "all-about-cash-on-delivery",
+                element: <COD></COD>
+              },
+              {
+                path: "all-about-instant-eFT-ozow",
+                element: <EFTWithOzow></EFTWithOzow>
+              },
+              {
+                path: "all-about-instant-EFT-payFast",
+                element: <EFTWithPayFast></EFTWithPayFast>
+              },
+              {
+                path: "all-about-mobicred",
+                element: <Mobicred></Mobicred>
+              },
+              {
+                path: "all-about-eBucks",
+                element: <eBucks />
+              },
+              {
+                path: "all-about-masterpass",
+                element: <MasterPass></MasterPass>
+              },
+              {
+                path: "a-ll-about-discovery-miles",
+                element: <DiscoveryMiles />
+              },
+            ]
           },
           {
             path: "product-stock",
