@@ -3,7 +3,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 const CheckoutOutlet = () => {
     return (
-        <section className='w-full flex flex-col items-center justify-center'>
+        <section className=''>
 <nav className='bg-white py-6 px-2 lg:px-14 w-full'>
 <div className='max-w-7xl mx-auto flex items-center justify-between'>
 <Link to="/" className='logo'>
@@ -16,7 +16,7 @@ const CheckoutOutlet = () => {
 </div>
 </nav>
 
-<div className='max-w-7xl mx-auto my-20'>
+<div className='max-w-7xl mx-auto my-10'>
 <Outlet />
 </div>
         </section>
