@@ -15,44 +15,44 @@ import { IoChevronForwardOutline } from 'react-icons/io5';
 const RefundsHelp = () => {
     return (
         <section className='lg:px-4'>
-        <div className='hero h-60 rounded-b-lg relative' style={{ backgroundImage: "url(https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/help-centre/Header-Large@2x.png-868cd5e789ded2bf3855.png)", backgroundRepeat: "no-repeat" }}>
+            <div className='hero h-60 rounded-b-lg relative' style={{ backgroundImage: "url(https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/help-centre/Header-Large@2x.png-868cd5e789ded2bf3855.png)", backgroundRepeat: "no-repeat" }}>
 
-            <div className="hidden lg:block text-xs breadcrumbs text-white absolute top-20 left-10">
-                <ul>
-                    <li><Link to="/help-centre">Help Centre</Link></li>
-                    <li><Link>
-                    Refunds
-</Link></li>
-                </ul>
-            </div>
-
-            <div className='lg:hidden text-xs text-white absolute top-20 left-5'>
-                <Link to="/help-centre" className='inline-flex items-center gap-1'><HiArrowSmallLeft className='h-5 w-5' /> Back to Help Centre</Link>
-            </div>
-
-            <div className='flex flex-col gap-4 lg:flex-row w-full items-start lg:items-center justify-between px-5 mt-28'>
-                <div className='flex items-center gap-2 lg:gap-5'>
-                    <div className='px-3 py-3 bg-gray-200 rounded-lg'>
-                        <img src="https://media.takealot.com/help-cms/original_images/____CMS__d61d99a83f753a99d72de8d47bb8e9e06c9b21c6.png" alt="Icon" className='w-4 lg:w-6' />
-                    </div>
-                    <p className='text-xl lg:text-3xl font-bold text-white'>
-                    Refunds
-</p>
+                <div className="hidden lg:block text-xs breadcrumbs text-white absolute top-20 left-10">
+                    <ul>
+                        <li><Link to="/help-centre">Help Centre</Link></li>
+                        <li><Link>
+                            Refunds
+                        </Link></li>
+                    </ul>
                 </div>
 
-                <div className='flex  items-center gap-2'>
-               
+                <div className='lg:hidden text-xs text-white absolute top-20 left-5'>
+                    <Link to="/help-centre" className='inline-flex items-center gap-1'><HiArrowSmallLeft className='h-5 w-5' /> Back to Help Centre</Link>
+                </div>
+
+                <div className='flex flex-col gap-4 lg:flex-row w-full items-start lg:items-center justify-between px-5 mt-28'>
+                    <div className='flex items-center gap-2 lg:gap-5'>
+                        <div className='px-3 py-3 bg-gray-200 rounded-lg'>
+                            <img src="https://media.takealot.com/help-cms/original_images/____CMS__d61d99a83f753a99d72de8d47bb8e9e06c9b21c6.png" alt="Icon" className='w-4 lg:w-6' />
+                        </div>
+                        <p className='text-xl lg:text-3xl font-bold text-white'>
+                            Refunds
+                        </p>
+                    </div>
+
+                    <div className='flex  items-center gap-2'>
+
                         <Link to="/account/credit" className='text-xs font-light px-3 py-2 rounded-2xl text-white border border-white hover:bg-white hover:text-primary transition-all duration-500 text-center'>Credit & Refunds</Link>
                         <Link to="/account/returns" className='text-xs font-light px-3 py-2 rounded-2xl text-white border border-white hover:bg-white hover:text-primary transition-all duration-500 text-center'>Track Returns</Link>
                         <Link to="/account/orders" className='text-xs font-light px-3 py-2 rounded-2xl text-white border border-white hover:bg-white hover:text-primary transition-all duration-500 text-center'>View Orders</Link>
+                    </div>
                 </div>
+
+
             </div>
 
 
-        </div>
-
-
-       {/* <div className='my-14'>
+            {/* <div className='my-14'>
 
             <p className='text-xl font-semibold text-[#4d4d4f] mb-5 hidden lg:block'>Popular Collection Topics</p>
 
@@ -174,103 +174,105 @@ const RefundsHelp = () => {
          */}
 
 
-        <div className='my-9 w-full'>
+            <div className='my-9 w-full'>
 
-            <div className='flex items-start justify-between gap-8'>
-            <div className='w-full'>
-<p className='text-xl font-semibold text-[#4d4d4f] mb-5 hidden lg:block'>Refunds Topics</p>
-<div className='w-full bg-white py-8 shadow rounded px-6 flex flex-col gap-1 text-sm text-[#4d4d4f]'>
+                <div className='flex items-start justify-between gap-8'>
+                    <div className='w-full'>
+                        <p className='text-xl font-semibold text-[#4d4d4f] mb-5 hidden lg:block'>Refunds Topics</p>
+                        <div className='w-full bg-white py-8 shadow rounded px-6 flex flex-col gap-1 text-sm text-[#4d4d4f]'>
 
-<p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Refunds Topics</p>
+                            <p className='text-lg font-semibold text-[#4d4d4f] mb-5 lg:hidden'>Refunds Topics</p>
 
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/refunds/refunds-credit">
+                            <Link
+                                className='w-full flex gap-4 items-center topic-link'
+                                to="/help-centre/refundDetails/how-do-i-get-a-refund-instead-of-a-credit">
 
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>How do I get a refund instead of a credit?</span>
-<span className='hidden lg:block'>Refunds can be processed on your profile, Go to My Account and select 'Credit & Refunds</span>
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>How do I get a refund instead of a credit?</span>
+                                    <span className='hidden lg:block'>Refunds can be processed on your profile, Go to My Account and select 'Credit & Refunds</span>
+                                </div>
 
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
-
-
-</Link>
-<div className='my-4 border-b'></div> 
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-
-<Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/refunds/refund-taking-long">
-
-<div className='w-full flex flex-col gap-2'>
-<span className='text-base w-fit font-semibold topic-head'>Why is my refund taking so long?</span>
-<span className='hidden lg:block'>On confirmation of a refund processed via email, it may take 3 -5 days</span>
-</div>
-
-<span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]'/></span>
-
-
-</Link>
-
-
-</div> 
-
-
-<div className='w-full bg-white shadow rounded p-4 my-10'>
-<div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
-<div>
-<img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32'/>
-</div>
-
-<div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
-<div className='flex-1'>
-    <p className='text-lg font-semibold'>Didn't find what you need?</p>
-</div>
-
-<div className='mr-5'>
-    <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
-</div>
-</div>
-
-</div>
-</div>
+                            </Link>
+                            <div className='my-4 border-b'></div>
 
 
 
+                            <Link className='w-full flex gap-4 items-center topic-link' to="/help-centre/refundDetails/why-is-my-refund-taking-so-long">
 
-</div>
+                                <div className='w-full flex flex-col gap-2'>
+                                    <span className='text-base w-fit font-semibold topic-head'>Why is my refund taking so long?</span>
+                                    <span className='hidden lg:block'>On confirmation of a refund processed via email, it may take 3 -5 days</span>
+                                </div>
 
-                <div className='w-1/3 bg-white shadow hidden lg:block text-sm'>
-                    <p className='p-3 text-base font-medium text-[#000]'>All Help Topics</p>
-                    <div className='border-b border-[#dadada]'></div>
-
-                    <div className='my-3 flex flex-col gap-2'>
-                        <NavLink to="/help-centre/delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Delivery</NavLink>
-
-
-                        <NavLink to="/help-centre/returns" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 = rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Returns</NavLink>
+                                <span><IoChevronForwardOutline className='h-6 w-7 text-[#4d4d4f]' /></span>
 
 
-                        <NavLink to="/help-centre/orders-cancellations" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Orders & Cancellations</NavLink>
+                            </Link>
 
 
-                        <NavLink to="/help-centre/collection" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Collections</NavLink>
+                        </div>
 
 
-                        <NavLink to="/help-centre/refunds" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Refunds</NavLink>
+                        <div className='w-full bg-white shadow rounded p-4 my-10'>
+                            <div className='w-full bg-primary bg-opacity-10 py-5 flex items-center gap-10'>
+                                <div>
+                                    <img src="https://media.takealot.com/help-cms/original_images/____CMS__d0da6dca9d77bd5c950880ccb158ac07bcea8752.png" alt="" className='w-32' />
+                                </div>
+
+                                <div className='w-full flex flex-col gap-2 lg:flex-row items-center'>
+                                    <div className='flex-1'>
+                                        <p className='text-lg font-semibold'>Didn't find what you need?</p>
+                                    </div>
+
+                                    <div className='mr-5'>
+                                        <button className='text-sm py-2 px-7 border border-primary bg-primary rounded text-white font-semibold'>Contact Us</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
 
-                        <NavLink to="/help-centre/payments-promos-gift-vouchers" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Payments,Promos & Gift Vouchers</NavLink>
 
 
-                        <NavLink to="/help-centre/product-stock" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Product & Stock</NavLink>
+                    </div>
+
+                    <div className='w-1/3 bg-white shadow hidden lg:block text-sm'>
+                        <p className='p-3 text-base font-medium text-[#000]'>All Help Topics</p>
+                        <div className='border-b border-[#dadada]'></div>
+
+                        <div className='my-3 flex flex-col gap-2'>
+                            <NavLink to="/help-centre/delivery" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Delivery</NavLink>
 
 
-                        <NavLink to="/help-centre/data-privacy" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Data & Privacy</NavLink>
+                            <NavLink to="/help-centre/returns" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 = rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Returns</NavLink>
+
+
+                            <NavLink to="/help-centre/orders-cancellations" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Orders & Cancellations</NavLink>
+
+
+                            <NavLink to="/help-centre/collection" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Collections</NavLink>
+
+
+                            <NavLink to="/help-centre/refunds" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Refunds</NavLink>
+
+
+                            <NavLink to="/help-centre/payments-promos-gift-vouchers" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Payments,Promos & Gift Vouchers</NavLink>
+
+
+                            <NavLink to="/help-centre/product-stock" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Product & Stock</NavLink>
+
+
+                            <NavLink to="/help-centre/data-privacy" className={({ isActive }) => (isActive ? "bg-primary w-[90%] pl-3 py-2 rounded-r-full bg-opacity-10 border-l-4 border-primary text-primary" : "bg-transparent hover:bg-gray-100 w-[90%] pl-3 py-2  rounded-r-full bg-opacity-10 border-l-4 border-transparent")}>Data & Privacy</NavLink>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-        </div>
-    </section>
+            </div>
+        </section>
     );
 };
 

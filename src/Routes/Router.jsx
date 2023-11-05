@@ -100,6 +100,9 @@ import AboutCollectionFees from "../Page/HelpCenter/CollectionDetails/AboutColle
 import TrackMyCollection from "../Page/HelpCenter/CollectionDetails/TrackMyCollection/TrackMyCollection";
 import ChangingDeliveryMethod from "../Page/HelpCenter/CollectionDetails/ChangingDeliveryMethod/ChangingDeliveryMethod";
 import CollectingOrder from "../Page/HelpCenter/CollectionDetails/CollectingOrder/CollectingOrder";
+import RefundLayout from "../Layout/RefundLayout";
+import GetRefund from "../Page/HelpCenter/RefundDetails/GetRefund/GetRefund";
+import RefundTime from "../Page/HelpCenter/RefundDetails/RefundTime/RefundTime";
 
 
 
@@ -347,6 +350,20 @@ export const router = createBrowserRouter([
           {
             path: "refunds",
             element: <RefundsHelp />
+          },
+          {
+            path: "refundDetails",
+            element: <RefundLayout></RefundLayout>,
+            children: [
+              {
+                path: "how-do-i-get-a-refund-instead-of-a-credit",
+                element: <GetRefund></GetRefund>
+              },
+              {
+                path: "why-is-my-refund-taking-so-long",
+                element: <RefundTime></RefundTime>
+              },
+            ]
           },
           {
             path: "payments-promos-gift-vouchers",
