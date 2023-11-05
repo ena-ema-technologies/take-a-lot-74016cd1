@@ -4,7 +4,14 @@ import { IoIosLock } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import deliveryIcon from "../../assets/icons/icon-delivery.svg"
 import collectIcon from "../../assets/icons/icon-collect.svg"
+import useCart from '../../hooks/useCart';
 const DeliveryMethod = () => {
+    const [carts, refetch] = useCart();
+
+    const totalPrice =carts.map(cart=>cart.totalPrice);
+    console.log(totalPrice)
+    const total=totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    console.log(total)
     return (
         <section className=''>
             <div className='w-full flex items-center justify-between'>
@@ -59,9 +66,9 @@ const DeliveryMethod = () => {
 
     <div className='w-full pb-3 border-b border-dashed border-[#4d4d4f] mt-3 space-y-1'>
         <div className='w-full flex items-center justify-between'>
-            <p className='text-[#4d4d4f] text-xs font-normal'><span>0</span> Items</p>
+            <p className='text-[#4d4d4f] text-xs font-normal'><span>{carts.length}</span> Items</p>
 
-            <p className='text-[#4d4d4f] text-xs font-semibold'>R 000</p>
+            <p className='text-[#4d4d4f] text-xs font-semibold'>R {total}</p>
         </div>
 
         <div className='w-full flex items-center justify-between'>
@@ -74,7 +81,7 @@ const DeliveryMethod = () => {
     <div className='flex w-full items-center justify-between mt-2 mb-4'>
         <p className='text-[13px] text-[#4d4d4f] font-medium'>TO PAY:</p>
 
-        <p className='font-semibold text-xl text-[#1c8644]'>R 000</p>
+        <p className='font-semibold text-xl text-[#1c8644]'>R {total}</p>
     </div>
 
     

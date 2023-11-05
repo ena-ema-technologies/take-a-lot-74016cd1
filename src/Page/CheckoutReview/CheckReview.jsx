@@ -3,16 +3,32 @@ import { Controller, useForm } from 'react-hook-form';
 import { HiInformationCircle, HiMiniQuestionMarkCircle, HiMiniXMark, HiShoppingCart } from 'react-icons/hi2';
 import { IoIosLock } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-
+import useCart from '../../hooks/useCart';
+import Drawer from 'react-modern-drawer';
+import 'react-modern-drawer/dist/index.css'
 const CheckReview = () => {
 
     const [bucksMethod,setBucksMethod] = useState("sa_id");
     const [bucksNumber, setBucksNumber] = useState("")
     const [couponCode, setCouponCode] = useState("");
-    const [donate, setDonate] = useState(false)
+    const [donate, setDonate] = useState(false);
+    const [carts, refetch] = useCart();
     const { register, formState: { errors }, handleSubmit } = useForm();
 
-    
+    const [isOpen, setIsOpen] = React.useState(false)
+    const toggleDrawer = () => {
+        setIsOpen((prevState) => !prevState)
+    }
+
+    console.log(carts);
+
+    const totalPrice =carts.map(cart=>cart.totalPrice);
+    console.log(totalPrice)
+    const total=totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    console.log(total)
+
+
+
       const onSubmit = (data) => {
         // Handle the form submission here
       };
@@ -49,7 +65,7 @@ const CheckReview = () => {
 </div>
 
 <div className='text-sm font-medium text-primary cursor-pointer'>
-    <p>Change</p>
+<Link to="/buy/delivery/method">Change</Link>
 </div>
 </div>
 
@@ -74,7 +90,87 @@ const CheckReview = () => {
 </div>
 
 <div className='text-sm font-medium text-primary cursor-pointer'>
-    <p>Change</p>
+<button onClick={toggleDrawer}>Change</button>
+            <Drawer
+                open={isOpen}
+                onClose={toggleDrawer}
+                direction='right'
+                className='w-full mr-96 bg-[#F4F4F4]'
+            >
+                <div className='w-[700px] bg-white'>
+
+                  <h1 className='text-black text-center text-xl py-5 border'>How would you like to pay?</h1>
+                </div>
+                <div className='w-[700px] bg-[#F4F4F4] h-5'></div>
+                <div className='w-[700px] bg-white h-full pt-5 '>
+                <div className='flex items-center w-[600px] bg-[#F4F4F4]  mx-5 rounded py-5 px-2'>
+                  <input type="radio" />
+                <div>
+                <h1 className='text-black'>Cradit & Debit Card</h1>
+                  <div className='flex gap-2 items-center'>
+                  <img src="https://static.takealot.com/images/checkout/payment/Visa.svg" alt="" />
+                  <img src="https://static.takealot.com/images/checkout/payment/Mastercard.svg" alt="" />
+                  <img src="https://static.takealot.com/images/checkout/payment/Amex.svg" alt="" />
+                  <img src="https://static.takealot.com/images/checkout/payment/Diners.svg" alt="" />
+                  </div>
+                </div>
+                </div>
+                <div className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <input type="radio" />
+                <div>
+                <h1 className='text-black'>EFT with Ozow</h1>
+                 
+                </div>
+                </div>
+                <div className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <input type="radio" />
+                <div>
+                <h1 className='text-black'>EFT with PayFast</h1>
+                 
+                </div>
+                </div>
+                <div disabled className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <input disabled type="radio" />
+                <div className='flex justify-between w-full'>
+                <h1 className='text-black'>Cash on Delivery</h1>
+                <h2>Not aviliable</h2>
+                 
+                </div>
+                </div>
+                <div className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <input type="radio" />
+                <div>
+                <h1 className='text-black'>Payflex</h1>
+                 <p className='text-[#B4B4B4]'>Buy Now. Pay Later. 0% Interest.</p>
+                </div>
+                </div>
+                <div className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <input type="radio" />
+                <div className='flex w-full justify-between'>
+                <div>
+                <h1 className='text-black'>Spend your eBucks</h1>
+                 <img src="https://static.takealot.com/images/checkout/payment/Ebucks.svg" alt="" />
+                </div>
+                 <h2>Info</h2>
+                </div>
+                </div>
+                <div className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <input type="radio" />
+                <div>
+                <h1 className='text-black'>Spend your Discovery Miles</h1>
+                 <img src="https://static.takealot.com/images/payment/discovery-miles-logo.svg" alt="" />
+                </div>
+                </div>
+                <div className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <input type="radio" />
+                <div>
+                <h1 className='text-black'>Payflex</h1>
+                 <p className='text-[#B4B4B4]'>Buy Now. Pay Later. 0% Interest.</p>
+                </div>
+                </div>
+                </div>
+
+            </Drawer>
 </div>
 </div>
 
@@ -179,9 +275,9 @@ aria-invalid={errors.bucksMethod ? "true" : "false"}/>
 
 <div className='w-full pb-3 border-b border-dashed border-[#4d4d4f] mt-3 space-y-1'>
 <div className='w-full flex items-center justify-between'>
-<p className='text-[#4d4d4f] text-xs font-normal'><span>0</span> Items</p>
+<p className='text-[#4d4d4f] text-xs font-normal'><span>{carts.length}</span> Items</p>
 
-<p className='text-[#4d4d4f] text-xs font-semibold'>R 000</p>
+<p className='text-[#4d4d4f] text-xs font-semibold'>R {total}</p>
 </div>
 
 <div className='w-full flex items-center justify-between'>
@@ -194,7 +290,7 @@ aria-invalid={errors.bucksMethod ? "true" : "false"}/>
 <div className='flex w-full items-center justify-between mt-2 mb-4'>
 <p className='text-[13px] text-[#4d4d4f] font-medium'>TO PAY:</p>
 
-<p className='font-semibold text-xl text-[#1c8644]'>R 000</p>
+<p className='font-semibold text-xl text-[#1c8644]'>R {total}</p>
 </div>
 
 <label className='w-full px-6 flex items-center bg-gray-100 py-4 shadow mt-6'>
