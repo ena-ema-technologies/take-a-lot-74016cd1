@@ -35,8 +35,8 @@ const DeliveryMethod = () => {
                 </div>
               </div>
                 <div className='text-sm font-medium text-primary cursor-pointer'>
-                    <Link to="" className='px-10 py-3 border hover:bg-[#0B79CD] hover:text-white border-blue-500 md:block hidden'>Delivery My Order</Link>
-                    <Link to="" className='block md:hidden'><FaArrowRight/></Link>
+                    <Link to="/buy/delivery/addresses/add" className='px-10 py-3 border hover:bg-[#0B79CD] hover:text-white border-blue-500 md:block hidden'>Delivery My Order</Link>
+                    <Link to="/buy/delivery/addresses/add" className='block md:hidden'><FaArrowRight/></Link>
                 </div>
             </div>
           <div className='w-full bg-white md:px-6 py-4 flex items-center justify-between shadow rounded'>
@@ -50,8 +50,8 @@ const DeliveryMethod = () => {
                 </div>
               </div>
                 <div className='text-sm font-medium text-primary cursor-pointer'>
-                    <Link to="" className='px-10 py-3 border hover:bg-[#0B79CD] hover:text-white border-blue-500 md:block hidden'>Collect My Order</Link>
-                    <Link to="" className='block md:hidden'><FaArrowRight/></Link>
+                    <Link to="/buy/collect/pickup-points" className='px-10 py-3 border hover:bg-[#0B79CD] hover:text-white border-blue-500 md:block hidden'>Collect My Order</Link>
+                    <Link to="/buy/collect/pickup-points" className='block md:hidden'><FaArrowRight/></Link>
                 </div>
             </div>
           <p></p>

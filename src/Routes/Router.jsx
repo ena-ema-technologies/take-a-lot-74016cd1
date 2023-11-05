@@ -96,6 +96,7 @@ import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
 import CheckReview from "../Page/CheckoutReview/CheckReview";
 import DeliveryMethod from "../Page/CheckoutReview/DeliveryMethod";
 import PickupPoint from "../Page/CheckoutReview/PickupPoint";
+import DeliveryAddress from "../Page/CheckoutReview/DeliveryForm/DeliveryAddress";
 
 
 
@@ -505,6 +506,10 @@ export const router = createBrowserRouter([
       {
         path:"/buy/collect/pickup-points",
         element:<PrivateRoute><PickupPoint/></PrivateRoute>
+      },
+      {
+        path:"/buy/delivery/addresses/add",
+        element:<PrivateRoute><DeliveryAddress/></PrivateRoute>
       }
     ]
   }
