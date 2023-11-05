@@ -19,7 +19,7 @@ const OnlineClass = () => {
 
     return (
 
-        <section className='w-82%'>
+        <section className='w-[82%]'>
 
             <div className='bg-white text-sm p-8'>
                 <p className='py-4'>
