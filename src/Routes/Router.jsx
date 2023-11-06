@@ -97,6 +97,60 @@ import CheckReview from "../Page/CheckoutReview/CheckReview";
 import DeliveryMethod from "../Page/CheckoutReview/DeliveryMethod";
 import PickupPoint from "../Page/CheckoutReview/PickupPoint";
 import DeliveryAddress from "../Page/CheckoutReview/DeliveryForm/DeliveryAddress";
+import CollectionLayout from "../Layout/CollectionLayout";
+import AboutCollectionTimeFrames from "../Page/HelpCenter/CollectionDetails/AboutCollectionTimeFrames/AboutCollectionTimeFrames";
+import AboutCollectionFees from "../Page/HelpCenter/CollectionDetails/AboutCollectionFees/AboutCollectionFees";
+import TrackMyCollection from "../Page/HelpCenter/CollectionDetails/TrackMyCollection/TrackMyCollection";
+import ChangingDeliveryMethod from "../Page/HelpCenter/CollectionDetails/ChangingDeliveryMethod/ChangingDeliveryMethod";
+import CollectingOrder from "../Page/HelpCenter/CollectionDetails/CollectingOrder/CollectingOrder";
+import RefundLayout from "../Layout/RefundLayout";
+import GetRefund from "../Page/HelpCenter/RefundDetails/GetRefund/GetRefund";
+import RefundTime from "../Page/HelpCenter/RefundDetails/RefundTime/RefundTime";
+import ProductStockLayout from "../Layout/ProductStockLayout";
+import HelpFindProduct from "../Page/HelpCenter/PrductStockDetails/HelpFindProduct/HelpFindProduct";
+import HelpBuyProducts from "../Page/HelpCenter/PrductStockDetails/HelpBuyProducts/HelpBuyProducts";
+import MoreInformation from "../Page/HelpCenter/PrductStockDetails/MoreInformation/MoreInformation";
+import ItemStock from "../Page/HelpCenter/PrductStockDetails/ItemStock/ItemStock";
+import PreOrder from "../Page/HelpCenter/PrductStockDetails/PreOrder/PreOrder";
+import UnboxedDetails from "../Page/HelpCenter/PrductStockDetails/UnboxedDetails/UnboxedDetails";
+import BundleDetails from "../Page/HelpCenter/PrductStockDetails/BundleDetails/BundleDetails";
+import OnlineClass from "../Page/HelpCenter/PrductStockDetails/OnlineClass/OnlineClass";
+import FlatPackFurniture from "../Page/HelpCenter/PrductStockDetails/FlatPackFurniture/FlatPackFurniture";
+import BlueRayDVD from "../Page/HelpCenter/PrductStockDetails/BlueRayDVD/BlueRayDVD";
+import AvailablePaymentOptions from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/AvailablePaymentOptions/AvailablePaymentOptions";
+import ItemPriceChange from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/ItemPriceChange/ItemPriceChange";
+import PaymentConfirmation from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/PaymentConfirmation/PaymentConfirmation";
+import CouponDiscount from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/CouponDiscount/CouponDiscount";
+import GiftVOuchers from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/GiftVouchers/GiftVOuchers";
+import PayFlex from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/PayFlex/PayFlex";
+import CardPayment from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/CardPayment/CardPayment";
+import COD from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/COD/COD";
+import EFTWithOzow from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/EFTWithOzow/EFTWithOzow";
+import EFTWithPayFast from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/EFTWithPayFast/EFTWithPayFast";
+import Mobicred from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/Mobicred/Mobicred";
+import MasterPass from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/MasterPass/MasterPass";
+import DiscoveryMiles from "../Page/HelpCenter/PaymentPromosGiftVoucherDetails/DiscoveryMiles/DiscoveryMiles";
+import eBucks from '../Page/HelpCenter/PaymentPromosGiftVoucherDetails/eBucks/eBucks';
+import PaymentPromosLayout from "../Layout/PaymentPromosLayout";
+import DataPrivacyLayout from "../Layout/DataPrivacyLayout";
+import RegisterAccount from "../Page/HelpCenter/DataPrivacyDetails/RegisterAccount/RegisterAccount";
+import ChangePassword from "../Page/HelpCenter/DataPrivacyDetails/ChangePassword/ChangePassword";
+import UpdateProfile from "../Page/HelpCenter/DataPrivacyDetails/UpdateProfile/UpdateProfile";
+import UnsubscribeEmail from "../Page/HelpCenter/DataPrivacyDetails/UnsubscribeEmail/UnsubscribeEmail";
+import PersonalInformation from "../Page/HelpCenter/DataPrivacyDetails/PersonalInformation/PersonalInformation";
+import DeleteAccount from "../Page/HelpCenter/DataPrivacyDetails/DeleteAccount/DeleteAccount";
+import TrackPerosnalInfo from "../Page/HelpCenter/DataPrivacyDetails/TrackPerosnalInfo/TrackPerosnalInfo";
+import POPIACompilence from "../Page/HelpCenter/DataPrivacyDetails/POPIACompilence/POPIACompilence";
+import VerifyIdentity from "../Page/HelpCenter/DataPrivacyDetails/VerifyIdentity/VerifyIdentity";
+import AboutPersonalInfo from "../Page/HelpCenter/DataPrivacyDetails/AboutPersonalInfo/AboutPersonalInfo";
+import DifferencePOPWithPAI from "../Page/HelpCenter/DataPrivacyDetails/DifferencePOPWithPAI/DifferencePOPWithPAI";
+import SecurityCompropise from "../Page/HelpCenter/DataPrivacyDetails/SecurityCompropise/SecurityCompropise";
+import AuthorisePerson from "../Page/HelpCenter/DataPrivacyDetails/AuthorisePerson/AuthorisePerson";
+import AccessFamilyMember from "../Page/HelpCenter/DataPrivacyDetails/AccessFamilyMember/AccessFamilyMember";
+import AboutCookies from "../Page/HelpCenter/DataPrivacyDetails/AboutCookies/AboutCookies";
+import AllowChildren from "../Page/HelpCenter/DataPrivacyDetails/AllowChildren/AllowChildren";
+import VerifyEmail from "../Page/HelpCenter/DataPrivacyDetails/VerifyEmail/VerifyEmail";
+import VerifyPhone from "../Page/HelpCenter/DataPrivacyDetails/VerifyPhone/VerifyPhone";
 
 
 
@@ -218,7 +272,7 @@ export const router = createBrowserRouter([
           {
             path: "returnDetails",
             element: <ReturnsLayout></ReturnsLayout>,
-            children:[
+            children: [
               {
                 path: "can-i-return-my-product",
                 element: <ReturnProducts></ReturnProducts>
@@ -284,7 +338,7 @@ export const router = createBrowserRouter([
           {
             path: "orderCancelDetails",
             element: <OrderCancelLayout></OrderCancelLayout>,
-            children:[
+            children: [
               {
                 path: "how-do-i-cancel-an-order",
                 element: <CancelOrder></CancelOrder>
@@ -312,20 +366,250 @@ export const router = createBrowserRouter([
             element: <CollectionHelp />
           },
           {
+            path: "collectionDetails",
+            element: <CollectionLayout></CollectionLayout>,
+            children: [
+              {
+                path: "about-collection-options-time-frames",
+                element: <AboutCollectionTimeFrames></AboutCollectionTimeFrames>
+              },
+              {
+                path: "about-collection-fees",
+                element: <AboutCollectionFees></AboutCollectionFees>
+              },
+              {
+                path: "change-delivery-method",
+                element: <ChangingDeliveryMethod></ChangingDeliveryMethod>
+              },
+              {
+                path: "track-my-collection-order",
+                element: <TrackMyCollection></TrackMyCollection>
+              },
+              {
+                path: "collecting-order",
+                element: <CollectingOrder></CollectingOrder>
+              },
+              {
+                path: "why-collection-not-available",
+                element: <CollectingOrder></CollectingOrder>
+              },
+            ]
+          },
+          {
             path: "refunds",
             element: <RefundsHelp />
+          },
+          {
+            path: "refundDetails",
+            element: <RefundLayout></RefundLayout>,
+            children: [
+              {
+                path: "how-do-i-get-a-refund-instead-of-a-credit",
+                element: <GetRefund></GetRefund>
+              },
+              {
+                path: "why-is-my-refund-taking-so-long",
+                element: <RefundTime></RefundTime>
+              },
+            ]
           },
           {
             path: "payments-promos-gift-vouchers",
             element: <PaymentsPromosGiftVouchersHelp />
           },
           {
+            path: "payments-promos-gift-vouchers-details",
+            element: <PaymentPromosLayout></PaymentPromosLayout>,
+            children: [
+              {
+                path: "available-payment-options",
+                element: <AvailablePaymentOptions></AvailablePaymentOptions>
+              },
+              {
+                path: "price-item-change-checkout",
+                element: <ItemPriceChange></ItemPriceChange>
+              },
+              {
+                path: "havent-received-confirmation",
+                element: <PaymentConfirmation></PaymentConfirmation>
+              },
+              {
+                path: "all-about-coupon-codes-discounts",
+                element: <CouponDiscount></CouponDiscount>
+              },
+              {
+                path: "all-about-gift-vouchers",
+                element: <GiftVOuchers></GiftVOuchers>
+              },
+              {
+                path: "all-about-payflex",
+                element: <PayFlex></PayFlex>
+              },
+              {
+                path: "all-about-credit-debit-card",
+                element: <CardPayment></CardPayment>
+              },
+              {
+                path: "all-about-cash-on-delivery",
+                element: <COD></COD>
+              },
+              {
+                path: "all-about-instant-eFT-ozow",
+                element: <EFTWithOzow></EFTWithOzow>
+              },
+              {
+                path: "all-about-instant-EFT-payFast",
+                element: <EFTWithPayFast></EFTWithPayFast>
+              },
+              {
+                path: "all-about-mobicred",
+                element: <Mobicred></Mobicred>
+              },
+              {
+                path: "all-about-eBucks",
+                element: <eBucks />
+              },
+              {
+                path: "all-about-masterpass",
+                element: <MasterPass></MasterPass>
+              },
+              {
+                path: "a-ll-about-discovery-miles",
+                element: <DiscoveryMiles />
+              },
+            ]
+          },
+          {
             path: "product-stock",
             element: <ProductStockHelp />
           },
           {
+            path: "product-stock-details",
+            element: <ProductStockLayout></ProductStockLayout>,
+            children: [
+              {
+                path: "can-you-help-me-find-a-product",
+                element: <HelpFindProduct></HelpFindProduct>
+              },
+              {
+                path: "how-do-i-buy-products-from-sellers-other-than-takealot-on-the-website",
+                element: <HelpBuyProducts></HelpBuyProducts>
+              },
+              {
+                path: "can-you-give-me-more-information-on-a-product",
+                element: <MoreInformation></MoreInformation>
+              },
+              {
+                path: "when-will-the-item-i-want-be-in-stock",
+                element: <ItemStock></ItemStock>
+              },
+              {
+                path: "all-about-pre-orders",
+                element: <PreOrder></PreOrder>
+              },
+              {
+                path: "all-about-unboxed-deals",
+                element: <UnboxedDetails></UnboxedDetails>
+              },
+              {
+                path: "all-about-bundle-deals",
+                element: <BundleDetails></BundleDetails>
+              },
+              {
+                path: "all-about-online-courses",
+                element: <OnlineClass></OnlineClass>
+              },
+              {
+                path: "all-about-flatpack-furniture",
+                element: <FlatPackFurniture></FlatPackFurniture>
+              },
+              {
+                path: "how-will-i-know-if-my-blu-ray-dvd-will-work",
+                element: <BlueRayDVD></BlueRayDVD>
+              },
+            ]
+          },
+          {
             path: "data-privacy",
             element: <DataPrivacyHelp />
+          },
+          {
+            path: "data-privacy-details",
+            element: <DataPrivacyLayout></DataPrivacyLayout>,
+            children: [
+              {
+                path: "resetting-password",
+                element: <ChangePassword></ChangePassword>,
+              },
+              {
+                path: "unsubscribe-email-newsletters",
+                element: <UnsubscribeEmail></UnsubscribeEmail>,
+              },
+              {
+                path: "about-personal-information",
+                element: <AboutPersonalInfo></AboutPersonalInfo>,
+              },
+              {
+                path: "register-to-takealot",
+                element: <RegisterAccount></RegisterAccount>,
+              },
+              {
+                path: "profile-update-information",
+                element: <UpdateProfile></UpdateProfile>,
+              },
+              {
+                path: "managing-personal-information",
+                element: <PersonalInformation></PersonalInformation>,
+              },
+              {
+                path: "delete-account",
+                element: <DeleteAccount></DeleteAccount>,
+              },
+              {
+                path: "track-status-deletion-request",
+                element: <TrackPerosnalInfo></TrackPerosnalInfo>,
+              },
+              {
+                path: "about-POPIA-compliance",
+                element: <POPIACompilence></POPIACompilence>,
+              },
+              {
+                path: "takealot-verify-identity",
+                element: <VerifyIdentity></VerifyIdentity>,
+              },
+              {
+                path: "difference-between-POPIA-PAIA",
+                element: <DifferencePOPWithPAI></DifferencePOPWithPAI>,
+              },
+              {
+                path: "security-compromise-involving-personal-information",
+                element: <SecurityCompropise></SecurityCompropise>,
+              },
+              {
+                path: "authorise-another-person-access-account",
+                element: <AuthorisePerson></AuthorisePerson>,
+              },
+              {
+                path: "access-deceased-family-members-account",
+                element: <AccessFamilyMember></AccessFamilyMember>,
+              },
+              {
+                path: "about-cookies-Takealot",
+                element: <AboutCookies></AboutCookies>,
+              },
+              {
+                path: "children-allowed-to-use-account",
+                element: <AllowChildren></AllowChildren>,
+              },
+              {
+                path: "verify-email-address",
+                element: <VerifyEmail></VerifyEmail>,
+              },
+              {
+                path: "verify-mobile-number",
+                element: <VerifyPhone></VerifyPhone>,
+              },
+            ]
           },
         ]
       },
@@ -342,7 +626,7 @@ export const router = createBrowserRouter([
         path: "/account",
         element: <PrivateRoute><Account /></PrivateRoute>,
         children: [
-          
+
           {
             path: "orders",
             element: <PrivateRoute><Orders /></PrivateRoute>
@@ -475,26 +759,26 @@ export const router = createBrowserRouter([
         ]
       },
       {
-        path:"/seller-account-overview",
-        element:<SellerRouter><AccountOverview /></SellerRouter>
+        path: "/seller-account-overview",
+        element: <SellerRouter><AccountOverview /></SellerRouter>
       },
       {
-        path:"/seller-dashboard",
-        element:<SellerRouter><Dashboard /></SellerRouter>,
-        children:[
+        path: "/seller-dashboard",
+        element: <SellerRouter><Dashboard /></SellerRouter>,
+        children: [
           {
-            path:"dashboard-home",
-            element:<SellerRouter><DashboardHome/></SellerRouter>
+            path: "dashboard-home",
+            element: <SellerRouter><DashboardHome /></SellerRouter>
           },
         ]
       }
     ]
   },
   {
-    path:"/buy",
-    errorElement:<ErrorPage />,
-    element:<PrivateRoute><CheckoutOutlet /></PrivateRoute>,
-    children:[
+    path: "/buy",
+    errorElement: <ErrorPage />,
+    element: <PrivateRoute><CheckoutOutlet /></PrivateRoute>,
+    children: [
       {
         path:"review",
         element:<PrivateRoute><CheckReview /></PrivateRoute>
@@ -510,6 +794,10 @@ export const router = createBrowserRouter([
       {
         path:"/buy/delivery/addresses/add",
         element:<PrivateRoute><DeliveryAddress/></PrivateRoute>
+      },
+      {
+        path: "review",
+        element: <PrivateRoute><CheckReview /></PrivateRoute>
       }
     ]
   }

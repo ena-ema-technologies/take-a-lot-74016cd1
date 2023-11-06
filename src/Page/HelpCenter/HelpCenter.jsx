@@ -417,7 +417,7 @@ const HelpCenter = () => {
                                     <p className='text-[#4d4d4f] text-xl font-semibold'>Collection</p>
                                 </div>
                                 <div>
-                                    <p className='text-[#4d4d4f9a]'><small>5 topics</small></p>
+                                    <p className='text-[#4d4d4f9a]'><small>6 topics</small></p>
                                 </div>
                             </div>
 
