@@ -94,6 +94,9 @@ import RequestInvoice from "../Page/HelpCenter/OrderDetails/RequestInvoice/Reque
 import PlacingOrder from "../Page/HelpCenter/OrderDetails/PlacingOrder/PlacingOrder";
 import CheckoutOutlet from "../Page/CheckoutReview/CheckoutOutlet";
 import CheckReview from "../Page/CheckoutReview/CheckReview";
+import DeliveryMethod from "../Page/CheckoutReview/DeliveryMethod";
+import PickupPoint from "../Page/CheckoutReview/PickupPoint";
+import DeliveryAddress from "../Page/CheckoutReview/DeliveryForm/DeliveryAddress";
 import CollectionLayout from "../Layout/CollectionLayout";
 import AboutCollectionTimeFrames from "../Page/HelpCenter/CollectionDetails/AboutCollectionTimeFrames/AboutCollectionTimeFrames";
 import AboutCollectionFees from "../Page/HelpCenter/CollectionDetails/AboutCollectionFees/AboutCollectionFees";
@@ -148,6 +151,7 @@ import AboutCookies from "../Page/HelpCenter/DataPrivacyDetails/AboutCookies/Abo
 import AllowChildren from "../Page/HelpCenter/DataPrivacyDetails/AllowChildren/AllowChildren";
 import VerifyEmail from "../Page/HelpCenter/DataPrivacyDetails/VerifyEmail/VerifyEmail";
 import VerifyPhone from "../Page/HelpCenter/DataPrivacyDetails/VerifyPhone/VerifyPhone";
+
 
 
 
@@ -775,6 +779,22 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     element: <PrivateRoute><CheckoutOutlet /></PrivateRoute>,
     children: [
+      {
+        path:"review",
+        element:<PrivateRoute><CheckReview /></PrivateRoute>
+      },
+      {
+        path:"/buy/delivery/method",
+        element:<PrivateRoute><DeliveryMethod/></PrivateRoute>
+      },
+      {
+        path:"/buy/collect/pickup-points",
+        element:<PrivateRoute><PickupPoint/></PrivateRoute>
+      },
+      {
+        path:"/buy/delivery/addresses/add",
+        element:<PrivateRoute><DeliveryAddress/></PrivateRoute>
+      },
       {
         path: "review",
         element: <PrivateRoute><CheckReview /></PrivateRoute>
