@@ -7,6 +7,7 @@ const auth = getAuth(app);
 export const UserAuth = createContext(null);
 
 const Auth = ({children}) => {
+    const [pickPointData,setPickPointData]=useState(null)
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
@@ -109,7 +110,9 @@ const Auth = ({children}) => {
         updateUserName,
         updateUserEmail,
         userVerify,
-        logOut
+        logOut,
+        setPickPointData,
+        pickPointData
     }
     return (
        <UserAuth.Provider value={userInfo}>

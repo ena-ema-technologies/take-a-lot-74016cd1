@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { HiInformationCircle, HiMiniQuestionMarkCircle, HiMiniXMark, HiShoppingCart } from 'react-icons/hi2';
 import { IoIosLock } from 'react-icons/io';
@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css'
+import { UserAuth } from '../../Auth/Auth';
 const CheckReview = () => {
 
   const [bucksMethod, setBucksMethod] = useState("sa_id");
@@ -14,18 +15,18 @@ const CheckReview = () => {
   const [donate, setDonate] = useState(false);
   const [carts, refetch] = useCart();
   const { register, formState: { errors }, handleSubmit } = useForm();
-
+  const {pickPointData } = useContext(UserAuth)
   const [isOpen, setIsOpen] = React.useState(false)
   const toggleDrawer = () => {
     setIsOpen((prevState) => !prevState)
   }
 
-  console.log(carts);
+  console.log(pickPointData);
 
   const totalPrice = carts.map(cart => cart.totalPrice);
-  console.log(totalPrice)
+  // console.log(totalPrice)
   const total = totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-  console.log(total)
+  // console.log(total)
 
 
 
@@ -59,9 +60,15 @@ const CheckReview = () => {
           <div className='w-full bg-white p-6 flex items-start justify-between shadow rounded'>
             <div className='w-full space-y-1'>
               <p className='text-[#4d4d4f] font-medium text-[12px]'>Pickup Point</p>
-              <p className='text-[#0a0a0a] font-bold text-lg'>Chiselhurst Pickup Point</p>
-              <p className='text-[#4d4d4f] font-medium text-[12px]'>28 Manchester Road</p>
-              <p className='text-[#4d4d4f] font-medium text-[12px]'>Chiselhurst, East London, 5247</p>
+              <p className='text-[#0a0a0a] font-bold text-lg'>  {
+                pickPointData?pickPointData.city_name:"Chiselhurst Pickup Point"
+              }</p>
+              <p className='text-[#4d4d4f] font-medium text-[12px]'>{
+                pickPointData?pickPointData.location:"28 Manchester Road"
+              }</p>
+              <p className='text-[#4d4d4f] font-medium text-[12px]'> {
+                pickPointData?pickPointData.RoadNo:"Chiselhurst, East London, 5247"
+              }</p>
             </div>
 
             <div className='text-sm font-medium text-primary cursor-pointer'>
@@ -95,7 +102,9 @@ const CheckReview = () => {
                 open={isOpen}
                 onClose={toggleDrawer}
                 direction='right'
-                className='w-full mr-96 bg-[#F4F4F4]'
+                className='w-full mr-96 bg-[#F4F4F4] '
+                size="250px"
+                
               >
                 <div className='w-[700px] bg-white'>
 
