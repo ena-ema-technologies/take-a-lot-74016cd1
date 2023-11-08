@@ -30,6 +30,9 @@ import Swal from 'sweetalert2';
 import useCart from '../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
 
+// drwer 
+import Drawer from 'react-modern-drawer';
+import 'react-modern-drawer/dist/index.css'
 const ProductDetails = () => {
   const {user} = useAuth();
   const [carts, update] = useCart();
@@ -45,7 +48,10 @@ const ProductDetails = () => {
   const selectedProducts = allProducts.find(prod => prod?._id === id);
   console.log(selectedProducts);
   // console.log(selectedRating);
-
+  const [isOpen, setIsOpen] = React.useState(false)
+  const toggleDrawer = () => {
+    
+  }
 const [quantity,setQuantity]=useState(1)
 const [discount,setDiscount]=useState(0)
   const handleQuantity =e=>{
@@ -110,6 +116,7 @@ else{
         }
         const response = await axiosSecure.post("add-product-cart", data);
         if(response.data.insertedId){
+          setIsOpen((prevState) => !prevState)
           Swal.fire({
             title: 'Success!',
             text: 'Product add to cart!',
@@ -1033,6 +1040,72 @@ else{
                   <option value='4'>4</option> */}
                 </select>
                 <button onClick={handleCart} className="inline-flex items-center justify-center px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5'/> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+                <Drawer
+                open={isOpen}
+                onClose={handleCart}
+                direction='right'
+                className='w-full mr-96 bg-[#F4F4F4] '
+                size="250px"
+                
+              >
+                  <div className='w-[700px] bg-white '>
+                    <h1 className='text-black text-center p-5 font-bold '>Added to cart</h1>
+                    <hr />
+
+                  </div>
+                  <div className='w-[700px] bg-[#F4F4F4] p-5'>
+                        <div className='w-full bg-white p-5 text-black flex'>
+                          <div className=' px-5'>
+                            <img className='w-32 border ' src={selectedProducts.Image_URL} alt="" />
+                          </div>
+                          <div className='pt-5 flex flex-col justify-between items-start'>
+                            <h1 className='font-semibold'>{selectedProducts.Product_Name}</h1>
+                            <Link className='px-8 bg-[#363638] rounded hover:bg-[#373739] py-2 text-white' to="/cart">Go  To Cart</Link>
+                          </div>
+                        </div>
+                        <div className="product-cards w-full my-4 h-full">
+                          <h1 className='py-5 text-black font-bold'>Related Products</h1>
+
+<Swiper
+  slidesPerView={4}
+  spaceBetween={20}
+  // loop={true}
+  // pagination={{
+  //   clickable: true,
+  // }}
+  navigation={true}
+  modules={[Pagination, Navigation]}
+  className="mySwiper"
+>
+
+  {
+    allProducts.slice(0, 10).map(prod => <SwiperSlide key={prod?._id} className="h-full">
+
+      <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl h-full overflow-visible">
+
+        <div className="w-[150px] h-[120px] mx-auto">
+          <img src={prod?.Image_URL} alt={prod?.Product_Name} />
+        </div>
+
+        <div className="h-[40px] mt-8">
+          <p className="text-xs font-normal text-[#4d4d4f] overflow-hidden">{prod?.Product_Name.slice(0, 45)}{prod?.Product_Name.length > 50 ? "..." : ""}</p>
+        </div>
+
+        <div className="mt-3 flex flex-col space-y-2">
+          <p className="font-bold">R 220</p>
+          <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
+        </div>
+      </Link>
+
+    </SwiperSlide>)
+  }
+
+</Swiper>
+
+</div>
+                  </div>
+                
+                </Drawer>
               </div>
 
               <button onClick={handleWishList} className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>
