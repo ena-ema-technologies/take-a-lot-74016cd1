@@ -23,12 +23,8 @@ const CheckReview = () => {
     setIsOpen((prevState) => !prevState)
   }
 
-  console.log(pickPointData);
 
-  const totalPrice = carts.map(cart => cart.totalPrice);
-  // console.log(totalPrice)
-  const total = totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-  // console.log(total)
+  const total = carts.reduce((sum , item)=> parseInt(item.totalPrice) + sum , 0)
 
 
 

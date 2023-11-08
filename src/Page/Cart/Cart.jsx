@@ -4,11 +4,8 @@ import useCart from '../../hooks/useCart';
 import { FaTrash,FaHeart, FaLock, FaCreditCard, FaTruck } from "react-icons/fa";
 const Cart = () => {
     const [carts, refetch] = useCart();
-    console.log(carts)
 
-    const totalPrice =carts.map(cart=>cart.totalPrice);
-    console.log(totalPrice)
-    const total=totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    const total = carts.reduce((sum , item)=> parseInt(item.totalPrice) + sum , 0)
     console.log(total)
     return (
        <section className='lg:px-5'>

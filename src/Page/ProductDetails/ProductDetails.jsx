@@ -78,9 +78,11 @@ else{
      
   }
   const price= selectedProducts?.Product_Price;
-     const totalPrice = price*quantity
-     const discountPrice =totalPrice*discount/100
-     const priceAfterDiscount=totalPrice- discountPrice;
+     let totalPrice = price*quantity
+     let discountPrice =totalPrice*discount/100
+     let priceAfterDiscount=totalPrice- discountPrice;
+     let accDiscount = totalPrice - priceAfterDiscount;
+     let totalDiscount = parseFloat(accDiscount.toFixed(2));
 
      const handleCart = async() =>{
       if(!user){
@@ -1056,10 +1058,10 @@ else{
                   <div className='w-[700px] bg-[#F4F4F4] p-5'>
                         <div className='w-full bg-white p-5 text-black flex'>
                           <div className=' px-5'>
-                            <img className='w-32 border ' src={selectedProducts.Image_URL} alt="" />
+                            <img className='w-32 border ' src={selectedProducts?.Image_URL} alt="" />
                           </div>
                           <div className='pt-5 flex flex-col justify-between items-start'>
-                            <h1 className='font-semibold'>{selectedProducts.Product_Name}</h1>
+                            <h1 className='font-semibold'>{selectedProducts?.Product_Name}</h1>
                             <Link className='px-8 bg-[#363638] rounded hover:bg-[#373739] py-2 text-white' to="/cart">Go  To Cart</Link>
                           </div>
                         </div>
@@ -1110,7 +1112,7 @@ else{
 
               <button onClick={handleWishList} className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>
 
-              <button className='px-3 py-2 bg-[#64a638] text-white text-sm rounded shadow-transparent mt-4'>Your Acumination Discounts R {priceAfterDiscount}</button>
+              <button className='px-3 py-2 bg-[#64a638] text-white text-xs font-medium rounded shadow-transparent mt-4'>Your Acumination Discounts R {totalDiscount}</button>
             </div>
           </div>
 

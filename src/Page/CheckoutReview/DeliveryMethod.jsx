@@ -9,10 +9,7 @@ import { FaArrowRight } from 'react-icons/fa';
 const DeliveryMethod = () => {
     const [carts, refetch] = useCart();
 
-    const totalPrice =carts.map(cart=>cart.totalPrice);
-    console.log(totalPrice)
-    const total=totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-    console.log(total)
+    const total = carts.reduce((sum , item)=> parseInt(item.totalPrice) + sum , 0)
     return (
         <section className=''>
             <div className='w-full flex items-center mx-2 justify-between'>

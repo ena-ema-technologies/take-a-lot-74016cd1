@@ -11,17 +11,14 @@ const PickupPoint = () => {
     const [carts, refetch] = useCart();
     const {setPickPointData}=useContext(UserAuth)
     const navigate =useNavigate()
-    const totalPrice = carts.map(cart => cart.totalPrice);
-    console.log(totalPrice)
-    const total = totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-    console.log(total)
+    const total = carts.reduce((sum , item)=> parseInt(item.totalPrice) + sum , 0)
 
     const dataHandler =(data)=>{
         setPickPointData(data)
         navigate("/buy/review")
     }
     return (
-        <section className=''>
+        <section className='px-5'>
             <div className='w-full flex items-center justify-between'>
 
                 <p className='font-medium text-xl text-[#4d4d4f]'>Collect</p>

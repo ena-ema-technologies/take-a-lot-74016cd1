@@ -179,7 +179,7 @@ const HelpCenter = () => {
                         className="mySwiper"
                     >
                         <SwiperSlide className='w-[300px]'>
-                            <Link to="/help-centre/account/orders-cancellations" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                            <Link to="/help-centre/orderCancelDetails/how-do-i-cancel-an-order" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                 <div className='w-full flex items-center gap-2'>
                                     <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                         <img src="https://media.takealot.com/help-cms/original_images/____CMS__e21cd38f7bff0bd13c2f3cd965a3696f4fed75f5.png" alt="icon" className='w-5' />
@@ -196,7 +196,7 @@ const HelpCenter = () => {
 
 
                         <SwiperSlide className='w-[300px]'>
-                            <Link to="/help-centre/delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                            <Link to="/help-centre/deliveryDetails/track-order" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                 <div className='w-full flex items-center gap-2'>
                                     <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                         <img src="https://media.takealot.com/help-cms/original_images/____CMS__a74a26dd212b3806eab80d2441241e0d6cc629b9.png" alt="icon" className='w-5' />
@@ -214,7 +214,7 @@ const HelpCenter = () => {
 
 
                         <SwiperSlide className='w-[300px]'>
-                            <Link to="/help-centre/returns" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                            <Link to="/help-centre/returnDetails/reschedule-collection" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                 <div className='w-full flex items-center gap-2'>
                                     <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                         <img src="https://media.takealot.com/help-cms/original_images/____CMS__affabfdc620808dbe89a48147eb8edfb71bc8486.png" alt="icon" className='w-5' />
@@ -232,7 +232,7 @@ const HelpCenter = () => {
 
 
                         <SwiperSlide className='w-[300px]'>
-                            <Link to="/help-centre/delivery" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                            <Link to="/help-centre/deliveryDetails/split-requests" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                 <div className='w-full flex items-center gap-2'>
                                     <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                         <img src="https://media.takealot.com/help-cms/original_images/____CMS__a74a26dd212b3806eab80d2441241e0d6cc629b9.png" alt="icon" className='w-5' />
@@ -250,7 +250,7 @@ const HelpCenter = () => {
 
 
                         <SwiperSlide className='w-[300px]'>
-                            <Link to="/help-centre/refunds" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
+                            <Link to="/help-centre/refundDetails/how-do-i-get-a-refund-instead-of-a-credit" className='w-[300px] h-[160px] overflow-visible flex flex-col gap-2 bg-white shadow hover:shadow-xl hover:border-b-4 hover:border-b-primary transition-all duration-300 px-4 py-6'>
                                 <div className='w-full flex items-center gap-2'>
                                     <div className='bg-gray-200 px-2 py-2 rounded-md'>
                                         <img src="https://media.takealot.com/help-cms/original_images/____CMS__d61d99a83f753a99d72de8d47bb8e9e06c9b21c6.png" alt="icon" className='w-5' />
@@ -278,35 +278,35 @@ const HelpCenter = () => {
 
 
                         <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                            <Link to="/help-centre/account/orders-cancellations" className='w-full text-xs inline-flex items-center justify-between'>
+                            <Link to="/help-centre/orderCancelDetails/how-do-i-cancel-an-order" className='w-full text-xs inline-flex items-center justify-between'>
                                 <span>How do I cancel an order?</span> <span><HiChevronRight className='h-5 w-5' /></span>
                             </Link>
                         </li>
 
 
                         <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                            <Link to="/help-centre/delivery" className='w-full text-xs inline-flex items-center justify-between'>
+                            <Link to="/help-centre/deliveryDetails/track-order" className='w-full text-xs inline-flex items-center justify-between'>
                                 <span>Track your order</span> <span><HiChevronRight className='h-5 w-5' /></span>
                             </Link>
                         </li>
 
 
                         <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                            <Link to="/help-centre/returns" className='w-full text-xs inline-flex items-center justify-between'>
+                            <Link to="/help-centre/returnDetails/reschedule-collection" className='w-full text-xs inline-flex items-center justify-between'>
                                 <span>Reschedule my return collection</span> <span><HiChevronRight className='h-5 w-5' /></span>
                             </Link>
                         </li>
 
 
                         <li className='border-b py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                            <Link to="/help-centre/delivery" className='w-full text-xs inline-flex items-center justify-between'>
+                            <Link to="/deliveryDetails/split-requests" className='w-full text-xs inline-flex items-center justify-between'>
                                 <span>Split delivery requests</span> <span><HiChevronRight className='h-5 w-5' /></span>
                             </Link>
                         </li>
 
 
                         <li className='py-2 text-[#4d4d4f] font-medium text-sm w-full'>
-                            <Link to="/help-centre/refunds" className='w-full text-xs inline-flex items-center justify-between'>
+                            <Link to="/help-centre/refundDetails/how-do-i-get-a-refund-instead-of-a-credit" className='w-full text-xs inline-flex items-center justify-between'>
                                 <span>How do I get a refund instead of a credit?</span> <span><HiChevronRight className='h-5 w-5' /></span>
                             </Link>
                         </li>
@@ -343,9 +343,9 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm'>
-                                <Link to="/help-centre/delivery/order-track" className='hover:text-primary hover:underline'>Track your order</Link>
-                                <Link to="/help-centre/delivery/reschedule-delivery" className='hover:text-primary hover:underline'>Reschedule your delivery</Link>
-                                <Link to="/help-centre/delivery/change-address" className='hover:text-primary hover:underline'>Change your delivery address</Link>
+                                <Link to="/help-centre/deliveryDetails/track-order" className='hover:text-primary hover:underline'>Track your order</Link>
+                                <Link to="/help-centre/deliveryDetails/reschedule-delivery" className='hover:text-primary hover:underline'>Reschedule your delivery</Link>
+                                <Link to="/help-centre/deliveryDetails/change-delivery-address" className='hover:text-primary hover:underline'>Change your delivery address</Link>
                                 <Link to="/help-centre/delivery" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium'>See All</Link>
 
                             </div>
@@ -370,9 +370,9 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm'>
-                                <Link to="/help-centre/returns/return-product" className='hover:text-primary hover:underline'>Can I return my product?</Link>
-                                <Link to="/help-centre/returns/reschedule-collection" className='hover:text-primary hover:underline'>Reschedule my return collection</Link>
-                                <Link to="/help-centre/returns/return-status" className='hover:text-primary hover:underline'>Track my return status</Link>
+                                <Link to="/help-centre/returnDetails/can-i-return-my-product" className='hover:text-primary hover:underline'>Can I return my product?</Link>
+                                <Link to="/help-centre/returnDetails/reschedule-collection" className='hover:text-primary hover:underline'>Reschedule my return collection</Link>
+                                <Link to="/help-centre/returnDetails/track-my-return-status" className='hover:text-primary hover:underline'>Track my return status</Link>
                                 <Link to="/help-centre/returns" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium'>See All</Link>
 
                             </div>
@@ -396,9 +396,9 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm'>
-                                <Link to="/help-centre/account/orders-cancellations/cancel-order" className='hover:text-primary hover:underline'>How do I cancel an order?</Link>
-                                <Link to="/help-centre/account/orders-cancellations/make-changes-after-placed" className='hover:text-primary hover:underline'>Can I make changes to my order after it has been placed?</Link>
-                                <Link to="/help-centre/account/orders-cancellations/Why-cancelled-order" className='hover:text-primary hover:underline'>Why have you cancelled my order?</Link>
+                                <Link to="/help-centre/orderCancelDetails/how-do-i-cancel-an-order" className='hover:text-primary hover:underline'>How do I cancel an order?</Link>
+                                <Link to="/help-centre/orderCancelDetails/can-i-make-changes-to-my-order-after-it-has-been-placed" className='hover:text-primary hover:underline'>Can I make changes to my order after it has been placed?</Link>
+                                <Link to="/help-centre/orderCancelDetails/why-have-you-cancelled-my-order" className='hover:text-primary hover:underline'>Why have you cancelled my order?</Link>
                                 <Link to="/help-centre/account/orders-cancellations" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium'>See All</Link>
 
                             </div>
@@ -422,9 +422,9 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm'>
-                                <Link to="/help-centre/collection/about-collection" className='hover:text-primary hover:underline'>About collection options & time frames</Link>
-                                <Link to="/help-centre/collection/about-collection-fees" className='hover:text-primary hover:underline'>About collection fees</Link>
-                                <Link to="/help-centre/collection/Why-collection-available" className='hover:text-primary hover:underline'>Why is collection not available for my order?</Link>
+                                <Link to="/help-centre/collectionDetails/about-collection-options-time-frames" className='hover:text-primary hover:underline'>About collection options & time frames</Link>
+                                <Link to="/help-centre/collectionDetails/about-collection-fees" className='hover:text-primary hover:underline'>About collection fees</Link>
+                                <Link to="/help-centre/collectionDetails/why-collection-not-available" className='hover:text-primary hover:underline'>Why is collection not available for my order?</Link>
                                 <Link to="/help-centre/collection" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium'>See All</Link>
 
                             </div>
@@ -449,8 +449,8 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm relative h-full'>
-                                <Link to="/help-centre/refunds/refunds-credit" className='hover:text-primary hover:underline'>How do I get a refund instead of a credit?</Link>
-                                <Link to="/help-centre/refunds/refund-taking-long" className='hover:text-primary hover:underline'>Why is my refund taking so long?</Link>
+                                <Link to="/help-centre/refundDetails/how-do-i-get-a-refund-instead-of-a-credit" className='hover:text-primary hover:underline'>How do I get a refund instead of a credit?</Link>
+                                <Link to="/help-centre/refundDetails/why-is-my-refund-taking-so-long" className='hover:text-primary hover:underline'>Why is my refund taking so long?</Link>
 
 
                                 <Link to="/help-centre/refunds" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium absolute bottom-16'>See All</Link>
@@ -477,9 +477,9 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm relative h-full'>
-                                <Link to="/help-centre/payments-promos-gift-vouchers/available-payment-options" className='hover:text-primary hover:underline'>Available payment options</Link>
-                                <Link to="/help-centre/payments-promos-gift-vouchers/price-item-change-checkout" className='hover:text-primary hover:underline'>Why does the price of my item change when I try and check out?</Link>
-                                <Link to="/help-centre/payments-promos-gift-vouchers/havent-received-confirmation" className='hover:text-primary hover:underline'>Why haven’t I received my payment confirmation email?</Link>
+                                <Link to="/help-centre/payments-promos-gift-vouchers-details/available-payment-options" className='hover:text-primary hover:underline'>Available payment options</Link>
+                                <Link to="/help-centre/payments-promos-gift-vouchers-details/price-item-change-checkout" className='hover:text-primary hover:underline'>Why does the price of my item change when I try and check out?</Link>
+                                <Link to="/help-centre/payments-promos-gift-vouchers-details/havent-received-confirmation" className='hover:text-primary hover:underline'>Why haven’t I received my payment confirmation email?</Link>
 
 
                                 <Link to="/help-centre/payments-promos-gift-vouchers" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium'>See All</Link>
@@ -506,9 +506,9 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm relative h-full'>
-                                <Link to="/help-centre/product-stock/help-to-find-product" className='hover:text-primary hover:underline'>Can you help me find a product?</Link>
-                                <Link to="/help-centre/product-stock/buy-products-sellers-Takealot" className='hover:text-primary hover:underline'>How do I buy products from sellers other than Takealot on the website?</Link>
-                                <Link to="/help-centre/product-stock/give-information-product" className='hover:text-primary hover:underline'>Can you give me more information on a product?</Link>
+                                <Link to="/help-centre/product-stock-details/can-you-help-me-find-a-product" className='hover:text-primary hover:underline'>Can you help me find a product?</Link>
+                                <Link to="/help-centre/product-stock-details/how-do-i-buy-products-from-sellers-other-than-takealot-on-the-website" className='hover:text-primary hover:underline'>How do I buy products from sellers other than Takealot on the website?</Link>
+                                <Link to="/help-centre/product-stock-details/can-you-give-me-more-information-on-a-product" className='hover:text-primary hover:underline'>Can you give me more information on a product?</Link>
 
 
                                 <Link to="/help-centre/product-stock" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium'>See All</Link>
@@ -535,9 +535,9 @@ const HelpCenter = () => {
                             </div>
 
                             <div className='pt-5 flex flex-col space-y-3 text-sm relative h-full'>
-                                <Link to="/help-centre/data-privacy/register-to-takealot" className='hover:text-primary hover:underline'>How to register on takealot.com</Link>
-                                <Link to="/help-centre/data-privacy/resetting-password" className='hover:text-primary hover:underline'>Changing or resetting your password</Link>
-                                <Link to="/help-centre/data-privacy/profile-update-information" className='hover:text-primary hover:underline'>My email address has changed. How do I update this on my profile?</Link>
+                                <Link to="/help-centre/data-privacy-details/register-to-takealot" className='hover:text-primary hover:underline'>How to register on takealot.com</Link>
+                                <Link to="/help-centre/data-privacy-details/resetting-password" className='hover:text-primary hover:underline'>Changing or resetting your password</Link>
+                                <Link to="/help-centre/data-privacy-details/profile-update-information" className='hover:text-primary hover:underline'>My email address has changed. How do I update this on my profile?</Link>
 
 
                                 <Link to="/help-centre/data-privacy" className='my-4 px-5 py-2 border border-primary w-fit bg-primary text-white rounded font-medium'>See All</Link>
