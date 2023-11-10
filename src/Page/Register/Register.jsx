@@ -169,7 +169,7 @@ const Register = () => {
   useEffect(() => {
     const accessKey = import.meta.env.VITE_Locationtoken;
 
-    fetch(`http://api.ipstack.com/check?access_key=${accessKey}`)
+    fetch(`https://api.ipstack.com/check?access_key=${accessKey}`)
       .then((response) => response.json())
       .then((data) => {
         setLocationData(data);
