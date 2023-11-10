@@ -104,7 +104,7 @@ console.log(sellerInfo)
     <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 
     <ul className="menu py-0 pl-0 pr-0 w-72 h-full bg-white text-base-content relative">
       <li className="shadow mb-2 py-2">
-      <Link to="/"><img src="https://shopfront.takealot.com/aed55792c2c96c6c4f665ee46aa6ff6e20f41112/static/media/src/images/logo.svg-f6ccb489b85bbddf97d6.svg" alt="Takealot" className="w-28" /></Link>
+      <Link to="/"><img src="https://i.ibb.co/wB0jzwR/Electro-DEMO-4.png" alt="Takealot" className="w-28" /></Link>
       </li>
       
         <ul className="px-0 shadow my-3">
@@ -2087,7 +2087,7 @@ console.log(sellerInfo)
                             </div>
                         </div>
                         <div className="navbar-center">
-                            <Link to="/"><img src="https://shopfront.takealot.com/aed55792c2c96c6c4f665ee46aa6ff6e20f41112/static/media/src/images/logo.svg-f6ccb489b85bbddf97d6.svg" alt="Takealot" className="w-32" /></Link>
+                            <Link to="/"><img src="https://i.ibb.co/wB0jzwR/Electro-DEMO-4.png" alt="Takealot" className="w-32" /></Link>
                         </div>
                         <div className="navbar-end">
                             <button className="btn btn-ghost btn-circle" onClick={handleInputClick}>
@@ -2112,7 +2112,7 @@ console.log(sellerInfo)
                 <nav className="hidden lg:flex justify-between w-full px-4 py-4 max-w-7xl mx-auto">
                     <div className="w-full inline-flex items-center space-x-2">
                         <div className="space-x-12 inline-flex items-center">
-                            <Link to="/"><img src="https://shopfront.takealot.com/aed55792c2c96c6c4f665ee46aa6ff6e20f41112/static/media/src/images/logo.svg-f6ccb489b85bbddf97d6.svg" alt="Takealot" className="w-44" /></Link>
+                            <Link to="/"><img src="https://i.ibb.co/wB0jzwR/Electro-DEMO-4.png" alt="Takealot" className="w-44" /></Link>
 
                             <Link to="/help-centre" className="smallLink">Help Center</Link>
                         </div>

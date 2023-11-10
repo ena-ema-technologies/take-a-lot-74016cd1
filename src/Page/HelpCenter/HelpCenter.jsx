@@ -34,7 +34,7 @@ const HelpCenter = () => {
                                 </label>
                             </div>
                             <div className="flex-1 px-2">
-                                <Link to="/"><img src="https://shopfront.takealot.com/b0fd31305b6ec6eb9e374f5e527a4ad540896d49/static/media/src/images/logo-invert.svg-97f9dff70e59ec07ae74.svg" alt="Logo Takealot" className='w-32' /></Link>
+                                <Link to="/"><img src="https://i.ibb.co/wB0jzwR/Electro-DEMO-4.png" alt="Logo Takealot" className='w-32' /></Link>
                                 <div className="mx-4 h-5 border-s-2 border-white"></div>
                                 <Link to="/help-centre" className='text-lg font-medium text-white'>Help Centre</Link>
                                 <div className="lg:hidden absolute top-16 w-full border-t border-white left-0"></div>

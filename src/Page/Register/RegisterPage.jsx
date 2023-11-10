@@ -11,6 +11,8 @@ import axios from "axios";
 import useProfile from "../../hooks/useProfile";
 
 const RegisterPage = () => {
+    const [locationData, setLocationData] = useState(null);
+    const [userFrom, setUserFrom] = useState(null);
     const [userInfo, refetch] = useProfile();
     const {updateUser, signUp, userVerify , user} = useAuth();
     const location = useLocation();
@@ -104,6 +106,24 @@ const RegisterPage = () => {
         reset({ something: "" })
       }
     }, [formState, reset])
+    useEffect(() => {
+        const accessKey = import.meta.env.VITE_Locationtoken;
+    
+        fetch(`http://api.ipstack.com/check?access_key=${accessKey}`)
+          .then((response) => response.json())
+          .then((data) => {
+            setLocationData(data);
+          })
+          .catch((error) => {
+            console.error('Error fetching IP information:', error.message);
+          });
+      }, []);
+    
+      useEffect(()=>{
+        const userCode = allCodes.find((cCode) => cCode?.code === locationData?.country_code);
+        setUserFrom(userCode)
+      },[locationData])
+      
     return (
         <div className="flex items-center justify-center my-14">
             <div className="text-left bg-white px-9 py-5 rounded shadow">
@@ -178,9 +198,9 @@ const RegisterPage = () => {
                                 <div className='w-1/3'>
                                     <label className='text-xs text-[#999]'>Code</label>
                                     <select {...register("countryCode", { required: true })} className='py-2 px-2 border-b-2 border-[#c9c7c7] text-sm font-medium text-gray-500 bg-transparent' aria-invalid={errors.countryCode ? "true" : "false"}>
-                                        {
-                                            allCodes.map(cCode => <option key={cCode?._id} value={cCode?.dial_code}>{cCode?.code} ({cCode?.dial_code})</option>)
-                                        }
+                                    <option key={userFrom?._id} value={userFrom?.dial_code}>
+                          {userFrom?.code} ({userFrom?.dial_code})
+                        </option>
                                     </select>
                                 </div>
                                 <div className="inputGroup w-full">

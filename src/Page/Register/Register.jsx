@@ -11,6 +11,8 @@ import axios from "axios";
 import useProfile from "../../hooks/useProfile";
 
 const Register = () => {
+  const [locationData, setLocationData] = useState(null);
+  const [userFrom, setUserFrom] = useState(null);
   const [userInfo, refetch] = useProfile();
   const {updateUser, signUp, userVerify , user} = useAuth();
   const location = useLocation();
@@ -106,6 +108,28 @@ const display_url = "https://i.ibb.co/jwkFMLB/User-Avatar-Profile-PNG.png"
       reset({ something: "" })
     }
   }, [formState, reset])
+
+  useEffect(() => {
+    const accessKey = import.meta.env.VITE_Locationtoken;
+
+    fetch(`http://api.ipstack.com/check?access_key=${accessKey}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setLocationData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching IP information:', error.message);
+      });
+  }, []);
+
+  useEffect(()=>{
+    const userCode = allCodes.find((cCode) => cCode?.code === locationData?.country_code);
+    setUserFrom(userCode)
+  },[locationData])
+
+  console.log(userFrom);
+
+
   return (
     <div>
       <input type="checkbox" id="register_modal" className="modal-toggle" />
@@ -233,11 +257,12 @@ const display_url = "https://i.ibb.co/jwkFMLB/User-Avatar-Profile-PNG.png"
                       className="py-2 px-2 border-b-2 border-[#c9c7c7] text-sm font-medium text-gray-500 bg-transparent"
                       aria-invalid={errors.countryCode ? "true" : "false"}
                     >
-                      {allCodes.map((cCode) => (
-                        <option key={cCode?._id} value={cCode?.dial_code}>
-                          {cCode?.code} ({cCode?.dial_code})
+                     
+                     <option key={userFrom?._id} value={userFrom?.dial_code}>
+                          {userFrom?.code} ({userFrom?.dial_code})
                         </option>
-                      ))}
+
+                      
                     </select>
                   </div>
                   <div className="inputGroup w-full">
