@@ -1,6 +1,6 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../firebase/firebase.config';
-import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile} from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPhoneNumber, signInWithPopup, signOut, updateEmail, updatePassword, updateProfile} from "firebase/auth";
 import axios from 'axios';
 
 const auth = getAuth(app);
@@ -68,6 +68,34 @@ const Auth = ({children}) => {
         return sendEmailVerification(auth.currentUser)
     }
 
+    const PhoneVerificationCode = async (phoneNumber) => {
+        try {
+          console.log('Sending verification code...');
+          setLoading(true);
+          const confirmation = await signInWithPhoneNumber(auth, phoneNumber);
+          setLoading(false);
+          console.log('Verification code sent successfully:', confirmation.verificationId);
+          return confirmation.verificationId;
+        } catch (error) {
+          console.error('Error sending verification code:', error);
+          setLoading(false);
+          throw new Error('Error sending verification code');
+        }
+      };
+    
+      const verifyNumber = async (confirmation, verificationCode) => {
+        try {
+          setLoading(true);
+          const credential = await confirmation.confirm(verificationCode);
+          setLoading(false);
+          await signInWithPhoneNumber(auth, credential);
+        } catch (error) {
+          console.error('Error verifying phone number:', error);
+          setLoading(false);
+          throw new Error('Error verifying phone number');
+        }
+      };
+
     const logOut = () => {
         return signOut(auth)
     }
@@ -112,7 +140,9 @@ const Auth = ({children}) => {
         userVerify,
         logOut,
         setPickPointData,
-        pickPointData
+        pickPointData,
+        PhoneVerificationCode,
+        verifyNumber
     }
     return (
        <UserAuth.Provider value={userInfo}>
