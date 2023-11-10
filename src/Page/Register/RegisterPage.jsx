@@ -326,6 +326,17 @@ const RegisterPage = () => {
         
                               
                             </select>
+                            {/* <select
+                      {...register("countryCode", { required: true })}
+                      className="py-2 px-2 border-b-2 border-[#c9c7c7] text-sm font-medium text-gray-500 bg-transparent"
+                      aria-invalid={errors.countryCode ? "true" : "false"}
+                    >
+                      {allCodes.map((cCode) => (
+                        <option key={cCode?._id} value={cCode?.dial_code}>
+                          {cCode?.code} ({cCode?.dial_code})
+                        </option>
+                      ))}
+                    </select> */}
                           </div>
                           <div className="inputGroup w-full">
                             <input
