@@ -21,7 +21,6 @@ const Register = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [userData, setUserData] = useState(null);
   const [verificationCode, setVerificationCode] = useState('');
-  const [verificationId, setVerificationId] = useState(null);
   const [confirmationResult, setConfirmationResult] = useState(null);
   const [locationData, setLocationData] = useState(null);
   const [userFrom, setUserFrom] = useState(null);
@@ -46,15 +45,6 @@ const Register = () => {
       .then((data) => setAllCodes(data));
   }, []);
 
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  // console.log(allCodes);
 
   const handleShow = () => {
     setType("text");
@@ -77,13 +67,11 @@ const Register = () => {
     } else {
       const phoneNumber = data?.countryCode + data?.number;
   try {
-    const recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', {
-      'size': 'normal',
+    const recaptchaVerifier = new RecaptchaVerifier(auth, 'sign-in-button', {
+      'size': 'invisible',
       'callback': (response) => {
-
-      },
-      'expired-callback': () => {
-
+        // reCAPTCHA solved, allow signInWithPhoneNumber.
+      //   onSignInSubmit();
       }
     });
 
@@ -204,7 +192,7 @@ const Register = () => {
     <div>
       <input type="checkbox" id="register_modal" className="modal-toggle" />
       <div className="modal">
-        <div className="modal-box text-left rounded relative">
+        <div className="modal-box text-left rounded relative overflow-x-hidden">
          
           {
             !isModalOpen && <div>
@@ -392,10 +380,11 @@ const Register = () => {
                       </label>
                     </div>
 
-                    <div id="recaptcha-container"></div>
+                    {/* <div id="recaptcha-container"></div> */}
       
                     <div className="text-center">
                       <input
+                      id="sign-in-button"
                         type="submit"
                         value="Continue"
                         className="bg-primary w-full py-2 rounded bg-opacity-90 text-center font-semibold text-white cursor-pointer"
@@ -442,7 +431,7 @@ const Register = () => {
         </div>
 
         <div>
-        <div id="recaptcha-container"></div>
+        {/* <div id="recaptcha-container"></div> */}
         </div>
       </div>   
       }
