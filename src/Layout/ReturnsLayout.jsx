@@ -30,7 +30,7 @@ const ReturnsLayout = () => {
                 <div className="hidden lg:block text-xs breadcrumbs text-white absolute top-20 left-10">
                     <ul>
                         <li><Link to="/help-centre">Help Centre</Link></li>
-                        <li><Link to="/help-centre/delivery">Delivery</Link></li>
+                        <li><Link to="/help-centre/returns">Returns</Link></li>
                         <li className='font-semibold'>
                             {
                                 rescheduleLocation ? "Can I return my product?" : rescheduledCollection ? "Reschedule my return collection" : trackReturnStatus ? "Track my return status" : returnProduct ? "Return my product" : returnMethod ? "Return method & fees" : returnCancel ? "Return my cancel" : replaceProduct ? "Can I exchange or replace my product" : changeReturnAddress ? "Can I change my collection address once I have logged a return ?" : returnAccessories ? "Returning a product without accessories or its partner product" : warrantyManufacture ? "How do I return a manufacturer warranty product?" : wrongProduct ? "The product I received is not what I ordered" : returnRefund ? "How soon will I get a refund or credit on my return?" : "Track your Order"

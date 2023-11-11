@@ -78,7 +78,7 @@ const Auth = ({children}) => {
 
             if (currentUser) {
                 // const email= currentUser.email;
-                axios.post("http://localhost:5000/jwt", {
+                axios.post("https://take-a-lot-server-two.vercel.app/jwt", {
                     email: currentUser.email
                 }).then(data => {
                     // console.log(data.data.token);

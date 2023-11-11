@@ -30,7 +30,7 @@ const SocialLogIn = ({ title1, title2 }) => {
                     confirmButtonText: 'Ok'
                 })
 
-                const result = await axios.post("http://localhost:5000/users", newData)
+                const result = await axios.post("https://take-a-lot-server-two.vercel.app/users", newData)
                 if(result.data.insertedId){
                     navigate(from, { replace: true })
                     Swal.fire({

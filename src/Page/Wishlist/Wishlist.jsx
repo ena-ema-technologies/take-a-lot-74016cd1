@@ -1,6 +1,6 @@
 import React from 'react';
-import { FaArrowLeft } from 'react-icons/fa';
-import { HiArrowLeft, HiOutlinePlusSmall, HiStar, HiXMark } from 'react-icons/hi2';
+import { FaArrowLeft, FaTrash } from 'react-icons/fa';
+import { HiArrowLeft, HiOutlinePlusSmall, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
 import { Link, NavLink } from 'react-router-dom';
 import { IoShareSocialOutline } from "react-icons/io5";
 import { useState } from 'react';
@@ -17,15 +17,74 @@ import 'swiper/css/navigation';
 // import required modules
 import { Pagination, Navigation } from 'swiper/modules';
 import { IoIosArrowDown } from 'react-icons/io';
+import useWishlist from '../../hooks/useWishlist';
+import useCart from '../../hooks/useCart';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
+import useAuth from '../../hooks/useAuth';
+import useProfile from '../../hooks/useProfile';
 
 const Wishlist = () => {
     const [allProducts , setAllProducts] = useState([]);
+    const {user} = useAuth();
+    const [carts, update] = useCart();
+    const [axiosSecure] = useAxiosSecure();
+    const [lists, refetch]=useWishlist();
+    const [userInfo] = useProfile();
+    
+    console.log(lists)
 
     useEffect(()=>{
         fetch(`https://take-a-lot-server-two.vercel.app/all-products`)
         .then(res=>res.json())
         .then(data=>setAllProducts(data))
     },[]);
+
+
+    const handleCart = async(id) =>{
+      if(!user){
+        Swal.fire({
+          title: 'Error!',
+          text: 'You have to login first!',
+          icon: 'warning',
+          confirmButtonText: 'Ok'
+        })
+      }else{
+        const selectedProducts = allProducts.find(prod => prod?._id === id);
+        const data = {
+          totalPrice: selectedProducts?.Product_Price,
+          quantity: 1,
+          barcode : selectedProducts?.Barcode,
+          brandName: selectedProducts?.Brand_Name,
+          productName: selectedProducts?.Product_Name,
+          basedPrice: selectedProducts?.Product_Price,
+          productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
+          productId: selectedProducts?._id,
+          buyerInformation : {
+            firstName: userInfo?.firstName,
+            lastName: userInfo?.lastName,
+            mobileNumber: userInfo?.mobile_Number ? userInfo?.mobile_Number : "",
+            phone: userInfo?.phone ? userInfo?.phone : "",
+            postalCode: userInfo?.postal_Code ? userInfo?.postal_Code : "",
+            countryCode: userInfo?.countryCode,
+            email: userInfo?.email,
+            province: userInfo?.province ? userInfo?.province : "",
+            streetAddress: userInfo?.street_Address ? userInfo?.street_Address : "",
+          }
+  
+        }
+        const response = await axiosSecure.post("add-product-cart", data);
+        if(response.data.insertedId){
+          Swal.fire({
+            title: 'Success!',
+            text: 'Product add to cart!',
+            icon: 'success',
+            confirmButtonText: 'Ok'
+          })
+          update();
+        }
+      }
+     }
 
     return (
         <section className='max-w-7xl mx-auto lg:px-5'>
@@ -74,17 +133,50 @@ const Wishlist = () => {
 </div>
 
 
-<div className='mt-4 rounded shadow bg-white py-2 h-80 flex items-center flex-col justify-center gap-3'>
-<div className='shadow px-2 py-2 rounded-full'>
-<img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/wishlist/wishlist-empty.svg-38f93f7194b84a6a1f59.svg" alt="Icon" className='rounded-full'/>
-</div>
+{
+  !lists?<div className='mt-4 rounded shadow bg-white py-2 h-80 flex items-center flex-col justify-center gap-3'>
 
-<h1 className='text-[#000] text-lg font-semibold'>This list is empty!</h1>
-<p className='text-base font-light text-[#4d4d4f]'>Go on, start planning what gifts you'd like!</p>
+  <div className='shadow px-2 py-2 rounded-full'>
+  <img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/wishlist/wishlist-empty.svg-38f93f7194b84a6a1f59.svg" alt="Icon" className='rounded-full'/>
+  </div>
+  
+  <h1 className='text-[#000] text-lg font-semibold'>This list is empty!</h1>
+  <p className='text-base font-light text-[#4d4d4f]'>Go on, start planning what gifts you'd like!</p>
+  
+  <Link to="/all" className='py-2 px-5 border border-primary text-white font-semibold text-sm bg-primary rounded'>Continue Shopping</Link>
+  
+  
+  </div>:<>
+  {
+    lists.map(list=><div className='mt-4 rounded shadow bg-white py-2 md:h-60 h-auto flex md:flex-row flex-col items-center justify-between  gap-3'>
+    
+    <div className='flex'>
+    <div>
+    <img className='w-36' src="https://media.takealot.com/covers_images/9eb0de31070040a9942bbbde404a92b4/s-zoom.file" alt="" />
+    </div>
+    <div>
+      <h1 className='mt-5 ms-5 text-[#7C7C7D]'>{list?.productName}</h1>
+      <Link className='mt-5 ms-5 text-xs text-blue-700'>{list.brandName}</Link><br />
+      <button className='mt-5 ms-5 text-[#7C7C7D]'>In stock</button>
+    </div>
+    </div>
+    <div className='md:mr-8 mt-5'>
+      <h1 className='text-2xl text-end font-bold'>R {list.totalPrice
+}</h1>
+      <button onClick={()=>handleCart(list.productId)}  className=" bg-[#1C8644]  text-white flex px-7 mb-2 mt-5 py-2 gap-1 font-medium w-full"> <HiOutlinePlusSmall className='w-5 h-5'/><HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+      <div className='flex items-center gap-2'>
+      <select name="" id="" className='border bg-[#EAEAEA] px-4 py-2'>
+        <option value="">Move</option>
+        <option value="">Create a list </option>
+      </select>
+      <button className='p-2 text-2xl bg-[#EAEAEA]'><FaTrash/></button>
+      </div>
+    </div>
+  </div>)
+  }
+  </>
+}
 
-<Link to="/all" className='py-2 px-5 border border-primary text-white font-semibold text-sm bg-primary rounded'>Continue Shopping</Link>
-
-</div>
 
 <div className='my-5'>
 <img src="https://tpc.googlesyndication.com/simgad/9334445511005059859?" alt="Banner" className='h-12 lg:h-20'/>
