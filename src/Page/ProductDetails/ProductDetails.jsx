@@ -82,7 +82,7 @@ else{
      let discountPrice =totalPrice*discount/100
      let priceAfterDiscount=totalPrice- discountPrice;
      let accDiscount = totalPrice - priceAfterDiscount;
-     let totalDiscount = parseFloat(accDiscount.toFixed(2));
+     let totalDiscount = 0;
 
      const handleCart = async() =>{
       if(!user){
@@ -193,7 +193,7 @@ else{
       </div>
 
       <div className='flex flex-col lg:flex-row items-start gap-10 mt-5 mb-10 overflow-hidden relative'>
-        <div className='w-full lg:w-3/4'>
+        <div className='w-full lg:w-[70%]'>
           <div className='prod-image w-full h-fit flex flex-col lg:flex-row gap-5 bg-white shadow rounded p-10'>
 
             <div className='border border-gray-400 rounded-sm'>
@@ -208,12 +208,11 @@ else{
               </Zoom>
               {/* tag image */}
               <div className='absolute top-10'>
-                <img className='w-12 rounded-sm ms-2 mt-2' src={saleTag} alt="" />
-                <img className='w-12 rounded-sm ms-2 mt-2' src={nextDayTag} alt="" />
-                <div className='w-12 h-12 py-2 space-x-0 space-y-0 text-xs font-medium flex items-center justify-center bg-[#0b79bf] text-white text-center rounded ms-2 mt-2'>
+              <div className='w-12 h-12 py-2 space-x-0 space-y-0 text-xs font-medium flex items-center justify-center bg-[#0b79bf] text-white text-center rounded ms-2 mt-2'>
                   33% <br /> OFF
 
                 </div>
+                <img className='w-12 rounded-sm ms-2 mt-2' src={saleTag} alt="" />
               </div>
             </div>
 
@@ -1029,9 +1028,9 @@ else{
           <div className='bg-white p-5 shadow'>
             <p className='pt-2 pb-4 text-2xl flex gap-5 items-center font-extrabold'>R {
               price*quantity
-            } <span className='text-[11px] text-red-600'>Discount-{discount?discount:"..."} %</span></p>
+            }</p>
             <div className='flex flex-col items-center justify-center gap-2'>
-              <div className='flex border text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500'>
+              <div className='flex border text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 w-full'>
                 <select onClick={handleQuantity} id='quantity' name='quantity' className='text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 outline-none px-2'>
                   {Array.from(Array(30), (e, i) => {
                     return <option key={i} value={i+1}>{i+1}</option>
@@ -1112,7 +1111,7 @@ else{
 
               <button onClick={handleWishList} className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>
 
-              <button className='px-3 py-2 bg-[#64a638] text-white text-xs font-medium rounded shadow-transparent mt-4'>Your Acumination Discounts R {totalDiscount}</button>
+              <button className='px-5 py-4 bg-[#64a638] text-white text-sm font-medium rounded shadow-transparent mt-4 w-full'>Your culminative credits R{totalDiscount}</button>
             </div>
           </div>
 
@@ -1120,12 +1119,46 @@ else{
 
           <div className='bg-white p-5 shadow'>
             <div className='flex flex-col items-center gap-2 text-left'>
-              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'><img src="https://static.takealot.com/images/payment/ebucks-logo-@3x.svg" alt="Ebucks logo" /> <span>eB1,690</span></button>
-              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'><img src="https://static.takealot.com/images/payment/discovery-miles-logo.svg" alt="Discovery Miles Logo" /> <span>1,690</span></button>
+              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
+              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
               
             </div>
-            <h3 className='text-sm mt-4 text-[#4d4d4f] font-bold'>Buy Now,Pay Later</h3>
-            <h3 className='text-sm text-[#4d4d4f] mt-4'>Pay 4 <span className=' font-bold'>interest-free</span> instalments of <span className=' font-bold'>R 137</span> using Playflex .<Link className='text-blue-600'>Learn More</Link></h3>
+
+          </div>
+
+          <div className='flex flex-col gap-0'>
+            
+            <div className='bg-white p-5'>
+              <p className='text-sm font-bold'>Buy Now, Pay Later</p>
+              <p className='text-xs font-medium'>Choose the option that best suits you, we will prepare 
+              your order once payment is confirmed at check out</p>
+
+            </div>
+
+            <div className='my-1 bg-white p-3 flex items-start gap-2'>
+<div className='w-full'>
+  <img src="https://static.takealot.com/images/payment/payflex_logo@2x.png" alt="Tag"/>
+</div>
+
+<div>
+  <p className='text-sm font-bold'>R214 x 4 Instalments</p>
+  <p className='text-xs font-medium'>No interest, no fees. Pay in 4 equal instalments, due every 2 weeks</p>
+  <p className='text-[10px]'>You can apply at checkout: All you need is your ID number to confirm eligibility and your debit or credit card. If you qualify, Payflex will charge your card 25% of the purchase price today, and then again every 2 weeks until paid in full.</p>
+</div>
+            </div>
+
+            <div className='my-1 bg-white p-3 flex items-start gap-2'>
+<div className='w-[150px]'>
+  <img src="https://static.takealot.com/images/payment/mobicred_logo@2x.png" alt="Tag" />
+</div>
+
+<div>
+  <p className='text-sm font-bold'>R81 per month x 12 months</p>
+  <p className='text-[10px]'>Including interest charged at 22.25% per year and excluding Mobicred setup and service fees. Annual interest subject to change.</p>
+  <Link to="" className='smallLink text-primary'>Apply Now</Link>
+</div>
+            </div>
+             
           </div>
 
           <p className='font-semibold text-[#4d4d4f]'>Other Offers</p>

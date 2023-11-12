@@ -4,7 +4,58 @@ import { IoIosArrowDown, IoMdHeartEmpty } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 
 const Product = ({ prod, view }) => {
+
+
+
   // console.log(prod);
+
+
+  // TODO
+  // const handleWishList = async(id)=>{
+  //   // if(!user){
+  //   //   Swal.fire({
+  //   //     title: 'Error!',
+  //   //     text: 'You have to login first!',
+  //   //     icon: 'warning',
+  //   //     confirmButtonText: 'Ok'
+  //   //   })
+  //   // }else{
+  //   //   const data = {
+  //   //     productImage: selectedProducts?.Image_URL,
+  //   //     totalPrice: priceAfterDiscount,
+  //   //     quantity: quantity,
+  //   //     barcode : selectedProducts?.Barcode,
+  //   //     brandName: selectedProducts?.Brand_Name,
+  //   //     productName: selectedProducts?.Product_Name,
+  //   //     basedPrice: selectedProducts?.Product_Price,
+  //   //     productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
+  //   //     productId: selectedProducts?._id,
+  //   //     buyerInformation : {
+  //   //       firstName: userInfo?.firstName,
+  //   //       lastName: userInfo?.lastName,
+  //   //       mobileNumber: userInfo?.mobile_Number ? userInfo?.mobile_Number : "",
+  //   //       phone: userInfo?.phone ? userInfo?.phone : "",
+  //   //       postalCode: userInfo?.postal_Code ? userInfo?.postal_Code : "",
+  //   //       countryCode: userInfo?.countryCode,
+  //   //       email: userInfo?.email,
+  //   //       province: userInfo?.province ? userInfo?.province : "",
+  //   //       streetAddress: userInfo?.street_Address ? userInfo?.street_Address : "",
+  //   //     }
+
+  //   //   }
+  //   //   const response = await axiosSecure.post("add-product-wishList", data);
+  //   //   if(response.data.insertedId){
+  //   //     Swal.fire({
+  //   //       title: 'Success!',
+  //   //       text: 'Product add to wishlist!',
+  //   //       icon: 'success',
+  //   //       confirmButtonText: 'Ok'
+  //   //     })
+  //   //     console.log(data);
+  //   //   }
+  //   // }
+  //  }
+
   return (
     <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className={`${view === "list" ? "card card-side h-fit lg:h-64 flex justify-center" : "card lg:w-[200px] h-[375px]"}  shadow hover:shadow-lg rounded-none relative`}>
 

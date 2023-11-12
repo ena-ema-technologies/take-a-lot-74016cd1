@@ -170,7 +170,7 @@ const Wishlist = () => {
     
     <div className='flex'>
     <div>
-    <img className='w-36' src="https://media.takealot.com/covers_images/9eb0de31070040a9942bbbde404a92b4/s-zoom.file" alt="" />
+    <img className='w-36' src={list?.productImage} alt="" />
     </div>
     <div>
       <h1 className='mt-5 ms-5 text-[#7C7C7D]'>{list?.productName}</h1>

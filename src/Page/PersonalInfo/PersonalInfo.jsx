@@ -224,13 +224,15 @@ const PersonalInfo = () => {
 <div className='sect-title w-full'>
 <h2 className="text-lg font-semibold text-[#4d4d4f]">Personal Details</h2>
 </div> 
-{/* TODO Functionality */}
+
+
 <div className='my-4  w-full'>
 {/* Name */}
 <div className='w-full px-8 py-6 bg-white rounded shadow info-field cursor-pointer' onClick={()=>setNameEditField(true)}>
 
 {
-    nameEditField ? <div>
+    nameEditField ?
+        <div>
         <p className='text-[#0a0a0a] text-base font-semibold'>Edit Your Name</p>
         <div className='mt-6 mb-3'>
         <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-10 w-full'>
@@ -261,10 +263,11 @@ aria-invalid={errors.lastName ? "true" : "false"}/>
 </div>
 
 <div className='flex items-center justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
-<input type='submit' value="Cancel" className='px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={closeField} />
+
 <input type="submit" className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' value="Save"/>
 </div>
 </form>
+
         </div>
     </div> 
     :<div className='w-full flex items-center justify-between'>
@@ -280,9 +283,15 @@ aria-invalid={errors.lastName ? "true" : "false"}/>
 
 </div>
 
+{
+    nameEditField && <button className='absolute top-[415px] lg:top-[518px] right-2 lg:right-44 px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={()=>setNameEditField(false)} >Cancel</button>
+}
+
+
 
 
 {/* Email */}
+<div className='relative'>
 <div className='w-full px-8 py-6 bg-white rounded shadow info-field cursor-pointer my-3' onClick={()=>setEmailEditField(true)}>
 
 {
@@ -322,8 +331,7 @@ aria-invalid={errors.password ? "true" : "false"}/>
 {errors.password?.type === 'required' && <p role="alert" className='text-error font-medium text-xs'>Password is required</p>}
 </div>
 
-<div className='flex items-center justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
-<input type='submit' value="Cancel" className='px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={closeField} />
+<div className='flex items-start justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
 <input type="submit" className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' value="Send OTP"/>
 </div>
 </form>
@@ -331,7 +339,7 @@ aria-invalid={errors.password ? "true" : "false"}/>
     </div> 
     :<div className='w-full flex items-center justify-between'>
     <div>
-        <p className='text-[#0a0a0a] text-base font-semibold'>Email Address</p>
+        <p className='text-[#0a0a0a] text-base font-semibold'>Email Address (TODO)</p>
         <p className='text-[#4d4d4f] text-sm'>{userInfo?.email}</p>
     </div>
     <div>
@@ -342,9 +350,16 @@ aria-invalid={errors.password ? "true" : "false"}/>
 
 </div>
 
+{
+    emailEditField && <button className='absolute top-[300px] lg:top-[274px] right-2 lg:right-48 px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={()=>setEmailEditField(false)} >Cancel</button>
+}
+</div>
+
 
 
 {/* password */}
+<div className='relative'>
+    
 <div className='w-full px-8 py-6 bg-white rounded shadow info-field cursor-pointer' onClick={()=>setPassEditField(true)}>
 
 {
@@ -397,8 +412,8 @@ aria-invalid={errors.newPassword ? "true" : "false"}/>
 
 
 
-<div className='flex items-center justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
-<input type='submit' value="Cancel" className='px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={closeField} />
+<div className='flex items-start justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
+
 <input type="submit" className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' value="Save"/>
 </div>
 </form>
@@ -417,8 +432,14 @@ aria-invalid={errors.newPassword ? "true" : "false"}/>
 
 </div>
 
+{
+    passEditField && <button className='absolute top-[307px] lg:top-[307px] right-2 lg:right-44 px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={()=>setPassEditField(false)} >Cancel</button>
+}
+</div>
 
-{/* Number */}
+ {/* Number */}
+<div className='relative'>
+   
 <div className='w-full px-8 py-6 bg-white rounded shadow info-field cursor-pointer my-3' onClick={()=>setPhoneEditField(true)}>
 
 {
@@ -455,8 +476,7 @@ aria-invalid={errors.number ? "true" : "false"}/>
 </div>
 
 
-<div className='flex items-center justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
-<input type='submit' value="Cancel" className='px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={closeField} />
+<div className='flex items-start justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
 <input type="submit" className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' value="Save"/>
 </div>
 </form>
@@ -475,8 +495,14 @@ aria-invalid={errors.number ? "true" : "false"}/>
 
 </div>
 
+{
+    phoneEditField && <button className='absolute top-[195px] lg:top-[182px] right-2 lg:right-44 px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={()=>setPhoneEditField(false)} >Cancel</button>
+}
+</div>
+
 
 {/* Business */}
+<div className='relative'>
 <div className='w-full px-8 py-6 bg-white rounded shadow info-field cursor-pointer' onClick={()=>setBusinessEditField(true)}>
 
 {
@@ -512,8 +538,7 @@ aria-invalid={errors.vatNumber ? "true" : "false"}/>
 {errors.vatNumber?.type === 'required' && <p role="alert" className='text-error font-medium text-xs'>VAT Number is required</p>}
 </div>
 
-<div className='flex items-center justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
-<input type='submit' value="Cancel" className='px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={closeField} />
+<div className='flex items-start justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
 <input type="submit" className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' value="Save"/>
 </div>
 </form>
@@ -531,6 +556,12 @@ aria-invalid={errors.vatNumber ? "true" : "false"}/>
     </div>
 }
 
+</div>
+
+
+{
+    businessEditField && <button className='absolute top-[251px] lg:top-[251px] right-2 lg:right-44 px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={()=>setBusinessEditField(false)} >Cancel</button>
+}
 </div>
 
 </div>

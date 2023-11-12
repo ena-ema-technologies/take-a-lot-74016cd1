@@ -14,6 +14,7 @@ import useCart from "../../../hooks/useCart";
 import useSeller from "../../../hooks/useSeller";
 
 const NavigationBar = () => {
+    const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [sellerInfo] =useSeller();
 console.log(sellerInfo)
     const [carts, refetch] = useCart();
@@ -148,7 +149,7 @@ console.log(sellerInfo)
     <label className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer text-primary font-semibold" onClick={handleOut} >Logout</label>
     </ul> :
             <ul className="w-full px-0 my-4 absolute bottom-0 flex items-center justify-around">
-            <label htmlFor="logIn_modal" className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer border border-primary bg-primary rounded-3xl text-white font-semibold"><HiUser className="h-5 w-5"/> Login</label>
+            <label onClick={()=>setLoginModalOpen(true)} htmlFor="logIn_modal" className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer border border-primary bg-primary rounded-3xl text-white font-semibold"><HiUser className="h-5 w-5"/> Login</label>
     <label htmlFor="register_modal" className="px-3 py-1 inline-flex items-center gap-2 cursor-pointer text-primary font-semibold">Register</label>
             </ul>
 }
@@ -2205,10 +2206,10 @@ console.log(sellerInfo)
             <div className="hidden lg:block bg-primary px-4 py-2">
                 <nav className="hidden lg:flex items-center justify-between gap-8 h-[80px] relative max-w-7xl mx-auto">
                     <div className="w-1/4">
-                        <div className="dropdown dropdown-open" onMouseEnter={() => setDropdownOpen(true)}>
+                        <div className="dropdown dropdown-open" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={()=>setDropdownOpen(false)}>
                             <label tabIndex={0} className="inline-flex items-center justify-between text-white bg-[#4d4d4f] px-4 py-2 rounded-md text-[13px] w-56">Shop by Department <FaAngleDown className="w-4 h-4" /></label>
                             {
-                                dropdownOpen && <ul tabIndex={0} className="dropdown-content z-[1]  shadow bg-white w-56 pt-2 border-r">
+                                dropdownOpen && <ul tabIndex={0} className="dropdown-content z-[1] shadow bg-white w-56 pt-2 border-r">
 
                                     <li className="categoryNav w-full" onMouseEnter={() => setDeptName("Virtual Shopping Assistants")} onMouseLeave={() => setDeptName("")}>Virtual Shopping Assistants <HiChevronRight className="h-4 w-4" /></li>
 

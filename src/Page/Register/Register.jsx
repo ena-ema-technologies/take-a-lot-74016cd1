@@ -94,6 +94,7 @@ const Register = () => {
   const handleModalSubmit =async() =>{
 
 
+
     try {
       const result = await confirmationResult.confirm(verificationCode);
 
@@ -123,12 +124,14 @@ const Register = () => {
                           icon: 'success',
                           confirmButtonText: 'Ok'
                       })
-                      console.log(user);
+                      // console.log(user);
                       refetch();
                       reset();
                       setError("");
-                      setIsModalOpen(false);
                       setUserData(null);
+                      let modalCheckbox = document.getElementById("register_modal");
+                      modalCheckbox.checked = false;
+                      setIsModalOpen(false);
                     }
                 })
   
@@ -317,7 +320,7 @@ const Register = () => {
                       <div className="flex items-end w-full gap-4">
                         <div className="w-1/3">
                           <label className="text-xs text-[#999]">Code</label>
-                          <select
+                          {/* <select
                             {...register("countryCode", { required: true })}
                             className="py-2 px-2 border-b-2 border-[#c9c7c7] text-sm font-medium text-gray-500 bg-transparent"
                             aria-invalid={errors.countryCode ? "true" : "false"}
@@ -329,9 +332,9 @@ const Register = () => {
                               </option>
       
                             
-                          </select>
+                          </select> */}
 
-{/* <select
+<select
                       {...register("countryCode", { required: true })}
                       className="py-2 px-2 border-b-2 border-[#c9c7c7] text-sm font-medium text-gray-500 bg-transparent"
                       aria-invalid={errors.countryCode ? "true" : "false"}
@@ -341,7 +344,7 @@ const Register = () => {
                           {cCode?.code} ({cCode?.dial_code})
                         </option>
                       ))}
-                    </select> */}
+                    </select>
 
                         </div>
                         <div className="inputGroup w-full">
