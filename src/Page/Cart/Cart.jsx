@@ -2,11 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import { FaTrash,FaHeart, FaLock, FaCreditCard, FaTruck } from "react-icons/fa";
+import Swal from 'sweetalert2';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 const Cart = () => {
     const [carts, refetch] = useCart();
+    const [axiosSecure] = useAxiosSecure();
 
     const total = carts.reduce((sum , item)=> parseInt(item.totalPrice) + sum , 0)
-    console.log(total)
+    console.log(total);
+
+    const handleRemove = async(id) =>{
+        const delRes = await axiosSecure.delete(`/carts-delete-item/${id}`)
+          if(delRes.data.deletedCount > 0){
+            Swal.fire({
+              title: 'Success!',
+              text: 'Product delete from cart!',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+            refetch();
+          }
+    }
+
     return (
        <section className='lg:px-5'>
         
@@ -73,7 +90,7 @@ const Cart = () => {
                </div>
              
                <div className='my-5 w-full flex gap-4 text-sm text-[#828283] h-full items-center justify-between lg:justify-end'>
-                <button className='px-2 py-[1px] hover:bg-[#F4F4F4] flex gap-2 items-center'><FaTrash></FaTrash> Remove</button>
+                <button onClick={()=>handleRemove(carts._id)} className='px-2 py-[1px] hover:bg-[#F4F4F4] flex gap-2 items-center'><FaTrash></FaTrash> Remove</button>
                 <button className='px-2 py-[1px] hover:bg-[#F4F4F4] flex gap-2 items-center'><FaHeart className='hover:text-red-500'/> Move To List</button>
                </div>
             </div>

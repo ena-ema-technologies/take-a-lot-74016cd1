@@ -123,7 +123,7 @@ console.log(sellerInfo)
     <Link to="/account/orders">Orders</Link>
 </li>
 <li className="py-2 bg-white focus:bg-transparent hover:bg-transparent bg-transparent border-b border-b-gray-200" onClick={()=>setPhoneAccountMenu(true)}>
-    <Link to="/my-account" className="flex items-center justify-between">My Account <IoMdArrowForward className="h-5 w-5"/></Link>
+    <Link to="/my-account" className="flex items-center justify-between whitespace-nowrap">My Account <IoMdArrowForward className="h-5 w-5"/></Link>
 </li>
 <li className="py-2 bg-white focus:bg-transparent hover:bg-transparent bg-transparent border-b border-b-gray-200">
     <Link to="/help-centre">Help Center</Link>
@@ -2151,7 +2151,7 @@ console.log(sellerInfo)
 
                             >
                                 <button
-                                    className="text-[13px] hover:text-primary inline-flex items-center z-50"
+                                    className="text-[13px] hover:text-primary inline-flex items-center z-50 whitespace-nowrap"
                                     onMouseLeave={() => setIsOpen(false)}
                                 >
                                     My Account

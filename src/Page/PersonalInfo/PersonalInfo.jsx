@@ -132,14 +132,15 @@ const PersonalInfo = () => {
                 if(res.data.modifiedCount > 0){
                     Swal.fire({
                         title: 'Success!',
-                        text: 'Email updated!',
+                        text: 'Name updated!',
                         icon: 'success',
                         confirmButtonText: 'Cool'
                       })
                       refetch();
                       setNameEditField(false)
                       reset();
-                      navigate("")
+                      navigate("/account/personal-details")
+                     
                 }
             })
             // setBusinessEditField(false)
@@ -228,6 +229,7 @@ const PersonalInfo = () => {
 
 <div className='my-4  w-full'>
 {/* Name */}
+<div className='relative'>
 <div className='w-full px-8 py-6 bg-white rounded shadow info-field cursor-pointer' onClick={()=>setNameEditField(true)}>
 
 {
@@ -262,7 +264,7 @@ aria-invalid={errors.lastName ? "true" : "false"}/>
 {errors.lastName?.type === 'required' && <p role="alert" className='text-error font-medium text-xs'>Last Name is required</p>}
 </div>
 
-<div className='flex items-center justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
+<div className='flex items-start justify-end w-full my-3 gap-3 flex-col lg:flex-row'>
 
 <input type="submit" className='px-10 py-2 rounded text-sm font-medium border border-primary text-white bg-primary cursor-pointer' value="Save"/>
 </div>
@@ -284,8 +286,9 @@ aria-invalid={errors.lastName ? "true" : "false"}/>
 </div>
 
 {
-    nameEditField && <button className='absolute top-[415px] lg:top-[518px] right-2 lg:right-44 px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={()=>setNameEditField(false)} >Cancel</button>
+    nameEditField && <button className='absolute top-[250px] lg:top-[250px] right-2 lg:right-44 px-10 py-2 border rounded text-sm font-medium border-[#4d4d4f] hover:bg-[#4d4d4f] hover:text-white cursor-pointer' onClick={()=>setNameEditField(false)} >Cancel</button>
 }
+</div>
 
 
 
