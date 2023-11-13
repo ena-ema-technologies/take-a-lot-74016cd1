@@ -94,13 +94,14 @@ const AllProducts = () => {
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
     };
+    
 
 
     useEffect(() => {
-        fetchHouses();
+        fetchProducts();
     }, [currentPage, itemPerPage]);
 
-    const fetchHouses = async () => {
+    const fetchProducts = async () => {
         try {
             setLoading(true);
             const response = await axios.get(`https://take-a-lot-server-two.vercel.app/all-products?page=${currentPage}&limit=${itemPerPage}`);
@@ -117,6 +118,7 @@ const AllProducts = () => {
             .then(res => res.json())
             .then(data => setCategoryList(data))
     }, [])
+    console.log(products);
 
 
 
@@ -224,7 +226,7 @@ const AllProducts = () => {
                     <input id="my-drawer1" type="checkbox" className="drawer-toggle" />
                     <div className="drawer-content">
                         {/* Page content here */}
-                        <label htmlFor="my-drawer1" className="px-12 py-3 bg-gray-200 rounded-md drawer-button text-sm font-semibold text-gray-700 w-full">Sort</label>
+                 <label htmlFor="my-drawer1" className="px-12 py-3 bg-gray-200 rounded-md drawer-button text-sm font-semibold text-gray-700 w-full">Sort</label>
                     </div>
                     <div className="drawer-side z-50">
                         <label htmlFor="my-drawer1" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -714,7 +716,7 @@ const AllProducts = () => {
 
                     <div className='w-full mb-5 flex flex-row items-center justify-between'>
                         <div className='text-sm font-medium text-gray-600'>
-                            <p>{totalProducts}+ result</p>
+                            <p className='font-semibold'>{products.length}+ result</p>
                         </div>
 
                         <div className='hidden lg:block justify-end'>

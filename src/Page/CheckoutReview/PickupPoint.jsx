@@ -1,19 +1,24 @@
 import React from 'react';
 import { HiShoppingCart } from 'react-icons/hi2';
 import { IoIosLock } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import { FaMapMarkerAlt } from 'react-icons/fa';
+import { useContext } from 'react';
+import { UserAuth } from '../../Auth/Auth';
 
 const PickupPoint = () => {
     const [carts, refetch] = useCart();
+    const {setPickPointData}=useContext(UserAuth)
+    const navigate =useNavigate()
+    const total = carts.reduce((sum , item)=> parseInt(item.totalPrice) + sum , 0)
 
-    const totalPrice = carts.map(cart => cart.totalPrice);
-    console.log(totalPrice)
-    const total = totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-    console.log(total)
+    const dataHandler =(data)=>{
+        setPickPointData(data)
+        navigate("/buy/review")
+    }
     return (
-        <section className=''>
+        <section className='px-5'>
             <div className='w-full flex items-center justify-between'>
 
                 <p className='font-medium text-xl text-[#4d4d4f]'>Collect</p>
@@ -39,7 +44,7 @@ const PickupPoint = () => {
                     </div>
                     {/* todo:make dynamic */}
                     <p className='font-semibold text-[#4D4D4F]'>Free State</p>
-                    <div className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
+                    <div onClick={()=>dataHandler({city_name:"Chiselhurst",location:"East London, Eastern Cape",RoadNo:"28 Manchester Road",street:"Chiselhurst, East London, 5247"})} className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
                         <div className='flex justify-between items-center'>
                             <div className='flex items-center py-5 '>
                                 <input type="radio" />
@@ -53,7 +58,7 @@ const PickupPoint = () => {
                             <p className='text-sm text-blue-600'>Info</p>
                         </div>
                     </div>
-                    <div className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
+                    <div onClick={()=>dataHandler({city_name:"Hunters Retreat",location:"Port Elizabeth, Eastern Cape",RoadNo:"Erf 15, Hunters Retreat Business Park",street:"Hunters Retreat, Port Elizabeth, 6025"})} className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
                         <div className='flex justify-between items-center'>
                             <div className='flex items-center py-5 '>
                                 <input type="radio" />
@@ -67,7 +72,7 @@ const PickupPoint = () => {
                             <p className='text-sm text-blue-600'>Info</p>
                         </div>
                     </div>
-                    <div className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
+                    <div onClick={()=>dataHandler({city_name:"Kariega",location:"Kariega, Eastern Cape",RoadNo:"6b Peter Searle Drive",street:"Uitenhage Farms, Kariega, 6229"})} className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
                         <div className='flex justify-between items-center'>
                             <div className='flex items-center py-5 '>
                                 <input type="radio" />
@@ -81,7 +86,7 @@ const PickupPoint = () => {
                             <p className='text-sm text-blue-600'>Info</p>
                         </div>
                     </div>
-                    <div className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
+                    <div onClick={()=>dataHandler({city_name:"Makhanda",location:"Makhanda, Eastern Cape",RoadNo:"Unit 8 The Workshop",street:"Grahamstown, Makhanda, 6139"})} className='bg-[#F4F4F4] px-5 hover:bg-[#F1F7FB] rounded py-4'>
                         <div className='flex justify-between items-center'>
                             <div className='flex items-center py-5 '>
                                 <input type="radio" />

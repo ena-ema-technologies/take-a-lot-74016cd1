@@ -30,6 +30,9 @@ import Swal from 'sweetalert2';
 import useCart from '../../hooks/useCart';
 import useAuth from '../../hooks/useAuth';
 
+// drwer 
+import Drawer from 'react-modern-drawer';
+import 'react-modern-drawer/dist/index.css'
 const ProductDetails = () => {
   const {user} = useAuth();
   const [carts, update] = useCart();
@@ -45,7 +48,10 @@ const ProductDetails = () => {
   const selectedProducts = allProducts.find(prod => prod?._id === id);
   console.log(selectedProducts);
   // console.log(selectedRating);
-
+  const [isOpen, setIsOpen] = React.useState(false)
+  const toggleDrawer = () => {
+    
+  }
 const [quantity,setQuantity]=useState(1)
 const [discount,setDiscount]=useState(0)
   const handleQuantity =e=>{
@@ -72,9 +78,11 @@ else{
      
   }
   const price= selectedProducts?.Product_Price;
-     const totalPrice = price*quantity
-     const discountPrice =totalPrice*discount/100
-     const priceAfterDiscount=totalPrice- discountPrice;
+     let totalPrice = price*quantity
+     let discountPrice =totalPrice*discount/100
+     let priceAfterDiscount=totalPrice- discountPrice;
+     let accDiscount = totalPrice - priceAfterDiscount;
+     let totalDiscount = 0;
 
      const handleCart = async() =>{
       if(!user){
@@ -110,6 +118,7 @@ else{
         }
         const response = await axiosSecure.post("add-product-cart", data);
         if(response.data.insertedId){
+          setIsOpen((prevState) => !prevState)
           Swal.fire({
             title: 'Success!',
             text: 'Product add to cart!',
@@ -184,7 +193,7 @@ else{
       </div>
 
       <div className='flex flex-col lg:flex-row items-start gap-10 mt-5 mb-10 overflow-hidden relative'>
-        <div className='w-full lg:w-3/4'>
+        <div className='w-full lg:w-[70%]'>
           <div className='prod-image w-full h-fit flex flex-col lg:flex-row gap-5 bg-white shadow rounded p-10'>
 
             <div className='border border-gray-400 rounded-sm'>
@@ -199,12 +208,11 @@ else{
               </Zoom>
               {/* tag image */}
               <div className='absolute top-10'>
-                <img className='w-12 rounded-sm ms-2 mt-2' src={saleTag} alt="" />
-                <img className='w-12 rounded-sm ms-2 mt-2' src={nextDayTag} alt="" />
-                <div className='w-12 h-12 py-2 space-x-0 space-y-0 text-xs font-medium flex items-center justify-center bg-[#0b79bf] text-white text-center rounded ms-2 mt-2'>
+              <div className='w-12 h-12 py-2 space-x-0 space-y-0 text-xs font-medium flex items-center justify-center bg-[#0b79bf] text-white text-center rounded ms-2 mt-2'>
                   33% <br /> OFF
 
                 </div>
+                <img className='w-12 rounded-sm ms-2 mt-2' src={saleTag} alt="" />
               </div>
             </div>
 
@@ -1020,9 +1028,9 @@ else{
           <div className='bg-white p-5 shadow'>
             <p className='pt-2 pb-4 text-2xl flex gap-5 items-center font-extrabold'>R {
               price*quantity
-            } <span className='text-[11px] text-red-600'>Discount-{discount?discount:"..."} %</span></p>
+            }</p>
             <div className='flex flex-col items-center justify-center gap-2'>
-              <div className='flex border text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500'>
+              <div className='flex border text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 w-full'>
                 <select onClick={handleQuantity} id='quantity' name='quantity' className='text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 outline-none px-2'>
                   {Array.from(Array(30), (e, i) => {
                     return <option key={i} value={i+1}>{i+1}</option>
@@ -1033,11 +1041,77 @@ else{
                   <option value='4'>4</option> */}
                 </select>
                 <button onClick={handleCart} className="inline-flex items-center justify-center px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5'/> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+                <Drawer
+                open={isOpen}
+                onClose={handleCart}
+                direction='right'
+                className='w-full mr-96 bg-[#F4F4F4] '
+                size="250px"
+                
+              >
+                  <div className='w-[700px] bg-white '>
+                    <h1 className='text-black text-center p-5 font-bold '>Added to cart</h1>
+                    <hr />
+
+                  </div>
+                  <div className='w-[700px] bg-[#F4F4F4] p-5'>
+                        <div className='w-full bg-white p-5 text-black flex'>
+                          <div className=' px-5'>
+                            <img className='w-32 border ' src={selectedProducts?.Image_URL} alt="" />
+                          </div>
+                          <div className='pt-5 flex flex-col justify-between items-start'>
+                            <h1 className='font-semibold'>{selectedProducts?.Product_Name}</h1>
+                            <Link className='px-8 bg-[#363638] rounded hover:bg-[#373739] py-2 text-white' to="/cart">Go  To Cart</Link>
+                          </div>
+                        </div>
+                        <div className="product-cards w-full my-4 h-full">
+                          <h1 className='py-5 text-black font-bold'>Related Products</h1>
+
+<Swiper
+  slidesPerView={4}
+  spaceBetween={20}
+  // loop={true}
+  // pagination={{
+  //   clickable: true,
+  // }}
+  navigation={true}
+  modules={[Pagination, Navigation]}
+  className="mySwiper"
+>
+
+  {
+    allProducts.slice(0, 10).map(prod => <SwiperSlide key={prod?._id} className="h-full">
+
+      <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl h-full overflow-visible">
+
+        <div className="w-[150px] h-[120px] mx-auto">
+          <img src={prod?.Image_URL} alt={prod?.Product_Name} />
+        </div>
+
+        <div className="h-[40px] mt-8">
+          <p className="text-xs font-normal text-[#4d4d4f] overflow-hidden">{prod?.Product_Name.slice(0, 45)}{prod?.Product_Name.length > 50 ? "..." : ""}</p>
+        </div>
+
+        <div className="mt-3 flex flex-col space-y-2">
+          <p className="font-bold">R 220</p>
+          <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
+        </div>
+      </Link>
+
+    </SwiperSlide>)
+  }
+
+</Swiper>
+
+</div>
+                  </div>
+                
+                </Drawer>
               </div>
 
               <button onClick={handleWishList} className="inline-flex items-center justify-center   bg-gray-200 transition-all duration-500 border px-3 py-2 gap-1 font-medium text-xs rounded hover:text-red-500 w-full"><IoMdHeartEmpty className='w-5 h-5' /> Add to Wishlist</button>
 
-              <button className='px-3 py-2 bg-[#64a638] text-white text-sm rounded shadow-transparent mt-4'>Your Acumination Discounts R {priceAfterDiscount}</button>
+              <button className='px-5 py-4 bg-[#64a638] text-white text-sm font-medium rounded shadow-transparent mt-4 w-full'>Your culminative credits R{totalDiscount}</button>
             </div>
           </div>
 
@@ -1045,12 +1119,46 @@ else{
 
           <div className='bg-white p-5 shadow'>
             <div className='flex flex-col items-center gap-2 text-left'>
-              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'><img src="https://static.takealot.com/images/payment/ebucks-logo-@3x.svg" alt="Ebucks logo" /> <span>eB1,690</span></button>
-              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'><img src="https://static.takealot.com/images/payment/discovery-miles-logo.svg" alt="Discovery Miles Logo" /> <span>1,690</span></button>
+              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
+              <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
               
             </div>
-            <h3 className='text-sm mt-4 text-[#4d4d4f] font-bold'>Buy Now,Pay Later</h3>
-            <h3 className='text-sm text-[#4d4d4f] mt-4'>Pay 4 <span className=' font-bold'>interest-free</span> instalments of <span className=' font-bold'>R 137</span> using Playflex .<Link className='text-blue-600'>Learn More</Link></h3>
+
+          </div>
+
+          <div className='flex flex-col gap-0'>
+            
+            <div className='bg-white p-5'>
+              <p className='text-sm font-bold'>Buy Now, Pay Later</p>
+              <p className='text-xs font-medium'>Choose the option that best suits you, we will prepare 
+              your order once payment is confirmed at check out</p>
+
+            </div>
+
+            <div className='my-1 bg-white p-3 flex items-start gap-2'>
+<div className='w-full'>
+  <img src="https://static.takealot.com/images/payment/payflex_logo@2x.png" alt="Tag"/>
+</div>
+
+<div>
+  <p className='text-sm font-bold'>R214 x 4 Instalments</p>
+  <p className='text-xs font-medium'>No interest, no fees. Pay in 4 equal instalments, due every 2 weeks</p>
+  <p className='text-[10px]'>You can apply at checkout: All you need is your ID number to confirm eligibility and your debit or credit card. If you qualify, Payflex will charge your card 25% of the purchase price today, and then again every 2 weeks until paid in full.</p>
+</div>
+            </div>
+
+            <div className='my-1 bg-white p-3 flex items-start gap-2'>
+<div className='w-[150px]'>
+  <img src="https://static.takealot.com/images/payment/mobicred_logo@2x.png" alt="Tag" />
+</div>
+
+<div>
+  <p className='text-sm font-bold'>R81 per month x 12 months</p>
+  <p className='text-[10px]'>Including interest charged at 22.25% per year and excluding Mobicred setup and service fees. Annual interest subject to change.</p>
+  <Link to="" className='smallLink text-primary'>Apply Now</Link>
+</div>
+            </div>
+             
           </div>
 
           <p className='font-semibold text-[#4d4d4f]'>Other Offers</p>

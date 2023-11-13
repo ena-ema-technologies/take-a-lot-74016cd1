@@ -18,6 +18,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/"
     const { register, formState: { errors }, handleSubmit , reset, formState } = useForm();
 
+
     // console.log(allCodes);
 
     const handleShow = () => {
@@ -40,6 +41,9 @@ const Login = () => {
                 confirmButtonText: 'Ok'
             })
             reset();
+            let modalCheckbox = document.getElementById("logIn_modal");
+            modalCheckbox.checked = false;
+
         })
         .catch(error => {
             Swal.fire({
@@ -57,17 +61,17 @@ const Login = () => {
         }
       }, [formState, reset])
     return (
-        <div>
-            <input type="checkbox" id="logIn_modal" className="modal-toggle" />
-            <div className="modal">
-                <div className="modal-box text-left rounded">
-                    <h3 className="text-xl font-extrabold">Login</h3>
+<div>
+           <input type="checkbox" id="logIn_modal" className="modal-toggle" />
+           <div className="modal">
+               <div className="modal-box text-left rounded">
+                   <h3 className="text-xl font-extrabold">Login</h3>
 
 <div className='register-form mt-5'>
 <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-10 w-full'>
 
 
-    <div className="inputGroup">  
+   <div className="inputGroup">  
 
 
 <input type="email" required className='inputField' {...register("email", { required: true })}
@@ -80,16 +84,16 @@ aria-invalid={errors.email ? "true" : "false"}/>
 </div>
 
 
-    <div className="inputGroup">  
+   <div className="inputGroup">  
 
 
 <input type={type} required className='inputField' {...register("password", { required: true })}
 aria-invalid={errors.password ? "true" : "false"}/>
 <div className='absolute right-3 top-3 cursor-pointer' onClick={() => setIsShow(!IsShow)}>
 {
- IsShow ? <FaEyeSlash className='h-5 w-5 text-primary' onClick={handleHide} /> : <FaEye className='h-5 w-5 text-primary' onClick={handleShow} />
+IsShow ? <FaEyeSlash className='h-5 w-5 text-primary' onClick={handleHide} /> : <FaEye className='h-5 w-5 text-primary' onClick={handleShow} />
 }
-                                </div>
+                               </div>
 <span className="highlight"></span>
 <span className="bar"></span>
 <label className='inputLabel'>Password</label>
@@ -100,16 +104,16 @@ aria-invalid={errors.password ? "true" : "false"}/>
 
 
 
-<div className='text-center'>
-<input type="submit" value="Login" className='bg-primary w-full py-2 rounded bg-opacity-90 text-center font-semibold text-white cursor-pointer' />
-</div>
+<label id='log-btn' className='bg-primary w-full py-2 rounded bg-opacity-90 text-center font-semibold text-white cursor-pointer'>
+<input type="submit" value="Login"  />
+</label>
 
 </form>
 
 <div className='social-register my-3'>
 <SocialLogIn title1="Login with Google" title2="Login with Facebook"/>
-                    </div>
-                    <div className="divider"></div>
+                   </div>
+                   <div className="divider"></div>
 <div className='text-center my-5 text-xs font-medium text-gray-500'>
 New to Takealot? <label htmlFor="register_modal"  className="text-primary cursor-pointer">Register</label>
 
@@ -122,16 +126,16 @@ New to Takealot? <label htmlFor="register_modal"  className="text-primary cursor
 
 
 
-                    <div className="mb-3">
-                        <label htmlFor="logIn_modal" className="absolute top-3 right-3 cursor-pointer hover:text-error">
-                            <HiXMark className='w-7 h-7' />
-                        </label>
-                    </div>
-                </div>
+                   <div className="mb-3">
+                       <label htmlFor="logIn_modal" className="absolute top-3 right-3 cursor-pointer hover:text-error">
+                           <HiXMark className='w-7 h-7' />
+                       </label>
+                   </div>
+               </div>
 
-                <label className="modal-backdrop" htmlFor="logIn_modal">Close</label>
-            </div>
-        </div>
+               <label className="modal-backdrop" htmlFor="logIn_modal">Close</label>
+           </div>
+       </div> 
     );
 };
 
