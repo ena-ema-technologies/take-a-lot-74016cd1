@@ -762,16 +762,6 @@ export const router = createBrowserRouter([
         path: "/seller-account-overview",
         element: <SellerRouter><AccountOverview /></SellerRouter>
       },
-      {
-        path: "/seller-dashboard",
-        element: <SellerRouter><Dashboard /></SellerRouter>,
-        children: [
-          {
-            path: "dashboard-home",
-            element: <SellerRouter><DashboardHome /></SellerRouter>
-          },
-        ]
-      }
     ]
   },
   {
@@ -799,6 +789,16 @@ export const router = createBrowserRouter([
         path: "review",
         element: <PrivateRoute><CheckReview /></PrivateRoute>
       }
+    ]
+  },
+  {
+    path: "/seller-dashboard",
+    element: <SellerRouter><Dashboard /></SellerRouter>,
+    children: [
+      {
+        path: "dashboard-home",
+        element: <SellerRouter><DashboardHome /></SellerRouter>
+      },
     ]
   }
 ]);

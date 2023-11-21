@@ -119,9 +119,9 @@ body{
 }
 
 .dash-active {
-  @apply w-full bg-white font-bold text-primary py-3 px-3 rounded-tl-lg rounded-bl-lg
+  @apply w-full bg-white font-bold text-primary py-3 px-3 rounded-tl-lg rounded-bl-lg my-1
 }
 
 .dash-default {
-  @apply font-semibold py-3 px-3 text-white
+  @apply font-semibold py-3 px-3 text-white my-1
 }
