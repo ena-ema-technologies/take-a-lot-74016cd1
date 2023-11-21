@@ -8,7 +8,7 @@ import useSeller from '../../hooks/useSeller';
 import { Link } from 'react-router-dom';
 
 const AccountOverview = () => {
-    
+    const [sellerInfo, refetch] = useSeller();
     
     const [tabName, setTabName] = useState("overview")
     return (

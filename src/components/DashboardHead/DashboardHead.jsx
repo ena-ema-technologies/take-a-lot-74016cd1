@@ -8,7 +8,7 @@ const DashboardHead = ({title}) => {
     const [sellerInfo, refetch] = useSeller();
     
     return (
-<div className='flex flex-col lg:flex-row w-full items-center justify-between bg-white text-sm lg:w-[97%] mx-auto p-2'>
+<div className='flex flex-col lg:flex-row w-full items-center justify-between bg-white text-sm lg:w-[99%] mx-auto px-2 py-4'>
 
 <div className='w-full flex items-center gap-3'>
 <span><FaTasks /> </span> 
