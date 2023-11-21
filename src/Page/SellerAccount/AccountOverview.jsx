@@ -8,8 +8,8 @@ import useSeller from '../../hooks/useSeller';
 import { Link } from 'react-router-dom';
 
 const AccountOverview = () => {
-    const [sellerInfo, refetch] = useSeller();
-    console.log(sellerInfo);
+    
+    
     const [tabName, setTabName] = useState("overview")
     return (
      <section className='flex flex-col justify-center w-full'>

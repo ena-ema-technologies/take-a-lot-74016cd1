@@ -180,7 +180,15 @@ else{
       <div className='my-5 w-full flex items-center justify-between text-xs'>
         <div>
           <p className='inline-flex gap-2 items-center'>
-            <Link className='hover:underline text-primary'>{selectedProducts?.Categories?.map(cate=> cate).join(" / ")}</Link>
+            <Link className='hover:underline text-primary'>{selectedProducts?.Categories[0]}</Link>
+
+            <span>/</span>
+
+            <Link className='hover:underline text-primary'>{selectedProducts?.Categories[1]}</Link>
+
+            <span>/</span>
+
+            <Link className='hover:underline text-primary'>{selectedProducts?.Categories[2]}</Link>
 
           </p>
         </div>
