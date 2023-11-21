@@ -180,11 +180,8 @@ else{
       <div className='my-5 w-full flex items-center justify-between text-xs'>
         <div>
           <p className='inline-flex gap-2 items-center'>
-            <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Main_Category}`}>{selectedProducts?.Main_Category}</Link>
+            <Link className='hover:underline text-primary'>{selectedProducts?.Categories?.map(cate=> cate).join(" / ")}</Link>
 
-            <span>/</span>
-
-            <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Main_Category}/${selectedProducts?.Sub_Category}`}>{selectedProducts?.Sub_Category}</Link>
           </p>
         </div>
         <div>
@@ -201,7 +198,7 @@ else{
               <Zoom>
                 <img
                   alt="That Wanaka Tree, New Zealand by Laura Smetsers"
-                  src={selectedProducts?.Image_URL}
+                  src={selectedProducts?.Image_URL[0]}
                   width="500"
                   className=' py-24 px-3'
                 />
@@ -248,7 +245,7 @@ else{
               {/*todo: table need to dynamic */}
               <div className='w-full text-sm mt-2'>
                 <h1 className='font-bold '>Quantity Based Discount</h1>
-                <table className='bg-slate-100 mt-4'>
+                <table className='bg-slate-100 mt-4 text-xs'>
                   <tr className='text-center'>
                     <th className='px-2 border-white'>Quantity</th>
                     <th className='px-2 border-white'>Discount %</th>
@@ -314,7 +311,7 @@ else{
                       <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl h-full overflow-visible">
 
                         <div className="w-[150px] h-[120px] mx-auto">
-                          <img src={prod?.Image_URL} alt={prod?.Product_Name} />
+                          <img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className='w-[150px] h-[120px]'/>
                         </div>
 
                         <div className="h-[40px] mt-8">
@@ -393,11 +390,11 @@ else{
                     <td className='text-sm'>
                       <ul>
                         <li className='inline-flex gap-2 items-center'>
-                          <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Main_Category}`}>{selectedProducts?.Main_Category}</Link>
+                          <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Categories[0]}`}>{selectedProducts?.Categories[0]}</Link>
 
                           <span>/</span>
 
-                          <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Main_Category}/${selectedProducts?.Sub_Category}`}>{selectedProducts?.Sub_Category}</Link>
+                          <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Categories[0]}/${selectedProducts?.Categories[1]}`}>{selectedProducts?.Categories[1]}</Link>
                         </li>
                       </ul>
                     </td>
@@ -406,14 +403,15 @@ else{
                   <tr>
                     <td className='border-r font-semibold text-[#4d4d4f] text-sm'>Brand</td>
                     <td className='text-sm'>
-                      <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Brand_Name}`}>{selectedProducts?.Brand_Name}</Link>
+                      <Link className='hover:underline text-primary' to={`/all/${selectedProducts?.Brand_Name}`}>{selectedProducts?.
+Brand_Name}</Link>
                     </td>
                   </tr>
 
                   <tr>
                     <td className='border-r font-semibold text-[#4d4d4f] text-sm'>Warranty</td>
-                    <td className='text-sm'>Limited
-                      ({selectedProducts?.Warranty_Period} Months )
+                    <td className='text-sm'>{selectedProducts?.Warranty_Type} 
+                       ({selectedProducts?.Warranty_Period} Months )
                     </td>
                   </tr>
 
@@ -426,32 +424,17 @@ else{
 
 
                   <tr>
-                    <td className='border-r font-semibold text-[#4d4d4f] text-sm'>Ingredients & Material</td>
+                    <td className='border-r font-semibold text-[#4d4d4f] text-sm'>Availabilities</td>
                     <td className='text-sm'>
-                      {selectedProducts?.Main_Material_Fabric}
+                      {selectedProducts?.Availabilities}
                     </td>
                   </tr>
 
-                  <tr>
-                    <td className='border-r font-semibold text-[#4d4d4f] text-sm'>Basic Colours</td>
-                    <td className='text-sm'>
-                      {selectedProducts?.Main_Colour}
-                    </td>
-                  </tr>
-
-                  {
-                    selectedProducts?.Animal_Type && <tr>
-                      <td className='border-r font-semibold text-[#4d4d4f] text-sm'>Animal Type</td>
-                      <td className='text-sm'>
-                        {selectedProducts?.Animal_Type}
-                      </td>
-                    </tr>
-                  }
 
                   <tr>
                     <td className='border-r font-semibold text-[#4d4d4f] text-sm'>Barcode</td>
                     <td className='text-sm'>
-                      {selectedProducts?.Barcode}
+                      {selectedProducts?.your_own_SKU}
                     </td>
                   </tr>
                 </tbody>
@@ -1057,7 +1040,7 @@ else{
                   <div className='w-[700px] bg-[#F4F4F4] p-5'>
                         <div className='w-full bg-white p-5 text-black flex'>
                           <div className=' px-5'>
-                            <img className='w-32 border ' src={selectedProducts?.Image_URL} alt="" />
+                            <img className='w-32 border ' src={selectedProducts?.Image_URL[0]} alt="" />
                           </div>
                           <div className='pt-5 flex flex-col justify-between items-start'>
                             <h1 className='font-semibold'>{selectedProducts?.Product_Name}</h1>
@@ -1085,7 +1068,7 @@ else{
       <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl h-full overflow-visible">
 
         <div className="w-[150px] h-[120px] mx-auto">
-          <img src={prod?.Image_URL} alt={prod?.Product_Name} />
+          <img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className='w-[150px] h-[120px]'/>
         </div>
 
         <div className="h-[40px] mt-8">

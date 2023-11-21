@@ -70,7 +70,7 @@ allProducts.slice(0,10).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -78,7 +78,7 @@ allProducts.slice(0,10).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -119,7 +119,7 @@ allProducts.slice(11,20).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -127,7 +127,7 @@ allProducts.slice(11,20).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -168,7 +168,7 @@ allProducts.slice(21,28).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -176,7 +176,7 @@ allProducts.slice(21,28).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -218,7 +218,7 @@ allProducts.slice(0,10).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -226,7 +226,7 @@ allProducts.slice(0,10).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -268,7 +268,7 @@ allProducts.slice(11,20).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -276,7 +276,7 @@ allProducts.slice(11,20).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -362,7 +362,7 @@ allProducts.slice(0,5).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -370,7 +370,7 @@ allProducts.slice(0,5).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -431,7 +431,7 @@ allProducts.slice(11,20).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -439,7 +439,7 @@ allProducts.slice(11,20).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -493,7 +493,7 @@ allProducts.slice(21,30).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -501,7 +501,7 @@ allProducts.slice(21,30).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -555,7 +555,7 @@ allProducts.slice(0,5).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -563,7 +563,7 @@ allProducts.slice(0,5).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -617,7 +617,7 @@ allProducts.slice(6, 10).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -625,7 +625,7 @@ allProducts.slice(6, 10).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -679,7 +679,7 @@ allProducts.slice(11, 16).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -687,7 +687,7 @@ allProducts.slice(11, 16).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -741,7 +741,7 @@ allProducts.slice(17, 21).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -749,7 +749,7 @@ allProducts.slice(17, 21).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
@@ -803,7 +803,7 @@ allProducts.slice(22, 28).map(prod=><SwiperSlide key={prod?._id} className="">
 <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}`} className="w-[200px] h-full overflow-visible flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl">
 
 <div className="w-[150px] h-[120px] mx-auto">
-<img src={prod?.Image_URL} alt={prod?.Product_Name} />
+<img src={prod?.Image_URL[0]} alt={prod?.Product_Name} className="w-[150px] h-[120px]"/>
 </div>
 
 <div className="h-[40px] mt-8">
@@ -811,7 +811,7 @@ allProducts.slice(22, 28).map(prod=><SwiperSlide key={prod?._id} className="">
 </div>
 
 <div className="mt-3 flex flex-col space-y-2">
-<p className="font-bold">R 220</p>
+<p className="font-bold">R {prod?.Product_Price}</p>
 <p className=" inline-flex items-center gap-1 text-sm"><HiStar className='h-4 w-4 text-yellow-400' /> <span>4.3</span><span className='font-medium text-gray-600'>(20)</span> <span><IoIosArrowDown className='h-5 w-5 text-gray-500' /></span> </p>
 </div>
 
