@@ -1,10 +1,12 @@
 import React from 'react';
+import { useState } from 'react';
 
 const LeadtimeOrders = () => {
+    const [tabName, setTabName] = useState("Manage My Offers");
     return (
-        <div>
-            Lead time Orders
-        </div>
+<section>
+
+</section>
     );
 };
 
