@@ -5,7 +5,7 @@ import { HiOutlineDownload } from 'react-icons/hi';
 import { HiMiniArrowTopRightOnSquare } from 'react-icons/hi2';
 
 const BulkResult = () => {
-    const [tabName, setTabName] = useState("Manage My Offers")
+    const [tabName, setTabName] = useState("View Bulk Result")
     return (
 <section className='w-[99%] relative h-full'>
     <nav className='absolute left-0 right-0 top-0'>
