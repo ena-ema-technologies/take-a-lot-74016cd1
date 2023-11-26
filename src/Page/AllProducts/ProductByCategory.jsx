@@ -1,14 +1,15 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import Chart from 'chart.js/auto'; // Import Chart.js
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { HiMiniChevronDoubleLeft, HiMiniChevronDoubleRight, HiMiniMagnifyingGlass, HiStar } from 'react-icons/hi2';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Product from './Product';
 
-
-const AllProducts = () => {
+const ProductByCategory = () => {
+    const categories = useParams();
+    console.log(categories);
     const priceOptions = [
         { id: 1, value: 150, label: 'R 150' },
         { id: 3, value: 500, label: 'R 500' },
@@ -54,9 +55,9 @@ const AllProducts = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("https://take-a-lot-server-two.vercel.app/total-products")
+        fetch(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}/${categories?.subCategory}`)
             .then(res => res.json())
-            .then(data => setTotalProducts(data.totalProduct))
+            .then(data => setTotalProducts(data?.totalProduct?.length))
     }, [])
 
     useEffect(() => {
@@ -95,7 +96,7 @@ const AllProducts = () => {
     const fetchProducts = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`https://take-a-lot-server-two.vercel.app/all-products?page=${currentPage}&limit=${itemPerPage}`);
+            const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}/${categories?.subCategory}`);
             setProducts(response.data);
             setLoading(false);
         } catch (error) {
@@ -109,7 +110,7 @@ const AllProducts = () => {
             .then(res => res.json())
             .then(data => setCategoryList(data))
     }, [])
-    console.log(products);
+    // console.log(categoryList);
 
 
 
@@ -208,7 +209,6 @@ const AllProducts = () => {
         setSelectedMin(minOption || 150);
         setSelectedMax(maxOption || 50000);
     };
-    // console.log(selectedMax, selectedMin);
     return (
         <section className='-z-30'>
             <div className='lg:hidden grid grid-cols-3 bg-white items-center gap-24 justify-center py-4 px-3 mb-3'>
@@ -285,7 +285,7 @@ const AllProducts = () => {
 
                                         {
                                             categoryList.slice(0, showList ? categoryList.length : 4).map(listItem => <li key={listItem?.id}>
-                                                <Link to={listItem?.mainCategory} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.mainCategory}</Link>
+                                                <Link to={`/all/${listItem?.mainCategory}`} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.mainCategory}</Link>
                                             </li>)
                                         }
                                         {
@@ -707,7 +707,7 @@ const AllProducts = () => {
 
                     <div className='w-full mb-5 flex flex-row items-center justify-between'>
                         <div className='text-sm font-medium text-gray-600'>
-                            <p className='font-semibold'>{totalProducts}+ result</p>
+                            <p className='font-semibold'>{products.length}+ result</p>
                         </div>
 
                         <div className='hidden lg:block justify-end'>
@@ -784,4 +784,4 @@ const AllProducts = () => {
     );
 };
 
-export default AllProducts;
+export default ProductByCategory;

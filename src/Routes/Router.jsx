@@ -170,6 +170,8 @@ import SellerTransaction from "../Page/SellerAccount/SellerTransaction/SellerTra
 import SellerInvoice from "../Page/SellerAccount/SellerInvoice/SellerInvoice";
 import SellerStatements from "../Page/SellerAccount/SellerStatements/SellerStatements";
 import SellerReport from "../Page/SellerAccount/SellerReport/SellerReport";
+import Demo from "../Page/Demo/Demo";
+import ProductByCategory from "../Page/AllProducts/ProductByCategory";
 
 
 
@@ -194,7 +196,11 @@ export const router = createBrowserRouter([
         element: <AllProducts />
       },
       {
-        path: "/product-details/:name/:id",
+        path: "/all/:mainCategory/:subCategory",
+        element: <ProductByCategory />
+      },
+      {
+        path: "/product-details/:name/:id/:category",
         element: <ProductDetails />
       },
       {
@@ -789,20 +795,20 @@ export const router = createBrowserRouter([
     element: <PrivateRoute><CheckoutOutlet /></PrivateRoute>,
     children: [
       {
-        path:"review",
-        element:<PrivateRoute><CheckReview /></PrivateRoute>
+        path: "review",
+        element: <PrivateRoute><CheckReview /></PrivateRoute>
       },
       {
-        path:"/buy/delivery/method",
-        element:<PrivateRoute><DeliveryMethod/></PrivateRoute>
+        path: "/buy/delivery/method",
+        element: <PrivateRoute><DeliveryMethod /></PrivateRoute>
       },
       {
-        path:"/buy/collect/pickup-points",
-        element:<PrivateRoute><PickupPoint/></PrivateRoute>
+        path: "/buy/collect/pickup-points",
+        element: <PrivateRoute><PickupPoint /></PrivateRoute>
       },
       {
-        path:"/buy/delivery/addresses/add",
-        element:<PrivateRoute><DeliveryAddress/></PrivateRoute>
+        path: "/buy/delivery/addresses/add",
+        element: <PrivateRoute><DeliveryAddress /></PrivateRoute>
       },
       {
         path: "review",
@@ -819,81 +825,85 @@ export const router = createBrowserRouter([
         element: <SellerRouter><DashboardHome /></SellerRouter>
       },
       {
-        path:"manage-my-offer",
-        element:<SellerRouter><ManageOffers /></SellerRouter>
+        path: "manage-my-offer",
+        element: <SellerRouter><ManageOffers /></SellerRouter>
       },
       {
-        path:"view-bulk-result",
-        element:<SellerRouter><BulkResult /></SellerRouter>
+        path: "view-bulk-result",
+        element: <SellerRouter><BulkResult /></SellerRouter>
       },
       {
-        path:"request-product-edit",
-        element:<SellerRouter><RequestProductEdit /></SellerRouter>
+        path: "request-product-edit",
+        element: <SellerRouter><RequestProductEdit /></SellerRouter>
       },
       {
-        path:"view-product-edit-submission",
-        element:<SellerRouter><ProductEditSubmission /></SellerRouter>
+        path: "view-product-edit-submission",
+        element: <SellerRouter><ProductEditSubmission /></SellerRouter>
       },
       {
-        path:"search-takealot-catalogue",
-        element:<SellerRouter><SearchCatalogue /></SellerRouter>
+        path: "search-takealot-catalogue",
+        element: <SellerRouter><SearchCatalogue /></SellerRouter>
       },
       {
-        path:"add-takealot-catalogue",
-        element:<SellerRouter><AddCatalogue /></SellerRouter>
+        path: "add-takealot-catalogue",
+        element: <SellerRouter><AddCatalogue /></SellerRouter>
       },
       {
-        path:"leadtime-orders",
-        element:<SellerRouter><LeadtimeOrders /></SellerRouter>
+        path: "leadtime-orders",
+        element: <SellerRouter><LeadtimeOrders /></SellerRouter>
       },
       {
-        path:"draft-shipment",
-        element:<SellerRouter><DraftShipment /></SellerRouter>
+        path: "draft-shipment",
+        element: <SellerRouter><DraftShipment /></SellerRouter>
       },
       {
-        path:"confirmed-shipment",
-        element:<SellerRouter><ConfirmedShipments /></SellerRouter>
+        path: "confirmed-shipment",
+        element: <SellerRouter><ConfirmedShipments /></SellerRouter>
       },
       {
-        path:"shipped-shipment",
-        element:<SellerRouter><ShippedShipment /></SellerRouter>
+        path: "shipped-shipment",
+        element: <SellerRouter><ShippedShipment /></SellerRouter>
       },
       {
-        path:"manage-removal-order",
-        element:<SellerRouter><ManageRemovalOrders /></SellerRouter>
+        path: "manage-removal-order",
+        element: <SellerRouter><ManageRemovalOrders /></SellerRouter>
       },
       {
         path: "replenishment-shipment",
-        element:<SellerRouter><ReplenishmentShipments /></SellerRouter>
+        element: <SellerRouter><ReplenishmentShipments /></SellerRouter>
       },
       {
-        path:"view-sales",
-        element:<SellerRouter><ViewSales /></SellerRouter>
+        path: "view-sales",
+        element: <SellerRouter><ViewSales /></SellerRouter>
       },
       {
-        path:"view-return",
-        element:<SellerRouter><ViewReturn /></SellerRouter>
+        path: "view-return",
+        element: <SellerRouter><ViewReturn /></SellerRouter>
       },
       {
-        path:"customer-invoice-request",
-        element:<SellerRouter><CustomerInvoiceRequest /></SellerRouter>
+        path: "customer-invoice-request",
+        element: <SellerRouter><CustomerInvoiceRequest /></SellerRouter>
       },
       {
-        path:"account-seller-transaction",
-        element:<SellerRouter><SellerTransaction /></SellerRouter>
+        path: "account-seller-transaction",
+        element: <SellerRouter><SellerTransaction /></SellerRouter>
       },
       {
-        path:"account-seller-invoice",
-        element:<SellerRouter><SellerInvoice /></SellerRouter>
+        path: "account-seller-invoice",
+        element: <SellerRouter><SellerInvoice /></SellerRouter>
       },
       {
-        path:"account-seller-statements",
-        element:<SellerRouter><SellerStatements /></SellerRouter>
+        path: "account-seller-statements",
+        element: <SellerRouter><SellerStatements /></SellerRouter>
       },
       {
-        path:"seller-reports",
-        element:<SellerRouter><SellerReport /></SellerRouter>
+        path: "seller-reports",
+        element: <SellerRouter><SellerReport /></SellerRouter>
       }
     ]
+  },
+  {
+    path: "/demo",
+    element: <Demo />
   }
 ]);
