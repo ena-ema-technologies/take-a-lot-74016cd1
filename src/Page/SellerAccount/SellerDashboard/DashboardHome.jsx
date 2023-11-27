@@ -1,64 +1,137 @@
 import React from 'react';
 import { useState } from 'react';
 import { FaBuilding, FaDownload, FaTasks } from 'react-icons/fa';
-import { HiMiniBell, HiMiniCog, HiMiniCog8Tooth, HiOutlineClipboardDocumentList } from 'react-icons/hi2';
+import { HiMiniBell, HiMiniCog, HiMiniCog8Tooth, HiOutlineChevronRight, HiOutlineClipboardDocumentList } from 'react-icons/hi2';
 import { IoIosCard, IoIosSend, IoMdBusiness } from 'react-icons/io';
 import { IoPeopleCircleOutline, IoPersonCircleOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import useSeller from '../../../hooks/useSeller';
+import DashboardHead from '../../../components/DashboardHead/DashboardHead';
 
 const DashboardHome = () => {
     const [sellerInfo, refetch] = useSeller();
-    console.log(sellerInfo);
-    const [tabName, setTabName] = useState("overview")
     return (
-        <section className='flex flex-col justify-center w-full lg:max-w-screen-lg ml-0 overflow-auto'>
+<section className='w-[99%] relative h-full'>
+    <nav className='absolute left-0 right-0 top-0'>
+        <DashboardHead title="Dashboard"/>
+    </nav>
 
-        <div className='flex flex-col lg:flex-row w-full items-center justify-between bg-white text-sm mx-auto py-2 px-5'>
-        
-        <div className='w-full flex items-center gap-3'>
-        <span><FaTasks /> </span> 
-        <span className='inline-flex items-center gap-1 font-semibold'><HiMiniCog8Tooth /> Account Overview</span> 
-        <span> For {sellerInfo?.companyName} ({sellerInfo?._id})</span>
-        </div>
-        
-        <div className='w-full flex items-center gap-4 justify-end'>
-        <p><HiMiniBell className='h-5 w-4'/></p>
-        <p><FaDownload className='h-5 w-4'/></p>
-        <Link to="/" className='bg-primary text-white rounded-full p-1 text-xs'>TK</Link>
-        </div>
-        
-        </div>        
-        
-        <div className='flex overflow-x-auto w-full mx-auto items-center justify-center text-sm text-neutral border-t border-l border-r px-10'>
-        
-        <div onClick={()=>setTabName("overview")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 ${tabName === "overview" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}><HiOutlineClipboardDocumentList className='h-5 w-5'/> Overview</div>
-        
-        <div onClick={()=>setTabName("settings")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 ${tabName === "settings" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}><HiMiniCog className='h-5 w-5'/> Settings</div>
-        
-        <div onClick={()=>setTabName("business")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 ${tabName === "business" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}><IoMdBusiness className='h-5 w-5'/> Business</div>
-        
-        <div onClick={()=>setTabName("address")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 ${tabName === "address" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}><IoIosSend className='h-5 w-5'/> Address</div>
-        
-        <div onClick={()=>setTabName("bankDetails")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 whitespace-nowrap ${tabName === "bankDetails" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}><IoIosCard className='h-5 w-5'/> Banking Details</div>
-        
-        <div onClick={()=>setTabName("users")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 whitespace-nowrap ${tabName === "users" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}><IoPeopleCircleOutline className='h-5 w-5'/> Users</div>
-        
-        <div onClick={()=>setTabName("profile")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 whitespace-nowrap ${tabName === "profile" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}><IoPersonCircleOutline className='h-5 w-5'/> Profile</div>
-        </div>
-        
-        
-        
-        <div className='w-full mx-auto min-h-screen bg-white'>
-        
-        {
-            tabName === "overview" ? 
-            <div>Overview</div> : 
-            ""
-        }
-        
-        </div>
-             </section>
+    <div className='flex items-center justify-between mt-16'>
+<div>
+    <h1 className='text-2xl font-semibold'>Welcome, <span className='text-primary'>{sellerInfo?.companyName}</span></h1>
+</div>
+
+<div>
+    <p className='text-xs font-semibold'>Your Seller ID: <span>{sellerInfo?._id}</span></p>
+</div>
+    </div>
+
+    <div className='mt-7 flex gap-5 flex-col lg:flex-row'>
+
+<div className='w-full'>
+<div className='w-full h-[85px] bg-black bg-opacity-80 flex items-center justify-between px-2'>
+<div> 
+    <p className='text-white text-sm font-semibold'>Boost your with Promotions & Daily Deals</p>
+</div>
+
+<div>
+    <button className='bg-primary text-sm px-4 py-[2px] rounded text-white'>Apply Now</button>
+</div>
+</div>
+
+<div className='mt-3 w-full bg-white shadow px-2 py-3'>
+
+<p className='text-sm font-bold'>Leadtime Orders</p>
+<div className="border-t mt-1"></div>
+
+<div className='mt-2 space-y-2 w-full text-sm'>
+   <div className='w-full flex items-center justify-between'>
+    <p>New</p> 
+    <p className='inline-flex items-center gap-2'><span className='bg-yellow-500 px-2 text-xs font-semibold text-white rounded-l-full rounded-r-full'>1 URGENT</span> 41 <HiOutlineChevronRight className='h-4 w-4'/></p>
+    </div>
+
+    <div className='w-full flex items-center justify-between'>
+    <p>Draft Shipment</p> 
+    <p className='inline-flex items-center gap-2'> 0 <HiOutlineChevronRight className='h-4 w-4'/></p>
+    </div>
+
+    <div className='w-full flex items-center justify-between'>
+    <p>Confirmed Shipment</p> 
+    <p className='inline-flex items-center gap-2'> 58 <HiOutlineChevronRight className='h-4 w-4'/></p>
+    </div>
+
+    <div className='w-full flex items-center justify-between'>
+    <p>Shipped Shipment</p> 
+    <p className='inline-flex items-center gap-2'><span className='bg-yellow-500 px-2 text-xs font-semibold text-white rounded-l-full rounded-r-full'>10 URGENT</span> 51 <HiOutlineChevronRight className='h-4 w-4'/></p>
+    </div>
+</div>
+
+</div>
+
+<div className='mt-3 w-full bg-white shadow px-2 py-3'>
+
+<p className='text-sm font-bold'>Recent Communication</p>
+<div className="border-t mt-1"></div>
+
+<div className='mt-2 space-y-2 w-full text-sm'>
+<p>No communication content here!</p>
+</div>
+
+</div>
+</div>
+
+
+<div className='w-full'>
+<div className='w-full h-[85px] bg-black bg-opacity-80 flex items-center justify-between px-2'>
+<div> 
+    <p className='text-white text-sm font-semibold'>Increase Sales with Sponsored Product Ads</p>
+    <p className='text-white text-xs'>Quickly and easily create ads based on customer searchers</p>
+</div>
+
+<div>
+    <button className='bg-primary text-sm px-4 py-[2px] rounded text-white'>Apply Now</button>
+</div>
+</div>
+
+<div className='mt-3 w-full bg-white shadow px-2 py-3'>
+
+<p className='text-sm font-bold'>Removal Orders</p>
+<div className="border-t mt-1"></div>
+
+<div className='mt-2 space-y-2 w-full text-sm'>
+
+    <div className='w-full flex items-center justify-between'>
+    <p>Submitted</p> 
+    <p className='inline-flex items-center gap-2'> 2 <HiOutlineChevronRight className='h-4 w-4'/></p>
+    </div>
+
+    <div className='w-full flex items-center justify-between'>
+    <p>Ready for Pickup</p> 
+    <p className='inline-flex items-center gap-2'> 8 <HiOutlineChevronRight className='h-4 w-4'/></p>
+    </div>
+
+    <div className='w-full flex items-center justify-between'>
+    <p>Closed</p> 
+    <p className='inline-flex items-center gap-2'> 120 <HiOutlineChevronRight className='h-4 w-4'/></p>
+    </div>
+</div>
+
+</div>
+
+
+<div className='mt-3 w-full bg-white shadow px-2 py-3'>
+
+<p className='text-sm font-bold'>Customer Invoice Request</p>
+<div className="border-t mt-1"></div>
+
+<div className='mt-2 space-y-2 w-full text-sm'>
+<p>No invoice content here!</p>
+</div>
+
+</div>
+</div>
+    </div>
+</section>
     );
 };
 

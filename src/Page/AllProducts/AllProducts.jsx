@@ -1,6 +1,5 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Bar } from 'react-chartjs-2';
 import Chart from 'chart.js/auto'; // Import Chart.js
 import { Link } from 'react-router-dom';
 import { HiMiniChevronDoubleLeft, HiMiniChevronDoubleRight, HiMiniMagnifyingGlass, HiStar } from 'react-icons/hi2';
@@ -25,14 +24,11 @@ const AllProducts = () => {
     ];
     const initialMin = { label: 'Min', value: -1 };
     const initialMax = { label: 'Max', value: -2 };
-  
+
     const [selectedMin, setSelectedMin] = useState(initialMin);
     const [selectedMax, setSelectedMax] = useState(initialMax); // Initial value for Max dropdown
 
     const [range, setRange] = useState({ min: 150, max: 50000 }); // Initial range values
-
-    // const [selectedMin, setSelectedMin] = useState(initialMin);
-    // const [selectedMax, setSelectedMax] = useState(initialMax);
     const [selectedRating, setRating] = useState([]);
     const [selectedAvailability, setAvailability] = useState([]);
     const [selectedDeals, setDeals] = useState([]);
@@ -64,7 +60,7 @@ const AllProducts = () => {
     }, [])
 
     useEffect(() => {
-        fetch('./brands.json')
+        fetch('https://take-a-lot-server-two.vercel.app/all-brands')
             .then((res) => res.json())
             .then((data) => {
                 // Filter the brands based on the search input or show all when search is empty
@@ -76,11 +72,6 @@ const AllProducts = () => {
                 setDemoBrandList(filteredBrands);
             });
     }, [searchBrands]);
-
-    // const [currentPage, setCurrentPage] = useState(0);
-    // const itemPerPage = 100;
-    // const totalPage = Math.ceil(totalProducts / itemPerPage);
-    // const pageNumbers = [...Array(totalPage).keys()]
 
 
     const [currentPage, setCurrentPage] = useState(1);
@@ -96,11 +87,12 @@ const AllProducts = () => {
     };
 
 
+
     useEffect(() => {
-        fetchHouses();
+        fetchProducts();
     }, [currentPage, itemPerPage]);
 
-    const fetchHouses = async () => {
+    const fetchProducts = async () => {
         try {
             setLoading(true);
             const response = await axios.get(`https://take-a-lot-server-two.vercel.app/all-products?page=${currentPage}&limit=${itemPerPage}`);
@@ -113,95 +105,96 @@ const AllProducts = () => {
     };
 
     useEffect(() => {
-        fetch("./categoryList.json")
+        fetch("https://take-a-lot-server-two.vercel.app/all/categories/of/products")
             .then(res => res.json())
             .then(data => setCategoryList(data))
     }, [])
+    console.log(products);
 
 
 
-    
+
 
     useEffect(() => {
         const generateChartData = () => {
             // Check if "Min" or "Max" is selected
             if (selectedMin.value === initialMin.value || selectedMax.value === initialMax.value) {
-              // Handle the case when "Min" or "Max" is selected
-              // For example, you can return the full price range data
-              return {
-                labels: priceOptions.map((option) => option.label),
-                datasets: [
-                  {
-                    label: 'Price Range',
-                    backgroundColor: '#0B7ABF36',
-                    borderColor: '#0B79BF',
-                    borderWidth: 1,
-                    data: priceOptions.map((option) => option.value),
-                  },
-                ],
-              };
+                // Handle the case when "Min" or "Max" is selected
+                // For example, you can return the full price range data
+                return {
+                    labels: priceOptions.map((option) => option.label),
+                    datasets: [
+                        {
+                            label: 'Price Range',
+                            backgroundColor: '#0B7ABF36',
+                            borderColor: '#0B79BF',
+                            borderWidth: 1,
+                            data: priceOptions.map((option) => option.value),
+                        },
+                    ],
+                };
             }
-          
+
             // Handle other cases where specific price ranges are selected
             const minIndex = priceOptions.findIndex((option) => option.value === selectedMin.value);
             const maxIndex = priceOptions.findIndex((option) => option.value === selectedMax.value);
             const chartData = priceOptions.slice(minIndex, maxIndex + 1);
             const reversedLabels = chartData.map((option) => option.label).reverse(); // Reverse the labels
-          
+
             return {
-              labels: reversedLabels,
-              datasets: [
-                {
-                  label: 'Price Range',
-                  backgroundColor: '#0B7ABF36',
-                  borderColor: '#0B79BF',
-                  borderWidth: 1,
-                  data: chartData.map((option) => option.value),
-                },
-              ],
+                labels: reversedLabels,
+                datasets: [
+                    {
+                        label: 'Price Range',
+                        backgroundColor: '#0B7ABF36',
+                        borderColor: '#0B79BF',
+                        borderWidth: 1,
+                        data: chartData.map((option) => option.value),
+                    },
+                ],
             };
-          };
-    
-        const renderChart = (chartId, data) => {
-          const ctx = document.getElementById(chartId);
-          let chartInstance = null;
-    
-          if (ctx) {
-            // Destroy the previous chart instance if it exists
-            Chart.getChart(chartId)?.destroy();
-    
-            // Create a new chart instance
-            chartInstance = new Chart(ctx, {
-              type: 'bar',
-              data: data,
-              options: {
-                scales: {
-                  x: {
-                    display: false,
-                  },
-                  y: {
-                    display: false,
-                    beginAtZero: true,
-                  },
-                },
-                plugins: {
-                  legend: {
-                    display: false,
-                  },
-                },
-              },
-            });
-          }
         };
-    
+
+        const renderChart = (chartId, data) => {
+            const ctx = document.getElementById(chartId);
+            let chartInstance = null;
+
+            if (ctx) {
+                // Destroy the previous chart instance if it exists
+                Chart.getChart(chartId)?.destroy();
+
+                // Create a new chart instance
+                chartInstance = new Chart(ctx, {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        scales: {
+                            x: {
+                                display: false,
+                            },
+                            y: {
+                                display: false,
+                                beginAtZero: true,
+                            },
+                        },
+                        plugins: {
+                            legend: {
+                                display: false,
+                            },
+                        },
+                    },
+                });
+            }
+        };
+
         // Render the LG chart
         renderChart('lg-chart', generateChartData());
-    
+
         // Render the mobile chart
         renderChart('mobile-chart', generateChartData());
-      }, [selectedMin, selectedMax]);
+    }, [selectedMin, selectedMax]);
 
- 
+
 
 
     const handleRangeChange = (newRange) => {
@@ -292,7 +285,7 @@ const AllProducts = () => {
 
                                         {
                                             categoryList.slice(0, showList ? categoryList.length : 4).map(listItem => <li key={listItem?.id}>
-                                                <Link to={listItem?.path} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.category}</Link>
+                                                <Link to={listItem?.mainCategory} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.mainCategory}</Link>
                                             </li>)
                                         }
                                         {
@@ -318,7 +311,7 @@ const AllProducts = () => {
                                             <div>
 
                                                 <div className="chart bg-gray-100 rounded">
-                                                <canvas id="lg-chart" />
+                                                    <canvas id="lg-chart" />
                                                 </div>
 
                                                 <div className="range-selector">
@@ -517,7 +510,7 @@ const AllProducts = () => {
 </li> */}
                             {
                                 categoryList.slice(0, showList ? categoryList.length : 4).map(listItem => <li key={listItem?.id}>
-                                    <Link to={listItem?.path} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.category}</Link>
+                                    <Link to={listItem?.mainCategory} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.mainCategory}</Link>
                                 </li>)
                             }
                             {
@@ -543,7 +536,7 @@ const AllProducts = () => {
                                 <div>
 
                                     <div className="chart bg-gray-100 rounded">
-                                    <canvas id="mobile-chart" />
+                                        <canvas id="mobile-chart" />
                                     </div>
 
                                     <div className="range-selector">
@@ -714,7 +707,7 @@ const AllProducts = () => {
 
                     <div className='w-full mb-5 flex flex-row items-center justify-between'>
                         <div className='text-sm font-medium text-gray-600'>
-                            <p>{totalProducts}+ result</p>
+                            <p className='font-semibold'>{totalProducts}+ result</p>
                         </div>
 
                         <div className='hidden lg:block justify-end'>
@@ -722,7 +715,7 @@ const AllProducts = () => {
                                 <div className='sort-menu'>
                                     <span className=' text-[13px] font-medium'>Sort by:</span>
                                     <select className='border px-2 py-2 rounded bg-white text-xs font-semibold'
-                                        onChange={(e) => setSelectedSort([...selectedSort,e.target.value])}
+                                        onChange={(e) => setSelectedSort([...selectedSort, e.target.value])}
 
                                     >
                                         <option defaultValue="Relevance">Relevance</option>

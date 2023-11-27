@@ -262,7 +262,7 @@ const FeeEstimator = () => {
 
       <div className="bg-white py-4 w-full flex px-2">
         <Link to="/">
-          <img className="w-28" src={logo} alt="" />
+          <img className="w-28" src="https://i.ibb.co/wB0jzwR/Electro-DEMO-4.png" alt="" />
         </Link>
         <div className="ps-[500px]">
           <h1 className="text-lg flex items-center gap-2 font-semibold">

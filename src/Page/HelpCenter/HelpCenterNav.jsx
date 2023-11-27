@@ -20,7 +20,7 @@ const HelpCenterNav = () => {
                         </div>
 
                         <div className="flex-none px-2">
-                            <Link to="/"><img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/logo.svg-f6ccb489b85bbddf97d6.svg" alt="Logo Takealot" className='w-32' /></Link>
+                            <Link to="/"><img src="https://i.ibb.co/wB0jzwR/Electro-DEMO-4.png" alt="Logo Takealot" className='w-32' /></Link>
                             <div className="mx-4 h-5 border-s-2 border-[#0B79BF]"></div>
                             <Link to="/help-centre" className='text-lg font-medium text-neutral'>Help Centre</Link>
                             <div className='pl-4 lg:hidden'>
@@ -71,7 +71,7 @@ const HelpCenterNav = () => {
                     <ul className="menu w-72 px-0 py-0 min-h-screen bg-[#f4f4f4] z-50">
                         <li className='w-full bg-white shadow px-2 py-2'>
                             <div className='flex flex-row gap-5'>
-                                <div className='w-full'><Link to="/"><img src="https://shopfront.takealot.com/b0fd31305b6ec6eb9e374f5e527a4ad540896d49/static/media/src/images/logo.svg-f6ccb489b85bbddf97d6.svg" alt="Logo Takealot" className='w-28' /></Link></div>
+                                <div className='w-full'><Link to="/"><img src="https://i.ibb.co/wB0jzwR/Electro-DEMO-4.png" alt="Logo Takealot" className='w-28' /></Link></div>
                                 <div className='w-full'>
                                     <Link to="/help-centre" className='w-full font-semibold'>Help Centre</Link>
                                 </div>

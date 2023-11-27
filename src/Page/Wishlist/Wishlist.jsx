@@ -41,7 +41,7 @@ const Wishlist = () => {
     },[]);
 
 
-    const handleCart = async(id) =>{
+    const handleCart = async(id, lisId) =>{
       if(!user){
         Swal.fire({
           title: 'Error!',
@@ -73,17 +73,35 @@ const Wishlist = () => {
           }
   
         }
-        const response = await axiosSecure.post("add-product-cart", data);
+        const response = await axiosSecure.post("/add-product-cart", data);
         if(response.data.insertedId){
-          Swal.fire({
-            title: 'Success!',
-            text: 'Product add to cart!',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
-          update();
+
+          const delRes = await axiosSecure.delete(`/wishlist-delete-item/${lisId}`)
+          if(delRes.data.deletedCount > 0){
+            Swal.fire({
+              title: 'Success!',
+              text: 'Product add to cart!',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+            update();
+            refetch();
+          }
         }
       }
+     }
+
+     const handleDelete = async(id)=>{
+      const delRes = await axiosSecure.delete(`/wishlist-delete-item/${id}`)
+          if(delRes.data.deletedCount > 0){
+            Swal.fire({
+              title: 'Success!',
+              text: 'Product delete from wishlist!',
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+            refetch();
+          }
      }
 
     return (
@@ -134,7 +152,7 @@ const Wishlist = () => {
 
 
 {
-  !lists?<div className='mt-4 rounded shadow bg-white py-2 h-80 flex items-center flex-col justify-center gap-3'>
+  lists.length === 0 ?<div className='mt-4 rounded shadow bg-white py-2 h-80 flex items-center flex-col justify-center gap-3'>
 
   <div className='shadow px-2 py-2 rounded-full'>
   <img src="https://shopfront.takealot.com/b317a38ffe915f6034dfee91ccee142cabe5ca77/static/media/src/images/wishlist/wishlist-empty.svg-38f93f7194b84a6a1f59.svg" alt="Icon" className='rounded-full'/>
@@ -152,7 +170,7 @@ const Wishlist = () => {
     
     <div className='flex'>
     <div>
-    <img className='w-36' src="https://media.takealot.com/covers_images/9eb0de31070040a9942bbbde404a92b4/s-zoom.file" alt="" />
+    <img className='w-36' src={list?.productImage} alt="" />
     </div>
     <div>
       <h1 className='mt-5 ms-5 text-[#7C7C7D]'>{list?.productName}</h1>
@@ -163,13 +181,13 @@ const Wishlist = () => {
     <div className='md:mr-8 mt-5'>
       <h1 className='text-2xl text-end font-bold'>R {list.totalPrice
 }</h1>
-      <button onClick={()=>handleCart(list.productId)}  className=" bg-[#1C8644]  text-white flex px-7 mb-2 mt-5 py-2 gap-1 font-medium w-full"> <HiOutlinePlusSmall className='w-5 h-5'/><HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+      <button onClick={()=>handleCart(list.productId, list?._id)}  className=" bg-[#1C8644]  text-white flex px-7 mb-2 mt-5 py-2 gap-1 font-medium w-full"> <HiOutlinePlusSmall className='w-5 h-5'/><HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
       <div className='flex items-center gap-2'>
       <select name="" id="" className='border bg-[#EAEAEA] px-4 py-2'>
         <option value="">Move</option>
         <option value="">Create a list </option>
       </select>
-      <button className='p-2 text-2xl bg-[#EAEAEA]'><FaTrash/></button>
+      <button onClick={()=>handleDelete(list?._id)} className='p-2 text-xl bg-[#EAEAEA] text-gray-600'><FaTrash/></button>
       </div>
     </div>
   </div>)
