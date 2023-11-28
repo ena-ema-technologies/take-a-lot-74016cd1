@@ -172,6 +172,7 @@ import SellerStatements from "../Page/SellerAccount/SellerStatements/SellerState
 import SellerReport from "../Page/SellerAccount/SellerReport/SellerReport";
 import Demo from "../Page/Demo/Demo";
 import ProductByCategory from "../Page/AllProducts/ProductByCategory";
+import ReviewShipments from "../Page/SellerAccount/ReviewShipments/ReviewShipments";
 
 
 
@@ -197,6 +198,10 @@ export const router = createBrowserRouter([
       },
       {
         path: "/all/:mainCategory/:subCategory",
+        element: <ProductByCategory />
+      },
+      {
+        path: "/all/:mainCategory",
         element: <ProductByCategory />
       },
       {
@@ -899,11 +904,11 @@ export const router = createBrowserRouter([
       {
         path: "seller-reports",
         element: <SellerRouter><SellerReport /></SellerRouter>
+      },
+      {
+        path: "review-seller-shipment-details",
+        element: <SellerRouter><ReviewShipments /></SellerRouter>
       }
     ]
   },
-  {
-    path: "/demo",
-    element: <Demo />
-  }
 ]);

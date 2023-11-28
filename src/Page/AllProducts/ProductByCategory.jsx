@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Chart from 'chart.js/auto'; // Import Chart.js
-import { Link, useParams } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import { HiMiniChevronDoubleLeft, HiMiniChevronDoubleRight, HiMiniMagnifyingGlass, HiStar } from 'react-icons/hi2';
 import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
@@ -91,14 +91,21 @@ const ProductByCategory = () => {
 
     useEffect(() => {
         fetchProducts();
-    }, [currentPage, itemPerPage]);
+    }, [currentPage, itemPerPage, categories?.mainCategory, categories?.subCategory]);
 
     const fetchProducts = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}/${categories?.subCategory}`);
-            setProducts(response.data);
-            setLoading(false);
+            if (categories?.mainCategory && categories?.subCategory) {
+                const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}/${categories?.subCategory}`);
+                setProducts(response.data);
+                setLoading(false);
+            } else {
+                const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}`);
+                setProducts(response.data);
+                setLoading(false);
+            }
+
         } catch (error) {
             console.log(error);
             setLoading(false);
@@ -110,7 +117,7 @@ const ProductByCategory = () => {
             .then(res => res.json())
             .then(data => setCategoryList(data))
     }, [])
-    // console.log(categoryList);
+    console.log(categories);
 
 
 
@@ -285,7 +292,7 @@ const ProductByCategory = () => {
 
                                         {
                                             categoryList.slice(0, showList ? categoryList.length : 4).map(listItem => <li key={listItem?.id}>
-                                                <Link to={`/all/${listItem?.mainCategory}`} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.mainCategory}</Link>
+                                                <Link to={`/all/${listItem?.mainCategory}`} className={({ isActive }) => (isActive ? "py-3 px-7 font-normal text-[14px] inline-block w-full text-primary bg-primary bg-opacity-10 transition-all duration-500" : "py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500")}>{listItem?.mainCategory}</Link>
                                             </li>)
                                         }
                                         {
@@ -510,7 +517,7 @@ const ProductByCategory = () => {
 </li> */}
                             {
                                 categoryList.slice(0, showList ? categoryList.length : 4).map(listItem => <li key={listItem?.id}>
-                                    <Link to={listItem?.mainCategory} className='py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500'>{listItem?.mainCategory}</Link>
+                                    <NavLink to={`/all/${listItem?.mainCategory}`} className={({ isActive }) => (isActive ? "py-3 px-7 font-normal text-[14px] inline-block w-full text-primary bg-primary bg-opacity-10 transition-all duration-500" : "py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500")}>{listItem?.mainCategory}</NavLink>
                                 </li>)
                             }
                             {
