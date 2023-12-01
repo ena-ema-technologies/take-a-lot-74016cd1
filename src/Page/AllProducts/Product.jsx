@@ -89,7 +89,7 @@ const Product = ({ prod, view }) => {
             </div> : ""
           }
           {
-            view === "grid" ? <p className='font-semibold'>R 50</p> : <div className='lg:hidden'>
+            view === "grid" ? <p className='font-semibold'>R {prod?.Product_Price}</p> : <div className='lg:hidden'>
               {
                 view === "list" ? <div className='mt-8'>{prod?.Short_Description ? prod?.Short_Description.slice(0, 50) : prod?.Description.slice(0, 50)}...</div> : ""
               }

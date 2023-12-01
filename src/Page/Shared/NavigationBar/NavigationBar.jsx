@@ -394,7 +394,7 @@ const NavigationBar = () => {
             <div className="hidden lg:block bg-primary px-4 py-2">
                 <nav className="hidden lg:flex items-center justify-between gap-8 h-[80px] relative max-w-7xl mx-auto">
                     <div className="w-1/4">
-                        <div className="dropdown dropdown-open" onMouseEnter={() => setDropdownOpen(true)} onMouseLeave={() => setDropdownOpen(false)}>
+                        <div className="dropdown dropdown-open" onMouseEnter={() => setDropdownOpen(true)} onClick={() => setDropdownOpen(false)}>
                             <label tabIndex={0} className="inline-flex items-center justify-between text-white bg-[#4d4d4f] px-4 py-2 rounded-md text-[13px] w-56">Shop by Department <FaAngleDown className="w-4 h-4" /></label>
                             {
                                 dropdownOpen && <ul tabIndex={0} className="dropdown-content z-[1] shadow bg-white w-56 pt-2 border-r h-[550px] relative">

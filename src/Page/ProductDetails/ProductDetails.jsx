@@ -1048,7 +1048,7 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <div className='w-full flex flex-col gap-4'>
+              <div className='w-full lg:w-[30%] flex flex-col gap-4'>
                 <div className='bg-white p-5 shadow'>
                   <p className='pt-2 pb-4 text-2xl flex gap-5 items-center font-extrabold'>R {
                     price * quantity

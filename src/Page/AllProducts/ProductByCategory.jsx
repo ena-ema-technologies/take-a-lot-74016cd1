@@ -31,12 +31,12 @@ const ProductByCategory = () => {
 
     const [range, setRange] = useState({ min: 150, max: 50000 }); // Initial range values
     const [selectedRating, setRating] = useState([]);
-    const [selectedAvailability, setAvailability] = useState([]);
-    const [selectedDeals, setDeals] = useState([]);
-    const [selectedBrand, setSelectedBrand] = useState([]);
-    const [selectedSort, setSelectedSort] = useState([]);
+    const [selectedAvailability, setAvailability] = useState("");
+    const [selectedDeals, setDeals] = useState("");
+    const [selectedBrand, setSelectedBrand] = useState("");
+    const [selectedSort, setSelectedSort] = useState("");
     // console.log(selectedSort);
-    const [searchBrands, setSearchBrand] = useState("");
+    const [searchBrands, setSearchBrand] = useState("all");
     // console.log(searchBrands);
 
     const [totalProducts, setTotalProducts] = useState(0);
@@ -57,20 +57,14 @@ const ProductByCategory = () => {
     useEffect(() => {
         fetch(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}/${categories?.subCategory}`)
             .then(res => res.json())
-            .then(data => setTotalProducts(data?.totalProduct?.length))
+            .then(data => setTotalProducts(data?.length))
     }, [])
 
     useEffect(() => {
-        fetch('https://take-a-lot-server-two.vercel.app/all-brands')
+        fetch(`https://take-a-lot-server-two.vercel.app/all-brands/${searchBrands}`)
             .then((res) => res.json())
             .then((data) => {
-                // Filter the brands based on the search input or show all when search is empty
-                const filteredBrands = searchBrands
-                    ? data.filter((brand) =>
-                        brand.Brand.toLowerCase().includes(searchBrands.toLowerCase())
-                    )
-                    : data;
-                setDemoBrandList(filteredBrands);
+                setDemoBrandList(data);
             });
     }, [searchBrands]);
 
@@ -91,17 +85,29 @@ const ProductByCategory = () => {
 
     useEffect(() => {
         fetchProducts();
-    }, [currentPage, itemPerPage, categories?.mainCategory, categories?.subCategory]);
+    }, [categories?.mainCategory, categories?.subCategory, currentPage, itemPerPage, selectedSort, selectedRating, selectedMax, selectedMin, selectedAvailability, selectedDeals, selectedBrand]);
+
+    let maxPrice = selectedMax?.value;
+    let minPrice = selectedMin?.value;
+    let filterParams = {
+        maxPrice,
+        minPrice,
+        selectedSort,
+        selectedBrand,
+        selectedDeals,
+        selectedAvailability
+    }
+    const queryParams = new URLSearchParams(filterParams);
 
     const fetchProducts = async () => {
         try {
             setLoading(true);
             if (categories?.mainCategory && categories?.subCategory) {
-                const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}/${categories?.subCategory}`);
+                const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}/${categories?.subCategory}?${queryParams}`);
                 setProducts(response.data);
                 setLoading(false);
             } else {
-                const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}`);
+                const response = await axios.get(`https://take-a-lot-server-two.vercel.app/products/by/categories/${categories?.mainCategory}?${queryParams}`);
                 setProducts(response.data);
                 setLoading(false);
             }
@@ -232,22 +238,22 @@ const ProductByCategory = () => {
                             <div className='sort-menu'>
                                 <p className='py-2 px-2 font-semibold text-base border-b mb-3'>Sort by</p>
                                 <label className="cursor-pointer label relative">
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedSort.find(sr => sr === "Relevance") ? true : false} />
+                                    <input type="checkbox" className="checkbox checkbox-primary" />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Relevance</span>
                                 </label>
 
-                                <label className="cursor-pointer label relative" onClick={() => setSelectedSort([...selectedSort, "Descending"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedSort.find(sr => sr === "Descending") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setSelectedSort("Descending")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Price: High to Low</span>
                                 </label>
 
-                                <label className="cursor-pointer label relative" onClick={() => setSelectedSort([...selectedSort, "Ascending"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedSort.find(sr => sr === "Ascending") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setSelectedSort("Ascending")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Price: Low to High</span>
                                 </label>
 
-                                <label className="cursor-pointer label relative" onClick={() => setSelectedSort([...selectedSort, "New"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedSort.find(sr => sr === "New") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setSelectedSort("New")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Newest Arrivals</span>
                                 </label>
 
@@ -292,7 +298,7 @@ const ProductByCategory = () => {
 
                                         {
                                             categoryList.slice(0, showList ? categoryList.length : 4).map(listItem => <li key={listItem?.id}>
-                                                <Link to={`/all/${listItem?.mainCategory}`} className={({ isActive }) => (isActive ? "py-3 px-7 font-normal text-[14px] inline-block w-full text-primary bg-primary bg-opacity-10 transition-all duration-500" : "py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500")}>{listItem?.mainCategory}</Link>
+                                                <Link to={`/all/${listItem?.mainCategory}`} className={({ isActive }) => (isActive ? 'py-3 px-7 font-normal text-[14px] inline-block w-full text-primary bg-primary bg-opacity-10 transition-all duration-500' : 'py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500')}>{listItem?.mainCategory}</Link>
                                             </li>)
                                         }
                                         {
@@ -383,8 +389,8 @@ const ProductByCategory = () => {
                                                 <span className='absolute right-2'><HiMiniMagnifyingGlass /></span>
                                             </div>
                                             {
-                                                demoBrandList.map(brand => <label key={brand?.id} className="cursor-pointer label relative" onClick={() => setSelectedBrand([...selectedBrand, brand?.Brand])}>
-                                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedBrand.find(br => br === brand?.Brand) ? true : false} />
+                                                demoBrandList.map(brand => <label key={brand?.id} className="cursor-pointer label relative" onClick={() => handleSetBrand(brand?.Brand)}>
+                                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedBrand === brand?.Brand ? true : false} />
                                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">{brand?.Brand}</span>
                                                 </label>)
                                             }
@@ -398,32 +404,32 @@ const ProductByCategory = () => {
                                             Availability
                                         </div>
                                         <div className="collapse-content py-2">
-                                            <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedAvailability, "In Stock"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability.find(able => able === "In Stock") ? true : false} />
+                                            <label className="cursor-pointer label relative" onClick={() => setAvailability("In Stock")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "In Stock" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">In Stock</span>
                                             </label>
-                                            <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "3 Days"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "3 Days") ? true : false} />
+                                            <label className="cursor-pointer label relative" onClick={() => setAvailability("3 Days")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "3 Days" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 3 days</span>
                                             </label>
 
-                                            <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "5 Days"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "5 Days") ? true : false} />
+                                            <label className="cursor-pointer label relative" onClick={() => setAvailability("5 Days")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "5 Days" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 5 days</span>
                                             </label>
 
-                                            <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "7 Days"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "7 Days") ? true : false} />
+                                            <label className="cursor-pointer label relative" onClick={() => setAvailability("7 Days")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "7 Days" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 7 days</span>
                                             </label>
 
-                                            <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "12 Days"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "12 Days") ? true : false} />
+                                            <label className="cursor-pointer label relative" onClick={() => setAvailability("12 Days")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "12 Days" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 12 days</span>
                                             </label>
 
-                                            <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "15 Days"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "15 Days") ? true : false} />
+                                            <label className="cursor-pointer label relative" onClick={() => setAvailability("15 Days")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "15 Days" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 15 days</span>
                                             </label>
 
@@ -463,20 +469,20 @@ const ProductByCategory = () => {
                                             Deal
                                         </div>
                                         <div className="collapse-content py-2">
-                                            <label className="cursor-pointer label relative" onChange={() => setDeals([...selectedDeals, "Featured Deals"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "Featured Deals") ? true : false} />
+                                            <label className="cursor-pointer label relative" onChange={() => setDeals("Featured Deal")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "Featured Deal" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Featured Deals</span>
                                             </label>
-                                            <label className="cursor-pointer label relative" onChange={() => setDeals([...selectedDeals, "Bundle Deals"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "Bundle Deals") ? true : false} />
+                                            <label className="cursor-pointer label relative" onChange={() => setDeals("Bundle Deal")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "Bundle Deal" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Bundle Deals</span>
                                             </label>
-                                            <label className="cursor-pointer label relative" onChange={() => setDeals([...selectedDeals, "App Only Deals"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "App Only Deals") ? true : false} />
+                                            <label className="cursor-pointer label relative" onChange={() => setDeals("App Only Deal")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "App Only Deal" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">App Only Deals</span>
                                             </label>
-                                            <label className="cursor-pointer label relative" onChange={() => setDeals([...selectedDeals, "Daily Deals"])}>
-                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "Daily Deals") ? true : false} />
+                                            <label className="cursor-pointer label relative" onChange={() => setDeals("Daily Deal")}>
+                                                <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "Daily Deal" ? true : false} />
                                                 <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Daily Deals</span>
                                             </label>
                                         </div>
@@ -517,7 +523,7 @@ const ProductByCategory = () => {
 </li> */}
                             {
                                 categoryList.slice(0, showList ? categoryList.length : 4).map(listItem => <li key={listItem?.id}>
-                                    <NavLink to={`/all/${listItem?.mainCategory}`} className={({ isActive }) => (isActive ? "py-3 px-7 font-normal text-[14px] inline-block w-full text-primary bg-primary bg-opacity-10 transition-all duration-500" : "py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500")}>{listItem?.mainCategory}</NavLink>
+                                    <NavLink to={`/all/${listItem?.mainCategory}`} className={({ isActive }) => (isActive ? 'py-3 px-7  font-normal text-[14px] inline-block w-full text-primary bg-primary bg-opacity-10 transition-all duration-500' : 'py-3 px-7 text-black font-normal text-[14px] inline-block w-full hover:text-primary hover:bg-primary hover:bg-opacity-10 transition-all duration-500')}>{listItem?.mainCategory}</NavLink>
                                 </li>)
                             }
                             {
@@ -608,8 +614,8 @@ const ProductByCategory = () => {
                                     <span className='absolute right-2'><HiMiniMagnifyingGlass /></span>
                                 </div>
                                 {
-                                    demoBrandList.map(brand => <label key={brand?.id} className="cursor-pointer label relative" onClick={() => setSelectedBrand([...selectedBrand, brand?.Brand])}>
-                                        <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedBrand.find(br => br === brand?.Brand) ? true : false} />
+                                    demoBrandList.map(brand => <label key={brand?.id} className="cursor-pointer label relative" onClick={() => handleSetBrand(brand?.Brand)}>
+                                        <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedBrand === brand?.Brand ? true : false} />
                                         <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">{brand?.Brand}</span>
                                     </label>)
                                 }
@@ -623,32 +629,32 @@ const ProductByCategory = () => {
                                 Availability
                             </div>
                             <div className="collapse-content py-2">
-                                <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedAvailability, "In Stock"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability.find(able => able === "In Stock") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setAvailability("In Stock")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "In Stock" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">In Stock</span>
                                 </label>
-                                <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "3 Days"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "3 Days") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setAvailability("3 Days")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "3 Days" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 3 days</span>
                                 </label>
 
-                                <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "5 Days"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "5 Days") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setAvailability("5 Days")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "5 Days" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 5 days</span>
                                 </label>
 
-                                <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "7 Days"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "7 Days") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setAvailability("7 Days")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "7 Days" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 7 days</span>
                                 </label>
 
-                                <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "12 Days"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "12 Days") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setAvailability("12 Days")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "12 Days" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 12 days</span>
                                 </label>
 
-                                <label className="cursor-pointer label relative" onClick={() => setAvailability([...selectedRating, "15 Days"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(able => able === "15 Days") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setAvailability("15 Days")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedAvailability === "15 Days" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Up to 15 days</span>
                                 </label>
 
@@ -688,20 +694,20 @@ const ProductByCategory = () => {
                                 Deal
                             </div>
                             <div className="collapse-content py-2">
-                                <label className="cursor-pointer label relative" onClick={() => setDeals([...selectedDeals, "Featured Deals"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "Featured Deals") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setDeals("Featured Deal")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "Featured Deal" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Featured Deals</span>
                                 </label>
-                                <label className="cursor-pointer label relative" onClick={() => setDeals([...selectedDeals, "Bundle Deals"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "Bundle Deals") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setDeals("Bundle Deal")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "Bundle Deal" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Bundle Deals</span>
                                 </label>
-                                <label className="cursor-pointer label relative" onClick={() => setDeals([...selectedDeals, "App Only Deals"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "App Only Deals") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setDeals("App Only Deal")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "App Only Deal" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">App Only Deals</span>
                                 </label>
-                                <label className="cursor-pointer label relative" onClick={() => setDeals([...selectedDeals, "Daily Deals"])}>
-                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedRating.find(deal => deal === "Daily Deals") ? true : false} />
+                                <label className="cursor-pointer label relative" onClick={() => setDeals("Daily Deal")}>
+                                    <input type="checkbox" className="checkbox checkbox-primary" defaultChecked={selectedDeals === "Daily Deal" ? true : false} />
                                     <span className="label-text absolute left-10 inline-flex items-center gap-1 text-sm">Daily Deals</span>
                                 </label>
                             </div>
@@ -714,7 +720,7 @@ const ProductByCategory = () => {
 
                     <div className='w-full mb-5 flex flex-row items-center justify-between'>
                         <div className='text-sm font-medium text-gray-600'>
-                            <p className='font-semibold'>{products.length}+ result</p>
+                            <p className='font-semibold'>{totalProducts}+ result</p>
                         </div>
 
                         <div className='hidden lg:block justify-end'>
@@ -722,7 +728,7 @@ const ProductByCategory = () => {
                                 <div className='sort-menu'>
                                     <span className=' text-[13px] font-medium'>Sort by:</span>
                                     <select className='border px-2 py-2 rounded bg-white text-xs font-semibold'
-                                        onChange={(e) => setSelectedSort([...selectedSort, e.target.value])}
+                                        onChange={(e) => setSelectedSort(e.target.value)}
 
                                     >
                                         <option defaultValue="Relevance">Relevance</option>
