@@ -173,6 +173,7 @@ import SellerReport from "../Page/SellerAccount/SellerReport/SellerReport";
 import Demo from "../Page/Demo/Demo";
 import ProductByCategory from "../Page/AllProducts/ProductByCategory";
 import ReviewShipments from "../Page/SellerAccount/ReviewShipments/ReviewShipments";
+import PayfastSuccess from "../Page/CheckoutReview/PayfastSuccess";
 
 
 
@@ -818,6 +819,10 @@ export const router = createBrowserRouter([
       {
         path: "review",
         element: <PrivateRoute><CheckReview /></PrivateRoute>
+      },
+      {
+        path: "payFast-success",
+        element: <PrivateRoute><PayfastSuccess /></PrivateRoute>
       }
     ]
   },

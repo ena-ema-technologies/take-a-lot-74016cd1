@@ -1,10 +1,13 @@
 import React from 'react';
 import emptyIcon from '../../assets/icons/empty-order-icon.svg-6bcc4601443c5d44b8ae.svg'
 import { FaCalendar } from 'react-icons/fa';
+import useOrders from '../../hooks/useOrders';
 
 const Orders = () => {
-    return (
-        <div className="w-full mt-0">
+  const [allOrders, refetch] = useOrders();
+  console.log(allOrders);
+  return (
+    <div className="w-full mt-0">
       <div className="flex text-center justify-between text-sm">
         <div>
           <h2 className="text-lg font-semibold text-[#4d4d4f]">Orders</h2>
@@ -33,7 +36,7 @@ const Orders = () => {
         <button className="bg-primary text-white font-semibold border border-primary px-4 py-2 rounded">Start Shopping</button>
       </div>
     </div>
-    );
+  );
 };
 
 export default Orders;
