@@ -174,6 +174,7 @@ import Demo from "../Page/Demo/Demo";
 import ProductByCategory from "../Page/AllProducts/ProductByCategory";
 import ReviewShipments from "../Page/SellerAccount/ReviewShipments/ReviewShipments";
 import PayfastSuccess from "../Page/CheckoutReview/PayfastSuccess";
+import UpdateProducts from "../Page/SellerAccount/ManageOffers/UpdateProducts";
 
 
 
@@ -837,6 +838,11 @@ export const router = createBrowserRouter([
       {
         path: "manage-my-offer",
         element: <SellerRouter><ManageOffers /></SellerRouter>
+      },
+      {
+        path: "update-my-products/:id",
+        element: <SellerRouter><UpdateProducts /></SellerRouter>
+
       },
       {
         path: "view-bulk-result",
