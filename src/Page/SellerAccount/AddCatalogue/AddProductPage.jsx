@@ -1,44 +1,26 @@
-import { useQuery } from '@tanstack/react-query';
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React from 'react';
+import DashboardHead from '../../../components/DashboardHead/DashboardHead';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import useAuth from '../../../hooks/useAuth';
-import DashboardHead from '../../../components/DashboardHead/DashboardHead';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import Swal from 'sweetalert2';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
-const UpdateProducts = () => {
-    const { id } = useParams();
+const AddProductPage = () => {
     const navigate = useNavigate();
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
+    const { register, formState: { errors, isSubmitSuccessful }, formState, handleSubmit, reset } = useForm();
     // console.log(id);
-    const { register, formState: { errors }, handleSubmit } = useForm();
-    const { data: selectedProd = {}, refetch } = useQuery({
-        queryKey: ["selectedProd", user?.email],
-        enabled: !loading && !!user?.email,
-        queryFn: async () => {
-
-            const res = await axiosSecure.get(`/find-update-products-by-seller/${id}`)
-            return res.data;
-
-        },
-        onSuccess: (data) => {
-            // Assuming selectedProd has a Categories property
-            const categories = data?.Categories || [];
-            setCategoriesArray(categories);
-            const Image_URL = data?.Image_URL || [];
-            setImageArray(Image_URL)
-        },
-    })
 
     // console.log(selectedProd);
 
-    const [categoriesArray, setCategoriesArray] = useState([]);
+    const [categoriesArray, setCategoriesArray] = useState(["Add Category"]);
     // console.log(categoriesArray);
 
-    const [imageArray, setImageArray] = useState([]);
+    const [imageArray, setImageArray] = useState(["Add Image"]);
 
     const handleChange = (index, value) => {
         const newArray = [...categoriesArray];
@@ -91,27 +73,33 @@ const UpdateProducts = () => {
             Whats_in_the_Box: data?.Whats_in_the_Box,
             your_own_SKU: data?.your_own_SKU
         }
-        // console.log(updatedData);
+        console.log(updatedData);
 
         if (updatedData) {
-            const response = await axiosSecure.patch(`/update-products-by-seller/${selectedProd?._id}`, updatedData)
-            if (response?.data?.modifiedCount > 0) {
+            const response = await axiosSecure.post("/add-new-product/from-seller", updatedData)
+            if (response?.data?.insertedId) {
+                console.log(response.data.insertedId);
+                reset();
                 Swal.fire({
                     title: 'Success!',
-                    text: 'Product updated successful!',
+                    text: 'Product Added successfully!',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-                navigate("/seller-dashboard/manage-my-offer")
-
             }
         }
 
     }
+
+    React.useEffect(() => {
+        if (formState.isSubmitSuccessful) {
+            reset({ something: "" })
+        }
+    }, [formState, reset])
     return (
         <section className='w-[99%] relative h-full'>
             <nav className='absolute left-0 right-0 top-0'>
-                <DashboardHead title="Update Products" />
+                <DashboardHead title="Add New Products" />
             </nav>
 
 
@@ -120,7 +108,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Name <span className='text-error'>*</span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Product_Name : ""} placeholder='Product Name'
+                            <input type='text' placeholder='Product Name'
                                 {...register("Product_Name", { required: true })}
                                 aria-invalid={errors.Product_Name ? "true" : "false"}
                                 className='inputField2' />
@@ -129,7 +117,7 @@ const UpdateProducts = () => {
 
                         <div className='flex flex-col space-y-1 w-full'>
                             <label className='font-semibold'>Price<span className='text-error'>*</span></label>
-                            <input type='number' defaultValue={selectedProd ? selectedProd?.Product_Price : ""} placeholder='Product Price'
+                            <input type='number' placeholder='Product Price'
                                 {...register("Product_Price", { required: true })}
                                 aria-invalid={errors.Product_Price ? "true" : "false"}
                                 className='inputField2' />
@@ -138,7 +126,7 @@ const UpdateProducts = () => {
 
                         <div className='flex flex-col space-y-1 w-full'>
                             <label className='font-semibold'>Discount price <span className='text-error'></span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Discount_price : ""} placeholder='Discount price (If is it)'
+                            <input type='text' placeholder='Discount price (If is it)'
                                 {...register("Discount_price")}
                                 aria-invalid={errors.Discount_price ? "true" : "false"}
                                 className='inputField2' />
@@ -150,7 +138,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Packaged Height <span className='text-error'>*</span></label>
-                            <input type='number' defaultValue={selectedProd ? selectedProd?.Packaged_Height : ""} placeholder='Packaged Height'
+                            <input type='number' placeholder='Packaged Height'
                                 {...register("Packaged_Height", { required: true })}
                                 aria-invalid={errors.Packaged_Height ? "true" : "false"}
                                 className='inputField2' />
@@ -159,7 +147,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Packaged Length<span className='text-error'>*</span></label>
-                            <input type='number' defaultValue={selectedProd ? selectedProd?.Packaged_Length : ""} placeholder='Packaged Length'
+                            <input type='number' placeholder='Packaged Length'
                                 {...register("Packaged_Length", { required: true })}
                                 aria-invalid={errors.Packaged_Length ? "true" : "false"}
                                 className='inputField2' />
@@ -168,7 +156,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Packaged Weight<span className='text-error'>*</span></label>
-                            <input type='number' defaultValue={selectedProd ? selectedProd?.Packaged_Weight : ""} placeholder='Packaged Weight'
+                            <input type='number' placeholder='Packaged Weight'
                                 {...register("Packaged_Weight", { required: true })}
                                 aria-invalid={errors.Packaged_Weight ? "true" : "false"}
                                 className='inputField2' />
@@ -179,7 +167,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Packaged Width<span className='text-error'>*</span></label>
-                            <input type='number' defaultValue={selectedProd ? selectedProd?.Packaged_Width : ""} placeholder='Packaged Width'
+                            <input type='number' placeholder='Packaged Width'
                                 {...register("Packaged_Width", { required: true })}
                                 aria-invalid={errors.Packaged_Width ? "true" : "false"}
                                 className='inputField2' />
@@ -191,7 +179,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Availabilities<span className='text-error'>*</span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Availabilities : ""} placeholder='Availabilities'
+                            <input type='text' placeholder='Availabilities'
                                 {...register("Availabilities", { required: true })}
                                 aria-invalid={errors.Availabilities ? "true" : "false"}
                                 className='inputField2' />
@@ -200,7 +188,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Available Deal</label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Available_Deal : ""} placeholder='Available Deal'
+                            <input type='text' placeholder='Available Deal'
                                 {...register("Available_Deal")}
                                 aria-invalid={errors.Available_Deal ? "true" : "false"}
                                 className='inputField2' />
@@ -209,7 +197,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Brand Name<span className='text-error'>*</span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Brand_Name : ""} placeholder='Brand Name'
+                            <input type='text' placeholder='Brand Name'
                                 {...register("Brand_Name", { required: true })}
                                 aria-invalid={errors.Brand_Name ? "true" : "false"}
                                 className='inputField2' />
@@ -222,7 +210,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Stock Qty<span className='text-error'>*</span></label>
-                            <input type='number' defaultValue={selectedProd ? selectedProd?.Stock_Qty : ""} placeholder='Stock Qty'
+                            <input type='number' placeholder='Stock Qty'
                                 {...register("Stock_Qty", { required: true })}
                                 aria-invalid={errors.Stock_Qty ? "true" : "false"}
                                 className='inputField2' />
@@ -231,7 +219,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Warranty Period<span className='text-error'>*</span></label>
-                            <input type='number' defaultValue={selectedProd ? selectedProd?.Warranty_Period : ""} placeholder='Warranty Period'
+                            <input type='number' placeholder='Warranty Period'
                                 {...register("Warranty_Period", { required: true })}
                                 aria-invalid={errors.Warranty_Period ? "true" : "false"}
                                 className='inputField2' />
@@ -240,7 +228,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Warranty Type<span className='text-error'>*</span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Warranty_Type : ""} placeholder='Brand Name'
+                            <input type='text' placeholder='Brand Name'
                                 {...register("Warranty_Type", { required: true })}
                                 aria-invalid={errors.Warranty_Type ? "true" : "false"}
                                 className='inputField2' />
@@ -253,7 +241,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Your Own SKU<span className='text-error'>*</span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.your_own_SKU : ""} placeholder='Your own SKU'
+                            <input type='text' placeholder='Your own SKU'
                                 {...register("your_own_SKU", { required: true })}
                                 aria-invalid={errors.your_own_SKU ? "true" : "false"}
                                 className='inputField2' />
@@ -262,7 +250,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Product SKU for Variant</label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Product_SKU_for_Variant : ""} placeholder='Product SKU for Variant'
+                            <input type='text' placeholder='Product SKU for Variant'
                                 {...register("Product_SKU_for_Variant")}
                                 aria-invalid={errors.Product_SKU_for_Variant ? "true" : "false"}
                                 className='inputField2' />
@@ -273,7 +261,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Product or Variant</label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Product_or_Variant : ""} placeholder='Product or Variant'
+                            <input type='text' placeholder='Product or Variant'
                                 {...register("Product_or_Variant")}
                                 aria-invalid={errors.Product_or_Variant ? "true" : "false"}
                                 className='inputField2' />
@@ -282,7 +270,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Video Link URL</label>
-                            <input type='url' defaultValue={selectedProd ? selectedProd?.Video_Link_URL : ""} placeholder='Video Link URL'
+                            <input type='url' placeholder='Video Link URL'
                                 {...register("Video_Link_URL")}
                                 aria-invalid={errors.Video_Link_URL ? "true" : "false"}
                                 className='inputField2' />
@@ -293,7 +281,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Short Description<span className='text-error'>*</span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Short_Description : ""} placeholder='Short Description'
+                            <input type='text' placeholder='Short Description'
                                 {...register("Short_Description", { required: true })}
                                 aria-invalid={errors.Short_Description ? "true" : "false"}
                                 className='inputField2' />
@@ -302,7 +290,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Whats in the Box<span className='text-error'>*</span></label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Whats_in_the_Box : ""} placeholder='Whats in the Box'
+                            <input type='text' placeholder='Whats in the Box'
                                 {...register("Whats_in_the_Box", { required: true })}
                                 aria-invalid={errors.Whats_in_the_Box ? "true" : "false"}
                                 className='inputField2' />
@@ -313,7 +301,7 @@ const UpdateProducts = () => {
                     <div className='w-full lg:w-3/4 mx-auto flex flex-col lg:flex-row justify-between gap-6 my-5'>
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Comments</label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Comments : ""} placeholder='Product or Variant'
+                            <input type='text' placeholder='Product or Variant'
                                 {...register("Comments")}
                                 aria-invalid={errors.Comments ? "true" : "false"}
                                 className='inputField2' />
@@ -322,7 +310,7 @@ const UpdateProducts = () => {
 
                         <div className='w-full flex flex-col space-y-1'>
                             <label className='font-semibold'>Rating</label>
-                            <input type='text' defaultValue={selectedProd ? selectedProd?.Rating : ""} placeholder='Rating'
+                            <input type='text' placeholder='Rating'
                                 {...register("Rating")}
                                 aria-invalid={errors.Rating ? "true" : "false"}
                                 className='inputField2' />
@@ -347,7 +335,7 @@ const UpdateProducts = () => {
                                     />
                                 </div>
                             ))}
-                            <button type="button" onClick={handleAddCategory} className="plus-icon">
+                            <button type="button" onClick={handleAddCategory} className=" text-xl border w-10 py-1 border-primary text-primary rounded-full mx-auto hover:bg-primary hover:text-white">
                                 +
                             </button>
 
@@ -370,7 +358,7 @@ const UpdateProducts = () => {
                                     />
                                 </div>
                             ))}
-                            <button type="button" onClick={handleAddImage} className="plus-icon">
+                            <button type="button" onClick={handleAddImage} className=" text-xl border w-10 py-1 border-primary text-primary rounded-full mx-auto hover:bg-primary hover:text-white">
                                 +
                             </button>
                         </div>
@@ -381,7 +369,7 @@ const UpdateProducts = () => {
                     <div className='my-5  w-full flex items-center justify-center'>
                         <div className='flex flex-col space-y-1 w-full lg:w-3/4'>
                             <label className='font-semibold'>Description <span className='text-error'>*</span></label>
-                            <textarea rows={10} cols={5} defaultValue={selectedProd ? selectedProd?.Description : ""} placeholder='Product Description'
+                            <textarea rows={10} cols={5} placeholder='Product Description'
                                 {...register("Description", { required: true })}
                                 aria-invalid={errors.Description ? "true" : "false"}
                                 className='inputField2 w-full' />
@@ -391,7 +379,7 @@ const UpdateProducts = () => {
                     </div>
 
                     <div className='flex items-center justify-center w-full'>
-                        <input type="submit" value="Update Product" className='myBtnSec w-full cursor-pointer' />
+                        <input type="submit" value="Add Product" className='myBtnSec w-full cursor-pointer' />
                     </div>
                 </form>
             </div>
@@ -399,4 +387,4 @@ const UpdateProducts = () => {
     );
 };
 
-export default UpdateProducts;
+export default AddProductPage;

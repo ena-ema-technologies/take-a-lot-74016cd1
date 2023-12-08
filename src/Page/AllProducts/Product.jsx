@@ -57,7 +57,7 @@ const Product = ({ prod, view }) => {
   //  }
 
   return (
-    <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}/${prod?.Categories[0]}`} className={`${view === "list" ? "card card-side h-fit lg:h-64 flex justify-center" : "card lg:w-[200px] h-[375px]"}  shadow hover:shadow-lg rounded-none relative`}>
+    <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}/${prod?.Categories}`} className={`${view === "list" ? "card card-side h-fit lg:h-64 flex justify-center" : "card lg:w-[200px] h-[375px]"}  shadow hover:shadow-lg rounded-none relative`}>
 
       <div className={`${view === "list" ? "h-36 lg:h-64 w-40 lg:w-60 my-auto relative" : "h-[135px] w-full relative"}`}>
         <img src={prod?.Image_URL} alt="Product" className={`${view === "list" ? "h-36 lg:h-64 w-40 lg:w-60 my-auto" : "h-[135px] w-full"}`} />

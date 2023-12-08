@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 
 const ManageOffers = () => {
+  const [searchText, setSearchText] = useState("")
   const [tabName, setTabName] = useState("Manage My Offers");
   const [axiosSecure] = useAxiosSecure();
 
@@ -30,14 +31,21 @@ const ManageOffers = () => {
 
   useEffect(() => {
     fetchProducts();
-  }, [currentPage, itemPerPage]);
+  }, [currentPage, itemPerPage, searchText]);
 
   const fetchProducts = async () => {
     try {
-      setLoading(true);
-      const response = await axios.get(`https://take-a-lot-server-two.vercel.app/all-products-for-seller?page=${currentPage}&limit=${itemPerPage}`);
-      setProducts(response.data);
-      setLoading(false);
+      if (searchText === "") {
+        setLoading(true);
+        const response = await axios.get(`https://take-a-lot-server-two.vercel.app/all-products-for-seller?page=${currentPage}&limit=${itemPerPage}`);
+        setProducts(response.data);
+        setLoading(false);
+      } else {
+        setLoading(true);
+        const response = await axios.get(`https://take-a-lot-server-two.vercel.app/product-search/for-manage-offers/by-title/${searchText}`);
+        setProducts(response.data);
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
       setLoading(false);
@@ -75,10 +83,11 @@ const ManageOffers = () => {
 
   }
 
-  const handleUpdate = (id) => {
-    console.log(id);
-  }
-  console.log(products);
+  // const handleUpdate = (id) => {
+  //   console.log(id);
+  // }
+  // console.log(products);
+  console.log(searchText);
 
 
   return (
@@ -92,7 +101,7 @@ const ManageOffers = () => {
 
         <div onClick={() => setTabName("Manage My Offers")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 ${tabName === "Manage My Offers" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}> Manage My Offers</div>
 
-        <div onClick={() => setTabName("View Bulk Result")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 ${tabName === "View Bulk Result" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}> View Bulk Result</div>
+        {/* <div onClick={() => setTabName("View Bulk Result")} className={`px-10 py-3 cursor-pointer inline-flex items-center gap-1 ${tabName === "View Bulk Result" ? "bg-white border-t-2 border-t-primary text-primary" : ""}`}> View Bulk Result</div> */}
       </div>
 
       {
@@ -105,13 +114,11 @@ const ManageOffers = () => {
                 <div>
                   <select id="selectOption" name="selectOption" className='px-4 py-1 text-sm border rounded'>
                     <option value="option1">Search by Product Title</option>
-                    <option value="option2">Option 2</option>
-                    <option value="option3">Option 3</option>
                   </select>
                 </div>
 
                 <div className='w-full relative'>
-                  <input type="text" placeholder='Search...' className='w-full border-t border-b border-r px-2 py-1 text-sm placeholder:font-medium placeholder:text-[#000] outline-none' />
+                  <input type="text" placeholder='Search...' className='w-full border-t border-b border-r px-2 py-1 text-sm placeholder:font-medium placeholder:text-[#000] outline-none' onChange={(e) => setSearchText(e.target.value)} />
                   <IoSearchOutline className='absolute right-4 top-2' />
                 </div>
               </div>
@@ -135,7 +142,7 @@ const ManageOffers = () => {
 
             <div className='pt-6 w-full flex items-center justify-between'>
 
-              <div className='w-full flex items-center gap-4'>
+              {/* <div className='w-full flex items-center gap-4'>
                 <div>
                   <select id="selectOption" name="selectOption" className='px-4 py-1 text-sm border rounded'>
                     <option value="option1">Search by Product Title</option>
@@ -155,7 +162,7 @@ const ManageOffers = () => {
                 <div>
     //TODO
                 </div>
-              </div>
+              </div> */}
 
               <div className='w-full flex justify-end items-center gap-3'>
                 <div className='text-primary text-sm inline-flex items-center gap-1'>

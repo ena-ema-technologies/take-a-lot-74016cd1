@@ -175,6 +175,7 @@ import ProductByCategory from "../Page/AllProducts/ProductByCategory";
 import ReviewShipments from "../Page/SellerAccount/ReviewShipments/ReviewShipments";
 import PayfastSuccess from "../Page/CheckoutReview/PayfastSuccess";
 import UpdateProducts from "../Page/SellerAccount/ManageOffers/UpdateProducts";
+import AddProductPage from "../Page/SellerAccount/AddCatalogue/AddProductPage";
 
 
 
@@ -843,6 +844,10 @@ export const router = createBrowserRouter([
         path: "update-my-products/:id",
         element: <SellerRouter><UpdateProducts /></SellerRouter>
 
+      },
+      {
+        path: "add-new-product",
+        element: <AddProductPage />
       },
       {
         path: "view-bulk-result",

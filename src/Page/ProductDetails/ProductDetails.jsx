@@ -116,6 +116,7 @@ const ProductDetails = () => {
       })
     } else {
       const data = {
+        CartAddedDate: new Date(),
         productImage: selectedProducts?.Image_URL[0],
         totalPrice: priceAfterDiscount,
         quantity: quantity,
@@ -162,6 +163,7 @@ const ProductDetails = () => {
       })
     } else {
       const data = {
+        wishListAddedDate: new Date(),
         productImage: selectedProducts?.Image_URL[0],
         totalPrice: priceAfterDiscount,
         quantity: quantity,
