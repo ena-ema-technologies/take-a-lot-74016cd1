@@ -26,9 +26,9 @@ const UpdateProducts = () => {
         },
         onSuccess: (data) => {
             // Assuming selectedProd has a Categories property
-            const categories = data?.Categories || [];
+            const categories = data?.Categories || ["Add Category"];
             setCategoriesArray(categories);
-            const Image_URL = data?.Image_URL || [];
+            const Image_URL = data?.Image_URL || ["Add Image"];
             setImageArray(Image_URL)
         },
     })
@@ -347,7 +347,7 @@ const UpdateProducts = () => {
                                     />
                                 </div>
                             ))}
-                            <button type="button" onClick={handleAddCategory} className="plus-icon">
+                            <button type="button" onClick={handleAddCategory} className=" text-xl border w-10 py-1 border-primary text-primary rounded-full mx-auto hover:bg-primary hover:text-white">
                                 +
                             </button>
 
@@ -370,7 +370,7 @@ const UpdateProducts = () => {
                                     />
                                 </div>
                             ))}
-                            <button type="button" onClick={handleAddImage} className="plus-icon">
+                            <button type="button" onClick={handleAddImage} className=" text-xl border w-10 py-1 border-primary text-primary rounded-full mx-auto hover:bg-primary hover:text-white">
                                 +
                             </button>
                         </div>
