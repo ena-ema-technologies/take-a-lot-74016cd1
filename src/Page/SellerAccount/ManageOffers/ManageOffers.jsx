@@ -238,7 +238,7 @@ const ManageOffers = () => {
                           <div className="flex items-center gap-3">
                             <div className="avatar">
                               <div className="mask mask-squircle w-14 h-14">
-                                <img src={prod?.Image_URL[0]} alt="Product Image" />
+                                <img src={prod?.Image_URL} alt="Product Image" />
                               </div>
                             </div>
                           </div>
