@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 import { HiOutlinePlusSmall, HiOutlineShare, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
@@ -34,6 +34,7 @@ import 'react-modern-drawer/dist/index.css'
 
 
 const ProductDetails = () => {
+  const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
   const { user } = useAuth();
   const [carts, update] = useCart();
@@ -114,6 +115,15 @@ const ProductDetails = () => {
         icon: 'warning',
         confirmButtonText: 'Ok'
       })
+    } else if (!userInfo?.mobile_Number || !userInfo?.postal_Code || !userInfo?.province || !userInfo?.street_Address) {
+      Swal.fire({
+        title: 'Warning!',
+        text: 'Please add your address!',
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      })
+      navigate("/account/address-book")
+
     } else {
       const data = {
         CartAddedDate: new Date(),
@@ -126,6 +136,10 @@ const ProductDetails = () => {
         basedPrice: selectedProducts?.Product_Price,
         productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
         productId: selectedProducts?._id,
+        PackagedWidth: selectedProducts?.Packaged_Width,
+        PackagedLength: selectedProducts?.Packaged_Length,
+        PackagedHeight: selectedProducts?.Packaged_Height,
+        Packaged_Weight: selectedProducts?.Packaged_Weight,
         buyerInformation: {
           firstName: userInfo?.firstName,
           lastName: userInfo?.lastName,
@@ -161,6 +175,15 @@ const ProductDetails = () => {
         icon: 'warning',
         confirmButtonText: 'Ok'
       })
+    } else if (!userInfo?.mobile_Number || !userInfo?.postal_Code || !userInfo?.province || !userInfo?.street_Address) {
+      Swal.fire({
+        title: 'Warning!',
+        text: 'Please add your address!',
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      })
+      navigate("/account/address-book")
+
     } else {
       const data = {
         wishListAddedDate: new Date(),
@@ -173,6 +196,10 @@ const ProductDetails = () => {
         basedPrice: selectedProducts?.Product_Price,
         productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
         productId: selectedProducts?._id,
+        PackagedWidth: selectedProducts?.Packaged_Width,
+        PackagedLength: selectedProducts?.Packaged_Length,
+        PackagedHeight: selectedProducts?.Packaged_Height,
+        Packaged_Weight: selectedProducts?.Packaged_Weight,
         buyerInformation: {
           firstName: userInfo?.firstName,
           lastName: userInfo?.lastName,

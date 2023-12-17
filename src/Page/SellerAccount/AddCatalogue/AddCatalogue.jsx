@@ -12,7 +12,9 @@ const AddCatalogue = () => {
 
                 <div className='text-xs pr-10 flex items-center gap-3'>
                     <Link to="/seller-dashboard/add-new-product" className='bg-neutral text-white px-3 py-2 rounded'>Add a Product</Link>
-                    <button className='bg-neutral text-white px-3 py-2 rounded'>Add Products in Bulk</button>
+
+                    <Link to="/seller-dashboard/add-bulk-product" className='bg-neutral text-white px-3 py-2 rounded'>Add Products in Bulk</Link>
+
                     <button className='bg-neutral text-white px-3 py-2 rounded'>Upload Loadsheet</button>
                 </div>
             </div>

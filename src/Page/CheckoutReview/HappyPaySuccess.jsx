@@ -1,27 +1,24 @@
 import React, { useEffect, useState } from 'react';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
 import useCart from '../../hooks/useCart';
 import { Link } from 'react-router-dom';
 import { HiOutlineArrowLeft } from 'react-icons/hi2';
-import useAxiosSecure from '../../hooks/useAxiosSecure';
-import axios from 'axios';
 
-const PayfastSuccess = () => {
+const HappyPaySuccess = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [axiosSecure] = useAxiosSecure();
     const [carts, refetch] = useCart();
-    console.log(carts);
+    // console.log(carts);
     const total = carts.reduce((sum, item) => parseInt(item.totalPrice) + sum, 0);
 
     const newOrders = {
         buyerEmail: carts[0]?.buyerInformation?.email,
         orderedProducts: carts
     }
-    console.log(newOrders);
 
     useEffect(() => {
         handleOrdersAndCartRemove();
-    }, [carts])
-
+    }, [])
 
     const handleOrdersAndCartRemove = async () => {
         try {
@@ -138,4 +135,4 @@ const PayfastSuccess = () => {
     );
 };
 
-export default PayfastSuccess;
+export default HappyPaySuccess;

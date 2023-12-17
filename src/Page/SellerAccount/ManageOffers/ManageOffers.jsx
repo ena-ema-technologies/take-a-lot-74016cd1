@@ -58,6 +58,7 @@ const ManageOffers = () => {
       .then(data => setTotalProducts(data.totalProduct))
   }, [])
 
+
   const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -124,17 +125,15 @@ const ManageOffers = () => {
               </div>
 
               <div className='w-full flex justify-end items-center gap-3'>
-                <div className='text-primary text-sm inline-flex items-center gap-1'>
+                <a className='text-primary text-sm inline-flex items-center gap-1' href='Template.csv' download="Template.csv">
                   <HiOutlineDownload className='h-5 w-5' /> <span className='text-xs font-medium'>Download Template</span>
-                </div>
+                </a>
 
                 <div className='text-xs text-white font-medium px-2 py-1 bg-neutral rounded'>
                   <HiMiniArrowTopRightOnSquare className='inline-flex items-center h-4 w-4' />  Export My Offers
                 </div>
 
-                <div className='text-xs text-white font-medium px-2 py-1 bg-neutral rounded'>
-                  Bulk Upload
-                </div>
+                <Link to="/seller-dashboard/add-bulk-product" className='text-xs text-white font-medium px-2 py-1 bg-neutral rounded'>Add Products in Bulk</Link>
               </div>
 
             </div>

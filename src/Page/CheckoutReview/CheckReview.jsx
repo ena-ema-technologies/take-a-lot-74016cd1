@@ -2,13 +2,16 @@ import React, { useContext, useState } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { HiInformationCircle, HiMiniQuestionMarkCircle, HiMiniXMark, HiShoppingCart } from 'react-icons/hi2';
 import { IoIosLock } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useCart from '../../hooks/useCart';
 import Drawer from 'react-modern-drawer';
 import 'react-modern-drawer/dist/index.css'
 import { UserAuth } from '../../Auth/Auth';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+import axios from 'axios';
 const CheckReview = () => {
-
+  const [axiosSecure] = useAxiosSecure();
+  const navigate = useNavigate();
   const [bucksMethod, setBucksMethod] = useState("sa_id");
   const [bucksNumber, setBucksNumber] = useState("")
   const [couponCode, setCouponCode] = useState("");
@@ -43,6 +46,37 @@ const CheckReview = () => {
     else {
       setEarnEbucs(false)
     }
+  }
+  const handleHappyPay = async () => {
+    const id = carts.map(item => item._id).join('&');
+    const totalProd = carts.length;
+    const cartProd = carts.map(item => ({
+      quantity: item.quantity,
+      price: item.basedPrice,
+      name: item.productName,
+    }));
+
+
+    const orderData = {
+      id: id,
+      total: totalProd,
+      products: cartProd,
+      currency: "ZAR",
+      successWebhook: "http://localhost:5173/buy/happyPay-success",
+      failureWebhook: "http://localhost:5173/buy/review",
+      successReturnUrl: "http://localhost:5173/buy/happyPay-success",
+      failReturnUrl: "http://localhost:5173/buy/review",
+      merchantId: "81852c55-0665-4957-88a3-91e0e550c420",
+      test: true
+    }
+    // console.log(orderData);
+
+    const response = await axios.post("https://dev.happypay.co.za/api/ServicesV1.asmx/createOrder", orderData);
+    console.log(response.data);
+    if (response?.data?.d?.success) {
+      navigate("/buy/happyPay-success")
+    }
+
   }
   return (
     <section className='flex flex-col items-center justify-center px-5 lg:px-16'>
@@ -163,10 +197,10 @@ const CheckReview = () => {
 
                     </div>
                   </div>
-                  <div onClick={() => cardDataHandler("Payflex")} className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                  <div onClick={() => cardDataHandler("Happy Pay")} className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
                     <input type="radio" name='payment' />
                     <div>
-                      <h1 className='text-black'>Payflex</h1>
+                      <h1 className='text-black'>Happy Pay</h1>
                       <p className='text-[#B4B4B4]'>Buy Now. Pay Later. 0% Interest.</p>
                     </div>
                   </div>
@@ -185,13 +219,6 @@ const CheckReview = () => {
                     <div>
                       <h1 className='text-black'>Spend your Discovery Miles</h1>
                       <img src="https://static.takealot.com/images/payment/discovery-miles-logo.svg" alt="" />
-                    </div>
-                  </div>
-                  <div onClick={() => cardDataHandler("Payflex")} className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
-                    <input type="radio" name='payment' />
-                    <div>
-                      <h1 className='text-black'>Payflex</h1>
-                      <p className='text-[#B4B4B4]'>Buy Now. Pay Later. 0% Interest.</p>
                     </div>
                   </div>
                 </div>
@@ -332,7 +359,7 @@ const CheckReview = () => {
 
             <div className='flex flex-col items-center w-full mt-6 text-center'>
               {
-                paymentMethod === "EFT with PayFast" ? "" : <Link className='w-full bg-green-700 text-sm py-3 font-semibold text-white'>pay with {paymentMethod ? paymentMethod : "Card"}</Link>
+                paymentMethod === "EFT with PayFast" || paymentMethod === "Happy Pay" ? "" : <Link className='w-full bg-green-700 text-sm py-3 font-semibold text-white'>pay with {paymentMethod ? paymentMethod : "Card"}</Link>
               }
 
               {
@@ -350,6 +377,12 @@ const CheckReview = () => {
                   <input type="hidden" name="item_name" value="Place Product Order" />
                   <input type="submit" className='w-full bg-green-700 text-sm py-3 font-semibold text-white cursor-pointer' value="EFT with PayFast" />
                 </form>
+              }
+
+              {
+                paymentMethod === "Happy Pay" &&
+                <button className='w-full bg-green-700 text-sm py-3 font-semibold text-white cursor-pointer' onClick={handleHappyPay}>Pay with HappyPay</button>
+
               }
 
               <p className='text-sm mt-3 font-semibold inline-flex items-center gap-2'><span><IoIosLock className='h-5 w-5' /></span> <span>Secure Checkout</span></p>

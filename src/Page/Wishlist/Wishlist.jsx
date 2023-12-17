@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaArrowLeft, FaTrash } from 'react-icons/fa';
 import { HiArrowLeft, HiOutlinePlusSmall, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { IoShareSocialOutline } from "react-icons/io5";
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -26,6 +26,7 @@ import useProfile from '../../hooks/useProfile';
 
 const Wishlist = () => {
   const [allProducts, setAllProducts] = useState([]);
+  const navigate = useNavigate();
   const { user } = useAuth();
   const [carts, update] = useCart();
   const [axiosSecure] = useAxiosSecure();
@@ -49,6 +50,15 @@ const Wishlist = () => {
         icon: 'warning',
         confirmButtonText: 'Ok'
       })
+    } else if (!userInfo?.mobile_Number || !userInfo?.postal_Code || !userInfo?.province || !userInfo?.street_Address) {
+      Swal.fire({
+        title: 'Warning!',
+        text: 'Please add your address!',
+        icon: 'warning',
+        confirmButtonText: 'Ok'
+      })
+      navigate("/account/address-book")
+
     } else {
       const selectedProducts = allProducts.find(prod => prod?._id === id);
       const data = {
@@ -61,6 +71,10 @@ const Wishlist = () => {
         basedPrice: selectedProducts?.Product_Price,
         productSKU: selectedProducts?.your_own_SKU ? selectedProducts?.your_own_SKU : "",
         productId: selectedProducts?._id,
+        PackagedWidth: selectedProducts?.Packaged_Width,
+        PackagedLength: selectedProducts?.Packaged_Length,
+        PackagedHeight: selectedProducts?.Packaged_Height,
+        Packaged_Weight: selectedProducts?.Packaged_Weight,
         buyerInformation: {
           firstName: userInfo?.firstName,
           lastName: userInfo?.lastName,

@@ -27,76 +27,78 @@ const Dashboard = () => {
 
           <NavLink to="/seller-dashboard/dashboard-home" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}><HiHome className='inline-flex items-center h-5 w-5' /> Dashboard</NavLink>
 
-          <p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen1(true)}  onClick={() => setIsOpen1(false)}> <span><HiMiniTag   className='inline-flex items-center h-5 w-5' /> My Existing Offers</span> {isOpen1 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5'/> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5'/>}</p>
+          <p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen1(true)} onClick={() => setIsOpen1(false)}> <span><HiMiniTag className='inline-flex items-center h-5 w-5' /> My Existing Offers</span> {isOpen1 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5' /> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5' />}</p>
 
-          <div className={`${isOpen1 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen1(true)}  onMouseLeave={() => setIsOpen1(false)}>
+          <div className={`${isOpen1 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen1(true)} onMouseLeave={() => setIsOpen1(false)}>
 
-          <NavLink to="/seller-dashboard/manage-my-offer" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Manage My Offers</NavLink>
+            <NavLink to="/seller-dashboard/manage-my-offer" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Manage My Offers</NavLink>
 
-          <NavLink to="/seller-dashboard/view-bulk-result" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Bulk Result</NavLink>
+            <NavLink to="/seller-dashboard/view-bulk-result" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Bulk Result</NavLink>
 
-          <NavLink to="/seller-dashboard/request-product-edit" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Request Product Edit</NavLink>
+            <NavLink to="/seller-dashboard/request-product-edit" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Request Product Edit</NavLink>
 
-          <NavLink to="/seller-dashboard/view-product-edit-submission" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Product Edit Submission</NavLink>
+            {/* <NavLink to="/seller-dashboard/view-product-edit-submission" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Product Edit Submission</NavLink> */}
 
           </div>
 
-          <p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen2(true)}  onClick={() => setIsOpen2(false)}> <span><HiMiniListBullet   className='inline-flex items-center h-5 w-5' /> New Offers</span> {isOpen2 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5'/> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5'/>}</p>
+          <p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen2(true)} onClick={() => setIsOpen2(false)}> <span><HiMiniListBullet className='inline-flex items-center h-5 w-5' /> New Offers</span> {isOpen2 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5' /> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5' />}</p>
 
-<div className={`${isOpen2 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen2(true)}  onMouseLeave={() => setIsOpen2(false)}>
+          <div className={`${isOpen2 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen2(true)} onMouseLeave={() => setIsOpen2(false)}>
 
-<NavLink to="/seller-dashboard/search-takealot-catalogue" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Search Takealot's Catalogue</NavLink>
+            <NavLink to="/seller-dashboard/search-takealot-catalogue" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Search Takealot's Catalogue</NavLink>
 
-<NavLink to="/seller-dashboard/add-takealot-catalogue" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Add to Takealot's Catalogue</NavLink>
+            <NavLink to="/seller-dashboard/add-takealot-catalogue" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Add to Takealot's Catalogue</NavLink>
 
-</div>
-
-
-<p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen3(true)}  onClick={() => setIsOpen3(false)}> <span><HiOutlineTruck    className='inline-flex items-center h-5 w-5' /> Shipments</span> {isOpen3 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5'/> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5'/>}</p>
-
-<div className={`${isOpen3 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen3(true)}  onMouseLeave={() => setIsOpen3(false)}>
-
-<NavLink to="/seller-dashboard/leadtime-orders" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Leadtime Orders</NavLink>
-
-<NavLink to="/seller-dashboard/draft-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Draft Shipment</NavLink>
-
-<NavLink to="/seller-dashboard/confirmed-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Confirmed Shipments</NavLink>
-
-<NavLink to="/seller-dashboard/shipped-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Shipped Shipments</NavLink>
-
-<NavLink to="/seller-dashboard/manage-removal-order" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Manage Removal Orders</NavLink>
-
-<NavLink to="/seller-dashboard/replenishment-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> New Replenishment Shipments</NavLink>
-
-</div>
+          </div>
 
 
-<p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen4(true)}  onClick={() => setIsOpen4(false)}> <span><HiMiniCreditCard     className='inline-flex items-center h-5 w-5' /> Sales</span> {isOpen4 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5'/> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5'/>}</p>
+          <p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen3(true)} onClick={() => setIsOpen3(false)}> <span><HiOutlineTruck className='inline-flex items-center h-5 w-5' /> Shipments</span> {isOpen3 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5' /> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5' />}</p>
 
-<div className={`${isOpen4 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen4(true)}  onMouseLeave={() => setIsOpen4(false)}>
+          <div className={`${isOpen3 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen3(true)} onMouseLeave={() => setIsOpen3(false)}>
 
-<NavLink to="/seller-dashboard/view-sales" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Sales</NavLink>
+            <NavLink to="/seller-dashboard/leadtime-orders" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Leadtime Orders</NavLink>
 
-<NavLink to="/seller-dashboard/view-return" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Return</NavLink>
+            <NavLink to="/seller-dashboard/confirmed-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Confirmed Shipments</NavLink>
 
-<NavLink to="/seller-dashboard/customer-invoice-request" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Customer Invoice Request</NavLink>
+            {/* <NavLink to="/seller-dashboard/draft-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Draft Shipment</NavLink>
 
-</div>
+            <NavLink to="/seller-dashboard/confirmed-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Confirmed Shipments</NavLink>
+
+            <NavLink to="/seller-dashboard/shipped-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Shipped Shipments</NavLink>
+
+            <NavLink to="/seller-dashboard/manage-removal-order" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Manage Removal Orders</NavLink>
+
+            <NavLink to="/seller-dashboard/replenishment-shipment" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> New Replenishment Shipments</NavLink> */}
+
+          </div>
 
 
-<p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen5(true)}  onClick={() => setIsOpen5(false)}><span><HiOutlineScale  className='inline-flex items-center h-5 w-5' /> Accounting </span>{isOpen5 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5'/> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5'/>}</p>
+          <p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen4(true)} onClick={() => setIsOpen4(false)}> <span><HiMiniCreditCard className='inline-flex items-center h-5 w-5' /> Sales</span> {isOpen4 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5' /> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5' />}</p>
 
-<div className={`${isOpen5 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen5(true)}  onMouseLeave={() => setIsOpen5(false)}>
+          <div className={`${isOpen4 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen4(true)} onMouseLeave={() => setIsOpen4(false)}>
 
-<NavLink to="/seller-dashboard/account-seller-transaction" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Transaction</NavLink>
+            <NavLink to="/seller-dashboard/view-sales" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Sales</NavLink>
 
-<NavLink to="/seller-dashboard/account-seller-invoice" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}>Invoice</NavLink>
+            <NavLink to="/seller-dashboard/view-return" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> View Return</NavLink>
 
-<NavLink to="/seller-dashboard/account-seller-statements" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}>Statements</NavLink>
+            <NavLink to="/seller-dashboard/customer-invoice-request" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Customer Invoice Request</NavLink>
 
-</div>
+          </div>
 
-<NavLink to="/seller-dashboard/seller-reports" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}><HiPresentationChartBar  className='inline-flex items-center h-5 w-5' /> Reports</NavLink>
+
+          <p className='dash-default w-full flex items-center justify-between' onMouseEnter={() => setIsOpen5(true)} onClick={() => setIsOpen5(false)}><span><HiOutlineScale className='inline-flex items-center h-5 w-5' /> Accounting </span>{isOpen5 ? <HiOutlineChevronUp className='inline-flex items-center h-5 w-5' /> : <HiOutlineChevronDown className='inline-flex items-center h-5 w-5' />}</p>
+
+          <div className={`${isOpen5 ? 'flex flex-col' : 'hidden'}  z-50`} onMouseEnter={() => setIsOpen5(true)} onMouseLeave={() => setIsOpen5(false)}>
+
+            <NavLink to="/seller-dashboard/account-seller-transaction" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}> Transaction</NavLink>
+
+            {/* <NavLink to="/seller-dashboard/account-seller-invoice" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}>Invoice</NavLink>
+
+            <NavLink to="/seller-dashboard/account-seller-statements" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}>Statements</NavLink> */}
+
+          </div>
+
+          <NavLink to="/seller-dashboard/seller-reports" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}><HiPresentationChartBar className='inline-flex items-center h-5 w-5' /> Reports</NavLink>
 
 
         </ul>

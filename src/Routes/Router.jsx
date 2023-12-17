@@ -176,6 +176,9 @@ import ReviewShipments from "../Page/SellerAccount/ReviewShipments/ReviewShipmen
 import PayfastSuccess from "../Page/CheckoutReview/PayfastSuccess";
 import UpdateProducts from "../Page/SellerAccount/ManageOffers/UpdateProducts";
 import AddProductPage from "../Page/SellerAccount/AddCatalogue/AddProductPage";
+import HappyPaySuccess from "../Page/CheckoutReview/HappyPaySuccess";
+import AddBulkProducts from "../Page/SellerAccount/AddCatalogue/AddBulkProducts";
+import ConfirmShipmentDetails from "../Page/SellerAccount/ConfirmedShipments/ConfirmShipmentDetails";
 
 
 
@@ -825,6 +828,10 @@ export const router = createBrowserRouter([
       {
         path: "payFast-success",
         element: <PrivateRoute><PayfastSuccess /></PrivateRoute>
+      },
+      {
+        path: "happyPay-success",
+        element: <PrivateRoute><HappyPaySuccess /></PrivateRoute>
       }
     ]
   },
@@ -848,6 +855,10 @@ export const router = createBrowserRouter([
       {
         path: "add-new-product",
         element: <AddProductPage />
+      },
+      {
+        path: "add-bulk-product",
+        element: <SellerRouter><AddBulkProducts /></SellerRouter>
       },
       {
         path: "view-bulk-result",
@@ -880,6 +891,10 @@ export const router = createBrowserRouter([
       {
         path: "confirmed-shipment",
         element: <SellerRouter><ConfirmedShipments /></SellerRouter>
+      },
+      {
+        path: "confirmed-shipments-details/:id",
+        element: <SellerRouter><ConfirmShipmentDetails /></SellerRouter>
       },
       {
         path: "shipped-shipment",

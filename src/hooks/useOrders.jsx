@@ -10,10 +10,8 @@ const useOrders = () => {
         queryKey: ["allOrders", user?.email],
         enabled: !loading && !!user?.email,
         queryFn: async () => {
-
             const res = await axiosSecure.get(`/all-orders-by-user/confirmation?email=${user?.email}`)
             return res.data;
-
         }
     })
     return [allOrders, refetch]
