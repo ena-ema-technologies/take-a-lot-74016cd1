@@ -1,10 +1,13 @@
 import React from 'react';
 import emptyIcon from '../../assets/icons/empty-order-icon.svg-6bcc4601443c5d44b8ae.svg'
 import { FaCalendar } from 'react-icons/fa';
+import useOrders from '../../hooks/useOrders';
 
 const Orders = () => {
-    return (
-        <div className="w-full mt-0">
+  const [allOrders, refetch] = useOrders();
+  console.log(allOrders);
+  return (
+    <div className="w-full mt-0">
       <div className="flex text-center justify-between text-sm">
         <div>
           <h2 className="text-lg font-semibold text-[#4d4d4f]">Orders</h2>
@@ -28,12 +31,43 @@ const Orders = () => {
         </div>
       </div>
       <div className="text-center space-y-4 bg-white py-14 mt-4 text-sm">
-        <img className="avatar rounded-full border p-2 shadow-lg" src={emptyIcon} alt="" />
-        <p>You have no order in the last 3 months</p>
-        <button className="bg-primary text-white font-semibold border border-primary px-4 py-2 rounded">Start Shopping</button>
+        <div className='w-full flex items-center gap-5 justify-between font-semibold px-2'>
+          <p>Image</p>
+
+          <p>Product Name</p>
+
+          <p>Quantity & Price</p>
+
+          <p>Status</p>
+        </div>
+        {
+          allOrders.length > 0 ? <div>
+            <div>
+              {
+                allOrders?.map(orders => <div key={orders?._id}>
+                  {
+                    orders?.orderedProducts?.map((pd) => <div key={pd?._id} className='w-full flex items-center gap-5 justify-evenly font-medium'>
+                      <img src={pd?.productImage} alt="productImage" className='w-28' />
+
+                      <p>{pd?.productName}</p>
+
+                      <p>{pd?.totalPrice} X {pd?.quantity}</p>
+
+                      <p>{orders?.status}</p>
+                    </div>)
+                  }
+                </div>)
+              }
+            </div>
+          </div> : <div>
+            <img className="avatar rounded-full border p-2 shadow-lg" src={emptyIcon} alt="" />
+            <p>You have no order in the last 3 months</p>
+            <button className="bg-primary text-white font-semibold border border-primary px-4 py-2 rounded">Start Shopping</button>
+          </div>
+        }
       </div>
     </div>
-    );
+  );
 };
 
 export default Orders;
