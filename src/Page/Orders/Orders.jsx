@@ -31,41 +31,49 @@ const Orders = () => {
         </div>
       </div>
       <div className="text-center space-y-4 bg-white py-14 mt-4 text-sm">
-        <div className='w-full flex items-center gap-5 justify-between font-semibold px-2'>
-          <p>Image</p>
-
-          <p>Product Name</p>
-
-          <p>Quantity & Price</p>
-
-          <p>Status</p>
-        </div>
         {
-          allOrders.length > 0 ? <div>
-            <div>
-              {
-                allOrders?.map(orders => <div key={orders?._id}>
-                  {
-                    orders?.orderedProducts?.map((pd) => <div key={pd?._id} className='w-full flex items-center gap-5 justify-evenly font-medium'>
-                      <img src={pd?.productImage} alt="productImage" className='w-28' />
+          allOrders.length > 0 ? <div className="overflow-x-auto">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Quantity & Price</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {allOrders?.map(orders => orders?.orderedProducts?.map((pd) => <tr key={pd?._id} className='font-medium'>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle w-14 h-14">
+                          <img src={pd?.productImage} alt="Product Image" />
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    {pd?.productName}
+                  </td>
+                  <td>{pd?.totalPrice} X {pd?.quantity}</td>
+                  <td>{orders?.status}</td>
+                </tr>))}
 
-                      <p>{pd?.productName}</p>
-
-                      <p>{pd?.totalPrice} X {pd?.quantity}</p>
-
-                      <p>{orders?.status}</p>
-                    </div>)
-                  }
-                </div>)
-              }
-            </div>
+              </tbody>
+            </table>
           </div> : <div>
             <img className="avatar rounded-full border p-2 shadow-lg" src={emptyIcon} alt="" />
             <p>You have no order in the last 3 months</p>
             <button className="bg-primary text-white font-semibold border border-primary px-4 py-2 rounded">Start Shopping</button>
           </div>
         }
+
+
       </div>
+
+
     </div>
   );
 };
