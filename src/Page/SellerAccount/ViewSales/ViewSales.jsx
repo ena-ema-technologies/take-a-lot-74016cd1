@@ -4,6 +4,7 @@ import useOrders from "../../../hooks/useOrder";
 
 const ViewSales = () => {
   const orders = useOrders();
+  console.log(orders);
 
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "2-digit", day: "2-digit" };
@@ -87,7 +88,7 @@ const ViewSales = () => {
                   <tr key={i} className="">
                     <td>{formatDate(order?.purchaseDate)}</td>
                     <td>{order?.status}</td>
-                    <td>{order?._id}</td>
+                    <td>{order?.orderId}</td>
                     <td>
                       {order?.orderedProducts?.map((product, i) => (
                         <p className="mt-1 border-b" key={i}>

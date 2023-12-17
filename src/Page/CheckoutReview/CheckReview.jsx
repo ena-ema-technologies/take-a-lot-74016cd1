@@ -36,6 +36,11 @@ const CheckReview = () => {
     // Handle the form submission here
   };
 
+  const handlePayOption = () => {
+    let drawerCheckbox = document.getElementById("my-drawer");
+    drawerCheckbox.checked = false;
+  };
+
   console.log(paymentMethod);
 
   const cardDataHandler = (data) => {
@@ -148,8 +153,8 @@ const CheckReview = () => {
             </div>
 
             <div className='text-sm font-medium text-primary cursor-pointer'>
-              <button onClick={toggleDrawer}>Change</button>
-              <Drawer
+
+              {/* <Drawer
                 open={isOpen}
                 onClose={toggleDrawer}
                 direction='right'
@@ -157,73 +162,92 @@ const CheckReview = () => {
                 size="250px"
 
               >
-                <div className='w-[700px] bg-white'>
+                
 
-                  <h1 className='text-black text-center text-xl py-5 border'>How would you like to pay?</h1>
+              </Drawer> */}
+              <div className="drawer z-50">
+                <input id="my-drawer" type="checkbox" className="drawer-toggle" />
+                <div className="drawer-content">
+                  <label htmlFor="my-drawer" className="text-sm font-medium text-primary cursor-pointer">Change</label>
                 </div>
-                <div className='w-[700px] bg-[#F4F4F4] h-5'></div>
-                <div className='w-[700px] bg-white h-full pt-5 '>
-                  <div onClick={() => cardDataHandler("Cradit & Debit Card")} className='flex items-center w-[600px] bg-[#F4F4F4]  mx-5 rounded py-5 px-2'>
-                    <input type="radio" name='payment' />
-                    <div>
-                      <h1 className='text-black'>Cradit & Debit Card</h1>
-                      <div className='flex gap-2 items-center'>
-                        <img src="https://static.takealot.com/images/checkout/payment/Visa.svg" alt="" />
-                        <img src="https://static.takealot.com/images/checkout/payment/Mastercard.svg" alt="" />
-                        <img src="https://static.takealot.com/images/checkout/payment/Amex.svg" alt="" />
-                        <img src="https://static.takealot.com/images/checkout/payment/Diners.svg" alt="" />
+                <div className="drawer-side">
+                  <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
+                  <ul className="menu  w-[750px] min-h-full bg-white text-base-content">
+                    <div className='w-full bg-white'>
+
+                      <h1 className='text-black text-center text-xl py-5 border'>How would you like to pay?</h1>
+                    </div>
+                    {/* <div className='w-full bg-[#F4F4F4] h-5'></div> */}
+                    <div className='w-full bg-white h-full pt-5'>
+                      <div onClick={() => cardDataHandler("Cradit & Debit Card")} className='flex items-center w-[90%] bg-[#F4F4F4]  mx-5 rounded py-5 px-2'>
+                        <input type="radio" name='payment' />
+                        <div>
+                          <h1 className='text-black'>Cradit & Debit Card</h1>
+                          <div className='flex gap-2 items-center'>
+                            <img src="https://static.takealot.com/images/checkout/payment/Visa.svg" alt="" />
+                            <img src="https://static.takealot.com/images/checkout/payment/Mastercard.svg" alt="" />
+                            <img src="https://static.takealot.com/images/checkout/payment/Amex.svg" alt="" />
+                            <img src="https://static.takealot.com/images/checkout/payment/Diners.svg" alt="" />
+                          </div>
+                        </div>
+                      </div>
+                      <div onClick={() => cardDataHandler("EFT with Ozow")} className='flex items-center w-[90%] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                        <input type="radio" name='payment' />
+                        <div>
+                          <h1 className='text-black'>EFT with Ozow</h1>
+
+                        </div>
+                      </div>
+                      <div onClick={() => cardDataHandler("EFT with PayFast")} className='flex items-center w-[90%] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                        <input type="radio" name='payment' />
+                        <div>
+                          <h1 className='text-black'>EFT with PayFast</h1>
+
+                        </div>
+                      </div>
+                      <div disabled title='not aviliable' className='flex items-center w-[90%] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                        <input disabled type="radio" name='payment' />
+                        <div className='flex justify-between w-full'>
+                          <h1 className='text-black'>Cash on Delivery</h1>
+                          <h2>Not aviliable</h2>
+
+                        </div>
+                      </div>
+                      <div onClick={() => cardDataHandler("Happy Pay")} className='flex items-center w-[90%] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                        <input type="radio" name='payment' />
+                        <div>
+                          <h1 className='text-black'>Happy Pay</h1>
+                          <p className='text-[#B4B4B4]'>Buy Now. Pay Later. 0% Interest.</p>
+                        </div>
+                      </div>
+                      <div onClick={() => cardDataHandler("Spend your eBucks")} className='flex items-center w-[90%] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                        <input type="radio" name='payment' />
+                        <div className='flex w-full justify-between'>
+                          <div>
+                            <h1 className='text-black'>Spend your eBucks</h1>
+                            <img src="https://static.takealot.com/images/checkout/payment/Ebucks.svg" alt="" />
+                          </div>
+                          <h2>Info</h2>
+                        </div>
+                      </div>
+                      <div className='flex items-center w-[90%] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
+                        <input type="radio" name='payment' />
+                        <div>
+                          <h1 className='text-black'>Spend your Discovery Miles</h1>
+                          <img src="https://static.takealot.com/images/payment/discovery-miles-logo.svg" alt="" />
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div onClick={() => cardDataHandler("EFT with Ozow")} className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
-                    <input type="radio" name='payment' />
-                    <div>
-                      <h1 className='text-black'>EFT with Ozow</h1>
 
+                    <div className='py-5 px-6'>
+                      <button className='bg-primary px-5 py-2 text-white rounded' onClick={handlePayOption}>Close</button>
                     </div>
-                  </div>
-                  <div onClick={() => cardDataHandler("EFT with PayFast")} className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
-                    <input type="radio" name='payment' />
-                    <div>
-                      <h1 className='text-black'>EFT with PayFast</h1>
 
-                    </div>
-                  </div>
-                  <div disabled title='not aviliable' className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
-                    <input disabled type="radio" name='payment' />
-                    <div className='flex justify-between w-full'>
-                      <h1 className='text-black'>Cash on Delivery</h1>
-                      <h2>Not aviliable</h2>
 
-                    </div>
-                  </div>
-                  <div onClick={() => cardDataHandler("Happy Pay")} className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
-                    <input type="radio" name='payment' />
-                    <div>
-                      <h1 className='text-black'>Happy Pay</h1>
-                      <p className='text-[#B4B4B4]'>Buy Now. Pay Later. 0% Interest.</p>
-                    </div>
-                  </div>
-                  <div onClick={() => cardDataHandler("Spend your eBucks")} className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
-                    <input type="radio" name='payment' />
-                    <div className='flex w-full justify-between'>
-                      <div>
-                        <h1 className='text-black'>Spend your eBucks</h1>
-                        <img src="https://static.takealot.com/images/checkout/payment/Ebucks.svg" alt="" />
-                      </div>
-                      <h2>Info</h2>
-                    </div>
-                  </div>
-                  <div className='flex items-center w-[600px] bg-[#F4F4F4] mt-2  mx-5 rounded py-5 px-2'>
-                    <input type="radio" name='payment' />
-                    <div>
-                      <h1 className='text-black'>Spend your Discovery Miles</h1>
-                      <img src="https://static.takealot.com/images/payment/discovery-miles-logo.svg" alt="" />
-                    </div>
-                  </div>
+
+                  </ul>
                 </div>
-
-              </Drawer>
+              </div>
             </div>
           </div>
 

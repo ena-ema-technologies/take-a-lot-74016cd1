@@ -179,6 +179,8 @@ import AddProductPage from "../Page/SellerAccount/AddCatalogue/AddProductPage";
 import HappyPaySuccess from "../Page/CheckoutReview/HappyPaySuccess";
 import AddBulkProducts from "../Page/SellerAccount/AddCatalogue/AddBulkProducts";
 import ConfirmShipmentDetails from "../Page/SellerAccount/ConfirmedShipments/ConfirmShipmentDetails";
+import CreateReturn from "../Page/Returns/CreateReturn";
+import SubmitReturnLog from "../Page/Returns/SubmitReturnLog";
 
 
 
@@ -670,6 +672,14 @@ export const router = createBrowserRouter([
           {
             path: "returns",
             element: <PrivateRoute><Returns /></PrivateRoute>
+          },
+          {
+            path: "create-returns",
+            element: <PrivateRoute><CreateReturn /></PrivateRoute>
+          },
+          {
+            path: "submit-returns/:orderId/:prodId",
+            element: <PrivateRoute><SubmitReturnLog /></PrivateRoute>
           },
           {
             path: "credits",
