@@ -107,6 +107,27 @@ const ProductDetails = () => {
   let accDiscount = totalPrice - priceAfterDiscount;
   let totalDiscount = 0;
 
+
+  const calculateDiscount = (quantity) => {
+    let discountPercentage = 0;
+
+    if (quantity >= 2 && quantity <= 4) {
+      discountPercentage = 2;
+    } else if (quantity >= 5 && quantity <= 9) {
+      discountPercentage = 10;
+    } else if (quantity >= 10 && quantity <= 19) {
+      discountPercentage = 20;
+    } else if (quantity >= 30) {
+      discountPercentage = 40;
+    }
+
+    const discountedPrice = price - (price * discountPercentage) / 100;
+    const earnedDiscount = price - discountedPrice;
+
+    return { discountPercentage, discountedPrice, earnedDiscount };
+  };
+  const { discountPercentage } = calculateDiscount(quantity);
+
   const handleCart = async () => {
     if (!user) {
       Swal.fire({
@@ -128,7 +149,7 @@ const ProductDetails = () => {
       const data = {
         CartAddedDate: new Date(),
         productImage: selectedProducts?.Image_URL[0],
-        totalPrice: priceAfterDiscount,
+        totalPrice: parseInt((price - (price * discountPercentage) / 100) * quantity),
         quantity: quantity,
         barcode: selectedProducts?.Barcode,
         brandName: selectedProducts?.Brand_Name,
@@ -188,7 +209,7 @@ const ProductDetails = () => {
       const data = {
         wishListAddedDate: new Date(),
         productImage: selectedProducts?.Image_URL[0],
-        totalPrice: priceAfterDiscount,
+        totalPrice: parseInt((price - (price * discountPercentage) / 100) * quantity),
         quantity: quantity,
         barcode: selectedProducts?.Barcode,
         brandName: selectedProducts?.Brand_Name,
@@ -225,25 +246,7 @@ const ProductDetails = () => {
       }
     }
   }
-  // const calculateDiscount = (quantity) => {
-  //   let discountPercentage = 2;
 
-  //   if (quantity >= 2 && quantity <= 4) {
-  //     discountPercentage = 2;
-  //   } else if (quantity >= 5 && quantity <= 9) {
-  //     discountPercentage = 10;
-  //   } else if (quantity >= 10 && quantity <= 19) {
-  //     discountPercentage = 20;
-  //   } else if (quantity >= 30) {
-  //     discountPercentage = 40;
-  //   }
-
-  //   const discountedPrice = price - (price * discountPercentage) / 100;
-  //   const earnedDiscount = price - discountedPrice;
-
-  //   return { discountPercentage, discountedPrice, earnedDiscount };
-  // };
-  // const { discountPercentage } = calculateDiscount(quantity);
   return (
     <section>
       {
@@ -1103,7 +1106,8 @@ const ProductDetails = () => {
               <div className='w-full lg:w-[30%] flex flex-col gap-4'>
                 <div className='bg-white p-5 shadow'>
                   <p className='pt-2 pb-4 text-2xl flex gap-5 items-center font-extrabold'>R {
-                    price * quantity
+                    // price * quantity
+                    ((price - (price * discountPercentage) / 100) * quantity).toFixed(2)
                   }</p>
                   <div className='flex flex-col items-center justify-center gap-2'>
                     <div className='flex items-center w-full'>
