@@ -307,7 +307,7 @@ const NavigationBar = () => {
                         </div>
                         <div className="divider divider-horizontal"></div>
                         <div>
-                            <Link to="/sell-on-takealot" className="smallLink">Sell on Takealot</Link>
+                            <Link to="/sell-on-mustake" className="smallLink">Sell on Mustake</Link>
                         </div>
                     </div>
                     <div className="w-full text-right">

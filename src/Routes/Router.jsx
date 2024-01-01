@@ -217,7 +217,7 @@ export const router = createBrowserRouter([
         element: <ProductDetails />
       },
       {
-        path: "/sell-on-takealot",
+        path: "/sell-on-mustake",
         element: <SellOn />
       },
       {
@@ -806,7 +806,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/seller-account-overview",
-        element: <SellerRouter><AccountOverview /></SellerRouter>
+        element: <PrivateRoute><AccountOverview /></PrivateRoute>
       },
     ]
   },
