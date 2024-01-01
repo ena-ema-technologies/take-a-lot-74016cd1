@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import { HiOutlinePlusSmall, HiOutlineShare, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
+import { HiMinus, HiOutlinePlusSmall, HiOutlineShare, HiPlus, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
 import { IoIosArrowDown, IoIosHelpCircle, IoIosInformationCircle, IoMdHeartEmpty } from 'react-icons/io';
 import { FaThumbsUp } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -225,6 +225,25 @@ const ProductDetails = () => {
       }
     }
   }
+  // const calculateDiscount = (quantity) => {
+  //   let discountPercentage = 2;
+
+  //   if (quantity >= 2 && quantity <= 4) {
+  //     discountPercentage = 2;
+  //   } else if (quantity >= 5 && quantity <= 9) {
+  //     discountPercentage = 10;
+  //   } else if (quantity >= 10 && quantity <= 19) {
+  //     discountPercentage = 20;
+  //   } else if (quantity >= 30) {
+  //     discountPercentage = 40;
+  //   }
+
+  //   const discountedPrice = price - (price * discountPercentage) / 100;
+  //   const earnedDiscount = price - discountedPrice;
+
+  //   return { discountPercentage, discountedPrice, earnedDiscount };
+  // };
+  // const { discountPercentage } = calculateDiscount(quantity);
   return (
     <section>
       {
@@ -314,38 +333,42 @@ const ProductDetails = () => {
                     <div className='w-full text-sm mt-2'>
                       <h1 className='font-bold '>Quantity Based Discount</h1>
                       <table className='bg-slate-100 mt-4 text-xs'>
-                        <tr className='text-center'>
-                          <th className='px-2 border-white'>Quantity</th>
-                          <th className='px-2 border-white'>Discount %</th>
-                          <th className='px-2 border-white'>Discounted Price</th>
-                          <th className='px-2 border-white'>Rand Earn</th>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>2-4</td>
-                          <td className='px-2 border-white'>2 %</td>
-                          <td className='px-2 border-white'>833</td>
-                          <td className='px-2 border-white'>8.33</td>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>5-9</td>
-                          <td className='px-2 border-white'>10 %</td>
-                          <td className='px-2 border-white'>749</td>
-                          <td className='px-2 border-white'>7.49</td>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>10-19</td>
-                          <td className='px-2 border-white'>20 %</td>
-                          <td className='px-2 border-white'>666</td>
-                          <td className='px-2 border-white'>6.66</td>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>30+</td>
-                          <td className='px-2 border-white'>40 %</td>
-                          <td className='px-2 border-white'>499</td>
-                          <td className='px-2 border-white'>4.99</td>
-                        </tr>
-
+                        <thead className='border-none'>
+                          <tr>
+                            <th>Quantity</th>
+                            <th>Discount %</th>
+                            <th>Discounted Price</th>
+                            <th>Earned Discount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>2-4</td>
+                            <td className='px-2 border-white'>2%</td>
+                            <td className='px-2 border-white'>{(price - (price * 2) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 2) / 100)).toFixed(2)}</td>
+                          </tr>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>5-9</td>
+                            <td className='px-2 border-white'>10%</td>
+                            <td className='px-2 border-white'>{(price - (price * 10) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 10) / 100)).toFixed(2)}</td>
+                          </tr>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>10-19</td>
+                            <td className='px-2 border-white'>20%</td>
+                            <td className='px-2 border-white'>{(price - (price * 20) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 20) / 100)).toFixed(2)}</td>
+                          </tr>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>30+</td>
+                            <td className='px-2 border-white'>40%</td>
+                            <td className='px-2 border-white'>{(price - (price * 40) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 40) / 100)).toFixed(2)}</td>
+                          </tr>
+                        </tbody>
                       </table>
+
                     </div>
                   </div>
 
@@ -1083,17 +1106,24 @@ const ProductDetails = () => {
                     price * quantity
                   }</p>
                   <div className='flex flex-col items-center justify-center gap-2'>
-                    <div className='flex border text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 w-full'>
-                      <select onClick={handleQuantity} id='quantity' name='quantity' className='text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 outline-none px-2'>
-                        {Array.from(Array(30), (e, i) => {
-                          return <option key={i} value={i + 1}>{i + 1}</option>
-                        })}
-                        {/* <option value='1'>1</option>
-                   <option value='2'>2</option>
-                   <option value='3'>3</option>
-                   <option value='4'>4</option> */}
-                      </select>
-                      <button onClick={handleCart} className="inline-flex items-center justify-center px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5' /> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+                    <div className='flex items-center w-full'>
+                      <div className='w-full flex items-center justify-between gap-3'>
+                        <div className='w-full flex items-center'>
+                          <button className='px-2 py-1 border rounded-l   cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed' onClick={() => setQuantity(quantity - 1)} disabled={quantity === 1 ? true : false}><HiMinus className='w-6 h-6' /></button>
+
+                          <input type="text" className='w-12 border-t border-b px-2 py-1 outline-none font-semibold' value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))} />
+
+                          <button className='px-2 py-1 border rounded-r cursor-pointer' onClick={() => setQuantity(quantity + 1)}><HiPlus className='w-6 h-6' /></button>
+                        </div>
+
+                        <div>
+                          <span className='text-sm'>Units</span>
+                        </div>
+
+                        <div className='w-full'>
+                          <button onClick={handleCart} className="inline-flex items-center justify-center px-3 py-2 gap-1 font-medium border text-sm whitespace-nowrap rounded border-error bg-error text-white hover:opacity-60 transition-all duration-500"> Add to Cart</button>
+                        </div>
+                      </div>
                       <Drawer
                         open={isOpen}
                         onClose={handleCart}
@@ -1170,14 +1200,14 @@ const ProductDetails = () => {
 
 
 
-                <div className='bg-white p-5 shadow'>
+                {/* <div className='bg-white p-5 shadow'>
                   <div className='flex flex-col items-center gap-2 text-left'>
                     <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
                     <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
 
                   </div>
 
-                </div>
+                </div> */}
 
                 <div className='flex flex-col gap-0'>
 
@@ -1214,7 +1244,7 @@ const ProductDetails = () => {
 
                 </div>
 
-                <p className='font-semibold text-[#4d4d4f]'>Other Offers</p>
+                {/* <p className='font-semibold text-[#4d4d4f]'>Other Offers</p>
                 <div className='bg-white shadow'>
                   <div className="collapse collapse-plus rounded" >
                     <input type="checkbox" defaultChecked={offerOpen ? true : false} onClick={() => setOfferOpen(!offerOpen)} />
@@ -1241,7 +1271,7 @@ const ProductDetails = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
 
