@@ -420,23 +420,23 @@ const NavigationBar = () => {
                         </form>
 
                         <div className="w-full grid grid-cols-8 mt-2 text-center text-[#333333] text-xs bg-[#ededed] rounded-l-sm rounded-r-sm">
-                            <Link to="/alot-for-less" className="  py-[6px] text-white bg-[#55378b] hover:bg-[#61419c] rounded-l-sm"> Alot For Less</Link>
+                            <Link to="/all" className="  py-[6px] text-white bg-[#55378b] hover:bg-[#61419c] rounded-l-sm"> Alot For Less</Link>
 
 
-                            <Link to="/world-cup" className="border-r border-[#ccc] py-[6px]">World Cup 2023</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]">World Cup 2023</Link>
 
-                            <Link to="/new-takealot" className="border-r border-[#ccc] py-[6px]"> New to Takealot</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> New to Mustake</Link>
 
-                            <Link to="/christmas" className="border-r border-[#ccc] py-[6px]"> Christmas</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> Christmas</Link>
 
-                            <Link to="/small-local-businesses" className="border-r border-[#ccc] py-[6px]"> Small Local Sellers</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> Small Local Sellers</Link>
 
-                            <Link to="/deals-promotions" className="border-r border-[#ccc] py-[6px]"> Deals & Promotions</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> Deals & Promotions</Link>
 
 
-                            <Link to="/promotion/clearancesale" className="border-l border-r border-[#ccc] py-[6px]"> Clearance</Link>
+                            <Link to="/all" className="border-l border-r border-[#ccc] py-[6px]"> Clearance</Link>
 
-                            <Link to="/brand-store" className=" py-[6px] rounded-r-sm"> Brands Store</Link>
+                            <Link to="/all" className=" py-[6px] rounded-r-sm"> Brands Store</Link>
 
 
                         </div>

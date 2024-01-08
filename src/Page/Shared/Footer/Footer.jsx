@@ -1,17 +1,23 @@
 // import { useState } from "react";
 import { Link } from "react-router-dom";
 import { BsFacebook, BsInstagram, BsTwitter } from 'react-icons/bs';
+import { useEffect, useState } from "react";
 
 
 const Footer = () => {
-    // const [mode, setMode] = useState("auto");
+    const [categoryList, setCategoryList] = useState([]);
+    useEffect(() => {
+        fetch("https://take-a-lot-server-two.vercel.app/all/categories/of/products")
+            .then(res => res.json())
+            .then(data => setCategoryList(data))
+    }, [])
     return (
 
 
 
 
-        <footer className="text-gray-600 mt-20 -z-50">
-            <div className="bg-white hidden lg:flex">
+        <footer className="text-gray-600 mt-20 -z-50 w-full">
+            <div className="bg-white hidden lg:flex w-full">
                 <div className="max-w-7xl mx-auto">
                     <div className="py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
                         <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
@@ -48,11 +54,6 @@ const Footer = () => {
                                     <li> <Link to='/'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">App Only Deals</p></Link></li>
                                 </ul>
 
-                                <ul>
-                                    <li> <p className="font-bold  mb-3 mt-4 ">Takealot.group</p> </li>
-                                    <li> <Link to='/'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800 ">Superbalist.com</p></Link></li>
-                                    <li> <Link to='/'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Mr D</p></Link></li>
-                                </ul>
 
 
                             </div>
@@ -97,7 +98,7 @@ const Footer = () => {
                                         <li> <Link to='/competitions'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Competitions</p></Link></li>
                                         <li> <Link to='/about/company-news'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Press & News</p></Link></li>
                                         <li> <Link to='/return-policy-help/privacy-policy'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Privacy Policy</p></Link></li>
-                                        <li> <Link to='/sell-on-takealot'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Sell on Takealot</p></Link></li>
+                                        <li> <Link to='/sell-on-mustake'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Sell on Mustake</p></Link></li>
                                         <li> <a href="speakup-process-policy.pdf" download="speakup-process-policy.pdf" to='/'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Speak Up Process</p></a></li>
                                         <li> <Link to='/takealot-deliver'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Deliver for Takealot</p></Link></li>
                                         <li> <Link to='/return-policy-help/terms-and-conditions'> <p className="text-xs lg:text-sm hover:underline hover:text-blue-800">Terms & Conditions</p></Link></li>
@@ -114,35 +115,39 @@ const Footer = () => {
 
                     </div>
 
-                    <div className="mx-auto border-t">
+                    <div className="mx-auto border-t w-full">
 
-                        <div className="mt-4">
-                            <div className="space-x-1  text-xs mb-3  " style={{ color: "#0b79bf" }}>
-                                <Link className="hover:underline" to="/">Baby & Toddle / </Link>
-                                
+                        <div className="mt-4 w-full">
+                            <div className="flex items-center justify-between text-xs mb-3 w-full gap-3" style={{ color: "#0b79bf" }}>
+                                {
+                                    categoryList.map(listItem =>
+                                        <Link to={`/all/${listItem?.mainCategory}`} className="hover:underline inline-flex" key={listItem?.id}>{listItem?.mainCategory} /</Link>)
+                                }
+                                {/* <Link className="hover:underline" to="/">Baby & Toddle / </Link>
+
                                 <Link className="hover:underline" to="/">Beaut / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Books / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Cameras / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Camping & Outdoors / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Cellphones & Wearables / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Computers & Tablets / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Fashion / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Gaming / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Garden, Pool & Patio / </Link>
 
                                 <Link className="hover:underline" to="/">Health / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Home & Kitchen / </Link>
-                                
-                                <Link className="hover:underline" to="/">Luggage & Travel / </Link>
+
+                                <Link className="hover:underline" to="/">Luggage & Travel / </Link> */}
 
 
 
@@ -151,61 +156,61 @@ const Footer = () => {
                             </div>
                         </div>
 
-                        <div className="container mx-auto  ">
+                        {/* <div className="container mx-auto  ">
 
                             <div className="inline-flex items-center justify-center gap-2 text-xs mb-4 " style={{ color: "#0b79bf" }}>
 
 
                                 <Link className="hover:underline" to="/">Movies & Series / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Music / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Office & Stationery / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Pets / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Sport / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">TV, Audio & Video / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Toys / </Link>
-                                
+
                                 <Link className="hover:underline" to="/">Vouchers </Link>
 
                             </div>
 
-                        </div>
+                        </div> */}
                     </div>
 
                 </div>
 
             </div>
             <div className="lg:hidden w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10 py-10">
-                            <p className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+                <p className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 
-                                <span className="font-bold  mb-5">Download Our Apps</span>
-                            </p>
+                    <span className="font-bold  mb-5">Download Our Apps</span>
+                </p>
 
-                            <div className="flex flex-col items-center justify-center gap-3">
-                                <div className="inline-flex items-center gap-3">
-                                <img src="https://shopfront.takealot.com/3b82b4b187020f19a0133caaeea48a477247686e/static/media/src/images/google-play.svg-7a92427373a19e40a662.svg" alt="" />
-                                <img src="https://shopfront.takealot.com/3b82b4b187020f19a0133caaeea48a477247686e/static/media/src/images/app-store.svg-edce310696aa7f6191a1.svg" alt="" />
-                                </div>
-                                <img className="mt-2" src="https://shopfront.takealot.com/3b82b4b187020f19a0133caaeea48a477247686e/static/media/src/images/huawei-appgallery.svg-bb1c8aaa1305360a018d.svg" alt="" />
-                            </div>
-                            
+                <div className="flex flex-col items-center justify-center gap-3">
+                    <div className="inline-flex items-center gap-3">
+                        <img src="https://shopfront.takealot.com/3b82b4b187020f19a0133caaeea48a477247686e/static/media/src/images/google-play.svg-7a92427373a19e40a662.svg" alt="" />
+                        <img src="https://shopfront.takealot.com/3b82b4b187020f19a0133caaeea48a477247686e/static/media/src/images/app-store.svg-edce310696aa7f6191a1.svg" alt="" />
+                    </div>
+                    <img className="mt-2" src="https://shopfront.takealot.com/3b82b4b187020f19a0133caaeea48a477247686e/static/media/src/images/huawei-appgallery.svg-bb1c8aaa1305360a018d.svg" alt="" />
+                </div>
 
-                            <p className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 
-                                <span className="font-bold text-xl mt-8  mb-3">Follow Us</span>
-                            </p>
+                <p className="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
 
-                            <div className=" space-x-2 -z-30">
-                                <Link to='https://www.facebook.com/KhejurBD/' target='_blank' className="w-8 h-8 items-center hover:text-blue-700 justify-center inline-flex rounded-full font-bold text-lg scale-100 hover:scale-110 hover:ease-out duration-500  -z-30" style={{ border: "1px solid" }}><BsFacebook></BsFacebook></Link>
-                                <Link to='https://www.youtube.com/@khejurbd268' target='_blank' className="w-8 h-8 items-center hover:text-blue-400 justify-center inline-flex rounded-full font-bold text-lg scale-100 hover:scale-110 hover:ease-out duration-500 -z-30 " style={{ border: "1px solid" }}><BsTwitter></BsTwitter></Link>
-                                <Link to='https://www.instagram.com/khejur.bd/' target='_blank' className="w-8 h-8 items-center  hover:text-red-500  justify-center inline-flex rounded-full font-bold text-lg scale-100 hover:scale-110 hover:ease-out duration-500 -z-30" style={{ border: "1px solid" }}><BsInstagram></BsInstagram> </Link>
-                            </div>
-                        </div>
+                    <span className="font-bold text-xl mt-8  mb-3">Follow Us</span>
+                </p>
+
+                <div className=" space-x-2 -z-30">
+                    <Link to='https://www.facebook.com/KhejurBD/' target='_blank' className="w-8 h-8 items-center hover:text-blue-700 justify-center inline-flex rounded-full font-bold text-lg scale-100 hover:scale-110 hover:ease-out duration-500  -z-30" style={{ border: "1px solid" }}><BsFacebook></BsFacebook></Link>
+                    <Link to='https://www.youtube.com/@khejurbd268' target='_blank' className="w-8 h-8 items-center hover:text-blue-400 justify-center inline-flex rounded-full font-bold text-lg scale-100 hover:scale-110 hover:ease-out duration-500 -z-30 " style={{ border: "1px solid" }}><BsTwitter></BsTwitter></Link>
+                    <Link to='https://www.instagram.com/khejur.bd/' target='_blank' className="w-8 h-8 items-center  hover:text-red-500  justify-center inline-flex rounded-full font-bold text-lg scale-100 hover:scale-110 hover:ease-out duration-500 -z-30" style={{ border: "1px solid" }}><BsInstagram></BsInstagram> </Link>
+                </div>
+            </div>
             <div className="bg-primary" >
 
 
@@ -225,7 +230,7 @@ const Footer = () => {
                     </div>
 
                     <div className="my-2">
-                        <p className="text-white text-sm opacity-80">© Takealot Online (Pty) Ltd.</p>
+                        <p className="text-white text-sm opacity-80">©Dynatric (Pty) Ltd</p>
                     </div>
 
                 </div>

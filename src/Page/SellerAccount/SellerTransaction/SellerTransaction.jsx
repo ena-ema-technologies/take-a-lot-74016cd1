@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DashboardHead from "../../../components/DashboardHead/DashboardHead";
 import { useState } from "react";
 import { RiMoneyDollarCircleLine } from "react-icons/ri";
@@ -15,8 +15,11 @@ import {
   PDFViewer,
   renderToString,
 } from "@react-pdf/renderer";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const SellerTransaction = () => {
+  const [axiosSecure] = useAxiosSecure();
+  const [pendingAmount, setPendingAmount] = useState(0)
   const [tabName, setTabName] = useState("Transaction");
   const [orders] = useOrders();
   console.log(orders);
@@ -133,6 +136,15 @@ const SellerTransaction = () => {
       </Page>
     </Document>
   );
+  useEffect(() => {
+    fetchPendingAmount();
+  }, [])
+
+  const fetchPendingAmount = async () => {
+    const response = await axiosSecure.get("/total-cart-amount");
+    setPendingAmount(response?.data?.totalAmount)
+  }
+  // console.log(pendingAmount);
 
 
   return (
@@ -197,7 +209,7 @@ const SellerTransaction = () => {
               <div className="border px-4 py-3 rounded shadow w-full flex items-center justify-between">
                 <div>
                   <p className="text-xs font-medium text-gray-400">Pending</p>
-                  <h3 className="mt-2 text-base font-bold">R 100,000.32</h3>
+                  <h3 className="mt-2 text-base font-bold">R {pendingAmount}</h3>
                 </div>
 
                 <div>

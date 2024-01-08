@@ -98,7 +98,7 @@ const Dashboard = () => {
 
           </div>
 
-          <NavLink to="/seller-dashboard/seller-reports" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}><HiPresentationChartBar className='inline-flex items-center h-5 w-5' /> Reports</NavLink>
+          {/* <NavLink to="/seller-dashboard/seller-reports" className={({ isActive }) => (isActive ? "dash-active" : "dash-default")}><HiPresentationChartBar className='inline-flex items-center h-5 w-5' /> Reports</NavLink> */}
 
 
         </ul>

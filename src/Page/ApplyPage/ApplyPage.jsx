@@ -63,7 +63,7 @@ const ApplyPage = () => {
             haveRegisteredAccount: data?.registeredAccountYes ? data?.registeredAccountYes : data?.registeredAccountNo ? data?.registeredAccountNo : data?.registeredAccountOther,
             comments: data?.comments,
             date: new Date(),
-            status: "Pending"
+            status: "approved"
         }
 
         const response = await axiosSecure.post("/new-seller-request", newSellerData);

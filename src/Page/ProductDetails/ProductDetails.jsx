@@ -37,8 +37,8 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
   const { user } = useAuth();
-  const [carts, update] = useCart();
-  console.log(carts.length);
+  const [carts, refetch] = useCart();
+  // console.log(carts.length);
   const [axiosSecure] = useAxiosSecure();
   const [userInfo] = useProfile();
   const [offerOpen, setOfferOpen] = useState(true);
@@ -47,7 +47,7 @@ const ProductDetails = () => {
   const [selectedSort, setSelectedSort] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState(null);
   const info = useParams();
-  console.log(selectedProducts);
+  // console.log(selectedProducts);
   const [isOpen, setIsOpen] = React.useState(false)
   const [quantity, setQuantity] = useState(1)
   const [discount, setDiscount] = useState(0)
@@ -183,7 +183,7 @@ const ProductDetails = () => {
           icon: 'success',
           confirmButtonText: 'Ok'
         })
-        update();
+        refetch();
       }
     }
   }
@@ -242,9 +242,14 @@ const ProductDetails = () => {
           icon: 'success',
           confirmButtonText: 'Ok'
         })
-        console.log(data);
+        // console.log(data);
       }
     }
+  }
+
+
+  const handleDrawerClose = () => {
+    setIsOpen((prevState) => !prevState)
   }
 
   return (
@@ -325,23 +330,21 @@ const ProductDetails = () => {
                       <ul className='list-disc text-xs space-y-3'>
                         <li>Eligible for next-day delivery or collection. <label htmlFor="next_day_delivery" className='w-4 h-4 text-green-700 hover:text-green-800 inline-flex items-center'><IoIosInformationCircle className='w-4 h-4' /></label> </li>
 
-                        <li>Eligible for Cash on Delivery.<label htmlFor="COD" className='w-4 h-4 text-green-700 hover:text-green-800 inline-flex items-center'><IoIosInformationCircle className='w-4 h-4' /></label> </li>
-
                         <li>Hassle-Free Exchanges & Returns for 30 Days.<label htmlFor="Exchanges&Returns" className='w-4 h-4 text-green-700 hover:text-green-800 inline-flex items-center'><IoIosInformationCircle className='w-4 h-4' /></label></li>
 
                         <li><span>{selectedProducts?.Warranty_Period}-Month Limited Warranty.</span> <p className='tooltip inline-flex items-center text-green-700' data-tip="Limited warranty, with certain exclusions, as defined by the manufacturer. Please consult the manufacturer for further details."><IoIosHelpCircle className='w-4 h-4' /></p> </li>
                       </ul>
                     </div>
-                    {/*todo: table need to dynamic */}
+
                     <div className='w-full text-sm mt-2'>
                       <h1 className='font-bold '>Quantity Based Discount</h1>
-                      <table className='bg-slate-100 mt-4 text-xs'>
-                        <thead className='border-none'>
+                      <table className='bg-slate-100 mt-4 text-xs border-none'>
+                        <thead>
                           <tr>
-                            <th>Quantity</th>
-                            <th>Discount %</th>
-                            <th>Discounted Price</th>
-                            <th>Earned Discount</th>
+                            <th className='border-none'>Quantity</th>
+                            <th className='border-none'>Discount %</th>
+                            <th className='border-none'>Discounted Price</th>
+                            <th className='border-none'>Earned Discount*</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -371,6 +374,9 @@ const ProductDetails = () => {
                           </tr>
                         </tbody>
                       </table>
+                      <p className='text-xs pt-2 font-semibold'>* Will be automatically added to your account as credit
+                        once the item quantity sold is matched to the Quantity
+                        within 24 hours</p>
 
                     </div>
                   </div>
@@ -1130,7 +1136,7 @@ const ProductDetails = () => {
                       </div>
                       <Drawer
                         open={isOpen}
-                        onClose={handleCart}
+                        onClose={handleDrawerClose}
                         direction='right'
                         className='w-full mr-96 bg-[#F4F4F4] '
                         size="250px"
@@ -1151,7 +1157,7 @@ const ProductDetails = () => {
                               <Link className='px-8 bg-[#363638] rounded hover:bg-[#373739] py-2 text-white' to="/cart">Go  To Cart</Link>
                             </div>
                           </div>
-                          <div className="product-cards w-full my-4 h-full">
+                          <div className="product-cards w-full my-4 h-full z-50">
                             <h1 className='py-5 text-black font-bold'>Related Products</h1>
 
                             <Swiper
@@ -1163,11 +1169,11 @@ const ProductDetails = () => {
                               // }}
                               navigation={true}
                               modules={[Pagination, Navigation]}
-                              className="mySwiper"
+                              className="mySwiper z-50"
                             >
 
                               {
-                                allProducts?.slice(0, 10).map(prod => <SwiperSlide key={prod?._id} className="h-full">
+                                allProducts?.slice(0, 10).map(prod => <SwiperSlide key={prod?._id} className="h-full z-50">
 
                                   <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}/${prod?.Categories[0]}`} className="w-[200px] flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl h-full overflow-visible">
 

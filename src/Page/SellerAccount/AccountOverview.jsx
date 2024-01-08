@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { FaBuilding, FaCheck, FaDownload, FaInfo, FaTasks } from 'react-icons/fa';
-import { HiMiniBell, HiMiniCog, HiMiniCog8Tooth, HiOutlineClipboardDocumentList } from 'react-icons/hi2';
+import { HiMiniBell, HiMiniCog, HiMiniCog8Tooth, HiOutlineClipboardDocumentList, HiXMark } from 'react-icons/hi2';
 import { IoIosCard, IoIosSend, IoMdBusiness, IoMdCloudUpload } from 'react-icons/io';
 import { IoPeopleCircleOutline, IoPersonCircleOutline } from 'react-icons/io5';
 import useSeller from '../../hooks/useSeller';
@@ -59,6 +59,9 @@ const AccountOverview = () => {
                             confirmButtonText: 'Cool'
                         })
                     }
+                    let modalCheckbox = document.getElementById("my_modal_6");
+                    modalCheckbox.checked = false;
+                    fetchSeller();
 
                 }
             })
@@ -148,16 +151,23 @@ const AccountOverview = () => {
                             <h2 className='font-bold flex gap-7 items-center mt-2'>Registered: <span className='font-normal text-[#4d4d4f]'>{moment(seller?.date).format("LLL")}</span></h2>
                             <h2 className='font-bold flex gap-7 items-center mt-2'>Status: {seller?.status === "approved" ? <span className='font-bold text-xs flex items-center gap-1 px-2 bg-green-600 text-white rounded'><FaCheck className='bg-white rounded-full text-green-600 font-mono' /> Account Active</span> : <span className='font-bold text-xs flex items-center gap-1 px-2 bg-red-600 text-white rounded'><FaInfo className='bg-white rounded-full text-green-600 font-mono' /> Account Pending</span>}</h2>
                             <div className='flex gap-2 items-center'>
-                                <button className='p-2 bg-blue-600 text-white rounded text-base mt-7' onClick={() => document.getElementById('my_modal_3').showModal()}>Change Logo</button>
+
+                                <label htmlFor="my_modal_6" className='p-2 bg-blue-600 text-white rounded text-base mt-7'>Change Logo</label>
 
                                 <button className='p-2 bg-red-600 text-white rounded text-base mt-7' onClick={() => handleStopSelling(seller?._id)}>Stop Selling On TakeALot</button>
                             </div>
-                            <dialog id="my_modal_3" className="modal">
-                                <div className="modal-box">
-                                    <form method="dialog">
-                                        {/* if there is a button in form, it will close the modal */}
-                                        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                    </form>
+
+                            <input type="checkbox" id="my_modal_6" className="modal-toggle" />
+                            <div className="modal" role="dialog">
+                                <div className="modal-box relative">
+                                    <div className="mb-3">
+                                        <label
+                                            htmlFor="my_modal_6"
+                                            className="absolute top-3 right-3 cursor-pointer hover:text-error"
+                                        >
+                                            <HiXMark className="w-7 h-7" />
+                                        </label>
+                                    </div>
                                     <h3 className="font-bold text-lg mb-4">Upload your logo!</h3>
                                     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-4 w-full'>
                                         <div className="upload-files-container bg-secondary bg-opacity-20 p-8 rounded-lg flex items-center justify-center flex-col space-y-5  w-[350px] lg:w-full">
@@ -183,10 +193,8 @@ const AccountOverview = () => {
                                         <button type='submit' className='px-4 py-1 border mt-3 rounded text-sm font-semibold border-primary text-primary cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed'>Upload</button>
                                     </form>
 
-
-
                                 </div>
-                            </dialog>
+                            </div>
                         </div> :
                         tabName === "business" ?
                             <div className='mx-5 my-6 space-y-3'>
