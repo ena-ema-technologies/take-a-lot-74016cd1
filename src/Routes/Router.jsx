@@ -181,6 +181,8 @@ import AddBulkProducts from "../Page/SellerAccount/AddCatalogue/AddBulkProducts"
 import ConfirmShipmentDetails from "../Page/SellerAccount/ConfirmedShipments/ConfirmShipmentDetails";
 import CreateReturn from "../Page/Returns/CreateReturn";
 import SubmitReturnLog from "../Page/Returns/SubmitReturnLog";
+import AdminDashboard from "../Page/AdminPanel/AdminDashboard";
+import ManageSeller from "../Page/AdminPanel/ManageSeller";
 
 
 
@@ -952,6 +954,16 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "/admin-dashboard",
+    element: <AdminDashboard />,
+    children: [
+      {
+        path: "admin-home",
+        element: <ManageSeller />
+      }
+    ]
+  }
   // {
   //   path: "/demo",
   //   element: <Demo />

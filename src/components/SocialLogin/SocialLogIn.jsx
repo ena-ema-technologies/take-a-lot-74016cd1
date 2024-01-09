@@ -15,12 +15,13 @@ const SocialLogIn = ({ title1, title2 }) => {
     const handleGoogle = () => {
         const [userInfo, refetch] = useProfile();
         googleIn()
-            .then(async(res) => {
+            .then(async (res) => {
                 const loggedUser = res.user;
                 const newData = {
                     email: loggedUser.email,
                     name: loggedUser.displayName,
-                    photo: loggedUser.photoURL
+                    photo: loggedUser.photoURL,
+                    role: "user"
                 }
                 // console.log(newData);
                 Swal.fire({
@@ -31,7 +32,7 @@ const SocialLogIn = ({ title1, title2 }) => {
                 })
 
                 const result = await axios.post("https://take-a-lot-server-two.vercel.app/users", newData)
-                if(result.data.insertedId){
+                if (result.data.insertedId) {
                     navigate(from, { replace: true })
                     Swal.fire({
                         title: 'Success!',
@@ -40,7 +41,7 @@ const SocialLogIn = ({ title1, title2 }) => {
                         confirmButtonText: 'Ok'
                     })
                     refetch()
-                    
+
                 }
 
             })

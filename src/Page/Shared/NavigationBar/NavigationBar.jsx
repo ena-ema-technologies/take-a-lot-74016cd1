@@ -12,11 +12,13 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
 import useSeller from "../../../hooks/useSeller";
+import useProfile from "../../../hooks/useProfile";
 
 const NavigationBar = () => {
     const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [allCategoryList, setAllCategoryList] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({});
+    const [userInfo] = useProfile();
     const [deptName, setDeptName] = useState("");
     console.log(deptName);
     const [sellerInfo] = useSeller();
@@ -358,10 +360,13 @@ const NavigationBar = () => {
 
                                     <Link to="/my-account" className="smallLink">My Account</Link>
                                     {
-                                        sellerInfo?.status === "approved" && <Link to="/seller-account-overview" className="smallLink">Account Overview</Link>
+                                        sellerInfo?.status === "approved" || "Pending" && <Link to="/seller-account-overview" className="smallLink">Account Overview</Link>
                                     }
                                     {
                                         sellerInfo?.status === "approved" && <Link to="/seller-dashboard/dashboard-home" className="smallLink">Seller Dashboard</Link>
+                                    }
+                                    {
+                                        userInfo?.role === "admin" && <Link to="/admin-dashboard/admin-home" className="smallLink">Admin Panel</Link>
                                     }
                                     <Link to="/account/orders" className="smallLink">Track Order</Link>
                                     <Link to="/account/returns" className="smallLink">Returns</Link>
