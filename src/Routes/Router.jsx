@@ -183,6 +183,7 @@ import CreateReturn from "../Page/Returns/CreateReturn";
 import SubmitReturnLog from "../Page/Returns/SubmitReturnLog";
 import AdminDashboard from "../Page/AdminPanel/AdminDashboard";
 import ManageSeller from "../Page/AdminPanel/ManageSeller";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -956,11 +957,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/admin-dashboard",
-    element: <AdminDashboard />,
+    element: <PrivateRoute><AdminRoute><AdminDashboard /></AdminRoute></PrivateRoute>,
     children: [
       {
         path: "admin-home",
-        element: <ManageSeller />
+        element: <PrivateRoute><AdminRoute><ManageSeller /></AdminRoute></PrivateRoute>
       }
     ]
   }

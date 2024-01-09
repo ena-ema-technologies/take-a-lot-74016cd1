@@ -1,6 +1,7 @@
 import React from 'react';
 import useAuth from './useAuth';
 import useAxiosSecure from './useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const useAdmin = () => {
     const { user, loading } = useAuth();
