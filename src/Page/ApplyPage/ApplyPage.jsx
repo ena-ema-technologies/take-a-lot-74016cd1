@@ -5,6 +5,7 @@ import useAxiosSecure from '../../hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
 import { FaLandmark } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 const ApplyPage = () => {
     const [axiosSecure] = useAxiosSecure();
     const navigate = useNavigate();
@@ -34,6 +35,7 @@ const ApplyPage = () => {
 
 
         const newSellerData = {
+            sellerUniqueId: Math.floor(Math.random() * 100000000),
             sellerFirstName: data?.firstName,
             sellerLastName: data?.lastName,
             sellerEmail: data?.email,
@@ -63,7 +65,7 @@ const ApplyPage = () => {
             haveRegisteredAccount: data?.registeredAccountYes ? data?.registeredAccountYes : data?.registeredAccountNo ? data?.registeredAccountNo : data?.registeredAccountOther,
             comments: data?.comments,
             date: new Date(),
-            status: "approved"
+            status: "Pending"
         }
 
         const response = await axiosSecure.post("/new-seller-request", newSellerData);
@@ -103,8 +105,8 @@ const ApplyPage = () => {
         <section className='my-14 flex items-center justify-center min-h-[calc(100px - 100vh)]'>
             <div className='form-container'>
                 <div className='text-center'>
-                    <p className='text-3xl text-[#000] font-semibold'>Apply to sell on Takealot Marketplace</p>
-                    <p className='my-2'>Becoming a Takealot Marketplace seller is easy. <br />
+                    <p className='text-3xl text-[#000] font-semibold'>Apply to sell on Mustake Marketplace</p>
+                    <p className='my-2'>Becoming a Mustake Marketplace seller is easy. <br />
                         Simply complete the form below and we'll be in touch within 10 business days.</p>
                 </div>
 

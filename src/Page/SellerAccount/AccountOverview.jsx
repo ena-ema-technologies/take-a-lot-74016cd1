@@ -101,7 +101,8 @@ const AccountOverview = () => {
                 <div className='w-full flex items-center gap-3'>
                     <span><FaTasks /> </span>
                     <span className='inline-flex items-center gap-1 font-semibold'><HiMiniCog8Tooth /> Account Overview</span>
-                    <span> For {seller?.companyName} ({seller?._id})</span>
+                    <span> For {seller?.companyName} ({seller?.
+                        sellerUniqueId})</span>
                 </div>
 
                 <div className='w-full flex items-center gap-4 justify-end'>
@@ -147,7 +148,8 @@ const AccountOverview = () => {
                                 <p className='text-sm'>This Account Will Be Charged a Monthly Subscription Fee.</p>
                             </div>
                             <h1 className='text-blue-500 mt-4'>Registration Information</h1>
-                            <h2 className='font-bold flex gap-7 items-center mt-2'>Saller Id: <span className='font-normal text-[#4d4d4f]'>{seller?._id}</span></h2>
+                            <h2 className='font-bold flex gap-7 items-center mt-2'>Saller Id: <span className='font-normal text-[#4d4d4f]'>{seller?.
+                                sellerUniqueId}</span></h2>
                             <h2 className='font-bold flex gap-7 items-center mt-2'>Registered: <span className='font-normal text-[#4d4d4f]'>{moment(seller?.date).format("LLL")}</span></h2>
                             <h2 className='font-bold flex gap-7 items-center mt-2'>Status: {seller?.status === "approved" ? <span className='font-bold text-xs flex items-center gap-1 px-2 bg-green-600 text-white rounded'><FaCheck className='bg-white rounded-full text-green-600 font-mono' /> Account Active</span> : <span className='font-bold text-xs flex items-center gap-1 px-2 bg-red-600 text-white rounded'><FaInfo className='bg-white rounded-full text-green-600 font-mono' /> Account Pending</span>}</h2>
                             <div className='flex gap-2 items-center'>

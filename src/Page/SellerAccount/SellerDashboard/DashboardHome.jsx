@@ -42,7 +42,9 @@ const DashboardHome = () => {
                 </div>
 
                 <div>
-                    <p className='text-xs font-semibold'>Your Seller ID: <span>{sellerInfo?._id}</span></p>
+                    <p className='text-xs font-semibold'>Your Seller ID: <span>{sellerInfo?.
+                        sellerUniqueId
+                    }</span></p>
                 </div>
             </div>
 
