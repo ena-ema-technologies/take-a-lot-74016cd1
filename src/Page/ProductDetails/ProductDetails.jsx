@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
-import { HiOutlinePlusSmall, HiOutlineShare, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
+import { HiMinus, HiOutlinePlusSmall, HiOutlineShare, HiPlus, HiShoppingCart, HiStar, HiXMark } from 'react-icons/hi2';
 import { IoIosArrowDown, IoIosHelpCircle, IoIosInformationCircle, IoMdHeartEmpty } from 'react-icons/io';
 import { FaThumbsUp } from "react-icons/fa";
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -37,8 +37,8 @@ const ProductDetails = () => {
   const navigate = useNavigate();
   const [allProducts, setAllProducts] = useState([]);
   const { user } = useAuth();
-  const [carts, update] = useCart();
-  console.log(carts.length);
+  const [carts, refetch] = useCart();
+  // console.log(carts.length);
   const [axiosSecure] = useAxiosSecure();
   const [userInfo] = useProfile();
   const [offerOpen, setOfferOpen] = useState(true);
@@ -47,7 +47,7 @@ const ProductDetails = () => {
   const [selectedSort, setSelectedSort] = useState([]);
   const [selectedProducts, setSelectedProducts] = useState(null);
   const info = useParams();
-  console.log(selectedProducts);
+  // console.log(selectedProducts);
   const [isOpen, setIsOpen] = React.useState(false)
   const [quantity, setQuantity] = useState(1)
   const [discount, setDiscount] = useState(0)
@@ -107,6 +107,27 @@ const ProductDetails = () => {
   let accDiscount = totalPrice - priceAfterDiscount;
   let totalDiscount = 0;
 
+
+  const calculateDiscount = (quantity) => {
+    let discountPercentage = 0;
+
+    if (quantity >= 2 && quantity <= 4) {
+      discountPercentage = 2;
+    } else if (quantity >= 5 && quantity <= 9) {
+      discountPercentage = 10;
+    } else if (quantity >= 10 && quantity <= 19) {
+      discountPercentage = 20;
+    } else if (quantity >= 30) {
+      discountPercentage = 40;
+    }
+
+    const discountedPrice = price - (price * discountPercentage) / 100;
+    const earnedDiscount = price - discountedPrice;
+
+    return { discountPercentage, discountedPrice, earnedDiscount };
+  };
+  const { discountPercentage } = calculateDiscount(quantity);
+
   const handleCart = async () => {
     if (!user) {
       Swal.fire({
@@ -128,7 +149,7 @@ const ProductDetails = () => {
       const data = {
         CartAddedDate: new Date(),
         productImage: selectedProducts?.Image_URL[0],
-        totalPrice: priceAfterDiscount,
+        totalPrice: parseInt((price - (price * discountPercentage) / 100) * quantity),
         quantity: quantity,
         barcode: selectedProducts?.Barcode,
         brandName: selectedProducts?.Brand_Name,
@@ -162,7 +183,7 @@ const ProductDetails = () => {
           icon: 'success',
           confirmButtonText: 'Ok'
         })
-        update();
+        refetch();
       }
     }
   }
@@ -188,7 +209,7 @@ const ProductDetails = () => {
       const data = {
         wishListAddedDate: new Date(),
         productImage: selectedProducts?.Image_URL[0],
-        totalPrice: priceAfterDiscount,
+        totalPrice: parseInt((price - (price * discountPercentage) / 100) * quantity),
         quantity: quantity,
         barcode: selectedProducts?.Barcode,
         brandName: selectedProducts?.Brand_Name,
@@ -221,10 +242,16 @@ const ProductDetails = () => {
           icon: 'success',
           confirmButtonText: 'Ok'
         })
-        console.log(data);
+        // console.log(data);
       }
     }
   }
+
+
+  const handleDrawerClose = () => {
+    setIsOpen((prevState) => !prevState)
+  }
+
   return (
     <section>
       {
@@ -303,49 +330,54 @@ const ProductDetails = () => {
                       <ul className='list-disc text-xs space-y-3'>
                         <li>Eligible for next-day delivery or collection. <label htmlFor="next_day_delivery" className='w-4 h-4 text-green-700 hover:text-green-800 inline-flex items-center'><IoIosInformationCircle className='w-4 h-4' /></label> </li>
 
-                        <li>Eligible for Cash on Delivery.<label htmlFor="COD" className='w-4 h-4 text-green-700 hover:text-green-800 inline-flex items-center'><IoIosInformationCircle className='w-4 h-4' /></label> </li>
-
                         <li>Hassle-Free Exchanges & Returns for 30 Days.<label htmlFor="Exchanges&Returns" className='w-4 h-4 text-green-700 hover:text-green-800 inline-flex items-center'><IoIosInformationCircle className='w-4 h-4' /></label></li>
 
                         <li><span>{selectedProducts?.Warranty_Period}-Month Limited Warranty.</span> <p className='tooltip inline-flex items-center text-green-700' data-tip="Limited warranty, with certain exclusions, as defined by the manufacturer. Please consult the manufacturer for further details."><IoIosHelpCircle className='w-4 h-4' /></p> </li>
                       </ul>
                     </div>
-                    {/*todo: table need to dynamic */}
+
                     <div className='w-full text-sm mt-2'>
                       <h1 className='font-bold '>Quantity Based Discount</h1>
-                      <table className='bg-slate-100 mt-4 text-xs'>
-                        <tr className='text-center'>
-                          <th className='px-2 border-white'>Quantity</th>
-                          <th className='px-2 border-white'>Discount %</th>
-                          <th className='px-2 border-white'>Discounted Price</th>
-                          <th className='px-2 border-white'>Rand Earn</th>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>2-4</td>
-                          <td className='px-2 border-white'>2 %</td>
-                          <td className='px-2 border-white'>833</td>
-                          <td className='px-2 border-white'>8.33</td>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>5-9</td>
-                          <td className='px-2 border-white'>10 %</td>
-                          <td className='px-2 border-white'>749</td>
-                          <td className='px-2 border-white'>7.49</td>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>10-19</td>
-                          <td className='px-2 border-white'>20 %</td>
-                          <td className='px-2 border-white'>666</td>
-                          <td className='px-2 border-white'>6.66</td>
-                        </tr>
-                        <tr className='text-center'>
-                          <td className='px-2 border-white'>30+</td>
-                          <td className='px-2 border-white'>40 %</td>
-                          <td className='px-2 border-white'>499</td>
-                          <td className='px-2 border-white'>4.99</td>
-                        </tr>
-
+                      <table className='bg-slate-100 mt-4 text-xs border-none'>
+                        <thead>
+                          <tr>
+                            <th className='border-none'>Quantity</th>
+                            <th className='border-none'>Discount %</th>
+                            <th className='border-none'>Discounted Price</th>
+                            <th className='border-none'>Earned Discount*</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>2-4</td>
+                            <td className='px-2 border-white'>2%</td>
+                            <td className='px-2 border-white'>{(price - (price * 2) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 2) / 100)).toFixed(2)}</td>
+                          </tr>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>5-9</td>
+                            <td className='px-2 border-white'>10%</td>
+                            <td className='px-2 border-white'>{(price - (price * 10) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 10) / 100)).toFixed(2)}</td>
+                          </tr>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>10-19</td>
+                            <td className='px-2 border-white'>20%</td>
+                            <td className='px-2 border-white'>{(price - (price * 20) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 20) / 100)).toFixed(2)}</td>
+                          </tr>
+                          <tr className='text-center'>
+                            <td className='px-2 border-white'>30+</td>
+                            <td className='px-2 border-white'>40%</td>
+                            <td className='px-2 border-white'>{(price - (price * 40) / 100).toFixed(2)}</td>
+                            <td className='px-2 border-white'>{(price - (price - (price * 40) / 100)).toFixed(2)}</td>
+                          </tr>
+                        </tbody>
                       </table>
+                      <p className='text-xs pt-2 font-semibold'>* Will be automatically added to your account as credit
+                        once the item quantity sold is matched to the Quantity
+                        within 24 hours</p>
+
                     </div>
                   </div>
 
@@ -1080,23 +1112,31 @@ const ProductDetails = () => {
               <div className='w-full lg:w-[30%] flex flex-col gap-4'>
                 <div className='bg-white p-5 shadow'>
                   <p className='pt-2 pb-4 text-2xl flex gap-5 items-center font-extrabold'>R {
-                    price * quantity
+                    // price * quantity
+                    ((price - (price * discountPercentage) / 100) * quantity).toFixed(2)
                   }</p>
                   <div className='flex flex-col items-center justify-center gap-2'>
-                    <div className='flex border text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 w-full'>
-                      <select onClick={handleQuantity} id='quantity' name='quantity' className='text-green-700 rounded border-green-700 hover:bg-green-700 hover:text-white transition-all duration-500 outline-none px-2'>
-                        {Array.from(Array(30), (e, i) => {
-                          return <option key={i} value={i + 1}>{i + 1}</option>
-                        })}
-                        {/* <option value='1'>1</option>
-                   <option value='2'>2</option>
-                   <option value='3'>3</option>
-                   <option value='4'>4</option> */}
-                      </select>
-                      <button onClick={handleCart} className="inline-flex items-center justify-center px-3 py-2 gap-1 font-medium w-full"><HiOutlinePlusSmall className='w-5 h-5' /> <HiShoppingCart className='w-5 h-5' /> Add to Cart</button>
+                    <div className='flex items-center w-full'>
+                      <div className='w-full flex items-center justify-between gap-3'>
+                        <div className='w-full flex items-center'>
+                          <button className='px-2 py-1 border rounded-l   cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed' onClick={() => setQuantity(quantity - 1)} disabled={quantity === 1 ? true : false}><HiMinus className='w-6 h-6' /></button>
+
+                          <input type="text" className='w-12 border-t border-b px-2 py-1 outline-none font-semibold' value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))} />
+
+                          <button className='px-2 py-1 border rounded-r cursor-pointer' onClick={() => setQuantity(quantity + 1)}><HiPlus className='w-6 h-6' /></button>
+                        </div>
+
+                        <div>
+                          <span className='text-sm'>Units</span>
+                        </div>
+
+                        <div className='w-full'>
+                          <button onClick={handleCart} className="inline-flex items-center justify-center px-3 py-2 gap-1 font-medium border text-sm whitespace-nowrap rounded border-error bg-error text-white hover:opacity-60 transition-all duration-500"> Add to Cart</button>
+                        </div>
+                      </div>
                       <Drawer
                         open={isOpen}
-                        onClose={handleCart}
+                        onClose={handleDrawerClose}
                         direction='right'
                         className='w-full mr-96 bg-[#F4F4F4] '
                         size="250px"
@@ -1117,7 +1157,7 @@ const ProductDetails = () => {
                               <Link className='px-8 bg-[#363638] rounded hover:bg-[#373739] py-2 text-white' to="/cart">Go  To Cart</Link>
                             </div>
                           </div>
-                          <div className="product-cards w-full my-4 h-full">
+                          <div className="product-cards w-full my-4 h-full z-50">
                             <h1 className='py-5 text-black font-bold'>Related Products</h1>
 
                             <Swiper
@@ -1129,11 +1169,11 @@ const ProductDetails = () => {
                               // }}
                               navigation={true}
                               modules={[Pagination, Navigation]}
-                              className="mySwiper"
+                              className="mySwiper z-50"
                             >
 
                               {
-                                allProducts?.slice(0, 10).map(prod => <SwiperSlide key={prod?._id} className="h-full">
+                                allProducts?.slice(0, 10).map(prod => <SwiperSlide key={prod?._id} className="h-full z-50">
 
                                   <Link to={`/product-details/${prod?.Product_Name}/${prod?._id}/${prod?.Categories[0]}`} className="w-[200px] flex flex-col gap-2 bg-white px-2 py-3 shadow hover:shadow-xl h-full overflow-visible">
 
@@ -1170,14 +1210,14 @@ const ProductDetails = () => {
 
 
 
-                <div className='bg-white p-5 shadow'>
+                {/* <div className='bg-white p-5 shadow'>
                   <div className='flex flex-col items-center gap-2 text-left'>
                     <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
                     <button className='inline-flex w-full border px-3 py-2 gap-4 rounded-xl text-sm items-center'>Under construction</button>
 
                   </div>
 
-                </div>
+                </div> */}
 
                 <div className='flex flex-col gap-0'>
 
@@ -1214,7 +1254,7 @@ const ProductDetails = () => {
 
                 </div>
 
-                <p className='font-semibold text-[#4d4d4f]'>Other Offers</p>
+                {/* <p className='font-semibold text-[#4d4d4f]'>Other Offers</p>
                 <div className='bg-white shadow'>
                   <div className="collapse collapse-plus rounded" >
                     <input type="checkbox" defaultChecked={offerOpen ? true : false} onClick={() => setOfferOpen(!offerOpen)} />
@@ -1241,7 +1281,7 @@ const ProductDetails = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
 
 

@@ -12,11 +12,13 @@ import useAuth from "../../../hooks/useAuth";
 import Swal from "sweetalert2";
 import useCart from "../../../hooks/useCart";
 import useSeller from "../../../hooks/useSeller";
+import useProfile from "../../../hooks/useProfile";
 
 const NavigationBar = () => {
     const [loginModalOpen, setLoginModalOpen] = useState(false);
     const [allCategoryList, setAllCategoryList] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState({});
+    const [userInfo] = useProfile();
     const [deptName, setDeptName] = useState("");
     console.log(deptName);
     const [sellerInfo] = useSeller();
@@ -307,7 +309,7 @@ const NavigationBar = () => {
                         </div>
                         <div className="divider divider-horizontal"></div>
                         <div>
-                            <Link to="/sell-on-takealot" className="smallLink">Sell on Takealot</Link>
+                            <Link to="/sell-on-mustake" className="smallLink">Sell on Mustake</Link>
                         </div>
                     </div>
                     <div className="w-full text-right">
@@ -358,10 +360,13 @@ const NavigationBar = () => {
 
                                     <Link to="/my-account" className="smallLink">My Account</Link>
                                     {
-                                        sellerInfo?.status === "approved" && <Link to="/seller-account-overview" className="smallLink">Account Overview</Link>
+                                        sellerInfo?.status === "approved" || "Pending" && <Link to="/seller-account-overview" className="smallLink">Account Overview</Link>
                                     }
                                     {
                                         sellerInfo?.status === "approved" && <Link to="/seller-dashboard/dashboard-home" className="smallLink">Seller Dashboard</Link>
+                                    }
+                                    {
+                                        userInfo?.role === "admin" && <Link to="/admin-dashboard/admin-home" className="smallLink">Admin Panel</Link>
                                     }
                                     <Link to="/account/orders" className="smallLink">Track Order</Link>
                                     <Link to="/account/returns" className="smallLink">Returns</Link>
@@ -420,23 +425,23 @@ const NavigationBar = () => {
                         </form>
 
                         <div className="w-full grid grid-cols-8 mt-2 text-center text-[#333333] text-xs bg-[#ededed] rounded-l-sm rounded-r-sm">
-                            <Link to="/alot-for-less" className="  py-[6px] text-white bg-[#55378b] hover:bg-[#61419c] rounded-l-sm"> Alot For Less</Link>
+                            <Link to="/all" className="  py-[6px] text-white bg-[#55378b] hover:bg-[#61419c] rounded-l-sm"> Alot For Less</Link>
 
 
-                            <Link to="/world-cup" className="border-r border-[#ccc] py-[6px]">World Cup 2023</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]">World Cup 2023</Link>
 
-                            <Link to="/new-takealot" className="border-r border-[#ccc] py-[6px]"> New to Takealot</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> New to Mustake</Link>
 
-                            <Link to="/christmas" className="border-r border-[#ccc] py-[6px]"> Christmas</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> Christmas</Link>
 
-                            <Link to="/small-local-businesses" className="border-r border-[#ccc] py-[6px]"> Small Local Sellers</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> Small Local Sellers</Link>
 
-                            <Link to="/deals-promotions" className="border-r border-[#ccc] py-[6px]"> Deals & Promotions</Link>
+                            <Link to="/all" className="border-r border-[#ccc] py-[6px]"> Deals & Promotions</Link>
 
 
-                            <Link to="/promotion/clearancesale" className="border-l border-r border-[#ccc] py-[6px]"> Clearance</Link>
+                            <Link to="/all" className="border-l border-r border-[#ccc] py-[6px]"> Clearance</Link>
 
-                            <Link to="/brand-store" className=" py-[6px] rounded-r-sm"> Brands Store</Link>
+                            <Link to="/all" className=" py-[6px] rounded-r-sm"> Brands Store</Link>
 
 
                         </div>

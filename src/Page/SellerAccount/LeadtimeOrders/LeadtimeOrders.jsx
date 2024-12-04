@@ -85,7 +85,8 @@ const LeadtimeOrders = () => {
     setTotalProducts(result.data.totalProduct)
   }
 
-  console.log(shippedProducts);
+  // console.log(mainProducts);
+  // console.log(products);
 
 
   return (
@@ -221,8 +222,10 @@ const LeadtimeOrders = () => {
                           </td>
 
                           <td>
-                            {mainProducts?.map(p => <p className='whitespace-nowrap my-2'>{p?.Stock_Qty
-                            }</p>)}
+                            {
+                              mainProducts?.map((pr) => (prod?.orderedProducts?.find((p) => (p?.productId === pr?._id)) ? <p className='whitespace-nowrap my-2'>{pr?.Stock_Qty
+                              }</p> : ""))
+                            }
                           </td>
 
                           <td>

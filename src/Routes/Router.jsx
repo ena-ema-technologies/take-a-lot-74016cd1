@@ -181,6 +181,9 @@ import AddBulkProducts from "../Page/SellerAccount/AddCatalogue/AddBulkProducts"
 import ConfirmShipmentDetails from "../Page/SellerAccount/ConfirmedShipments/ConfirmShipmentDetails";
 import CreateReturn from "../Page/Returns/CreateReturn";
 import SubmitReturnLog from "../Page/Returns/SubmitReturnLog";
+import AdminDashboard from "../Page/AdminPanel/AdminDashboard";
+import ManageSeller from "../Page/AdminPanel/ManageSeller";
+import AdminRoute from "./AdminRoute";
 
 
 
@@ -217,7 +220,7 @@ export const router = createBrowserRouter([
         element: <ProductDetails />
       },
       {
-        path: "/sell-on-takealot",
+        path: "/sell-on-mustake",
         element: <SellOn />
       },
       {
@@ -806,7 +809,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/seller-account-overview",
-        element: <SellerRouter><AccountOverview /></SellerRouter>
+        element: <PrivateRoute><AccountOverview /></PrivateRoute>
       },
     ]
   },
@@ -952,6 +955,16 @@ export const router = createBrowserRouter([
       }
     ]
   },
+  {
+    path: "/admin-dashboard",
+    element: <PrivateRoute><AdminRoute><AdminDashboard /></AdminRoute></PrivateRoute>,
+    children: [
+      {
+        path: "admin-home",
+        element: <PrivateRoute><AdminRoute><ManageSeller /></AdminRoute></PrivateRoute>
+      }
+    ]
+  }
   // {
   //   path: "/demo",
   //   element: <Demo />

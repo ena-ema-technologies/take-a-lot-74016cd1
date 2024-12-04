@@ -293,31 +293,31 @@ const Home = () => {
         </div>
 
         <div className="ad-container lg:flex flex-col gap-4 w-1/3">
-          <Link to="/brand/" className='w-full bg-white shadow p-2 rounded'>
+          <Link to="/all" className='w-full bg-white shadow p-2 rounded'>
             <img src="https://tpc.googlesyndication.com/simgad/9356886536132361546?" alt="Add" className='w-full' />
           </Link>
 
-          <Link to="/brand/" className='w-full bg-white shadow p-2 rounded'>
+          <Link to="/all/dstv" className='w-full bg-white shadow p-2 rounded'>
             <img src="https://tpc.googlesyndication.com/simgad/1677839733988465028?" alt="Add" className='w-full' />
           </Link>
 
-          <Link to="/brand/" className='w-full bg-white shadow p-2 rounded'>
+          <Link to="/all/lego" className='w-full bg-white shadow p-2 rounded'>
             <img src="https://tpc.googlesyndication.com/simgad/8885274907475278951?" alt="Add" className='w-full' />
           </Link>
 
-          <Link to="/brand/" className='w-full bg-white shadow p-2 rounded'>
+          <Link to="/all/Gizzu" className='w-full bg-white shadow p-2 rounded'>
             <img src="https://tpc.googlesyndication.com/simgad/5496663184552262801?" alt="Add" className='w-full' />
           </Link>
 
-          <Link to="/brand/" className='w-full bg-white shadow p-2 rounded'>
+          <Link to="/all/dove" className='w-full bg-white shadow p-2 rounded'>
             <img src="https://tpc.googlesyndication.com/simgad/8200232379673069226?" alt="Add" className='w-full' />
           </Link>
 
-          <Link to="/brand/" className='w-full bg-white shadow p-2 rounded'>
+          <Link to="/all/xiaomi" className='w-full bg-white shadow p-2 rounded'>
             <img src="https://tpc.googlesyndication.com/simgad/8737224084841716264?" alt="Add" className='w-full' />
           </Link>
 
-          <Link to="/brand/" className='w-full bg-white shadow p-2 rounded'>
+          <Link to="/all/philips" className='w-full bg-white shadow p-2 rounded'>
             <img src="https://tpc.googlesyndication.com/simgad/146114024099689222?" alt="Add" className='w-full' />
           </Link>
         </div>
